@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   welcome: {
     backgroundColor: 'rgb(244, 244, 244)',
-    marginTop: 23
+    marginTop: 25
 
   },
   heade: {
