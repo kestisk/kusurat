@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
-import { Button, Icon, Container, Content, Card, CardItem, Input, Item, Header } from 'native-base';
+import { Button, Icon, Container, Content, Card, CardItem, Input, Item, Header, Input } from 'native-base';
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
   android:
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   welcome: {
     backgroundColor: 'rgb(244, 244, 244)',
-    marginTop: 25
+    marginTop: 23
 
   },
   heade: {
