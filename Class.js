@@ -10,6 +10,7 @@ export default class Classes extends Component {
             <Container>
                 <Content>
                     <Text>gelecek</Text>
+                    <Text>attt</Text>
                     <Button rounded onPress={this.at}><Text>GERİ</Text></Button>
                 </Content>
             </Container>
