@@ -9,7 +9,7 @@ export default class Classes extends Component {
         return (
             <Container>
                 <Content>
-                    <Text>sınıflar</Text>
+                    <Text>buraya sınıf gelecek</Text>
                     <Button rounded onPress={this.at}><Text>GERİ</Text></Button>
                 </Content>
             </Container>
