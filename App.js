@@ -23,7 +23,7 @@ export default class App extends Component<Props> {
           <Card style={styles.container}>
             <CardItem style={{ backgroundColor: 'rgb(244, 244, 244)' }}>
 
-              <Text>İSİM</Text>
+              <Text>at</Text>
 
             </CardItem>
             <CardItem style={{ backgroundColor: 'rgb(244, 244, 244)' }} >

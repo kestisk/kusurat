@@ -10,6 +10,10 @@ export default class Classes extends Component {
             <Container>
                 <Content>
                     <Text>gelecek</Text>
+<<<<<<< HEAD
+=======
+                    <Text>attt</Text>
+>>>>>>> refs/remotes/origin/kusurat
                     <Button rounded onPress={this.at}><Text>GERİ</Text></Button>
                 </Content>
             </Container>
