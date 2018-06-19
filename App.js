@@ -13,6 +13,10 @@ const instructions = Platform.select({
 type Props = {};
 
 export default class App extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = { text1: "isim" };
+  }
   render() {
     return (
       <Container>
@@ -23,7 +27,7 @@ export default class App extends Component<Props> {
           <Card style={styles.container}>
             <CardItem style={{ backgroundColor: 'rgb(244, 244, 244)' }}>
 
-              <Text>Sezer Abiiiii</Text>
+              <Text style={{ fontSize: 20 }}>{this.state.text1}</Text>
 
             </CardItem>
             <CardItem style={{ backgroundColor: 'rgb(244, 244, 244)' }} >
@@ -33,13 +37,11 @@ export default class App extends Component<Props> {
           </Card>
 
         </Content>
-        <Content>
+        <Content style={{ padding: 20 }}>
           <Item rounded style={styles.welcome}>
             <Icon active name='person' />
-            <Input placeholder='Kullanıcı Adı' />
+            <Input maxLength={12} onChangeText={(text1) => this.setState({ text1 })} placeholder='Kullanıcı Adı' />
           </Item>
-
-
           <Button style={{ marginTop: 10 }} info block rounded onPress={this.sk}>
             <Text style={{ color: 'white', fontSize: 20 }}>CONFİRM</Text>
             <Icon name='wine' style={{ color: 'red' }} />
@@ -57,22 +59,26 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    height: 250,
-    width: 250,
+    height: 220,
+    width: 220,
     alignItems: 'center',
-    backgroundColor: 'rgb(244, 244, 244)'
-
+    backgroundColor: 'rgb(244, 244, 244)',
+    borderWidth: 5,
+    borderColor: 'black'
   },
   contain: {
     justifyContent: 'center',
     alignItems: 'center'
 
+
   },
   containe: {
     width: null,
     fontSize: 150,
-    color: 'blue',
+    color: 'white',
     textAlign: 'center',
+
+    backgroundColor: '#62B1F6'
 
 
   },
@@ -84,6 +90,7 @@ const styles = StyleSheet.create({
   heade: {
     textAlign: "center",
     color: 'white',
-    fontSize: 30
+    fontSize: 30,
+    padding: 5
   }
 });
