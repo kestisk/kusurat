@@ -20,7 +20,12 @@ export default class Classes extends Component {
 
                 </Header>
                 <Content style={{ padding: 20 }}>
-                    <Button style={{ marginTop: 10 }} info block rounded ><Text style={styles.heade}>4.SINIF</Text></Button>
+                    <Button style={{ marginTop: 10 }} info block rounded onPress={() =>
+                        Toast.show({
+                            text: "Wrong password!",
+                            buttonText: "Okay",
+                            duration: 3000
+                        })} ><Text style={styles.heade}>4.SINIF</Text></Button>
                     <Button style={{ marginTop: 10 }} info block rounded onPress={this.at}><Text style={styles.heade}>5.SINIF</Text></Button>
                     <Button style={{ marginTop: 10 }} info block rounded onPress={this.at}><Text style={styles.heade}>6.SINIF</Text></Button>
                     <Button style={{ marginTop: 10 }} info block rounded onPress={this.at}><Text style={styles.heade}>7.SINIF</Text></Button>
@@ -28,7 +33,7 @@ export default class Classes extends Component {
 
 
 
-                    <Image style={{ height: 150, width: 150, alignSelf: 'center', marginTop: 20 }} source={require('./image/kedicik.jpeg')} />
+                    <Image style={{ height: 150, width: 150, alignSelf: 'flex-start', marginTop: 20 }} source={require('./image/kedicik.jpeg')} />
 
 
                 </Content>
