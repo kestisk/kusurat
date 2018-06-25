@@ -1,25 +1,24 @@
 
 import React, { Component } from 'react';
-import { Text, StyleSheet, Image } from 'react-native';
+import { Text, StyleSheet, Image, Animated } from 'react-native';
 import {
-    Button, Container, Content, Header, Icon, Left, Toast, Body, Title, CardItem, Card, Item
+    Button, Container, Content, Header, Icon, Left, Toast, Body, Title, CardItem, Card, Item, Grid, Col, View
 } from 'native-base';
+import Anime from './Ani';
 
 export default class Classes extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showToast: false
-        };
+
     }
     render() {
         return (
-            <Container style={{ backgroundColor: 'white' }}>
+            <Container style={{ backgroundColor: 'white', flex: 5 }}>
                 <Header style={{ backgroundColor: '#62B1F6' }}><Left><Button transparent onPress={this.at}><Icon name='arrow-back' /></Button></Left>
                     <Body><Title style={styles.heade}>KÜSUR-AT</Title></Body>
 
                 </Header>
-                <Content style={{ padding: 20 }}>
+                <Content style={{ padding: 20, }}>
                     <Button style={{ marginTop: 10 }} info block rounded onPress={() =>
                         Toast.show({
                             text: "Wrong password!",
@@ -31,13 +30,23 @@ export default class Classes extends Component {
                     <Button style={{ marginTop: 10 }} info block rounded onPress={this.at}><Text style={styles.heade}>7.SINIF</Text></Button>
                     <Button style={{ marginTop: 10 }} info block rounded onPress={this.at}><Text style={styles.heade}>8.SINIF</Text></Button>
 
+                    <View style={{ flexDirection: 'row' }}>
+                        <Image style={{ height: 150, width: 150, alignSelf: 'flex-start', marginTop: 20 }} source={require('./image/kedicik.jpeg')} />
+                        <View style={{ flexDirection: 'column', marginTop: 20 }}>
+                            <Anime> </Anime>
 
 
-                    <Image style={{ height: 150, width: 150, alignSelf: 'flex-start', marginTop: 20 }} source={require('./image/kedicik.jpeg')} />
+                        </View>
+
+                    </View>
+
+
+
 
 
                 </Content>
-            </Container>
+
+            </Container >
         );
     }
     at = () => {
