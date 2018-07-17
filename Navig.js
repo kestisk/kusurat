@@ -6,8 +6,6 @@ import Classes from './Class';
 const Navi = createSwitchNavigator({
     Main: {
         screen: App,
-
-
     },
     Classes: {
         screen: Classes,
