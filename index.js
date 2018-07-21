@@ -3,5 +3,7 @@ import App from './App';
 import Navi from './Navig';
 import test from './list';
 import Anime from './Ani';
-AppRegistry.registerComponent('kusurat', () => test);
+import Four from './fourthclass/four_subjects';
+
+AppRegistry.registerComponent('kusurat', () => Navi);
 

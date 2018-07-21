@@ -3,6 +3,7 @@ import { createSwitchNavigator } from 'react-navigation';
 import App from './App';
 import Classes from './Class';
 import Anime from './Ani';
+import four_Orientation from './fourthclass/four_Orientation'
 
 const Navi = createSwitchNavigator({
     Main: {
@@ -13,6 +14,9 @@ const Navi = createSwitchNavigator({
     },
     Animation: {
         screen: Anime,
+    },
+    Dort: {
+        screen: four_Orientation
     }
 })
 export default Navi;

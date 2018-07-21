@@ -27,7 +27,7 @@ export default class App extends Component<Props> {
         <Content>
           <Text style={{ fontSize: 20, alignSelf: 'center', marginTop: 10, marginBottom: 10 }}>{this.state.text1}</Text>
           <Card style={{ height: 240, width: 240, backgroundColor: 'grey', alignSelf: 'center', alignItems: 'center' }}>
-            <Image style={{ height: 200, width: 200, alignSelf: 'center', marginTop:10 }} source={require('./image/kedicik.jpeg')} />
+            <Image style={{ height: 200, width: 200, alignSelf: 'center', marginTop: 10 }} source={require('./image/kedicik.jpeg')} />
           </Card>
 
 
