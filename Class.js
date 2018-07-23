@@ -19,16 +19,11 @@ export default class Classes extends Component {
 
                 </Header>
                 <Content style={{ padding: 20, }}>
-                    <Button style={{ marginTop: 10 }} info block rounded onPress={() =>
-                        Toast.show({
-                            text: "Wrong password!",
-                            buttonText: "Okay",
-                            duration: 3000
-                        })} ><Text style={styles.heade}>4.SINIF</Text></Button>
-                    <Button style={{ marginTop: 10 }} info block rounded onPress={this.at}><Text style={styles.heade}>5.SINIF</Text></Button>
-                    <Button style={{ marginTop: 10 }} info block rounded onPress={this.at}><Text style={styles.heade}>6.SINIF</Text></Button>
-                    <Button style={{ marginTop: 10 }} info block rounded onPress={this.at}><Text style={styles.heade}>7.SINIF</Text></Button>
-                    <Button style={{ marginTop: 10 }} info block rounded onPress={this.at}><Text style={styles.heade}>8.SINIF</Text></Button>
+                    <Button style={{ marginTop: 10 }} info block rounded onPress={this.git4}><Text style={styles.heade}>4.SINIF</Text></Button>
+                    <Button style={{ marginTop: 10 }} info block rounded onPress={this.git5}><Text style={styles.heade}>5.SINIF</Text></Button>
+                    <Button style={{ marginTop: 10 }} info block rounded onPress={this.git6}><Text style={styles.heade}>6.SINIF</Text></Button>
+                    <Button style={{ marginTop: 10 }} info block rounded onPress={this.git7}><Text style={styles.heade}>7.SINIF</Text></Button>
+                    <Button style={{ marginTop: 10 }} info block rounded onPress={this.git8}><Text style={styles.heade}>8.SINIF</Text></Button>
 
                     <View style={{ flexDirection: 'row' }}>
                         <Image style={{ height: 150, width: 150, alignSelf: 'flex-start', marginTop: 20 }} source={require('./image/kedicik.jpeg')} />
@@ -49,7 +44,19 @@ export default class Classes extends Component {
             </Container >
         );
     }
-    at = () => {
+    git4 = () => {
+        this.props.navigation.navigate('Dort');
+    };
+    git5 = () => {
+        this.props.navigation.navigate('Main');
+    };
+    git6 = () => {
+        this.props.navigation.navigate('Main');
+    };
+    git7 = () => {
+        this.props.navigation.navigate('Main');
+    };
+    git8 = () => {
         this.props.navigation.navigate('Main');
     };
     toas = () => {
