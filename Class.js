@@ -48,7 +48,7 @@ export default class Classes extends Component {
         this.props.navigation.navigate('Dort');
     };
     git5 = () => {
-        this.props.navigation.navigate('Main');
+        this.props.navigation.navigate('Five');
     };
     git6 = () => {
         this.props.navigation.navigate('Main');

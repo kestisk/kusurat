@@ -4,6 +4,7 @@ import App from './App';
 import Classes from './Class';
 import Anime from './Ani';
 import four_Orientation from './fourthclass/four_Orientation'
+import fifth_Orientation from './fifthclass/fifth_Orientation'
 
 const Navi = createSwitchNavigator({
     Main: {
@@ -17,6 +18,9 @@ const Navi = createSwitchNavigator({
     },
     Dort: {
         screen: four_Orientation
+    },
+    Five: {
+        screen: fifth_Orientation
     }
 })
 export default Navi;
