@@ -6,13 +6,13 @@ import Squreroots from "./squareRoot";
 
 const eight_Ori = createSwitchNavigator({
   Main_eight: {
-    screen: Eight
+    screen: Eight,
   },
   powers: {
-    screen: power
+    screen: power,
   },
   roots: {
-    screen: Squreroots
+    screen: Squreroots,
   }
-});
+})
 export default eight_Ori;

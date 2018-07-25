@@ -82,39 +82,32 @@ export default class Classes extends Component {
           >
             <Text style={styles.heade}>8.SINIF</Text>
           </Button>
+        </Content >
+      </Container >
+    );
+  }
 
-            </Container >
-        );
-    }
-    git4 = () => {
-          this.props.navigation.navigate('Dort');
-        };
-    git5 = () => {
-          this.props.navigation.navigate('Five');
-        };
-    git6 = () => {
-          this.props.navigation.navigate('Main');
-        };
-    git7 = () => {
-          this.props.navigation.navigate('Main');
-        };
-     git8 = () => {
-          this.props.navigation.navigate("Sekiz");
-        };
-      
-    toas = () => {
-          Toast.show({
-            text: "Wrong password!",
-            buttonText: "Okay",
-            position: "bottom"
-          });
-        }
-    }
+  git4 = () => {
+    this.props.navigation.navigate('Dort');
+  };
+  git5 = () => {
+    this.props.navigation.navigate('Five');
+  };
+  git6 = () => {
+    this.props.navigation.navigate('Main');
+  };
+  git7 = () => {
+    this.props.navigation.navigate('Main');
+  };
+  git8 = () => {
+    this.props.navigation.navigate("Sekiz");
+  };
+}
 const styles = StyleSheet.create({
-          heade: {
-          textAlign: "center",
-        color: "white",
-        fontSize: 30,
-        padding: 5
-      }
-    });
+  heade: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 30,
+    padding: 5
+  }
+});
