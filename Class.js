@@ -82,22 +82,36 @@ export default class Classes extends Component {
           >
             <Text style={styles.heade}>8.SINIF</Text>
           </Button>
-        </Content >
-      </Container >
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              style={{
+                height: 150,
+                width: 150,
+                alignSelf: "flex-start",
+                marginTop: 20
+              }}
+              source={require("./image/kedicik.jpeg")}
+            />
+            <View style={{ flexDirection: "column", marginTop: 20 }}>
+              <Anime> </Anime>
+            </View>
+          </View>
+        </Content>
+      </Container>
     );
   }
 
   git4 = () => {
-    this.props.navigation.navigate('Dort');
+    this.props.navigation.navigate("Dort");
   };
   git5 = () => {
-    this.props.navigation.navigate('Five');
+    this.props.navigation.navigate("Five");
   };
   git6 = () => {
-    this.props.navigation.navigate('Main');
+    this.props.navigation.navigate("Main");
   };
   git7 = () => {
-    this.props.navigation.navigate('Main');
+    this.props.navigation.navigate("Main");
   };
   git8 = () => {
     this.props.navigation.navigate("Sekiz");
