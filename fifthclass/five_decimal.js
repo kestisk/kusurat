@@ -28,17 +28,23 @@ export default class Five_Decimal extends Component {
 
     render() {
         return (
-            <ScrollView syle={{ backgroundColor: 'white', flex: 5 }}>
-                <Header style={{ backgroundColor: '#62B1F6' }}><Left></Left>
-                    <Body><Title style={styles.heade}>KÜSUR-AT</Title></Body>
-
+            <Container syle={{ backgroundColor: 'white', flex: 5 }}>
+                <Header style={{ backgroundColor: "#62B1F6" }}>
+                    <Left>
+                        <Button transparent onPress={this.back}>
+                            <Icon name="arrow-back" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    </Body>
                 </Header>
                 <Content style={{ padding: 10, }} >
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.decFragComa}><Text style={styles.buttontext}>Virgül ile Yazma</Text></Button>
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.addsub}><Text style={styles.buttontext}>Toplama/Çıkarma</Text></Button>
                 </Content>
 
-            </ScrollView>
+            </Container>
         );
     }
     decFragComa = () => {
@@ -47,6 +53,9 @@ export default class Five_Decimal extends Component {
     addsub = () => {
         this.props.navigation.navigate('Five_dec_addsubs');
     }
+    back = () => {
+        this.props.navigation.navigate("Mainfive");
+    };
 }
 
 const styles = StyleSheet.create({

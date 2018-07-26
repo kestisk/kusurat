@@ -6,7 +6,8 @@ import {
   Header,
   Left,
   Body,
-  Title
+  Title,
+  Icon
 } from "native-base";
 import { BackHandler } from "react-native";
 import { StyleSheet } from "react-native";
@@ -38,7 +39,11 @@ export default class Eight extends Component {
     return (
       <Container>
         <Header style={{ backgroundColor: "#62B1F6" }}>
-          <Left />
+          <Left>
+            <Button transparent onPress={this.back}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
           <Body>
             <Title style={styles.heade}>KÜSUR-AT</Title>
           </Body>
@@ -58,6 +63,9 @@ export default class Eight extends Component {
       </Container>
     );
   }
+  back = () => {
+    this.props.navigation.navigate("Classes");
+  };
   pow = () => {
     this.props.navigation.navigate("powers");
   };

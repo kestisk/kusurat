@@ -28,19 +28,28 @@ export default class five_fractionPage extends Component {
 
     render() {
         return (
-            <ScrollView syle={{ backgroundColor: 'white', flex: 5 }}>
-                <Header style={{ backgroundColor: '#62B1F6' }}><Left></Left>
-                    <Body><Title style={styles.heade}>KÜSUR-AT</Title></Body>
-
+            <Container syle={{ backgroundColor: 'white', flex: 5 }}>
+                <Header style={{ backgroundColor: "#62B1F6" }}>
+                    <Left>
+                        <Button transparent onPress={this.back}>
+                            <Icon name="arrow-back" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    </Body>
                 </Header>
                 <Content style={{ padding: 10, }} >
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.simple}><Text style={styles.buttontext}>Sadeleştirme/Genişletme</Text></Button>
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.addsub}><Text style={styles.buttontext}>Toplama/Çıkarma</Text></Button>
                 </Content>
 
-            </ScrollView>
+            </Container>
         );
     }
+    back = () => {
+        this.props.navigation.navigate("Mainfive");
+    };
     simple = () => {
         this.props.navigation.navigate('Five_frac_simples');
     }

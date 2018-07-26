@@ -1,8 +1,17 @@
 import React, { Component } from "react";
-import { Container, Text } from "native-base";
+import {
+  Container,
+  Button,
+  Text,
+  Header,
+  Left,
+  Body,
+  Title,
+  Icon
+} from "native-base";
 import { Platform } from "react-native";
 import { BackHandler } from "react-native";
-
+import { StyleSheet } from "react-native";
 export default class Squreroots extends Component {
   constructor(props) {
     super(props);
@@ -31,8 +40,35 @@ export default class Squreroots extends Component {
   render() {
     return (
       <Container>
+        <Header style={{ backgroundColor: "#62B1F6" }}>
+          <Left>
+            <Button transparent onPress={this.back}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title style={styles.heade}>KÜSUR-AT</Title>
+          </Body>
+        </Header>
         <Text>sk</Text>
       </Container>
     );
   }
+  back = () => {
+    this.props.navigation.navigate("Main_eight");
+  };
 }
+const styles = StyleSheet.create({
+  heade: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 30,
+    padding: 5
+  },
+  buttontext: {
+    textAlign: "center",
+    color: "white",
+    padding: 5,
+    fontSize: 20
+  }
+});

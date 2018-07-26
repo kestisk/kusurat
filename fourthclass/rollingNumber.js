@@ -32,7 +32,7 @@ export default class rollingNumberPage extends Component {
     super(props);
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
   }
-  componentDidMount() {}
+  componentDidMount() { }
   componentWillMount() {
     BackHandler.addEventListener(
       "hardwareBackPress",
@@ -56,7 +56,11 @@ export default class rollingNumberPage extends Component {
     return (
       <Container>
         <Header style={{ backgroundColor: "#62B1F6" }}>
-          <Left />
+          <Left>
+            <Button transparent onPress={this.back}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
           <Body>
             <Title style={styles.heade}>KÜSUR-AT</Title>
           </Body>
@@ -129,8 +133,11 @@ export default class rollingNumberPage extends Component {
       </Container>
     );
   }
-  closeTen = () => {};
-  closeHund = () => {};
+  back = () => {
+    this.props.navigation.navigate("MainFour_Orientation");
+  };
+  closeTen = () => { };
+  closeHund = () => { };
 }
 
 const styles = StyleSheet.create({

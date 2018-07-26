@@ -28,10 +28,16 @@ export default class multiplierPage extends Component {
 
     render() {
         return (
-            <ScrollView syle={{ backgroundColor: 'white', flex: 5 }}>
-                <Header style={{ backgroundColor: '#62B1F6' }}><Left></Left>
-                    <Body><Title style={styles.heade}>KÜSUR-AT</Title></Body>
-
+            <Container>
+                <Header style={{ backgroundColor: "#62B1F6" }}>
+                    <Left>
+                        <Button transparent onPress={this.back}>
+                            <Icon name="arrow-back" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    </Body>
                 </Header>
                 <Content style={{ padding: 10, }} >
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.muls}><Text style={styles.buttontext}>Bir Doğal Sayının Çarpanları</Text></Button>
@@ -39,9 +45,12 @@ export default class multiplierPage extends Component {
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.ebob}><Text style={styles.buttontext}>EBOB/EKOK</Text></Button>
                 </Content>
 
-            </ScrollView>
+            </Container>
         );
     }
+    back = () => {
+        this.props.navigation.navigate("six_ori");
+    };
     muls = () => {
         this.props.navigation.navigate('six_multip_mulsPages');
     }

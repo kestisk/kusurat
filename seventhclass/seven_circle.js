@@ -28,10 +28,16 @@ export default class seven_circlePage extends Component {
 
     render() {
         return (
-            <ScrollView syle={{ backgroundColor: 'white', flex: 5 }}>
-                <Header style={{ backgroundColor: '#62B1F6' }}><Left></Left>
-                    <Body><Title style={styles.heade}>KÜSUR-AT</Title></Body>
-
+            <Container>
+                <Header style={{ backgroundColor: "#62B1F6" }}>
+                    <Left>
+                        <Button transparent onPress={this.back}>
+                            <Icon name="arrow-back" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    </Body>
                 </Header>
                 <Content style={{ padding: 10, }} >
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.seven_circle_rad}><Text style={styles.buttontext}>Çemberin Çevresi</Text></Button>
@@ -39,9 +45,12 @@ export default class seven_circlePage extends Component {
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.seven_round_area}><Text style={styles.buttontext}>Dairenin Alanı</Text></Button>
                 </Content>
 
-            </ScrollView>
+            </Container>
         );
     }
+    back = () => {
+        this.props.navigation.navigate("seventh_ori");
+    };
     seven_circle_rad = () => {
         this.props.navigation.navigate('seven_circle_radPages');
     }

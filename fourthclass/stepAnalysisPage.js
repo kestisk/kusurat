@@ -28,10 +28,16 @@ export default class stepAnalysisPage extends Component {
 
     render() {
         return (
-            <ScrollView syle={{ backgroundColor: 'white', flex: 5 }}>
-                <Header style={{ backgroundColor: '#62B1F6' }}><Left></Left>
-                    <Body><Title style={styles.heade}>KÜSUR-AT</Title></Body>
-
+            <Container>
+                <Header style={{ backgroundColor: "#62B1F6" }}>
+                    <Left>
+                        <Button transparent onPress={this.back}>
+                            <Icon name="arrow-back" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    </Body>
                 </Header>
                 <Content style={{ padding: 10, }} >
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.readNumber}><Text style={styles.buttontext}>Sayıların Okunuşu Ve Yazılışı</Text></Button>
@@ -40,9 +46,12 @@ export default class stepAnalysisPage extends Component {
 
                 </Content>
 
-            </ScrollView>
+            </Container>
         );
     }
+    back = () => {
+        this.props.navigation.navigate("MainFour_Orientation");
+    };
     readNumber = () => {
         this.props.navigation.navigate('four_step_readNumberPages');
     }

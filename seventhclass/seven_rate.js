@@ -28,19 +28,28 @@ export default class seven_ratePage extends Component {
 
     render() {
         return (
-            <ScrollView syle={{ backgroundColor: 'white', flex: 5 }}>
-                <Header style={{ backgroundColor: '#62B1F6' }}><Left></Left>
-                    <Body><Title style={styles.heade}>KÜSUR-AT</Title></Body>
-
+            <Container>
+                <Header style={{ backgroundColor: "#62B1F6" }}>
+                    <Left>
+                        <Button transparent onPress={this.back}>
+                            <Icon name="arrow-back" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    </Body>
                 </Header>
                 <Content style={{ padding: 10, }} >
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.str}><Text style={styles.buttontext}>Doğru Orantı</Text></Button>
                     <Button style={{ marginTop: 15 }} info block rounded onPress={this.rev}><Text style={styles.buttontext}>Ters Orantı</Text></Button>
                 </Content>
 
-            </ScrollView>
+            </Container>
         );
     }
+    back = () => {
+        this.props.navigation.navigate("seventh_ori");
+    };
     str = () => {
         this.props.navigation.navigate('seven_rate_strPages');
     }
