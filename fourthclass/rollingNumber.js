@@ -5,7 +5,6 @@ import {
   Button,
   Header,
   Left,
-  Icon,
   Body,
   Title,
   Item,
@@ -14,7 +13,8 @@ import {
   Footer,
   Badge,
   FooterTab,
-  Row
+  Row,
+  Icon
 } from "native-base";
 import {
   Platform,
@@ -26,13 +26,14 @@ import {
   ScrollView
 } from "react-native";
 import { BackHandler } from "react-native";
+//import Icon from "react-native-vector-icons/dist/MaterialIcons";
 
 export default class rollingNumberPage extends Component {
   constructor(props) {
     super(props);
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
   }
-  componentDidMount() { }
+  componentDidMount() {}
   componentWillMount() {
     BackHandler.addEventListener(
       "hardwareBackPress",
@@ -69,6 +70,10 @@ export default class rollingNumberPage extends Component {
           <Item>
             <Label>Username</Label>
           </Item>
+          <Text>
+            Lorem <Icon type="MaterialIcons" name="filter-5" color="#4F8EF7" />{" "}
+            Ipsum
+          </Text>
           <View style={{ flexDirection: "row" }}>
             <Button
               style={{ marginTop: 15 }}
@@ -90,7 +95,7 @@ export default class rollingNumberPage extends Component {
         </Content>
         <Footer>
           <Button info rounded>
-            <Icon name="person" />
+            <Icon type="MaterialCommunityIcons" name="numeric" />
           </Button>
           <Button info rounded>
             <Icon name="camera" />
@@ -136,8 +141,8 @@ export default class rollingNumberPage extends Component {
   back = () => {
     this.props.navigation.navigate("MainFour_Orientation");
   };
-  closeTen = () => { };
-  closeHund = () => { };
+  closeTen = () => {};
+  closeHund = () => {};
 }
 
 const styles = StyleSheet.create({
