@@ -32,8 +32,9 @@ export default class rollingNumberPage extends Component {
   constructor(props) {
     super(props);
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+    this.state = { message: "", number: "2345", one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0" }
   }
-  componentDidMount() {}
+  componentDidMount() { }
   componentWillMount() {
     BackHandler.addEventListener(
       "hardwareBackPress",
@@ -52,7 +53,9 @@ export default class rollingNumberPage extends Component {
     this.props.navigation.navigate("MainFour_Orientation");
     return true;
   }
-
+  delete() {
+    this.setState({ message: "sie" });
+  }
   render() {
     return (
       <Container>
@@ -68,12 +71,11 @@ export default class rollingNumberPage extends Component {
         </Header>
         <Content style={{ padding: 10 }}>
           <Item>
-            <Label>Username</Label>
+            <Text>{this.state.number[2]}</Text>
           </Item>
-          <Text>
-            Lorem <Icon type="MaterialIcons" name="filter-5" color="#4F8EF7" />{" "}
-            Ipsum
-          </Text>
+          <Item>
+            <Text>{this.state.message}</Text>
+          </Item>
           <View style={{ flexDirection: "row" }}>
             <Button
               style={{ marginTop: 15 }}
@@ -94,55 +96,52 @@ export default class rollingNumberPage extends Component {
           </View>
         </Content>
         <Footer>
-          <Button info rounded>
-            <Icon type="MaterialCommunityIcons" name="numeric" />
+          <Button info rounded onPress={(number) =>
+            (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.one) }) : this.delete()} >
+            <Icon type="MaterialIcons" name="filter-1" />
           </Button>
-          <Button info rounded>
-            <Icon name="camera" />
+          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.two) })} >
+            <Icon type="MaterialIcons" name="filter-2" />
           </Button>
-          <Button info rounded>
-            <Icon active name="navigate" />
+          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.three) })} >
+            <Icon type="MaterialIcons" name="filter-3" />
           </Button>
-          <Button info rounded>
-            <Icon name="person" />
+          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.four) })} >
+            <Icon type="MaterialIcons" name="filter-4" />
           </Button>
-          <Button info rounded>
-            <Icon name="person" />
-          </Button>
-
-          <Button info rounded>
-            <Icon name="person" />
+          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.five) })} >
+            <Icon type="MaterialIcons" name="filter-5" />
           </Button>
         </Footer>
         <Footer>
-          <Button info rounded>
-            <Icon name="person" />
+          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.six) })} >
+            <Icon type="MaterialIcons" name="filter-6" />
           </Button>
-          <Button info rounded>
-            <Icon name="camera" />
+          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.seven) })} >
+            <Icon type="MaterialIcons" name="filter-7" />
           </Button>
-          <Button info rounded>
-            <Icon active name="navigate" />
+          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.eight) })} >
+            <Icon type="MaterialIcons" name="filter-8" />
           </Button>
-          <Button info rounded>
-            <Icon name="person" />
+          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.nine) })} >
+            <Icon type="MaterialIcons" name="filter-9" />
           </Button>
-          <Button info rounded>
-            <Icon name="person" />
+          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.zero) })} >
+            <Icon type="MaterialIcons" name="exposure-zero" />
           </Button>
+          <Button info rounded onPress={(number) => this.setState({ number: this.state.number.slice(0, -1) })} >
 
-          <Button info rounded>
-            <Icon name="person" />
+            <Icon type="MaterialIcons" name="keyboard-arrow-left" />
           </Button>
         </Footer>
-      </Container>
+      </Container >
     );
   }
   back = () => {
     this.props.navigation.navigate("MainFour_Orientation");
   };
-  closeTen = () => {};
-  closeHund = () => {};
+  closeTen = () => { };
+  closeHund = () => { };
 }
 
 const styles = StyleSheet.create({
