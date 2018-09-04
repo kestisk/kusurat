@@ -1,4 +1,4 @@
-import react, { Component } from 'react';
+import React, { Component } from 'react';
 import { createSwitchNavigator } from 'react-navigation';
 import stepAnalysisPage from './stepAnalysisPage';
 import Four from './four_subjects';
@@ -7,7 +7,7 @@ import four_step_analysisPage from './four_step_analysis'
 import four_step_readNumberPage from './four_step_readNumber'
 import four_step_stepValuePage from './four_step_stepValue'
 import rollingNumberPage from './rollingNumber'
-import four_roll_closeHundPage from './four_roll_closeHund'
+import four_roll_closeHundPage from './four_roll_tab'
 import four_roll_closeTenPage from './four_roll_closeTen'
 import measurePage from './measure'
 import fractionPage from './fraction'

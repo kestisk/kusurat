@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Container,
   Content,
@@ -26,15 +26,18 @@ import {
   ScrollView
 } from "react-native";
 import { BackHandler } from "react-native";
+import Aniforrol from "../Aniforroll";
 //import Icon from "react-native-vector-icons/dist/MaterialIcons";
 
 export default class rollingNumberPage extends Component {
   constructor(props) {
+
     super(props);
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
     this.state = { message: "", number: "2345", one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0" }
   }
-  componentDidMount() { }
+  componentDidMount() {
+  }
   componentWillMount() {
     BackHandler.addEventListener(
       "hardwareBackPress",
@@ -53,8 +56,8 @@ export default class rollingNumberPage extends Component {
     this.props.navigation.navigate("MainFour_Orientation");
     return true;
   }
-  delete() {
-    this.setState({ message: "sie" });
+  warn() {
+    this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
   }
   render() {
     return (
@@ -71,12 +74,12 @@ export default class rollingNumberPage extends Component {
         </Header>
         <Content style={{ padding: 10 }}>
           <Item>
-            <Text>{this.state.number[2]}</Text>
+            <Text style={{ fontSize: 30 }}>{this.state.number}</Text>
           </Item>
           <Item>
             <Text>{this.state.message}</Text>
           </Item>
-          <View style={{ flexDirection: "row" }}>
+          <View style={{ flexDirection: "row", zIndex: 2 }}>
             <Button
               style={{ marginTop: 15 }}
               info
@@ -93,43 +96,49 @@ export default class rollingNumberPage extends Component {
             >
               <Text style={styles.buttontext}>En Yakın Yüzlüğe</Text>
             </Button>
+
+          </View>
+          <View style={{ marginTop: 0, height: 2000 }}>
+            <Aniforrol ref="Aniforrol"></Aniforrol>
           </View>
         </Content>
+
+
         <Footer>
           <Button info rounded onPress={(number) =>
-            (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.one) }) : this.delete()} >
+            (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.one) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-1" />
           </Button>
-          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.two) })} >
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.two) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-2" />
           </Button>
-          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.three) })} >
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.three) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-3" />
           </Button>
-          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.four) })} >
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.four) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-4" />
           </Button>
-          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.five) })} >
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.five) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-5" />
           </Button>
         </Footer>
         <Footer>
-          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.six) })} >
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.six) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-6" />
           </Button>
-          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.seven) })} >
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.seven) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-7" />
           </Button>
-          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.eight) })} >
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.eight) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-8" />
           </Button>
-          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.nine) })} >
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.nine) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-9" />
           </Button>
-          <Button info rounded onPress={(number) => this.setState({ number: (this.state.number + this.state.zero) })} >
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.zero) }) : this.warn()} >
             <Icon type="MaterialIcons" name="exposure-zero" />
           </Button>
-          <Button info rounded onPress={(number) => this.setState({ number: this.state.number.slice(0, -1) })} >
+          <Button info rounded onPress={(number) => this.setState({ number: this.state.number.slice(0, -1), message: "" })} >
 
             <Icon type="MaterialIcons" name="keyboard-arrow-left" />
           </Button>
@@ -140,8 +149,13 @@ export default class rollingNumberPage extends Component {
   back = () => {
     this.props.navigation.navigate("MainFour_Orientation");
   };
-  closeTen = () => { };
-  closeHund = () => { };
+  closeTen = () => {
+    this.refs.Aniforrol.bigornot(this.state.number);
+  };
+  closeHund = () => {
+
+    this.setState({ number: this.state.number.length })
+  };
 }
 
 const styles = StyleSheet.create({

@@ -8,17 +8,57 @@ import {
 } from "react-native";
 import { Button, Text, TabHeading } from "native-base";
 
-export default class aniforrol extends Component {
+class Aniforrol extends Component {
   constructor(props) {
     super(props);
-    this.state = { number: "", at: "3456", one: "1", five: "5", eigth: "8" };
-
+    this.state = { num: "", at: "", one: "1", five: "5", ss: "0", len: "", bors: "", inf: "" };
+    this.animationbigger = new Animated.Value(0);
     this.animasyonDegeri1 = new Animated.Value(0);
     this.animasyonDegeri2 = new Animated.Value(0);
     this.animasyonDegeri3 = new Animated.Value(0);
+    this.fade = new Animated.Value(0);
+  }
+  bigornot(number) {
+    this.setState({ num: "", at: "", one: "1", five: "5", ss: "0", len: "", bors: "", inf: "" });
+    this.animationbigger.setValue(0);
+    this.fade.setValue(0);
+    this.animasyonDegeri1.setValue(0);
+    const doanimate2 = function (value, duration, easing, delay = 0) {
+      return Animated.timing(value, {
+        toValue: 1,
+        duration,
+        easing,
+        delay
+      });
+    };
+
+    leng = number.length;
+
+    this.setState({ one: number[leng - 1] });
+    if (parseInt(number[leng - 1]) >= 5) {
+      this.setState({ inf: "sayı bir sonraki onluğa yuvarlansın" });
+      this.setState({ bors: ">=5" });
+    }
+
+    else {
+      this.setState({ bors: "<5" });
+      this.setState({ inf: "sayı bir önceki onluğa yuvarlansın" });
+    }
+
+    // this.setState({ ss: this.len })
+    //   this.setState({ ss: this.state.five });
+    Animated.sequence([
+      doanimate2(this.animationbigger, 1000, Easing.ease),
+      doanimate2(this.animasyonDegeri1, 3000, Easing.ease)
+
+    ])
+      .start(this.sil);
+    setTimeout(function () {
+      this.play(number);
+    }.bind(this), 4000);
   }
 
-  play() {
+  play(number) {
     this.animasyonDegeri1.setValue(0);
     this.animasyonDegeri2.setValue(0);
     this.animasyonDegeri3.setValue(0);
@@ -31,26 +71,43 @@ export default class aniforrol extends Component {
       });
     };
 
-    doanimate(this.animasyonDegeri3, 500, Easing.ease).start(this.dos);
+    doanimate(this.animasyonDegeri3, 500, Easing.ease, 1000).start(this.dos(number));
     Animated.sequence([
+      doanimate(this.fade, 3000, Easing.ease),
       doanimate(this.animasyonDegeri1, 2000, Easing.ease, 1500),
       doanimate(this.animasyonDegeri2, 1000, Easing.ease, 1000)
+
     ]).start(this.doinne);
   }
-  dos = () => {
-    this.at = this.setState({ at: (this.state.five + this.state.eigth) });
+  dene() {
+    this.at = this.setState({ at: "123" })
+  }
+  dos(number) {
+    this.setState({ at: number });
     // this.setState({ at: this.at });
   };
   doinne = () => {
-    if (this.state.eigth > 5) {
-      this.setState({ eigth: "9" });
+    len = this.state.at.length;
+
+    let sezer = [... this.state.at]
+    if (this.state.at[len - 1] >= 5) {
+
+      sezer[len - 2] = parseInt(sezer[len - 2]) + parseInt(1);
+      sezer[len - 1] = "0";
+      this.setState(sezer);
+
+      this.setState({ at: sezer });
+
     } else {
-      this.setState({ eigth: "7" });
+      sezer[len - 1] = "0";
+      this.setState(sezer);
+
+      this.setState({ at: sezer });
     }
   };
   sil = () => {
 
-    this.setState({ at: this.state.at.slice(0, -1) });
+    this.setState({ one: "", bors: "" });
   };
   render() {
     const scaleText = this.animasyonDegeri1.interpolate({
@@ -63,7 +120,11 @@ export default class aniforrol extends Component {
     });
     const introButton = this.animasyonDegeri3.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, 200]
+      outputRange: [0, 180]
+    });
+    const intro = this.animationbigger.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 50]
     });
     return (
       <View style={{ marginTop: 100, alignItems: "center" }}>
@@ -79,19 +140,11 @@ export default class aniforrol extends Component {
             }}
           >
             <Text
-              onPress={this.doinne}
+
               style={{ position: "relative", fontSize: 30 }}
             >
               {this.state.at}
             </Text>
-          </Animated.View>
-          <Animated.View
-            style={{
-              top: introButton,
-              transform: [{ scale: scaleText }]
-            }}
-          >
-            <Text style={{ fontSize: 30 }} />
           </Animated.View>
           <Animated.View
             style={{
@@ -100,22 +153,30 @@ export default class aniforrol extends Component {
           >
             <Text style={{ fontSize: 50 }} />
           </Animated.View>
+          <Animated.View
+            style={{
+              top: intro,
+              transform: [{ scale: scaleText }]
+            }}
+          >
+            <Text>{this.state.one}{this.state.bors}</Text>
+          </Animated.View>
+
         </View>
-        <View>
-          <Button onPress={this.play.bind(this)}>
-            <Text>basss</Text>
-          </Button>
-          <Button onPress={(at) => this.setState({ at: (this.state.at + this.state.five) })}>
-            <Text>val</Text>
-          </Button>
-          <Button onPress={(at) => this.setState({ at: (this.state.at + this.state.eigth) })}>
-            <Text>val2</Text>
-          </Button>
-          <Button onPress={this.sil}>
-            <Text>sil</Text>
-          </Button>
+        <View style={{ alignItems: 'center', justifyContent: 'center', width: 250, height: 50 }}>
+          <Animated.View                 // Special animatable View
+            style={{
+              ...this.props.style,
+              opacity: this.fade,         // Bind opacity to animated value
+            }}
+          >
+            <Text style={{ fontSize: 28, textAlign: 'center', margin: 20, color: "red" }}>{this.state.inf}</Text>
+          </Animated.View>
+
         </View>
       </View>
     );
   }
 }
+export default Aniforrol;
+

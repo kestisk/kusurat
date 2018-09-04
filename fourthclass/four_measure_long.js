@@ -29,16 +29,16 @@ export default class four_measure_longPages extends Component {
     render() {
         return (
             <Container>
-            <Header style={{ backgroundColor: "#62B1F6" }}>
-              <Left>
-                <Button transparent onPress={this.back}>
-                  <Icon name="arrow-back" />
-                </Button>
-              </Left>
-              <Body>
-                <Title style={styles.heade}>KÜSUR-AT</Title>
-              </Body>
-            </Header>
+                <Header style={{ backgroundColor: "#62B1F6" }}>
+                    <Left>
+                        <Button transparent onPress={this.back}>
+                            <Icon name="arrow-back" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    </Body>
+                </Header>
                 <Content style={{ padding: 10, }}>
                     <Button style={{ marginTop: 15 }} info block rounded ><Text style={styles.buttontext}>sayfa yapısı eksik</Text></Button>
                 </Content>
@@ -48,7 +48,7 @@ export default class four_measure_longPages extends Component {
     }
     back = () => {
         this.props.navigation.navigate("measurePages");
-      };
+    };
 }
 
 const styles = StyleSheet.create({
