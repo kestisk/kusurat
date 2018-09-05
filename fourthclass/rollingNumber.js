@@ -31,7 +31,9 @@ export default class rollingNumberPage extends Component {
   constructor(props) {
     super(props);
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+    this.state = { TextHolder: "deneme" }
   }
+
   componentDidMount() { }
   componentWillMount() {
     BackHandler.addEventListener(
@@ -52,6 +54,22 @@ export default class rollingNumberPage extends Component {
     return true;
   }
 
+  ChangeTextFunction1 = () => {
+
+    this.setState({
+
+      TextHolder: "1"
+
+    })
+  }
+  ChangeTextFunction2 = () => {
+
+    this.setState({
+
+      TextHolder: "2"
+
+    })
+  }
   render() {
     return (
       <Container>
@@ -67,7 +85,7 @@ export default class rollingNumberPage extends Component {
         </Header>
         <Content style={{ padding: 10 }}>
           <Item>
-            <Label>Username</Label>
+            <Label >{this.state.TextHolder}</Label>
           </Item>
           <View style={{ flexDirection: "row" }}>
             <Button
@@ -89,45 +107,37 @@ export default class rollingNumberPage extends Component {
           </View>
         </Content>
         <Footer>
-          <Button info rounded>
-            <Icon name="person" />
+          <Button info rounded onPress={this.ChangeTextFunction1}>
+            <Icon type="MaterialIcons" name="filter-1" />
+          </Button>
+          <Button info rounded onPress={this.ChangeTextFunction2}>
+            <Icon type="MaterialIcons" name="filter-2" />
           </Button>
           <Button info rounded>
-            <Icon name="camera" />
+            <Icon type="MaterialIcons" name="filter-3" />
           </Button>
           <Button info rounded>
-            <Icon active name="navigate" />
+            <Icon type="MaterialIcons" name="filter-4" />
           </Button>
           <Button info rounded>
-            <Icon name="person" />
-          </Button>
-          <Button info rounded>
-            <Icon name="person" />
-          </Button>
-
-          <Button info rounded>
-            <Icon name="person" />
+            <Icon type="MaterialIcons" name="filter-5" />
           </Button>
         </Footer>
         <Footer>
           <Button info rounded>
-            <Icon name="person" />
+            <Icon type="MaterialIcons" name="filter-6" />
           </Button>
           <Button info rounded>
-            <Icon name="camera" />
+            <Icon type="MaterialIcons" name="filter-7" />
           </Button>
           <Button info rounded>
-            <Icon active name="navigate" />
+            <Icon type="MaterialIcons" name="filter-8" />
           </Button>
           <Button info rounded>
-            <Icon name="person" />
+            <Icon type="MaterialIcons" name="filter-9" />
           </Button>
           <Button info rounded>
-            <Icon name="person" />
-          </Button>
-
-          <Button info rounded>
-            <Icon name="person" />
+            <Icon type="MaterialIcons" name="filter" />
           </Button>
         </Footer>
       </Container>
@@ -138,6 +148,9 @@ export default class rollingNumberPage extends Component {
   };
   closeTen = () => { };
   closeHund = () => { };
+  ekle = (sayi) => {
+    this.state = { text1: "KULLANICI ADI" };
+  };
 }
 
 const styles = StyleSheet.create({
