@@ -52,13 +52,13 @@ export default class decimalFracPage extends Component {
         this.props.navigation.navigate("MainFour_Orientation");
     };
     decFragComa = () => {
-        this.props.navigation.navigate('four_decfrac_decFragComaPages');
+        this.props.navigation.navigate('Decfrac_decFragComa_TabPages');
     }
     decFragComeandComp = () => {
-        this.props.navigation.navigate('four_decfrac_decFragComeandCompPages');
+        this.props.navigation.navigate('Decfrac_decFragComeandComp_TabPages');
     }
     decFargRanking = () => {
-        this.props.navigation.navigate('four_decfrac_decFargRankingPages');
+        this.props.navigation.navigate('Decfrac_decFargRanking_TabPages');
     }
 }
 

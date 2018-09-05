@@ -1,134 +1,143 @@
 import React, { Component } from 'react';
 import { createSwitchNavigator } from 'react-navigation';
+
 import stepAnalysisPage from './stepAnalysisPage';
 import Four from './four_subjects';
 import naturalNumPage from './naturalNumPage';
-import four_step_analysisPage from './four_step_analysis';
-import four_step_readNumberPage from './four_step_readNumber';
-import four_step_stepValuePage from './four_step_stepValue';
-import RollingNumberPage from "./rollingNumber";
-import four_roll_closeTenPage from './four_roll_closeTen';
-import Four_Roll_TabPage from "./four_roll_tab"
+
+import Step_analysis_TabPage from './tabs/step/step_analysis_tab';
+import Step_readNumber_TabPage from './tabs/step/step_readNumber_tab';
+import Step_astepValue_TabPage from './tabs/step/step_stepValue_tab';
+
+import Roll_TabPage from "./tabs/roll_tab";
+import Addlogic_TabPage from "./tabs/logic/logic_addlogic_tab";
+
+import rollingNumberTYS from "./subFolders/rollingNumberTYS";
+
 import measurePage from './measure';
 import fractionPage from './fraction';
 import decimalFracPage from './decimalFrac';
 import logicalPage from './logical';
-import patternPage from './pattern';
-import rankingPage from './ranking';
-import four_prob_isProbPage from './four_prob_isProb';
+import Pattern_TabPage from './tabs/pattern_tab';
+import Ranking_TabPage from './tabs/ranking_tab';
+import Isprob_TabPage from './tabs/prop_isProb_tab';
 import four_pattern_numPatternPage from './numPattern';
 import probabilityPage from './probability';
-import four_natural_addPage from './four_natural_addPage';
-import four_natural_mulPage from './four_natural_mulPage';
-import four_natural_divPage from './four_natural_divPage';
-import four_natural_subPage from './four_natural_subPage';
-import four_frac_namedFracPage from './four_frac_named';
-import four_frac_showInQuePage from './four_frac_showInQue';
-import four_frac_rankingFracPage from './four_frac_rankingFrac';
-import four_frac_subFracPage from './four_frac_subFrac';
-import four_decfrac_decFargRankingPage from './four_decfrac_decFargRanking';
-import four_decfrac_decFragComeandCompPage from './four_decfrac_decFragComeandComp';
-import four_decfrac_decFragComaPage from './four_decfrac_decFragComa';
-import four_logic_addlogicPage from './four_logic_addlogic';
-import four_logic_addOpinPage from './four_logic_addOpin';
-import four_logic_sublogicPage from './four_logic_sublogic';
-import four_logic_subOpinPage from './four_logic_subOpin';
-import four_logic_mullogicPage from './four_logic_mullogic';
-import four_logic_mulOpinPage from './four_logic_mulOpin';
-import four_logic_divlogicPage from './four_logic_divlogic';
-import four_logic_divOpinPage from './four_logic_divOpin';
 
-import four_measure_MKAnewsPage from './four_measure_MKAnews'
-import four_measure_metrePage from './four_measure_metre'
-import four_measure_timePage from './four_measure_time'
-import four_measure_dayPage from './four_measure_day'
-import four_measure_gramPage from './four_measure_gram'
-import four_measure_longPage from './four_measure_long'
+import Natural_add_TabPage from './tabs/natural/natural_addPage_tab';
+import Natural_mul_TabPage from './tabs/natural/natural_mulPage_tab';
+import Natural_div_TabPage from './tabs/natural/natural_divPage_tab';
+import Natural_sub_TabPage from './tabs/natural/natural_subPage_tab';
+
+import Frac_named_TabPage from './tabs/frac/frac_named_tab';
+import Frac_showInQue_TabPage from './tabs/frac/frac_showInQue_tab';
+import Frac_rankingFrac_TabPage from './tabs/frac/frac_rankingFrac_tabs';
+import Frac_subFrac_TabPage from './tabs/frac/frac_subFrac_tab';
+
+import Decfrac_decFargRanking_TabPage from './tabs/decFrac/decfrac_decFargRanking_tab';
+import Decfrac_decFragComeandComp_TabPage from './tabs/decFrac/decfrac_decFragComeandComp_tab';
+import Decfrac_decFragComa_TabPage from './tabs/decFrac/decfrac_decFragComa_tab';
+
+import AddOpin_TabPage from './tabs/logic/logic_sublogic_tab';
+import Sublogic_TabPage from './tabs/logic/logic_sublogic_tab';
+import Subopin_TabPage from './tabs/logic/logic_subopin_tab';
+import Mullogic_TabPage from './tabs/logic/logic_mullogic_tab';
+import Mullopin_TabPage from './tabs/logic/logic_mullopin_tab';
+import Divlogic_TabPage from './tabs/logic/logic_divlogic_tab';
+import Divopin_TabPage from './tabs/logic/logic_divopin_tab';
+
+import Measure_MKAnews_TabPage from './tabs/measure/measure_MKAnews_tab';
+import Measure_metre_TabPage from './tabs/measure/measure_metre_tab';
+import Measure_time_TabPage from './tabs/measure/measure_time_tab';
+import Measure_day_TabPage from './tabs/measure/measure_day_tab';
+import Measure_gram_TabPage from './tabs/measure/measure_gram_tab';
+import Measure_long_TabPage from './tabs/measure/measure_long_tab';
+
 const four_Orientation = createSwitchNavigator({
     MainFour_Orientation: {
         screen: Four,
     },
-    four_measure_MKAnewsPages: {
-        screen: four_measure_MKAnewsPage,
+    Measure_MKAnews_TabPages: {
+        screen: Measure_MKAnews_TabPage,
     },
-    four_measure_metrePages: {
-        screen: four_measure_metrePage,
+    Measure_metre_TabPages: {
+        screen: Measure_metre_TabPage,
     },
-    four_measure_timePages: {
-        screen: four_measure_timePage,
+    Measure_time_TabPages: {
+        screen: Measure_time_TabPage,
     },
-    four_measure_dayPages: {
-        screen: four_measure_dayPage,
+    Measure_day_TabPages: {
+        screen: Measure_day_TabPage,
     },
-    four_measure_gramPages: {
-        screen: four_measure_gramPage,
+    Measure_gram_TabPages: {
+        screen: Measure_gram_TabPage,
     },
-    four_measure_longPages: {
-        screen: four_measure_longPage,
+    Measure_long_TabPages: {
+        screen: Measure_long_TabPage,
     },
 
-    four_decfrac_decFragComaPages: {
-        screen: four_decfrac_decFragComaPage,
+    Decfrac_decFragComa_TabPages: {
+        screen: Decfrac_decFragComa_TabPage,
     },
-    four_decfrac_decFragComeandCompPages: {
-        screen: four_decfrac_decFragComeandCompPage,
+    Decfrac_decFragComeandComp_TabPages: {
+        screen: Decfrac_decFragComeandComp_TabPage,
     },
-    four_decfrac_decFargRankingPages: {
-        screen: four_decfrac_decFargRankingPage,
+    Decfrac_decFargRanking_TabPages: {
+        screen: Decfrac_decFargRanking_TabPage,
     },
-    four_logic_addlogicPages: {
-        screen: four_logic_addlogicPage,
+    Addlogic_TabPages: {
+        screen: Addlogic_TabPage,
     },
-    four_logic_addOpinPages: {
-        screen: four_logic_addOpinPage,
+    AddOpin_TabPages: {
+        screen: AddOpin_TabPage,
     },
-    four_logic_sublogicPages: {
-        screen: four_logic_sublogicPage,
+    Sublogic_TabPages: {
+        screen: Sublogic_TabPage,
     },
-    four_logic_subOpinPages: {
-        screen: four_logic_subOpinPage,
+    Subopin_TabPages: {
+        screen: Subopin_TabPage,
     },
-    four_logic_mullogicPages: {
-        screen: four_logic_mullogicPage,
+    Mullogic_TabPages: {
+        screen: Mullogic_TabPage,
     },
-    four_logic_mulOpinPages: {
-        screen: four_logic_mulOpinPage,
+    Mullopin_TabPages: {
+        screen: Mullopin_TabPage,
     },
-    four_logic_divlogicPages: {
-        screen: four_logic_divlogicPage,
+    Divlogic_TabPages: {
+        screen: Divlogic_TabPage,
     },
-    four_logic_divOpinPages: {
-        screen: four_logic_divOpinPage,
+    Divopin_TabPages: {
+        screen: Divopin_TabPage,
     },
-    four_frac_namedFracPages: {
-        screen: four_frac_namedFracPage,
+    Frac_named_TabPages: {
+        screen: Frac_named_TabPage,
     },
-    four_frac_showInQuePages: {
-        screen: four_frac_showInQuePage,
+    Frac_showInQue_TabPages: {
+        screen: Frac_showInQue_TabPage,
     },
-    four_frac_rankingFracPages: {
-        screen: four_frac_rankingFracPage,
+    Frac_rankingFrac_TabPages: {
+        screen: Frac_rankingFrac_TabPage,
     },
-    four_frac_subFracPages: {
-        screen: four_frac_subFracPage,
+    Frac_subFrac_TabPages: {
+        screen: Frac_subFrac_TabPage,
     },
-    four_prob_isProbs: {
-        screen: four_prob_isProbPage,
+    Isprob_TabPages: {
+        screen: Isprob_TabPage,
     },
     probPage: {
         screen: probabilityPage,
     },
-    four_natural_add: {
-        screen: four_natural_addPage
+    Natural_add_TabPages: {
+        screen: Natural_add_TabPage,
     },
-    four_natural_sub: {
-        screen: four_natural_subPage
+    Natural_sub_TabPages: {
+        screen: Natural_sub_TabPage,
     },
-    four_natural_mul: {
-        screen: four_natural_mulPage
+    Natural_mul_TabPages: {
+        screen: Natural_mul_TabPage,
     },
-    four_natural_div: {
-        screen: four_natural_divPage
+    Natural_div_TabPages: {
+        screen: Natural_div_TabPage,
     },
     stepAnalysisPages: {
         screen: stepAnalysisPage,
@@ -136,22 +145,20 @@ const four_Orientation = createSwitchNavigator({
     naturalNumPages: {
         screen: naturalNumPage,
     },
-    four_step_analysisPages: {
-        screen: four_step_analysisPage,
+    Step_analysis_TabPages: {
+        screen: Step_analysis_TabPage,
     },
-    four_step_readNumberPages: {
-        screen: four_step_readNumberPage,
+    Step_readNumber_TabPages: {
+        screen: Step_readNumber_TabPage,
     },
-    four_step_stepValuePages: {
-        screen: four_step_stepValuePage,
+    Step_astepValue_TabPages: {
+        screen: Step_astepValue_TabPage,
     },
     rollingNumberPages: {
-
-        screen: Four_Roll_TabPage,
-
+        screen: Roll_TabPage,
     },
     four_roll_closeTenPages: {
-        screen: four_roll_closeTenPage,
+        screen: rollingNumberTYS,
     },
     measurePages: {
         screen: measurePage,
@@ -165,11 +172,11 @@ const four_Orientation = createSwitchNavigator({
     logicalPages: {
         screen: logicalPage,
     },
-    patternPages: {
-        screen: patternPage,
+    Pattern_TabPages: {
+        screen: Pattern_TabPage,
     },
-    rankingPages: {
-        screen: rankingPage,
+    Ranking_TabPages: {
+        screen: Ranking_TabPage,
     },
     numPatternPages: {
         screen: four_pattern_numPatternPage,

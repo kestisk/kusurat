@@ -53,16 +53,16 @@ export default class naturelNumPage extends Component {
         this.props.navigation.navigate("MainFour_Orientation");
     };
     add = () => {
-        this.props.navigation.navigate('four_natural_add');
+        this.props.navigation.navigate('Natural_add_TabPages');
     }
     sub = () => {
-        this.props.navigation.navigate('four_natural_sub');
+        this.props.navigation.navigate('Natural_sub_TabPages');
     }
     mul = () => {
-        this.props.navigation.navigate('four_natural_mul');
+        this.props.navigation.navigate('Natural_mul_TabPages');
     }
     div = () => {
-        this.props.navigation.navigate('four_natural_div');
+        this.props.navigation.navigate('Natural_div_TabPages');
     }
 
 }

@@ -53,13 +53,13 @@ export default class stepAnalysisPage extends Component {
         this.props.navigation.navigate("MainFour_Orientation");
     };
     readNumber = () => {
-        this.props.navigation.navigate('four_step_readNumberPages');
+        this.props.navigation.navigate('Step_readNumber_TabPages');
     }
     sValue = () => {
-        this.props.navigation.navigate('four_step_stepValuePages');
+        this.props.navigation.navigate('Step_astepValue_TabPages');
     }
     analys = () => {
-        this.props.navigation.navigate('four_step_analysisPages');
+        this.props.navigation.navigate('Step_analysis_TabPages');
     }
 
 }

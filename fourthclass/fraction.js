@@ -53,16 +53,16 @@ export default class fractionPage extends Component {
         this.props.navigation.navigate("MainFour_Orientation");
     };
     namedFrac = () => {
-        this.props.navigation.navigate('four_frac_namedFracPages');
+        this.props.navigation.navigate('Frac_named_TabPages');
     }
     showInQue = () => {
-        this.props.navigation.navigate('four_frac_showInQuePages');
+        this.props.navigation.navigate('Frac_showInQue_TabPages');
     }
     rankingFrac = () => {
-        this.props.navigation.navigate('four_frac_rankingFracPages');
+        this.props.navigation.navigate('Frac_rankingFrac_TabPages');
     }
     subFrac = () => {
-        this.props.navigation.navigate('four_frac_subFracPages');
+        this.props.navigation.navigate('Frac_subFrac_TabPages');
     }
 }
 

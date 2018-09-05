@@ -179,10 +179,10 @@ export default class Four extends Component {
     this.props.navigation.navigate("rollingNumberPages");
   };
   pattern = () => {
-    this.props.navigation.navigate("patternPages");
+    this.props.navigation.navigate("Pattern_TabPages");
   };
   ranking = () => {
-    this.props.navigation.navigate("rankingPages");
+    this.props.navigation.navigate("Ranking_TabPages");
   };
 }
 
