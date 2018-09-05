@@ -27,9 +27,11 @@ import {
 } from "react-native";
 import { BackHandler } from "react-native";
 import Aniforrol from "../Aniforroll";
+import Four_roll_closeTenPage from "./four_roll_closeTen"
+
 //import Icon from "react-native-vector-icons/dist/MaterialIcons";
 
-export default class rollingNumberPage extends Component {
+export default class RollingNumberPage extends Component {
   constructor(props) {
 
     super(props);
@@ -62,16 +64,6 @@ export default class rollingNumberPage extends Component {
   render() {
     return (
       <Container>
-        <Header style={{ backgroundColor: "#62B1F6" }}>
-          <Left>
-            <Button transparent onPress={this.back}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title style={styles.heade}>KÜSUR-AT</Title>
-          </Body>
-        </Header>
         <Content style={{ padding: 10 }}>
           <Item>
             <Text style={{ fontSize: 30 }}>{this.state.number}</Text>
@@ -98,7 +90,7 @@ export default class rollingNumberPage extends Component {
             </Button>
 
           </View>
-          <View style={{ marginTop: 0, height: 2000 }}>
+          <View style={{ marginTop: 0, height: 1500 }}>
             <Aniforrol ref="Aniforrol"></Aniforrol>
           </View>
         </Content>
@@ -144,8 +136,11 @@ export default class rollingNumberPage extends Component {
           </Button>
         </Footer>
       </Container >
-    );
+    )
   }
+
+
+
   back = () => {
     this.props.navigation.navigate("MainFour_Orientation");
   };
@@ -156,8 +151,8 @@ export default class rollingNumberPage extends Component {
 
     this.setState({ number: this.state.number.length })
   };
-}
 
+}
 const styles = StyleSheet.create({
   heade: {
     textAlign: "center",

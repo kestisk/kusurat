@@ -120,7 +120,7 @@ class Aniforrol extends Component {
     });
     const introButton = this.animasyonDegeri3.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, 180]
+      outputRange: [0, 150]
     });
     const intro = this.animationbigger.interpolate({
       inputRange: [0, 1],

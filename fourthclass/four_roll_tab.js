@@ -1,31 +1,68 @@
-
-
 import React, { Component } from 'react';
-import { Container, Content, Button, Header, Left, Icon, Body, Title } from 'native-base';
-import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
-import { BackHandler } from 'react-native';
+import {
+    Container,
+    Content,
+    Button,
+    Header,
+    Left,
+    Body,
+    Title,
+    Item,
+    Input,
+    Label,
+    Footer,
+    Badge,
+    FooterTab,
+    Row,
+    Icon,
+    Tab,
+    Tabs
+} from "native-base";
+import {
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+    Alert,
+    Image,
+    ScrollView
+} from "react-native";
+import { BackHandler } from "react-native";
+import Aniforrol from "../Aniforroll";
+import Four_roll_closeTenPage from "./four_roll_closeTen";
+import RollingNumberPage from "./rollingNumber";
 
+//import Icon from "react-native-vector-icons/dist/MaterialIcons";
 
-export default class four_roll_closeHundPage extends Component {
+export default class Four_Roll_TabPage extends Component {
     constructor(props) {
-        super(props)
+
+        super(props);
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
     }
-
+    componentDidMount() {
+    }
     componentWillMount() {
-        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+        BackHandler.addEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
     }
 
     componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+        BackHandler.removeEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate('rollingNumberPages');
+        this.props.navigation.navigate("MainFour_Orientation");
         return true;
     }
-
-
+    warn() {
+        this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
+    }
     render() {
         return (
             <Container>
@@ -39,29 +76,38 @@ export default class four_roll_closeHundPage extends Component {
                         <Title style={styles.heade}>KÜSUR-AT</Title>
                     </Body>
                 </Header>
-                <Content style={{ padding: 10, }} >
-                    <Button style={{ marginTop: 15 }} info block rounded ><Text style={styles.buttontext}>sayfa yapısı eksik</Text></Button>
-                </Content>
+                <Tabs>
+                    <Tab heading="Asistan">
+                        <RollingNumberPage />
+                    </Tab>
+                    <Tab heading="Kendini Dene">
+                        <Four_roll_closeTenPage />
+                    </Tab>
 
-            </Container>
-        );
+                </Tabs>
+
+
+
+
+            </Container >
+        )
     }
-    back = () => {
-        this.props.navigation.navigate("rollingNumberPages");
-    };
 }
-
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: 'white',
+        color: "white",
         fontSize: 30,
         padding: 5
     },
     buttontext: {
         textAlign: "center",
-        color: 'white',
+        color: "white",
         padding: 5,
-        fontSize: 20,
+        fontSize: 20
     }
 });
+
+
+
+

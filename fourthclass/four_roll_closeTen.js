@@ -6,7 +6,7 @@ import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'reac
 import { BackHandler } from 'react-native';
 
 
-export default class four_roll_closeTenPage extends Component {
+export default class Four_roll_closeTenPage extends Component {
     constructor(props) {
         super(props)
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
@@ -28,6 +28,7 @@ export default class four_roll_closeTenPage extends Component {
 
     render() {
         return (
+
             <Container>
                 <Header style={{ backgroundColor: "#62B1F6" }}>
                     <Left>
@@ -44,6 +45,7 @@ export default class four_roll_closeTenPage extends Component {
                 </Content>
 
             </Container>
+
         );
     }
     back = () => {
