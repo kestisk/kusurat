@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Container,
   Content,
   Button,
   Header,
   Left,
-  Icon,
   Body,
   Title,
   Item,
@@ -14,7 +13,8 @@ import {
   Footer,
   Badge,
   FooterTab,
-  Row
+  Row,
+  Icon
 } from "native-base";
 import {
   Platform,
@@ -26,15 +26,20 @@ import {
   ScrollView
 } from "react-native";
 import { BackHandler } from "react-native";
+import Aniforrol from "../Aniforroll";
+import Four_roll_closeTenPage from "./four_roll_closeTen"
 
-export default class rollingNumberPage extends Component {
+//import Icon from "react-native-vector-icons/dist/MaterialIcons";
+
+export default class RollingNumberPage extends Component {
   constructor(props) {
+
     super(props);
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-    this.state = { TextHolder: "deneme" }
+    this.state = { message: "", number: "2345", one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0" }
   }
-
-  componentDidMount() { }
+  componentDidMount() {
+  }
   componentWillMount() {
     BackHandler.addEventListener(
       "hardwareBackPress",
@@ -53,41 +58,20 @@ export default class rollingNumberPage extends Component {
     this.props.navigation.navigate("MainFour_Orientation");
     return true;
   }
-
-  ChangeTextFunction1 = () => {
-
-    this.setState({
-
-      TextHolder: "1"
-
-    })
-  }
-  ChangeTextFunction2 = () => {
-
-    this.setState({
-
-      TextHolder: "2"
-
-    })
+  warn() {
+    this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
   }
   render() {
     return (
       <Container>
-        <Header style={{ backgroundColor: "#62B1F6" }}>
-          <Left>
-            <Button transparent onPress={this.back}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title style={styles.heade}>KÜSUR-AT</Title>
-          </Body>
-        </Header>
         <Content style={{ padding: 10 }}>
           <Item>
-            <Label >{this.state.TextHolder}</Label>
+            <Text style={{ fontSize: 30 }}>{this.state.number}</Text>
           </Item>
-          <View style={{ flexDirection: "row" }}>
+          <Item>
+            <Text>{this.state.message}</Text>
+          </Item>
+          <View style={{ flexDirection: "row", zIndex: 2 }}>
             <Button
               style={{ marginTop: 15 }}
               info
@@ -104,55 +88,71 @@ export default class rollingNumberPage extends Component {
             >
               <Text style={styles.buttontext}>En Yakın Yüzlüğe</Text>
             </Button>
+
+          </View>
+          <View style={{ marginTop: 0, height: 1500 }}>
+            <Aniforrol ref="Aniforrol"></Aniforrol>
           </View>
         </Content>
+
+
         <Footer>
-          <Button info rounded onPress={this.ChangeTextFunction1}>
+          <Button info rounded onPress={(number) =>
+            (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.one) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-1" />
           </Button>
-          <Button info rounded onPress={this.ChangeTextFunction2}>
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.two) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-2" />
           </Button>
-          <Button info rounded>
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.three) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-3" />
           </Button>
-          <Button info rounded>
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.four) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-4" />
           </Button>
-          <Button info rounded>
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.five) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-5" />
           </Button>
         </Footer>
         <Footer>
-          <Button info rounded>
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.six) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-6" />
           </Button>
-          <Button info rounded>
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.seven) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-7" />
           </Button>
-          <Button info rounded>
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.eight) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-8" />
           </Button>
-          <Button info rounded>
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.nine) }) : this.warn()} >
             <Icon type="MaterialIcons" name="filter-9" />
           </Button>
-          <Button info rounded>
-            <Icon type="MaterialIcons" name="filter" />
+          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.zero) }) : this.warn()} >
+            <Icon type="MaterialIcons" name="exposure-zero" />
+          </Button>
+          <Button info rounded onPress={(number) => this.setState({ number: this.state.number.slice(0, -1), message: "" })} >
+
+            <Icon type="MaterialIcons" name="keyboard-arrow-left" />
           </Button>
         </Footer>
-      </Container>
-    );
+      </Container >
+    )
   }
+
+
+
   back = () => {
     this.props.navigation.navigate("MainFour_Orientation");
   };
-  closeTen = () => { };
-  closeHund = () => { };
-  ekle = (sayi) => {
-    this.state = { text1: "KULLANICI ADI" };
+  closeTen = () => {
+    this.refs.Aniforrol.bigornot(this.state.number);
   };
-}
+  closeHund = () => {
 
+    this.setState({ number: this.state.number.length })
+  };
+
+}
 const styles = StyleSheet.create({
   heade: {
     textAlign: "center",
