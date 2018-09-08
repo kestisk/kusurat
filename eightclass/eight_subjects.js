@@ -48,17 +48,29 @@ export default class Eight extends Component {
             <Title style={styles.heade}>KÜSUR-AT</Title>
           </Body>
         </Header>
-        <Button style={{ marginTop: 15 }} info block rounded onPress={this.pow}>
-          <Text style={styles.buttontext}>ÜSLÜ SAYILAR</Text>
+        <Button
+          style={{ marginTop: 15 }}
+          info
+          rounded
+          block
+          onPress={this.multips}>
+          <Text style={styles.buttontext}>ÇARPANLAR & KATLAR</Text>
         </Button>
         <Button
           style={{ marginTop: 15 }}
           info
           rounded
           block
-          onPress={this.root}
-        >
-          <Text style={styles.buttontext}>KÖKLÜ SAYILAR</Text>
+          onPress={this.ebob_ekok}>
+          <Text style={styles.buttontext}>EBOB & EKOK</Text>
+        </Button>
+        <Button
+          style={{ marginTop: 15 }}
+          info
+          block
+          rounded
+          onPress={this.pow}>
+          <Text style={styles.buttontext}>ÜSLÜ SAYILAR</Text>
         </Button>
       </Container>
     );
@@ -69,8 +81,11 @@ export default class Eight extends Component {
   pow = () => {
     this.props.navigation.navigate("powers");
   };
-  root = () => {
-    this.props.navigation.navigate("roots");
+  ebob_ekok = () => {
+    this.props.navigation.navigate("ebob_ekokPages");
+  };
+  multips = () => {
+    this.props.navigation.navigate("multipPages");
   };
 }
 const styles = StyleSheet.create({
