@@ -5,7 +5,6 @@ import { Container, Content, Button, Header, Left, Icon, Body, Title } from 'nat
 import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
 import { BackHandler } from 'react-native';
 
-
 export default class RollingNumberPageTYS extends Component {
     constructor(props) {
         super(props)
@@ -18,7 +17,6 @@ export default class RollingNumberPageTYS extends Component {
                 "black",
                 "black",
                 "black",
-
 
             ],
             aa: "0", b: "1", c: "2", d: "3",
@@ -58,7 +56,6 @@ export default class RollingNumberPageTYS extends Component {
             sezer = sezer.reduce(function (accumulator, currentValue, currentIndex, array) {
                 return accumulator + currentValue;
             });
-
 
             this.at(index, sezer);
         }
@@ -121,13 +118,11 @@ export default class RollingNumberPageTYS extends Component {
         return true;
     }
 
-
     render() {
 
         return (
 
             <Container>
-<<<<<<< HEAD:fourthclass/four_roll_closeTen.js
 
                 <Content >
                     <View style={{ flexDirection: "row" }}>
@@ -145,22 +140,21 @@ export default class RollingNumberPageTYS extends Component {
                                 <Text style={styles.buttontext}>{this.state.aChoise}</Text></Button>
                             <Button onPress={() => this.control(2)} style={[styles.buttonsty, { backgroundColor: this.state.colorboxs[this.state.b] }]} dark >
                                 <Text style={styles.buttontext}>{this.state.bChoise}</Text></Button>
-                            <Button onPress={() => this.control(3)} style={[styles.buttonsty, { backgroundColor: this.state.colorboxs[this.state.c] }]} dark  >
+                            <Button onPress={() => this.control(3)} style={[styles.buttonsty, { backgroundColor: this.state.colorboxs[this.state.c] }]} dark >
                                 <Text style={styles.buttontext}>{this.state.cChoise}</Text></Button>
                             <Button onPress={() => this.control(4)} style={[styles.buttonsty, { backgroundColor: this.state.colorboxs[this.state.d] }]} dark>
                                 <Text style={styles.buttontext} >{this.state.dChoise}</Text></Button>
                         </View>
                     </View>
-=======
-                <Content style={{ padding: 10, }} >
-                    <Button style={{ marginTop: 15 }} info block rounded ><Text style={styles.buttontext}>sayfa yapısı eksik</Text></Button>
->>>>>>> refs/remotes/origin/kusurat:fourthclass/subFolders/rollingNumberTYS.js
                 </Content>
 
             </Container >
 
         );
     }
+    back = () => {
+        this.props.navigation.navigate("rollingNumberPages");
+    };
 }
 
 const styles = StyleSheet.create({
@@ -171,13 +165,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
 
 
-
     },
     buttontext: {
         textAlign: "center",
         fontSize: 50,
         color: "white",
 
-
     }
 });
+
+
+
