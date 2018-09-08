@@ -6,7 +6,7 @@ import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'reac
 import { BackHandler } from 'react-native';
 
 
-export default class Power extends Component {
+export default class MultipPage extends Component {
     constructor(props) {
         super(props)
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
@@ -40,11 +40,8 @@ export default class Power extends Component {
                     </Body>
                 </Header>
                 <Content style={{ padding: 10, }}>
-                    <Button style={{ marginTop: 15 }} info block rounded onPress={this.basic}><Text style={styles.buttontext}>TEMEL KURALLAR</Text></Button>
-                    <Button style={{ marginTop: 15 }} info block rounded onPress={this.getpow}><Text style={styles.buttontext}>KUVVET ALMA</Text></Button>
-                    <Button style={{ marginTop: 15 }} info block rounded onPress={this.findpow}><Text style={styles.buttontext}>KUVVET BULMA</Text></Button>
-                    <Button style={{ marginTop: 15 }} info block rounded onPress={this.showdecimal}><Text style={styles.buttontext}>ONDALIK GÖSTERİM ÇÖZÜMLEME</Text></Button>
-                    <Button style={{ marginTop: 15 }} info block rounded onPress={this.showscience}><Text style={styles.buttontext}>BİLİMSEL GÖSETERİM</Text></Button>
+                    <Button style={{ marginTop: 15 }} info block rounded onPress={this.primeFac}><Text style={styles.buttontext}>ASAL ÇARPANALRA AYIRMA</Text></Button>
+                    <Button style={{ marginTop: 15 }} info block rounded onPress={this.primeFacTree}><Text style={styles.buttontext}>ÇARPAN AĞACI</Text></Button>
                 </Content>
 
             </Container>
@@ -54,23 +51,12 @@ export default class Power extends Component {
         this.props.navigation.navigate("Main_eight");
     };
 
-    basic = () => {
-        this.props.navigation.navigate("Pow_BasictabPages");
+    primeFac = () => {
+        this.props.navigation.navigate("primeFacPages");
     };
 
-    findpow = () => {
-        this.props.navigation.navigate("Pow_findpowtabPages");
-    };
-    getpow = () => {
-        this.props.navigation.navigate("Pow_getpowtabPages");
-    };
-
-    showdecimal = () => {
-        this.props.navigation.navigate("Pow_showdecimaltabPages");
-    };
-
-    showscience = () => {
-        this.props.navigation.navigate("Pow_showsciencetabPages");
+    primeFacTree = () => {
+        this.props.navigation.navigate("primeFacTreePages");
     };
 
 
