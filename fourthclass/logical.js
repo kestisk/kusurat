@@ -57,28 +57,28 @@ export default class logicalPage extends Component {
         this.props.navigation.navigate("MainFour_Orientation");
     };
     addlogic = () => {
-        this.props.navigation.navigate('four_logic_addlogicPages');
+        this.props.navigation.navigate('Addlogic_TabPages');
     }
     addOpin = () => {
-        this.props.navigation.navigate('four_logic_addOpinPages');
+        this.props.navigation.navigate('AddOpin_TabPages');
     }
     sublogic = () => {
-        this.props.navigation.navigate('four_logic_sublogicPages');
+        this.props.navigation.navigate('Sublogic_TabPages');
     }
     subOpin = () => {
-        this.props.navigation.navigate('four_logic_subOpinPages');
+        this.props.navigation.navigate('Subopin_TabPages');
     }
     mullogic = () => {
-        this.props.navigation.navigate('four_logic_mullogicPages');
+        this.props.navigation.navigate('Mullogic_TabPages');
     }
     mulOpin = () => {
-        this.props.navigation.navigate('four_logic_mulOpinPages');
+        this.props.navigation.navigate('Mullopin_TabPages');
     }
     divlogic = () => {
-        this.props.navigation.navigate('four_logic_divlogicPages');
+        this.props.navigation.navigate('Divlogic_TabPages');
     }
     divOpin = () => {
-        this.props.navigation.navigate('four_logic_divOpinPages');
+        this.props.navigation.navigate('Divopin_TabPages');
     }
 }
 

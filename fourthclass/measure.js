@@ -55,25 +55,24 @@ export default class measurePage extends Component {
         this.props.navigation.navigate("MainFour_Orientation");
     };
     MKAnews = () => {
-        this.props.navigation.navigate('four_measure_MKAnewsPages');
+        this.props.navigation.navigate('Measure_MKAnews_TabPages');
     }
     metre = () => {
-        this.props.navigation.navigate('four_measure_metrePages');
+        this.props.navigation.navigate('Measure_metre_TabPages');
     }
     time = () => {
-        this.props.navigation.navigate('four_measure_timePages');
+        this.props.navigation.navigate('Measure_time_TabPages');
     }
     day = () => {
-        this.props.navigation.navigate('four_measure_dayPages');
+        this.props.navigation.navigate('Measure_day_TabPages');
     }
     gram = () => {
-        this.props.navigation.navigate('four_measure_gramPages');
+        this.props.navigation.navigate('Measure_gram_TabPages');
     }
     long = () => {
-        this.props.navigation.navigate('four_measure_longPages');
+        this.props.navigation.navigate('Measure_long_TabPages');
     }
 }
-
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",

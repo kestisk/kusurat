@@ -6,7 +6,7 @@ import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'reac
 import { BackHandler } from 'react-native';
 
 
-export default class probabilityPage extends Component {
+export default class Four_frac_showInQuePage extends Component {
     constructor(props) {
         super(props)
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
@@ -21,7 +21,7 @@ export default class probabilityPage extends Component {
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate('MainFour_Orientation');
+        this.props.navigation.navigate('fractionPages');
         return true;
     }
 
@@ -29,29 +29,15 @@ export default class probabilityPage extends Component {
     render() {
         return (
             <Container>
-                <Header style={{ backgroundColor: "#62B1F6" }}>
-                    <Left>
-                        <Button transparent onPress={this.back}>
-                            <Icon name="arrow-back" />
-                        </Button>
-                    </Left>
-                    <Body>
-                        <Title style={styles.heade}>KÜSUR-AT</Title>
-                    </Body>
-                </Header>
+
                 <Content style={{ padding: 10, }}>
-                    <Button style={{ marginTop: 15 }} info block rounded onPress={this.isProb}><Text style={styles.buttontext}>Olasılık Mı? Değil Mi?</Text></Button>
+                    <Button style={{ marginTop: 15 }} info block rounded ><Text style={styles.buttontext}>sayfa yapısı eksik</Text></Button>
                 </Content>
 
             </Container>
         );
     }
-    back = () => {
-        this.props.navigation.navigate("MainFour_Orientation");
-    };
-    isProb = () => {
-        this.props.navigation.navigate('Isprob_TabPages');
-    }
+
 }
 
 const styles = StyleSheet.create({
