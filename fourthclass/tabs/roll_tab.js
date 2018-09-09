@@ -89,7 +89,7 @@ export default class Roll_TabPage extends Component {
         )
     }
     back = () => {
-        this.props.navigation.navigate("Classes");
+        this.props.navigation.navigate("MainFour_Orientation");
     };
 }
 const styles = StyleSheet.create({

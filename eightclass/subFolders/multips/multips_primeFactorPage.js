@@ -14,12 +14,12 @@ import {
     Content
 } from "native-base";
 import { Platform } from "react-native";
-import { BackHandler } from "react-native";
+
 import { StyleSheet } from "react-native";
 export default class Multips_primeFactorPage extends Component {
     constructor(props) {
         super(props);
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+
         this.state = {
             array: [], number: "120",
             numberarr: [""],
@@ -81,25 +81,6 @@ export default class Multips_primeFactorPage extends Component {
         }
 
     }
-    componentWillMount() {
-        BackHandler.addEventListener(
-            "hardwareBackPress",
-            this.handleBackButtonClick
-        );
-    }
-
-    componentWillUnmount() {
-        BackHandler.removeEventListener(
-            "hardwareBackPress",
-            this.handleBackButtonClick
-        );
-    }
-
-    handleBackButtonClick() {
-        this.props.navigation.navigate("Main_eight");
-        return true;
-    }
-
     render() {
         return (
             <Container>
@@ -156,9 +137,6 @@ export default class Multips_primeFactorPage extends Component {
             </Container >
         );
     }
-    back = () => {
-        this.props.navigation.navigate("Main_eight");
-    };
 }
 const styles = StyleSheet.create({
     heade: {

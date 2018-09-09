@@ -56,7 +56,7 @@ export default class Natural_div_TabPage extends Component {
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate("MainFour_Orientation");
+        this.props.navigation.navigate("naturalNumPages");
         return true;
     }
     warn() {
@@ -92,7 +92,7 @@ export default class Natural_div_TabPage extends Component {
         )
     }
     back = () => {
-        this.props.navigation.navigate("Classes");
+        this.props.navigation.navigate("naturalNumPages");
     };
 }
 const styles = StyleSheet.create({

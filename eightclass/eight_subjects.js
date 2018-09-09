@@ -85,7 +85,7 @@ export default class Eight extends Component {
     this.props.navigation.navigate("ebob_ekokPages");
   };
   multips = () => {
-    this.props.navigation.navigate("multipPages");
+    this.props.navigation.navigate("MultipPages");
   };
 }
 const styles = StyleSheet.create({

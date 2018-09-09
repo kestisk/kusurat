@@ -57,7 +57,7 @@ export default class Isprob_TabPage extends Component {
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate("MainFour_Orientation");
+        this.props.navigation.navigate("Isprob_TabPages");
         return true;
     }
     warn() {
@@ -93,8 +93,8 @@ export default class Isprob_TabPage extends Component {
         )
     }
     back = () => {
-        this.props.navigation.navigate("Classes");
-      };
+        this.props.navigation.navigate("probPage");
+    };
 }
 const styles = StyleSheet.create({
     heade: {

@@ -56,7 +56,7 @@ export default class Step_astepValue_TabPage extends Component {
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate("MainFour_Orientation");
+        this.props.navigation.navigate("stepAnalysisPages");
         return true;
     }
     warn() {
@@ -92,7 +92,7 @@ export default class Step_astepValue_TabPage extends Component {
         )
     }
     back = () => {
-        this.props.navigation.navigate("Classes");
+        this.props.navigation.navigate("stepAnalysisPages");
     };
 }
 const styles = StyleSheet.create({
