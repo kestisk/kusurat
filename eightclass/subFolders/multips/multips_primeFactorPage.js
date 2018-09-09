@@ -21,8 +21,10 @@ export default class Multips_primeFactorPage extends Component {
         super(props);
 
         this.state = {
-            array: [], number: "120",
+            array: [""], number: "120",
             numberarr: [""],
+            numberarrshow: [""],
+            arrayshow: [],
             one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0",
             message: "",
             prime: [""]
@@ -33,54 +35,93 @@ export default class Multips_primeFactorPage extends Component {
         this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
     }
     clean = () => {
-        this.setState({ message: "", numberarr: [""], array: [""], number: "" })
+        this.setState({ message: "", numberarr: [""], array: [""], number: "", numberarrshow: [""], arrayshow: [""] })
 
     }
 
     devided = () => {
-
+        clearInterval(this.at);
+        clearTimeout(this.at2);
         if (this.state.number == "") {
             this.setState(() => ({ number: this.state.numberarr[1] }));
 
         }
         var num = this.state.number;
 
-        var count = 0;
-        for (i = 2; i < 20; i++) {
-            for (a = 2; a <= i; a++) {
-                b = i % a;
-                if (parseInt(b) == 0) {
-                    count++;
+        i = 2
+        while (num >= i) {
+            if (num % i == 0) {
+                num = num / i;
+                this.state.numberarrshow.push("\n");
+                this.state.numberarrshow.push(num);
+                this.state.arrayshow.push(i);
+                this.state.arrayshow.push("\n");
+                this.setState(this.state.arrayshow);
+                this.setState(this.state.numberarrshow);
 
-                }
+
             }
-
-            if (count < 2) {
-
-                this.state.prime.push(i);
-                this.setState(this.state.prime);
+            else {
+                i++;
             }
-            count = 0;
 
         }
+        this.settimem();
 
-        for (ind = 1; ind < 10; ind++) {
-            while (num % this.state.prime[ind] == 0) {
-                num = num / this.state.prime[ind];
-                this.state.numberarr.push("\n");
-                this.state.numberarr.push(num);
-
-                this.setState(this.state.numberarr);
-                this.setState(this.state.array);
-
-                this.state.array.push(this.state.prime[ind]);
-                this.state.array.push("\n");
-                this.setState(this.state.array);
-
-            }
-        }
 
     }
+    settimem() {
+
+        i = 0;
+        this.at = setInterval(function () {
+
+            if (i < this.state.arrayshow.length) {
+                this.state.array.push(this.state.arrayshow[i]);
+                this.setState(this.state.array);
+
+                this.settimem2(i);
+            }
+            i++;
+
+        }.bind(this), 1000);
+    }
+    settimem2(i) {
+
+
+        this.at2 = setTimeout(function () {
+
+            this.state.numberarr.push(this.state.numberarrshow[i + 1]);
+            this.setState(this.state.numberarr);
+
+
+
+
+        }.bind(this), 0);
+
+
+
+
+    }
+
+    componentWillMount() {
+        BackHandler.addEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
+
+    handleBackButtonClick() {
+        this.props.navigation.navigate("Main_eight");
+        return true;
+    }
+
     render() {
         return (
             <Container>
