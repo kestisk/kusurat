@@ -40,8 +40,8 @@ export default class Multips_primeFactorPage extends Component {
     }
 
     devided = () => {
-        clearInterval(this.at);
-        clearTimeout(this.at2);
+        clearInterval(this.delayed1);
+        clearTimeout(this.delayed2);
         if (this.state.number == "") {
             this.setState(() => ({ number: this.state.numberarr[1] }));
 
@@ -56,6 +56,7 @@ export default class Multips_primeFactorPage extends Component {
                 this.state.numberarrshow.push(num);
                 this.state.arrayshow.push(i);
                 this.state.arrayshow.push("\n");
+
                 this.setState(this.state.arrayshow);
                 this.setState(this.state.numberarrshow);
 
@@ -73,7 +74,7 @@ export default class Multips_primeFactorPage extends Component {
     settimem() {
 
         i = 0;
-        this.at = setInterval(function () {
+        this.delayed1 = setInterval(function () {
 
             if (i < this.state.arrayshow.length) {
                 this.state.array.push(this.state.arrayshow[i]);
@@ -88,7 +89,7 @@ export default class Multips_primeFactorPage extends Component {
     settimem2(i) {
 
 
-        this.at2 = setTimeout(function () {
+        this.delayed2 = setTimeout(function () {
 
             this.state.numberarr.push(this.state.numberarrshow[i + 1]);
             this.setState(this.state.numberarr);
