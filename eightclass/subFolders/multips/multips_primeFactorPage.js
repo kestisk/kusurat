@@ -38,16 +38,13 @@ export default class Multips_primeFactorPage extends Component {
         this.setState({ message: "", numberarr: [""], array: [""], number: "", numberarrshow: [""], arrayshow: [""] })
 
     }
-
     devided = () => {
         clearInterval(this.at);
         clearTimeout(this.at2);
         if (this.state.number == "") {
             this.setState(() => ({ number: this.state.numberarr[1] }));
-
         }
         var num = this.state.number;
-
         i = 2
         while (num >= i) {
             if (num % i == 0) {
@@ -58,68 +55,29 @@ export default class Multips_primeFactorPage extends Component {
                 this.state.arrayshow.push("\n");
                 this.setState(this.state.arrayshow);
                 this.setState(this.state.numberarrshow);
-
-
             }
             else {
                 i++;
             }
-
         }
         this.settimem();
-
-
     }
     settimem() {
-
         i = 0;
         this.at = setInterval(function () {
-
             if (i < this.state.arrayshow.length) {
                 this.state.array.push(this.state.arrayshow[i]);
                 this.setState(this.state.array);
-
                 this.settimem2(i);
             }
             i++;
-
         }.bind(this), 1000);
     }
     settimem2(i) {
-
-
         this.at2 = setTimeout(function () {
-
             this.state.numberarr.push(this.state.numberarrshow[i + 1]);
             this.setState(this.state.numberarr);
-
-
-
-
         }.bind(this), 0);
-
-
-
-
-    }
-
-    componentWillMount() {
-        BackHandler.addEventListener(
-            "hardwareBackPress",
-            this.handleBackButtonClick
-        );
-    }
-
-    componentWillUnmount() {
-        BackHandler.removeEventListener(
-            "hardwareBackPress",
-            this.handleBackButtonClick
-        );
-    }
-
-    handleBackButtonClick() {
-        this.props.navigation.navigate("Main_eight");
-        return true;
     }
 
     render() {

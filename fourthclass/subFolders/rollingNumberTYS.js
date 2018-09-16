@@ -6,7 +6,7 @@ import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'reac
 
 export default class RollingNumberPageTYS extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             colorboxs: [
 
@@ -57,6 +57,7 @@ export default class RollingNumberPageTYS extends Component {
             this.at(index, sezer);
         }
     }
+
     at(index, sezer) {
 
         if (index == 1) {
@@ -131,9 +132,6 @@ export default class RollingNumberPageTYS extends Component {
 
         );
     }
-    back = () => {
-        this.props.navigation.navigate("rollingNumberPages");
-    };
 }
 
 const styles = StyleSheet.create({
