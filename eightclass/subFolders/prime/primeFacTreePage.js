@@ -12,7 +12,7 @@ import { BackHandler } from 'react-native';
 export default class PrimeFacTreePage extends Component {
     constructor(props) {
         super(props)
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+
         this.animasyonDegeri = new Animated.Value(0);
 
         this.state = {
@@ -38,18 +38,14 @@ export default class PrimeFacTreePage extends Component {
         }
     }
 
-    componentWillMount() {
-        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
-    }
+
 
     componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+        clearInterval(this.delayed);
+
     }
 
-    handleBackButtonClick() {
-        this.props.navigation.navigate('Main_eight');
-        return true;
-    }
+
     clean = () => {
         this.setState(() => ({ number: "", numberarray: [""], numberarrayshow: [""] }));
         this.animasyonDegeri.setValue(0);

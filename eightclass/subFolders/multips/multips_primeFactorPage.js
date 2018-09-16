@@ -38,6 +38,10 @@ export default class Multips_primeFactorPage extends Component {
         this.setState({ message: "", numberarr: [""], array: [""], number: "", numberarrshow: [""], arrayshow: [""] })
 
     }
+    componentWillUnmount() {
+        clearInterval(this.delayed1);
+        clearTimeout(this.delayed2);
+    }
     devided = () => {
         clearInterval(this.delayed1);
         clearTimeout(this.delayed2);
