@@ -25,7 +25,6 @@ import {
   Image,
   ScrollView
 } from "react-native";
-import { BackHandler } from "react-native";
 import Aniforrol from "../../Aniforroll";
 import rollingNumberTYS from "./rollingNumberTYS"
 
@@ -35,28 +34,7 @@ export default class RollingNumberPage extends Component {
   constructor(props) {
 
     super(props);
-    this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-    this.state = { message: "", number: "2345", one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0" }
-  }
-  componentDidMount() {
-  }
-  componentWillMount() {
-    BackHandler.addEventListener(
-      "hardwareBackPress",
-      this.handleBackButtonClick
-    );
-  }
-
-  componentWillUnmount() {
-    BackHandler.removeEventListener(
-      "hardwareBackPress",
-      this.handleBackButtonClick
-    );
-  }
-
-  handleBackButtonClick() {
-    this.props.navigation.navigate("MainFour_Orientation");
-    return true;
+    this.state = { message: "", number: "2355", one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0" }
   }
   warn() {
     this.setState({ message: "En Fazla 4 Rakam Girilebilir" });

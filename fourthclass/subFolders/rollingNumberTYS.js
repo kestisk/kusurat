@@ -3,13 +3,10 @@
 import React, { Component } from 'react';
 import { Container, Content, Button, Header, Left, Icon, Body, Title } from 'native-base';
 import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
-import { BackHandler } from 'react-native';
 
 export default class RollingNumberPageTYS extends Component {
     constructor(props) {
-        super(props)
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-
+        super(props);
         this.state = {
             colorboxs: [
 
@@ -60,6 +57,7 @@ export default class RollingNumberPageTYS extends Component {
             this.at(index, sezer);
         }
     }
+
     at(index, sezer) {
 
         if (index == 1) {
@@ -100,24 +98,6 @@ export default class RollingNumberPageTYS extends Component {
         }
     }
 
-    componentDidMount() {
-
-    }
-    componentWillMount() {
-        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
-
-    }
-
-    componentWillUnmount() {
-
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
-    }
-
-    handleBackButtonClick() {
-        this.props.navigation.navigate('rollingNumberPages');
-        return true;
-    }
-
     render() {
 
         return (
@@ -152,9 +132,6 @@ export default class RollingNumberPageTYS extends Component {
 
         );
     }
-    back = () => {
-        this.props.navigation.navigate("rollingNumberPages");
-    };
 }
 
 const styles = StyleSheet.create({

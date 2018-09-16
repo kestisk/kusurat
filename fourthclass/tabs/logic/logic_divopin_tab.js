@@ -57,7 +57,7 @@ export default class Divopin_TabPage extends Component {
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate("MainFour_Orientation");
+        this.props.navigation.navigate("logicalPages");
         return true;
     }
     warn() {
@@ -93,7 +93,7 @@ export default class Divopin_TabPage extends Component {
         )
     }
     back = () => {
-        this.props.navigation.navigate("Classes");
+        this.props.navigation.navigate("logicalPages");
     };
 }
 const styles = StyleSheet.create({

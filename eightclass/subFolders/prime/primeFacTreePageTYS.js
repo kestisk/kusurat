@@ -57,294 +57,286 @@ export default class PrimeFacTreePage extends Component {
         }
         this.setState({ randnumber: randnum });
     }
-    componentWillMount() {
-        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+
+
+
+
+}
+check = () => {
+    ind = this.state.index;
+    keycont = this.state.keykont
+
+    debugger;
+    if (parseInt(this.state.brain) == parseInt(this.state.numberTYS)) {
+        this.setState(() => ({ numberTYS: "true" }));
+        this.state.numberarrayTYS[ind].colorr = "red";
+        this.setState((se) => ({ numberarrayTYS: se.numberarrayTYS }));
+
+
 
     }
+}
+clean = () => {
+    this.setState(() => ({ numberTYS: "", numbershow: "", numberarrayTYS: [""] }));
+    this.animasyonDegeri.setValue(0);
 
-    componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
-    }
-
-    handleBackButtonClick() {
-        this.props.navigation.navigate('Main_eight');
-        return true;
-    }
-    check = () => {
-        ind = this.state.index;
-        keycont = this.state.keykont
-
-        debugger;
-        if (parseInt(this.state.brain) == parseInt(this.state.numberTYS)) {
-            this.setState(() => ({ numberTYS: "true" }));
-            this.state.numberarrayTYS[ind].colorr = "red";
-            this.setState((se) => ({ numberarrayTYS: se.numberarrayTYS }));
-
-
-
-        }
-    }
-    clean = () => {
-        this.setState(() => ({ numberTYS: "", numbershow: "", numberarrayTYS: [""] }));
-        this.animasyonDegeri.setValue(0);
+}
+warn() {
+    this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
+}
+bringrandom = () => {
+    this.setState(() => ({ numberTYS: "", numbershow: "", numberarrayTYS: [""] }));
+    this.animasyonDegeri.setValue(0);
+    randnum = 13;
+    while (randnum % 2 != 0 && randnum % 3 != 0 && randnum % 5 != 0 && randnum % 7 != 0 && randnum % 11 != 0) {
+        randnum = Math.floor(Math.random() * 1001) + 10;
 
     }
-    warn() {
-        this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
-    }
-    bringrandom = () => {
-        this.setState(() => ({ numberTYS: "", numbershow: "", numberarrayTYS: [""] }));
-        this.animasyonDegeri.setValue(0);
-        randnum = 13;
-        while (randnum % 2 != 0 && randnum % 3 != 0 && randnum % 5 != 0 && randnum % 7 != 0 && randnum % 11 != 0) {
-            randnum = Math.floor(Math.random() * 1001) + 10;
-
-        }
-        this.setState({ randnumber: randnum });
-    }
+    this.setState({ randnumber: randnum });
+}
 
 
-    tree = () => {
-        this.setState({ numbershow: this.state.randnumber });
+tree = () => {
+    this.setState({ numbershow: this.state.randnumber });
 
-        this.animasyonDegeri.setValue(0);
-        const doanimate = function (value, duration, easing, delay = 0) {
-            return Animated.timing(value, {
-                toValue: 1,
-                duration,
-                easing,
-                delay
-            });
-        };
-        doanimate(this.animasyonDegeri, 300, Easing.ease, 0).start();
-        num = this.state.randnumber;
-
-        i = 2
-        distance = 0;
-        count = 0
-
-        while (num > i) {
-            if (num % i == 0) {
-                num = num / i;
-
-                count++;
-                if (count % 2 == 0) {
-                    mycolorr = "black"
-                }
-                else {
-                    mycolorr = "purple"
-                }
-
-
-
-                if (this.state.numberarrayTYS.length < 5) {
-                    distance += 50;
-
-                    this.state.numberarrayTYS.push({ key2: num, key: i, id: 50, id2: distance, colorr: mycolorr });
-
-
-                    this.setState(this.state.numberarrayTYS);
-
-                }
-
-
-
-
-                else if (this.state.numberarrayTYS.length == 5) {
-                    distance += 50;
-                    this.state.numberarrayTYS.push({ key2: i, key: num, id: 50, id2: distance, colorr: mycolorr });
-
-
-                    this.setState(this.state.numberarrayTYS);
-                }
-                else if (this.state.numberarrayTYS.length >= 6 && this.state.numberarrayTYS.length < 10) {
-
-                    distance -= 50;
-
-                    this.state.numberarrayTYS.push({ key2: i, key: num, id: 50, id2: distance, colorr: mycolorr });
-
-
-                    this.setState(this.state.numberarrayTYS);
-
-                }
-                else if (this.state.numberarrayTYS.length == 10) {
-
-                    distance -= 50;
-
-                    this.state.numberarrayTYS.push({ key2: num, key: i, id: 50, id2: distance, colorr: mycolorr });
-
-
-                    this.setState(this.state.numberarrayTYS);
-
-                }
-                else {
-                    distance += 50;
-                    this.state.numberarrayTYS.push({ key2: num, key: i, id: 50, id2: distance, colorr: mycolorr });
-
-
-                    this.setState(this.state.numberarrayTYS);
-
-                }
-
-
-
-            }
-            else {
-                i++;
-            }
-
-        }
-
-        len = this.state.numberarrayTYS.length;
-
-
-        rand = Math.floor(Math.random() * (2 * len - 2)) + 2;
-        //  randkey = Math.ceil(Math.random() * 2);
-        i = parseInt(rand / 2)
-        this.setState({ rand: rand });
-        if (len >= 2) {
-
-
-            if (rand % 2 == 0) {
-                remember = this.state.numberarrayTYS[i].key;
-                this.setState(() => ({ brain: remember }));
-                this.state.numberarrayTYS[i].key = "?"
-                this.setState(() => ({ index: i }));
-                this.setState(() => ({ keycontrol: "1" }));
-                this.setState(this.state.numberarrayTYS);
-
-            }
-            else {
-                remember = this.state.numberarrayTYS[i].key2;
-                this.setState(() => ({ brain: remember }));
-                this.state.numberarrayTYS[i].key2 = "?";
-                this.setState(() => ({ index: i }));
-                this.setState(() => ({ keycontrol: "2" }));
-                this.setState(this.state.numberarrayTYS);
-            }
-
-        }
-
-
-        else {
-            this.setState({ message: "sayı asaldır" });
-        }
-        this.setState({ randnumber: "" });
-
-    }
-
-    render() {
-        const intro = this.animasyonDegeri.interpolate({
-            inputRange: [0, 1],
-            outputRange: [0, 70]
+    this.animasyonDegeri.setValue(0);
+    const doanimate = function (value, duration, easing, delay = 0) {
+        return Animated.timing(value, {
+            toValue: 1,
+            duration,
+            easing,
+            delay
         });
-        return (
-            <Container>
-                <Content>
-                    <View style={{ flexDirection: "column" }}>
-                        <View style={{ flexDirection: "row" }}>
-                            <Text style={{ position: "relative", fontSize: 30, marginLeft: 100, color: "black" }}> {this.state.randnumber}</Text>
-                            <Animated.View
-                                style={{
-                                    top: intro
+    };
+    doanimate(this.animasyonDegeri, 300, Easing.ease, 0).start();
+    num = this.state.randnumber;
 
-                                }}
-                            >
-                                <Text
+    i = 2
+    distance = 0;
+    count = 0
 
-                                    style={{ position: "relative", fontSize: 30, color: "black" }}
-                                >
+    while (num > i) {
+        if (num % i == 0) {
+            num = num / i;
 
-                                    {this.state.numbershow}
-                                </Text>
-                            </Animated.View>
-
-                            <Button style={{ display: "flex" }} onPress={this.tree}><Text style={{ fontSize: 30, color: "white" }}>AYIR</Text></Button>
-                            <Button style={{ display: "flex" }} onPress={this.bringrandom}><Text style={{ fontSize: 30, color: "white" }}>YENİ AGAÇ</Text></Button>
-
-                        </View>
-                        <Text style={{ fontSize: 20, color: "red" }}>Lütfen ? yerine gelecek sayıyı tuşlayınız({this.state.numberTYS})</Text>
-                        <View>
-
-                            <List dataArray={this.state.numberarrayTYS}
-
-                                renderRow={(item) =>
-                                    <ListItem >
+            count++;
+            if (count % 2 == 0) {
+                mycolorr = "black"
+            }
+            else {
+                mycolorr = "purple"
+            }
 
 
-                                        <Text style={{
-                                            textAlign: "center",
-                                            fontSize: 20,
-                                            backgroundColor: item.colorr,
-                                            height: 35,
-                                            width: 45,
-                                            borderRadius: 50,
-                                            color: "white",
-                                            marginLeft: item.id2
-                                        }}>{item.key}</Text>
-                                        <Text style={{
-                                            textAlign: "center",
-                                            fontSize: 20,
-                                            backgroundColor: item.colorr,
-                                            height: 35,
-                                            width: 45,
-                                            borderRadius: 50,
-                                            color: "white",
-                                            marginLeft: item.id
-                                        }}>{item.key2}</Text>
 
-                                    </ListItem>
+            if (this.state.numberarrayTYS.length < 5) {
+                distance += 50;
 
-                                }>
+                this.state.numberarrayTYS.push({ key2: num, key: i, id: 50, id2: distance, colorr: mycolorr });
 
 
-                            </List>
+                this.setState(this.state.numberarrayTYS);
 
-                        </View>
-                    </View>
-                </Content>
-                <Footer>
-                    <Button info rounded onPress={(numberTYS) =>
-                        (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.one) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-1" />
-                    </Button>
-                    <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.two) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-2" />
-                    </Button>
-                    <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.three) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-3" />
-                    </Button>
-                    <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.four) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-4" />
-                    </Button>
-                    <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.five) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-5" />
-                    </Button>
-                </Footer>
-                <Footer>
-                    <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.six) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-6" />
-                    </Button>
-                    <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.seven) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-7" />
-                    </Button>
-                    <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.eight) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-8" />
-                    </Button>
-                    <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.nine) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-9" />
-                    </Button>
-                    <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.zero) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="exposure-zero" />
-                    </Button>
-                    <Button info rounded onPress={this.check} >
-                        <Text>KONTROL</Text>
+            }
 
-                    </Button>
-                </Footer>
-            </Container >
-        );
+
+
+
+            else if (this.state.numberarrayTYS.length == 5) {
+                distance += 50;
+                this.state.numberarrayTYS.push({ key2: i, key: num, id: 50, id2: distance, colorr: mycolorr });
+
+
+                this.setState(this.state.numberarrayTYS);
+            }
+            else if (this.state.numberarrayTYS.length >= 6 && this.state.numberarrayTYS.length < 10) {
+
+                distance -= 50;
+
+                this.state.numberarrayTYS.push({ key2: i, key: num, id: 50, id2: distance, colorr: mycolorr });
+
+
+                this.setState(this.state.numberarrayTYS);
+
+            }
+            else if (this.state.numberarrayTYS.length == 10) {
+
+                distance -= 50;
+
+                this.state.numberarrayTYS.push({ key2: num, key: i, id: 50, id2: distance, colorr: mycolorr });
+
+
+                this.setState(this.state.numberarrayTYS);
+
+            }
+            else {
+                distance += 50;
+                this.state.numberarrayTYS.push({ key2: num, key: i, id: 50, id2: distance, colorr: mycolorr });
+
+
+                this.setState(this.state.numberarrayTYS);
+
+            }
+
+
+
+        }
+        else {
+            i++;
+        }
+
     }
+
+    len = this.state.numberarrayTYS.length;
+
+
+    rand = Math.floor(Math.random() * (2 * len - 2)) + 2;
+    //  randkey = Math.ceil(Math.random() * 2);
+    i = parseInt(rand / 2)
+    this.setState({ rand: rand });
+    if (len >= 2) {
+
+
+        if (rand % 2 == 0) {
+            remember = this.state.numberarrayTYS[i].key;
+            this.setState(() => ({ brain: remember }));
+            this.state.numberarrayTYS[i].key = "?"
+            this.setState(() => ({ index: i }));
+            this.setState(() => ({ keycontrol: "1" }));
+            this.setState(this.state.numberarrayTYS);
+
+        }
+        else {
+            remember = this.state.numberarrayTYS[i].key2;
+            this.setState(() => ({ brain: remember }));
+            this.state.numberarrayTYS[i].key2 = "?";
+            this.setState(() => ({ index: i }));
+            this.setState(() => ({ keycontrol: "2" }));
+            this.setState(this.state.numberarrayTYS);
+        }
+
+    }
+
+
+    else {
+        this.setState({ message: "sayı asaldır" });
+    }
+    this.setState({ randnumber: "" });
+
+}
+
+render() {
+    const intro = this.animasyonDegeri.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 70]
+    });
+    return (
+        <Container>
+            <Content>
+                <View style={{ flexDirection: "column" }}>
+                    <View style={{ flexDirection: "row" }}>
+                        <Text style={{ position: "relative", fontSize: 30, marginLeft: 100, color: "black" }}> {this.state.randnumber}</Text>
+                        <Animated.View
+                            style={{
+                                top: intro
+
+                            }}
+                        >
+                            <Text
+
+                                style={{ position: "relative", fontSize: 30, color: "black" }}
+                            >
+
+                                {this.state.numbershow}
+                            </Text>
+                        </Animated.View>
+
+                        <Button style={{ display: "flex" }} onPress={this.tree}><Text style={{ fontSize: 30, color: "white" }}>AYIR</Text></Button>
+                        <Button style={{ display: "flex" }} onPress={this.bringrandom}><Text style={{ fontSize: 30, color: "white" }}>YENİ AGAÇ</Text></Button>
+
+                    </View>
+                    <Text style={{ fontSize: 20, color: "red" }}>Lütfen ? yerine gelecek sayıyı tuşlayınız({this.state.numberTYS})</Text>
+                    <View>
+
+                        <List dataArray={this.state.numberarrayTYS}
+
+                            renderRow={(item) =>
+                                <ListItem >
+
+
+                                    <Text style={{
+                                        textAlign: "center",
+                                        fontSize: 20,
+                                        backgroundColor: item.colorr,
+                                        height: 35,
+                                        width: 45,
+                                        borderRadius: 50,
+                                        color: "white",
+                                        marginLeft: item.id2
+                                    }}>{item.key}</Text>
+                                    <Text style={{
+                                        textAlign: "center",
+                                        fontSize: 20,
+                                        backgroundColor: item.colorr,
+                                        height: 35,
+                                        width: 45,
+                                        borderRadius: 50,
+                                        color: "white",
+                                        marginLeft: item.id
+                                    }}>{item.key2}</Text>
+
+                                </ListItem>
+
+                            }>
+
+
+                        </List>
+
+                    </View>
+                </View>
+            </Content>
+            <Footer>
+                <Button info rounded onPress={(numberTYS) =>
+                    (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.one) }) : this.warn()} >
+                    <Icon type="MaterialIcons" name="filter-1" />
+                </Button>
+                <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.two) }) : this.warn()} >
+                    <Icon type="MaterialIcons" name="filter-2" />
+                </Button>
+                <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.three) }) : this.warn()} >
+                    <Icon type="MaterialIcons" name="filter-3" />
+                </Button>
+                <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.four) }) : this.warn()} >
+                    <Icon type="MaterialIcons" name="filter-4" />
+                </Button>
+                <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.five) }) : this.warn()} >
+                    <Icon type="MaterialIcons" name="filter-5" />
+                </Button>
+            </Footer>
+            <Footer>
+                <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.six) }) : this.warn()} >
+                    <Icon type="MaterialIcons" name="filter-6" />
+                </Button>
+                <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.seven) }) : this.warn()} >
+                    <Icon type="MaterialIcons" name="filter-7" />
+                </Button>
+                <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.eight) }) : this.warn()} >
+                    <Icon type="MaterialIcons" name="filter-8" />
+                </Button>
+                <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.nine) }) : this.warn()} >
+                    <Icon type="MaterialIcons" name="filter-9" />
+                </Button>
+                <Button info rounded onPress={(numberTYS) => (this.state.numberTYS.length < 4) ? this.setState({ numberTYS: (this.state.numberTYS + this.state.zero) }) : this.warn()} >
+                    <Icon type="MaterialIcons" name="exposure-zero" />
+                </Button>
+                <Button info rounded onPress={this.check} >
+                    <Text>KONTROL</Text>
+
+                </Button>
+            </Footer>
+        </Container >
+    );
+}
 
 }
 

@@ -56,7 +56,7 @@ export default class Pow_BasictabPage extends Component {
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate("Main_eight");
+        this.props.navigation.navigate("powers");
         return true;
     }
     warn() {
@@ -92,7 +92,7 @@ export default class Pow_BasictabPage extends Component {
         )
     }
     back = () => {
-        this.props.navigation.navigate("Classes");
+        this.props.navigation.navigate("powers");
     };
 }
 const styles = StyleSheet.create({

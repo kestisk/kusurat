@@ -56,7 +56,7 @@ export default class EbobTabPage extends Component {
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate("Main_eight");
+        this.props.navigation.navigate("ebob_ekokPages");
         return true;
     }
     warn() {
@@ -92,7 +92,7 @@ export default class EbobTabPage extends Component {
         )
     }
     back = () => {
-        this.props.navigation.navigate("Classes");
+        this.props.navigation.navigate("ebob_ekokPages");
     };
 }
 const styles = StyleSheet.create({

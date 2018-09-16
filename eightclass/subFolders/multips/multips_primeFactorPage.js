@@ -14,12 +14,12 @@ import {
     Content
 } from "native-base";
 import { Platform } from "react-native";
-import { BackHandler } from "react-native";
+
 import { StyleSheet } from "react-native";
 export default class Multips_primeFactorPage extends Component {
     constructor(props) {
         super(props);
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+
         this.state = {
             array: [""], number: "120",
             numberarr: [""],
@@ -38,16 +38,13 @@ export default class Multips_primeFactorPage extends Component {
         this.setState({ message: "", numberarr: [""], array: [""], number: "", numberarrshow: [""], arrayshow: [""] })
 
     }
-
     devided = () => {
         clearInterval(this.delayed1);
         clearTimeout(this.delayed2);
         if (this.state.number == "") {
             this.setState(() => ({ number: this.state.numberarr[1] }));
-
         }
         var num = this.state.number;
-
         i = 2
         while (num >= i) {
             if (num % i == 0) {
@@ -59,31 +56,23 @@ export default class Multips_primeFactorPage extends Component {
 
                 this.setState(this.state.arrayshow);
                 this.setState(this.state.numberarrshow);
-
-
             }
             else {
                 i++;
             }
-
         }
         this.settimem();
-
-
     }
     settimem() {
-
         i = 0;
         this.delayed1 = setInterval(function () {
 
             if (i < this.state.arrayshow.length) {
                 this.state.array.push(this.state.arrayshow[i]);
                 this.setState(this.state.array);
-
                 this.settimem2(i);
             }
             i++;
-
         }.bind(this), 1000);
     }
     settimem2(i) {
@@ -93,34 +82,7 @@ export default class Multips_primeFactorPage extends Component {
 
             this.state.numberarr.push(this.state.numberarrshow[i + 1]);
             this.setState(this.state.numberarr);
-
-
-
-
         }.bind(this), 0);
-
-
-
-
-    }
-
-    componentWillMount() {
-        BackHandler.addEventListener(
-            "hardwareBackPress",
-            this.handleBackButtonClick
-        );
-    }
-
-    componentWillUnmount() {
-        BackHandler.removeEventListener(
-            "hardwareBackPress",
-            this.handleBackButtonClick
-        );
-    }
-
-    handleBackButtonClick() {
-        this.props.navigation.navigate("Main_eight");
-        return true;
     }
 
     render() {
@@ -179,9 +141,6 @@ export default class Multips_primeFactorPage extends Component {
             </Container >
         );
     }
-    back = () => {
-        this.props.navigation.navigate("Main_eight");
-    };
 }
 const styles = StyleSheet.create({
     heade: {

@@ -56,7 +56,7 @@ export default class PrimeFactabPage extends Component {
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate("Main_eight");
+        this.props.navigation.navigate("MultipPages");
         return true;
     }
     warn() {
@@ -92,7 +92,7 @@ export default class PrimeFactabPage extends Component {
         )
     }
     back = () => {
-        this.props.navigation.navigate("Classes");
+        this.props.navigation.navigate("MultipPages");
     };
 }
 const styles = StyleSheet.create({

@@ -127,7 +127,7 @@ class Aniforrol extends Component {
       outputRange: [0, 50]
     });
     return (
-      <View style={{ marginTop: 100, alignItems: "center" }}>
+      <View style={{ marginTop: 1, alignItems: "center" }}>
         <View
           style={{
             flexDirection: "row"

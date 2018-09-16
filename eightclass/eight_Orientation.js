@@ -25,7 +25,7 @@ const eight_Ori = createSwitchNavigator({
   ebob_ekokPages: {
     screen: Ebob_ekokPage,
   },
-  multipPages: {
+  MultipPages: {
     screen: MultipPage,
   },
   primeFacPages: {

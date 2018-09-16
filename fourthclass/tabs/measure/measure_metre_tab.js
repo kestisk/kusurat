@@ -56,7 +56,7 @@ export default class Measure_metre_TabPage extends Component {
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate("MainFour_Orientation");
+        this.props.navigation.navigate("measurePages");
         return true;
     }
     warn() {
@@ -92,7 +92,7 @@ export default class Measure_metre_TabPage extends Component {
         )
     }
     back = () => {
-        this.props.navigation.navigate("Classes");
+        this.props.navigation.navigate("measurePages");
     };
 }
 const styles = StyleSheet.create({

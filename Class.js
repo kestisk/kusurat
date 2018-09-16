@@ -27,11 +27,6 @@ export default class Classes extends Component {
     return (
       <Container style={{ backgroundColor: "white", flex: 5 }}>
         <Header style={{ backgroundColor: "#62B1F6" }}>
-          <Left>
-            <Button transparent onPress={this.at}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
           <Body>
             <Title style={styles.heade}>KÜSUR-AT</Title>
           </Body>

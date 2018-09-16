@@ -3,28 +3,11 @@
 import React, { Component } from 'react';
 import { Container, Content, Button, Header, Left, Icon, Body, Title } from 'native-base';
 import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
-import { BackHandler } from 'react-native';
-
-
 export default class Four_decfrac_decFargRankingPage extends Component {
     constructor(props) {
-        super(props)
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-    }
+        super(props);
 
-    componentWillMount() {
-        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
     }
-
-    componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
-    }
-
-    handleBackButtonClick() {
-        this.props.navigation.navigate('decimalFracPages');
-        return true;
-    }
-
 
     render() {
         return (
