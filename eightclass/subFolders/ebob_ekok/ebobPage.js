@@ -34,20 +34,20 @@ export default class EbobPage extends Component {
             que1: "1.Sayı", que2: "", que3: "", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
-            ebobkac: "yok"
+            returnebob: "yok"
         }
     }
     warn = () => {
         this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
     }
     clean = () => {
-        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ebobkac: "yok", message: "", number1: [""], number2: [""], number3: [""], maxdoor: "2", doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
+        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], maxdoor: "2", doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
     }
     twoNum = () => {
-        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ebobkac: "yok", message: "", number1: [""], number2: [""], number3: [""], maxdoor: "2", doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
+        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], maxdoor: "2", doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
     }
     threeNum = () => {
-        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ebobkac: "yok", message: "", number1: [""], number2: [""], number3: [""], maxdoor: "3", doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
+        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], maxdoor: "3", doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
     }
     nextNum = () => {
         var doorctrl = this.state.door;
@@ -74,7 +74,7 @@ export default class EbobPage extends Component {
         var clearctrl = this.state.cleardoor;
         if (clearctrl) {
             this.setState({ cleardoor: false });
-            this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ebobkac: "yok", message: "", number1: [""], number2: [""], number3: [""], doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
+            this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
 
         }
         var doorctrl = this.state.door;
@@ -188,7 +188,7 @@ export default class EbobPage extends Component {
 
                     this.setState(this.state.rightarray);
                     tempebob *= i;
-                    this.setState({ ebobkac: tempebob });
+                    this.setState({ returnebob: tempebob });
                     num2 /= i;
                     num1 /= i;
                     this.state.number1.push({ no1: num1 });
@@ -279,7 +279,7 @@ export default class EbobPage extends Component {
                     if (ctrl3 == 0) {
                         this.state.rightarray.push({ rightNumber: i, key: "1" });
                         tempebob *= i;
-                        this.setState({ ebobkac: tempebob });
+                        this.setState({ returnebob: tempebob });
                         num3 /= i;
                     }
                     else
@@ -440,6 +440,7 @@ export default class EbobPage extends Component {
                                 }>
                             </List>
                         </View>
+                        <Text style={{ fontSize: 50, color: "purple", backgroundColor: "gray" }}>EBOB:{this.state.returnebob}</Text>
                     </View>
                 </Content>
                 <Footer>

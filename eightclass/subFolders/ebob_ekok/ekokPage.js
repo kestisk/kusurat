@@ -21,7 +21,7 @@ export default class EkokPage extends Component {
         super(props);
         this.state = {
             one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0",
-            message: "", ekokkac: 1,
+            message: "", returnekok: 1,
             tempnumber1: "", tempnumber2: "", tempnumber3: "",
             shownumber1: [""], shownumber2: [""], shownumber3: [""],
             shownumber1: [{ no1: "" }],
@@ -41,13 +41,13 @@ export default class EkokPage extends Component {
         this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
     }
     clean = () => {
-        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ekokkac: 1, message: "", number1: [""], number2: [""], number3: [""], maxdoor: "2", doorstate: "İkinci Sayıya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "" });
+        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnekok: 1, message: "", number1: [""], number2: [""], number3: [""], maxdoor: "2", doorstate: "İkinci Sayıya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "" });
     }
     twoNum = () => {
-        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ekokkac: 1, message: "", number1: [""], number2: [""], number3: [""], maxdoor: "2", doorstate: "İkinci Sayıya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
+        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnekok: 1, message: "", number1: [""], number2: [""], number3: [""], maxdoor: "2", doorstate: "İkinci Sayıya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
     }
     threeNum = () => {
-        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ekokkac: 1, message: "", number1: [""], number2: [""], number3: [""], maxdoor: "3", doorstate: "İkinci Sayıya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
+        this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnekok: 1, message: "", number1: [""], number2: [""], number3: [""], maxdoor: "3", doorstate: "İkinci Sayıya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
     }
     nextNum = () => {
 
@@ -75,7 +75,7 @@ export default class EkokPage extends Component {
         var clearctrl = this.state.cleardoor;
         if (clearctrl) {
             this.setState({ cleardoor: false });
-            this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ekokkac: 1, message: "", number1: [""], number2: [""], number3: [""], doorstate: "İkinci Sayıya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "" });
+            this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnekok: 1, message: "", number1: [""], number2: [""], number3: [""], doorstate: "İkinci Sayıya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "" });
         }
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
@@ -159,7 +159,7 @@ export default class EkokPage extends Component {
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
-            var tempekok = this.state.ekokkac;
+            var tempekok = this.state.returnekok;
             num1 = parseInt(num1, 10);
             num2 = parseInt(num2, 10);
             var max = (num1 > num2) ? (max = num1) : (max = num2);
@@ -173,7 +173,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ ekokkac: tempekok });
+                    this.setState({ returnekok: tempekok });
                     num1 /= i;
                     this.state.number1.push({ no1: num1 });
                     this.state.number2.push({ no1: num2 });
@@ -185,7 +185,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ ekokkac: tempekok });
+                    this.setState({ returnekok: tempekok });
                     num2 /= i;
                     this.state.number1.push({ no1: num1 });
                     this.state.number2.push({ no1: num2 });
@@ -197,7 +197,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "1" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ ekokkac: tempekok });
+                    this.setState({ returnekok: tempekok });
                     num2 /= i;
                     num1 /= i;
                     this.state.number1.push({ no1: num1 });
@@ -217,7 +217,7 @@ export default class EkokPage extends Component {
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
-            var tempekok = this.state.ekokkac;
+            var tempekok = this.state.returnekok;
             num1 = parseInt(num1, 10);
             num2 = parseInt(num2, 10);
             num3 = parseInt(num3, 10);
@@ -240,7 +240,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ ekokkac: tempekok });
+                    this.setState({ returnekok: tempekok });
                     num1 /= i;
                     if (ctrl3 == 0) {
                         num3 /= i;
@@ -257,7 +257,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ ekokkac: tempekok });
+                    this.setState({ returnekok: tempekok });
                     num2 /= i;
                     if (ctrl3 == 0) {
                         num3 /= i;
@@ -274,7 +274,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ ekokkac: tempekok });
+                    this.setState({ returnekok: tempekok });
                     num3 /= i;
                     this.state.number1.push({ no1: num1 });
                     this.state.number2.push({ no1: num2 });
@@ -288,7 +288,7 @@ export default class EkokPage extends Component {
 
 
                     tempekok *= i;
-                    this.setState({ ekokkac: tempekok });
+                    this.setState({ returnekok: tempekok });
                     num2 /= i;
                     num1 /= i;
                     if (ctrl3 == 0) {
@@ -458,6 +458,7 @@ export default class EkokPage extends Component {
                                 }>
                             </List>
                         </View>
+                        <Text style={{ fontSize: 50, color: "purple", backgroundColor: "gray" }}>EKOK: {this.state.returnekok}</Text>
                     </View>
                 </Content>
                 <Footer>
