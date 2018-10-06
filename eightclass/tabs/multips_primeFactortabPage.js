@@ -28,7 +28,7 @@ import {
     ScrollView
 } from "react-native";
 import { BackHandler } from "react-native";
-import Multips_primeFactorPage from "../subFolders/multips/multips_primeFactorPage";
+import { Multips_primeFactorPage, At } from "../subFolders/multips/multips_primeFactorPage";
 import Multips_primeFactorPageTYS from "../subFolders/multips/multips_primeFactorPageTYS";
 
 //import Icon from "react-native-vector-icons/dist/MaterialIcons";

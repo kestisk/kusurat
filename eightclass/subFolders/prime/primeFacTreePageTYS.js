@@ -12,7 +12,7 @@ import { BackHandler } from 'react-native';
 export default class PrimeFacTreePage extends Component {
     constructor(props) {
         super(props)
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+
         this.animasyonDegeri = new Animated.Value(0);
 
         this.state = {

@@ -41,11 +41,12 @@ export default class Pow_findpow extends Component {
     }
     findpow = () => {
         var num1 = this.state.tempnumber;
+        debugger;
         if (num1 != "") {
             clearInterval(this.at);
             clearTimeout(this.at2);
             this.setState({ clearctrl: true });
-            //this.setState({ tempnumber: "" });
+            this.setState({ tempnumber: "" });
 
             i = 2;
             count = 0;
