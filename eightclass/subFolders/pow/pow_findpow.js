@@ -89,11 +89,6 @@ export default class Pow_findpow extends Component {
     findpow = () => {
         this.setState({ showtempnumber: this.state.tempnumber, btnflag: true });
         var num1 = this.state.tempnumber;
-<<<<<<< HEAD
-        debugger;
-=======
-
->>>>>>> refs/remotes/origin/kusurat
         if (num1 != "") {
             clearInterval(this.delay);
             clearTimeout(this.delay2);
