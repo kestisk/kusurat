@@ -1,8 +1,8 @@
 
 
 import React, { Component } from 'react';
-import { Container, Content, Button, Header, Left, Icon, Body, Title, Footer } from 'native-base';
-import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView, FlatList } from 'react-native';
+import { Container, Content, Button, Header, Left, Icon, Body, Title, Footer, Text } from 'native-base';
+import { Platform, StyleSheet, View, Alert, Image, ScrollView, FlatList } from 'react-native';
 export default class Pow_showdecimal extends Component {
     constructor(props) {
         super(props)
