@@ -51,6 +51,15 @@ export default class Eight extends Component {
         <Button
           style={{ marginTop: 15 }}
           info
+          block
+          rounded
+          onPress={this.rollingNumber}
+        >
+          <Text style={styles.buttontext}>Sayı Yuvarlama</Text>
+        </Button>
+        <Button
+          style={{ marginTop: 15 }}
+          info
           rounded
           block
           onPress={this.multips}>
@@ -86,6 +95,9 @@ export default class Eight extends Component {
   };
   multips = () => {
     this.props.navigation.navigate("MultipPages");
+  };
+  rollingNumber = () => {
+    this.props.navigation.navigate("rollingNumberPages");
   };
 }
 const styles = StyleSheet.create({

@@ -22,6 +22,9 @@ import Anime from "./Ani";
 export default class Classes extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      disablebtnflag: true
+    }
   }
   render() {
     return (
@@ -38,6 +41,7 @@ export default class Classes extends Component {
             block
             rounded
             onPress={this.git4}
+            disabled={this.state.disablebtnflag}
           >
             <Text style={styles.heade}>4.SINIF</Text>
           </Button>
@@ -47,6 +51,7 @@ export default class Classes extends Component {
             block
             rounded
             onPress={this.git5}
+            disabled={this.state.disablebtnflag}
           >
             <Text style={styles.heade}>5.SINIF</Text>
           </Button>
@@ -56,6 +61,7 @@ export default class Classes extends Component {
             block
             rounded
             onPress={this.git6}
+            disabled={this.state.disablebtnflag}
           >
             <Text style={styles.heade}>6.SINIF</Text>
           </Button>
@@ -65,6 +71,7 @@ export default class Classes extends Component {
             block
             rounded
             onPress={this.git7}
+            disabled={this.state.disablebtnflag}
           >
             <Text style={styles.heade}>7.SINIF</Text>
           </Button>

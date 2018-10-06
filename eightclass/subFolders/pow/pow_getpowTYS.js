@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { Container, Content, Button, Header, Left, Icon, Body, Title } from 'native-base';
 import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
-
+import At from './pow_basic3';
 
 
 export default class Pow_getpowTYS extends Component {
@@ -17,7 +17,7 @@ export default class Pow_getpowTYS extends Component {
         return (
             <Container>
                 <Content style={{ padding: 10, }}>
-                    <Button style={{ marginTop: 15 }} info block rounded onPress={this.isProb}><Text style={styles.buttontext}>Boş</Text></Button>
+                    <At></At>
                 </Content>
 
             </Container>

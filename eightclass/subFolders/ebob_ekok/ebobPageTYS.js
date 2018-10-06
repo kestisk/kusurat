@@ -20,7 +20,11 @@ export default class EbobPageTYS extends Component {
             number1TYS: "", number2TYS: "", number3TYS: "",
             aChoise: "A", leng: "10", bChoise: "B", cChoise: "C", dChoise: "D", rand: "125", ind: "0",
             doorTYS: "2",
-            truecount: 0, falsecount: 0, questioncount: 0
+            truecount: 0, wholefalsecount: 0, falsecount: 0, questioncount: 0,
+            falseflag: false,
+            iconname1: "check", iconname2: null,
+            twonumBColor: "red", threenumBColor: "gray"
+
         };
         this.generateNum = this.generateNum.bind(this);
     }
@@ -133,17 +137,19 @@ export default class EbobPageTYS extends Component {
     control = (t) => {
         var tcount = parseInt(this.state.truecount, 10);
         var fcount = parseInt(this.state.falsecount, 10);
-
+        var wfcount = parseInt(this.state.wholefalsecount, 10);
         if (this.state.ind == t) {
             tcount++;
-            this.setState({ truecount: tcount });
+            this.setState({ truecount: tcount, falseflag: false });
             this.state.colorboxs[t - 1] = "rgb(34, 139, 34)";
             this.setState(this.state.colorboxs);
-            this.generateNum();
+
         }
         else {
-            fcount++;
-            this.setState({ falsecount: fcount });
+            wfcount++;
+            if (!this.state.falseflag)
+                this.setState({ falsecount: (fcount + 1), falseflag: true });
+            this.setState({ wholefalsecount: wfcount });
             this.state.colorboxs[t - 1] = "red";
             this.setState(this.state.colorboxs);
         }
@@ -153,18 +159,22 @@ export default class EbobPageTYS extends Component {
         this.setState({
             doorTYS: "2",
             colorboxs: ["blue", "blue", "blue", "blue",],
+            twonumBColor: "red", threenumBColor: "gray",
             aa: "0", b: "1", c: "2", d: "3",
             aChoise: "A", leng: "10", bChoise: "B", cChoise: "C", dChoise: "D", rand: "125", ind: "0",
-            number1TYS: "", number2TYS: "", number3TYS: ""
+            number1TYS: "", number2TYS: "", number3TYS: "",
+            iconname1: "check", iconname2: null,
         });
     }
     threeNum = () => {
         this.setState({
             doorTYS: "3",
             colorboxs: ["blue", "blue", "blue", "blue",],
+            twonumBColor: "gray", threenumBColor: "red",
             aa: "0", b: "1", c: "2", d: "3",
             aChoise: "A", leng: "10", bChoise: "B", cChoise: "C", dChoise: "D", rand: "125", ind: "0",
-            number1TYS: "", number2TYS: "", number3TYS: ""
+            number1TYS: "", number2TYS: "", number3TYS: "",
+            iconname2: "check", iconname1: null,
         });
     }
     render() {
@@ -178,11 +188,17 @@ export default class EbobPageTYS extends Component {
                         </View>
                         <View style={{ flexDirection: "column", marginLeft: 10 }}>
                             <View style={{ flexDirection: "row" }}>
-                                <Button onPress={this.twoNum} style={styles.buttonstyle} prime ><Text style={{ color: "white", fontSize: 15 }}> İki Sayının Ebobu </Text></Button>
-                                <Button onPress={this.threeNum} style={styles.buttonstyle} prime ><Text style={{ color: "white", fontSize: 15 }}> Üç Sayının Ebobu </Text></Button>
-                                <Button onPress={this.generateNum} style={styles.buttonstyle} prime ><Text style={{ color: "white", fontSize: 17 }}> Sayı Üret </Text></Button>
-
+                                <Button onPress={this.twoNum} style={{ marginTop: 5, backgroundColor: this.state.twonumBColor }} prime >
+                                    <Icon type="FontAwesome" name={this.state.iconname1} />
+                                    <Text style={{ color: "white", fontSize: 15 }}> İki Sayının Ebobu </Text>
+                                </Button>
+                                <Button onPress={this.threeNum} style={{ marginTop: 5, backgroundColor: this.state.threenumBColor }} prime >
+                                    <Icon type="FontAwesome" name={this.state.iconname2} />
+                                    <Text style={{ color: "white", fontSize: 15 }}> Üç Sayının Ebobu </Text>
+                                </Button>
                             </View>
+                            <Button onPress={this.generateNum} style={styles.buttonstyle} prime ><Text style={{ color: "white", fontSize: 17 }}> Sayı Üret </Text></Button>
+
                             <View style={{ flexDirection: "row", marginLeft: 10, marginTop: 50 }}>
                                 <Text style={{ color: "red", fontSize: 40, fontFamily: "bold", textAlign: "center", marginLeft: 35, color: "blue" }}>{this.state.number1TYS}</Text>
                                 <Text style={{ color: "red", fontSize: 40, fontFamily: "bold", textAlign: "center", marginLeft: 35, color: "green" }}>{this.state.number2TYS}</Text>
