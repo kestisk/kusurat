@@ -2,11 +2,12 @@
 
 import React, { Component } from 'react';
 import { Container, Content, Button, Header, Left, Icon, Body, Title, Footer, List, ListItem } from 'native-base';
-import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
+import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView, FlatList } from 'react-native';
 export default class Pow_findpow extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showtempnumber: "",
             tempnumber: "",
             leftNumberArray: [""],
             rightNumberArray: [""],
@@ -14,37 +15,88 @@ export default class Pow_findpow extends Component {
             showrightNumberArray: [""],
             storePow: [{ storenumber: "", x: "", key: "" }],
             clearctrl: false,
+            storePow2: [],
+            btnflag: false
         };
 
     }
     warn = () => {
         this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
     }
+    warn2 = () => {
+        this.setState({ message: "Lütfen Sayı Girin" });
+    }
+    cleanOnePart = () => {
+        this.setState({
+            tempnumber: "", message: "", btnflag: false,
+            showtempnumber: "",
+            leftNumberArray: [""],
+            rightNumberArray: [""],
+            showleftNumberArray: [""],
+            showrightNumberArray: [""],
+            storePow: [{ storenumber: "", x: "", key: "" }],
+            storePow2: [],
+        });
+    }
     write = (param) => {
         var cleardoor = this.state.clearctrl;
         if (cleardoor) {
-            this.setState({ clearctrl: false, message: "", leftNumberArray: [""], rightNumberArray: [""], showleftNumberArray: [""], showrightNumberArray: [""], storePow: [{ storenumber: "", x: "", key: "" }], });
+            this.setState({ showtempnumber: "", clearctrl: false, leftNumberArray: [""], rightNumberArray: [""], showleftNumberArray: [""], showrightNumberArray: [""], storePow: [{ storenumber: "", x: "", key: "" }], });
         }
         var num1 = this.state.tempnumber;
 
         if (num1.length < 4) {
             num1 = num1 + param;
-            this.setState({ tempnumber: num1 });
+            this.setState({ tempnumber: num1, message: "" });
         }
         else {
             this.warn();
         }
     }
     clean = () => {
-        this.setState({ message: "", leftNumberArray: [""], rightNumberArray: [""], showleftNumberArray: [""], showrightNumberArray: [""], storePow: [{ storenumber: "", x: "", key: "" }], });
-
+        this.setState({
+            showtempnumber: "",
+            tempnumber: "",
+            leftNumberArray: [""],
+            rightNumberArray: [""],
+            showleftNumberArray: [""],
+            showrightNumberArray: [""],
+            storePow: [{ storenumber: "", x: "", key: "" }],
+            clearctrl: false,
+            storePow2: [],
+            btnflag: true
+        });
+    }
+    callCheckAgain = () => {
+        this.checkAgain();
+    }
+    async checkAgain() {
+        if (this.state.showtempnumber != "") {
+            await this.setState({
+                showleftNumberArray: [""],
+                showrightNumberArray: [""],
+                storePow: [{ storenumber: "", x: "", key: "" }],
+                tempnumber: this.state.showtempnumber,
+                leftNumberArray: [""],
+                rightNumberArray: [""],
+                storePow2: [],
+            });
+            this.findpow();
+        }
+        else
+            this.findpow();
     }
     findpow = () => {
+        this.setState({ showtempnumber: this.state.tempnumber, btnflag: true });
         var num1 = this.state.tempnumber;
+<<<<<<< HEAD
         debugger;
+=======
+
+>>>>>>> refs/remotes/origin/kusurat
         if (num1 != "") {
-            clearInterval(this.at);
-            clearTimeout(this.at2);
+            clearInterval(this.delay);
+            clearTimeout(this.delay2);
             this.setState({ clearctrl: true });
             this.setState({ tempnumber: "" });
 
@@ -65,70 +117,100 @@ export default class Pow_findpow extends Component {
                     i++;
                 }
             }
-
+            this.settimem();
         }
         else {
-            this.warn();
+
+            this.warn2();
+            this.clean();
         }
         count = 1;
-        for (a = 0; a < this.state.rightNumberArray.length; a += 1) {
+        for (a = 0; a < this.state.rightNumberArray.length; a++) {
 
             if (this.state.rightNumberArray[a] != "" && this.state.rightNumberArray[a] != "\n") {
                 if (this.state.rightNumberArray[a] == this.state.rightNumberArray[a + 2]) {
                     count++;
                 }
                 else {
-                    this.state.storePow.push(({ storenumber: this.state.rightNumberArray[a], x: "x", key: count }));
+                    at = count.toString();
+                    if ((a + 2) == this.state.rightNumberArray.length)
+                        this.state.storePow.push(({ storenumber: this.state.rightNumberArray[a], x: "", key: at }));
+                    else {
+                        this.state.storePow.push(({ storenumber: this.state.rightNumberArray[a], x: "x", key: at }));
+                    }
                     this.setState(this.state.storePow);
+                    var arr = [];
+                    this.state.storePow.map(obj => {
+
+                        arr.push(this.state.storePow.indexOf(obj));
+
+                    });
+
+                    this.setState({
+                        storePow2: arr
+                    });
                     ind++;
                     count = 1;
                 }
             }
-
         }
-        this.settimem();
+
     }
     settimem() {
         i = 0;
-        this.at = setInterval(function () {
+        this.delay = setInterval(function () {
             if (i < this.state.leftNumberArray.length) {
                 this.state.showleftNumberArray.push(this.state.leftNumberArray[i]);
                 this.setState(this.state.showleftNumberArray);
                 this.settimem2(i);
             }
+            else {
+                this.setState({ btnflag: false });
+            }
             i++;
         }.bind(this), 600);
     }
     settimem2(i) {
-        this.at2 = setTimeout(function () {
+        this.delay2 = setTimeout(function () {
             this.state.showrightNumberArray.push(this.state.rightNumberArray[i + 1]);
             this.setState(this.state.showrightNumberArray);
         }.bind(this), 0);
     }
-
+    componentWillUnmount() {
+        clearInterval(this.delay);
+        clearTimeout(this.delay2);
+    }
     render() {
         return (
             <Container>
                 <Content>
                     <Text>{this.state.message}</Text>
                     <View style={{ flexDirection: "row" }}>
-                        <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20 }}>{this.state.tempnumber}{this.state.showleftNumberArray}</Text>
+                        <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20 }}>{this.state.tempnumber}{this.state.showtempnumber}{this.state.showleftNumberArray}</Text>
                         <Text style={{ marginTop: 20, backgroundColor: "red", height: 450, width: 5 }}></Text>
                         <Text style={{ marginTop: 20, fontSize: 30 }}>{this.state.showrightNumberArray}</Text>
-                        <Button onPress={this.findpow} style={{ marginTop: 50, marginLeft: 150 }}><Text style={{ fontSize: 20 }}>Kuvvetini Bul</Text></Button>
+                        <Button onPress={this.callCheckAgain} disabled={this.state.btnflag} style={{ marginTop: 50, marginLeft: 150 }}><Text style={{ fontSize: 20 }}>Kuvvetini Bul</Text></Button>
 
                     </View>
-                    <View style={{ flexDirection: "row" }}>
-                        <List dataArray={this.state.storePow}
-                            renderRow={(item) =>
-                                <ListItem style={{ borderColor: "white" }}>
-                                    <Text style={{ color: "black", fontSize: 30 }}>{item.storenumber}-</Text>
-                                    <Text style={{ color: "black", fontSize: 30 }}>{item.key}</Text>
-                                    <Text style={{ color: "black", fontSize: 30 }}>  {item.x}</Text>
+                    <View>
+                        <FlatList horizontal={true}
+                            data={this.state.storePow}
+                            renderItem={({ item }) => {
 
-                                </ListItem>
-                            }>
-                        </List>
+                                return (
+
+                                    <View style={{ flexDirection: "row" }}>
+
+                                        <Text style={{ fontSize: 30 }}>{item.storenumber}</Text>
+                                        <Text style={{ fontSize: 20, marginBottom: 20 }}>{item.key}</Text>
+                                        <Text style={{ fontSize: 30 }}>{item.x}</Text>
+                                    </View>
+                                );
+
+                            }}
+                            // keyExtractor={item => item.key}
+                            at={this.state.storePow2}
+                        />
                     </View>
                 </Content>
                 <Footer>
@@ -146,6 +228,9 @@ export default class Pow_findpow extends Component {
                     </Button>
                     <Button info rounded onPress={() => { this.write(5) }} >
                         <Icon type="MaterialIcons" name="filter-5" />
+                    </Button>
+                    <Button info rounded onPress={this.cleanOnePart} >
+                        <Text style={{ color: "white", fontSize: 15 }}>Sil</Text>
                     </Button>
                 </Footer>
                 <Footer>
@@ -165,7 +250,7 @@ export default class Pow_findpow extends Component {
                         <Icon type="MaterialIcons" name="exposure-zero" />
                     </Button>
                     <Button info rounded onPress={this.clean} >
-                        <Icon type="MaterialIcons" name="keyboard-arrow-left" />
+                        <Text style={{ color: "white", fontSize: 10 }}>Sıfırla</Text>
                     </Button>
                 </Footer>
 

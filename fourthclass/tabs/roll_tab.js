@@ -57,7 +57,8 @@ export default class Roll_TabPage extends Component {
     }
 
     handleBackButtonClick() {
-        this.props.navigation.navigate("MainFour_Orientation");
+        //  this.props.navigation.navigate("MainFour_Orientation");
+        this.props.navigation.navigate("Main_eight");
         return true;
     }
     warn() {
@@ -89,7 +90,8 @@ export default class Roll_TabPage extends Component {
         )
     }
     back = () => {
-        this.props.navigation.navigate("MainFour_Orientation");
+        //this.props.navigation.navigate("MainFour_Orientation");
+        this.props.navigation.navigate("Main_eight");
     };
 }
 const styles = StyleSheet.create({
