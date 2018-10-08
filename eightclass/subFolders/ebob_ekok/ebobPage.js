@@ -37,8 +37,8 @@ export default class EbobPage extends Component {
             returnebob: "yok",
             backUpflag: false,
             btnflag: true,
-            twonumBColor: "red", threenumBColor: "gray",
-            iconname1: "check", iconname2: null
+            twonumBColor: "gray", threenumBColor: "gray", firstnumBColor: "gray",
+            iconname: null, iconname2: null, iconname1: null
         }
     }
     warn = () => {
@@ -57,89 +57,88 @@ export default class EbobPage extends Component {
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
             backColorT1: "green", backColorT2: "white", backColorT3: "white",
-            door: "1", maxdoor: "2", doorstate: "Ikinci Sayiya Geç",
+            door: "1", maxdoor: "2",
             que1: "1.Sayı", que2: "", que3: "", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             returnebob: "yok",
             backUpflag: false,
             btnflag: true,
-            twonumBColor: "red", threenumBColor: "gray",
-            iconname1: "check", iconname2: null
+            twonumBColor: "gray", threenumBColor: "gray", firstnumBColor: "gray",
+            iconname: null, iconname2: null, iconname1: null
+        });
+    }
+    checkNumberButtonState = () => {
+        if (this.state.tempnumber1 != "")
+            this.setState({ firstnumBColor: "red", iconname: "check", btnflag: false });
+        else
+            this.setState({ firstnumBColor: "gray", iconname: null, btnflag: true });
+        if (this.state.tempnumber3 != "")
+            this.setState({ threenumBColor: "red", iconname2: "check", btnflag: false });
+        else
+            this.setState({ threenumBColor: "gray", iconname2: null, btnflag: true });
+        if (this.state.tempnumber2 != "")
+            this.setState({ twonumBColor: "red", iconname1: "check", btnflag: false });
+        else
+            this.setState({ twonumBColor: "gray", iconname1: null, btnflag: true });
+    }
+    firstNum = () => {
+        this.checkNumberButtonState();
+        this.setState({
+            maxdoor: "2", door: "1",
+            backUpflag: false,
+            showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
+            que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white",
+            returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
+
         });
     }
     twoNum = () => {
-        this.clean();
-        this.setState({ iconname1: "check", iconname2: null, twonumBColor: "red", threenumBColor: "gray", backUpflag: false, showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], maxdoor: "2", doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
+        this.checkNumberButtonState();
+        this.setState({
+            maxdoor: "2", door: "2",
+            backUpflag: false,
+            showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
+            que1: "", que2: "2.Sayı", que3: "", backColorT1: "white", backColorT2: "green", backColorT3: "white",
+            returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
+
+        });
     }
     threeNum = () => {
-        this.clean();
-        this.setState({ iconname2: "check", iconname1: null, twonumBColor: "gray", threenumBColor: "red", backUpflag: false, showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], maxdoor: "3", doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
-    }
-    nextNum = () => {
-        var doorctrl = this.state.door;
-        var maxdoorctrl = this.state.maxdoor;
-        if (maxdoorctrl == 2) {
-            var clearctrl = this.state.cleardoor;
-            if (clearctrl) {
-                this.setState({ cleardoor: false });
-                this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], ebobkac: "", que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ebobkac: "yok", message: "", number1: [""], number2: [""], number3: [""], doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
-                this.setState({ que2: "", que1: "1.Sayı", que3: "", door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "green", backColorT2: "white", backColorT3: "white" });
-
-            }
-            else {
-                if (doorctrl == "1")
-                    this.setState({ que1: "", que2: "2.Sayı", que3: "", door: "2", doorstate: "Birinci Sayiya Geç", backColorT2: "green", backColorT1: "white", backColorT3: "white" });
-                else {
-                    this.setState({ que2: "", que1: "1.Sayı", que3: "", door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "green", backColorT2: "white", backColorT3: "white" });
-                }
-            }
-        }
-        else if (maxdoorctrl == 3) {
-            var clearctrl = this.state.cleardoor;
-            if (clearctrl) {
-                this.setState({ cleardoor: false });
-                this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], ebobkac: "", que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ebobkac: "yok", message: "", number1: [""], number2: [""], number3: [""], doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
-                this.setState({ que2: "", que1: "1.Sayı", que3: "", door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "green", backColorT2: "white", backColorT3: "white" });
-
-            }
-            else {
-                if (doorctrl == "1")
-                    this.setState({ que1: "", que2: "2.Sayı", que3: "", door: "2", doorstate: "Üçüncü Sayiya Geç", backColorT2: "green", backColorT1: "white", backColorT3: "white" });
-                else if (doorctrl == "2") {
-                    this.setState({ que2: "", que3: "3.Sayı", que1: "", door: "3", doorstate: "Birinci Sayiya Geç", backColorT3: "green", backColorT2: "white", backColorT1: "white" });
-                }
-                else {
-                    this.setState({ que2: "", que1: "1.Sayı", que3: "", door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "green", backColorT2: "white", backColorT3: "white" });
-                }
-            }
-
-        }
+        ""
+        this.checkNumberButtonState();
+        this.setState({
+            maxdoor: "3", door: "3",
+            backUpflag: false,
+            showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
+            que1: "", que2: "", que3: "3.Sayı", backColorT1: "white", backColorT2: "white", backColorT3: "green",
+            returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
+        });
     }
     cleanOnePart = () => {
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
         if (maxdoorctrl == "2") {
             if (doorctrl == "1") {
-                this.setState({ tempnumber1: "", message: "", btnflag: true });
+                this.setState({ iconname: null, firstnumBColor: "gray", tempnumber1: "", message: "", btnflag: true });
                 this.setState(this.state.number1);
             }
             else if (doorctrl == "2") {
-                this.setState({ tempnumber2: "", message: "", btnflag: true });
+                this.setState({ iconname1: null, twonumBColor: "gray", tempnumber2: "", message: "", btnflag: true });
                 this.setState(this.state.number2);
             }
         }
         if (maxdoorctrl == "3") {
             if (doorctrl == "1") {
-                this.setState({ tempnumber1: "", message: "", btnflag: true });
+                this.setState({ iconname: null, firstnumBColor: "gray", tempnumber1: "", message: "", btnflag: true });
                 this.setState(this.state.number1);
             }
             else if (doorctrl == "2") {
-                this.setState({ tempnumber2: "", message: "", btnflag: true });
+                this.setState({ iconname1: null, twonumBColor: "gray", tempnumber2: "", message: "", btnflag: true });
                 this.setState(this.state.number2);
             }
             else if (doorctrl == "3") {
-                this.setState({ tempnumber3: "", message: "", btnflag: true });
+                this.setState({ iconname2: null, threenumBColor: "gray", tempnumber3: "", message: "", btnflag: true });
                 this.setState(this.state.number3);
             }
         }
@@ -148,7 +147,7 @@ export default class EbobPage extends Component {
         var clearctrl = this.state.cleardoor;
         if (clearctrl) {
             this.setState({ cleardoor: false, btnflag: true });
-            this.setState(() => ({ backUpflag: false, showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", }));
+            this.setState(() => ({ backUpflag: false, showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", }));
         }
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
@@ -266,11 +265,14 @@ export default class EbobPage extends Component {
         var num3 = this.state.tempnumber3;
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
-
+        if (this.state.tempnumber3 != "")
+            this.setState({ threenumBColor: "red", iconname2: "check" });
+        else
+            this.setState({ threenumBColor: "gray", iconname2: null });
         if (maxdoorctrl == "2" && num1 != "" && num2 != "") {
             clearInterval(this.delay2);
             clearTimeout(this.delay);
-            this.setState({ backUpflag: true, cleardoor: true, que1: "", que2: "", que3: "", door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "green", backColorT2: "white", backColorT3: "white", message: "" });
+            this.setState({ backUpflag: true, cleardoor: true, que1: "", que2: "", que3: "", door: "1", backColorT1: "green", backColorT2: "white", backColorT3: "white", message: "" });
             this.state.number1.push({ no1: num1 });
             this.state.number2.push({ no1: num2 });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
@@ -324,7 +326,7 @@ export default class EbobPage extends Component {
         else if (maxdoorctrl == "3" && num1 != "" && num2 != "" && num3 != "") {
             clearInterval(this.delay12);
             clearTimeout(this.delay22);
-            this.setState({ backUpflag: true, message: "", cleardoor: true, que1: "", que2: "", que3: "", door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "green", backColorT2: "white", backColorT3: "white" });
+            this.setState({ backUpflag: true, message: "", cleardoor: true, que1: "", que2: "", que3: "", door: "1", backColorT1: "green", backColorT2: "white", backColorT3: "white" });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
@@ -521,17 +523,19 @@ export default class EbobPage extends Component {
                     <View style={{ flexDirection: "column" }}>
                         <View style={{ flexDirection: "row" }}>
                             <Button disabled={this.state.btnflag} onPress={this.backup} style={{ marginTop: 5 }}><Text style={{ fontSize: 10 }}>Cevabı Gör</Text></Button>
-                            <Button onPress={this.nextNum} style={{ marginTop: 5 }}><Text style={{ fontSize: 10 }}>{this.state.doorstate}</Text></Button>
-
+                            <Button onPress={this.firstNum} style={{ marginTop: 5, backgroundColor: this.state.firstnumBColor }}>
+                                <Icon type="FontAwesome" name={this.state.iconname} />
+                                <Text style={{ fontSize: 10 }}>Birinci Sayıyı Gir</Text>
+                            </Button>
                         </View>
                         <View style={{ flexDirection: "row" }}>
                             <Button onPress={this.twoNum} style={{ marginTop: 5, backgroundColor: this.state.twonumBColor }}>
                                 <Icon type="FontAwesome" name={this.state.iconname1} />
-                                <Text style={{ fontSize: 10 }}>Iki Sayi Gir</Text>
+                                <Text style={{ fontSize: 10 }}>Ikinci Sayıyı Gir</Text>
                             </Button>
                             <Button onPress={this.threeNum} style={{ marginTop: 5, backgroundColor: this.state.threenumBColor }}>
                                 <Icon type="FontAwesome" name={this.state.iconname2} />
-                                <Text style={{ fontSize: 10 }}>Üç Sayi Gir</Text>
+                                <Text style={{ fontSize: 10 }}>Üçüncü Sayıyı Gir</Text>
                             </Button>
                         </View>
                         <View style={{ flexDirection: "row" }}>
