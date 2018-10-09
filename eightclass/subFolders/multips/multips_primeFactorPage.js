@@ -22,7 +22,6 @@ import { Platform, FlatList, ImageBackground } from "react-native";
 import { StyleSheet } from "react-native";
 
 export class Multips_primeFactorPage extends Component {
-
     constructor(props) {
         super(props);
 
@@ -193,8 +192,6 @@ export class Multips_primeFactorPage extends Component {
         }.bind(this), 0);
 
     }
-
-
     render() {
         return (
             <Container>
