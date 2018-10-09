@@ -149,6 +149,7 @@ export default class PrimeFacTreePage extends Component {
           } */
         this.settimem();
     }
+
     settimem() {
 
         i = 1;
@@ -173,8 +174,11 @@ export default class PrimeFacTreePage extends Component {
             outputRange: [0, 70]
         });
         return (
+
             <Container>
+
                 <Content>
+
                     <View style={{ flexDirection: "column" }}>
                         <View style={{ flexDirection: "row" }}>
                             <Animated.View
@@ -185,7 +189,7 @@ export default class PrimeFacTreePage extends Component {
                             >
                                 <Text
 
-                                    style={{ position: "relative", fontSize: 30, marginLeft: 100, color: "black" }}
+                                    style={{ position: "relative", fontSize: 30, marginLeft: 100, color: "white" }}
                                 >
                                     {this.state.number}
                                 </Text>
@@ -232,46 +236,50 @@ export default class PrimeFacTreePage extends Component {
                         </View>
                     </View>
                 </Content>
-                <Footer>
-                    <Button info rounded onPress={(number) =>
-                        (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.one) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-1" />
-                    </Button>
-                    <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.two) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-2" />
-                    </Button>
-                    <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.three) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-3" />
-                    </Button>
-                    <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.four) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-4" />
-                    </Button>
-                    <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.five) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-5" />
-                    </Button>
-                </Footer>
-                <Footer>
-                    <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.six) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-6" />
-                    </Button>
-                    <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.seven) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-7" />
-                    </Button>
-                    <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.eight) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-8" />
-                    </Button>
-                    <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.nine) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="filter-9" />
-                    </Button>
-                    <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.zero) }) : this.warn()} >
-                        <Icon type="MaterialIcons" name="exposure-zero" />
-                    </Button>
-                    <Button info rounded onPress={this.clean} >
+                <Footer style={{ backgroundColor: null }}>
 
-                        <Icon type="MaterialIcons" name="keyboard-arrow-left" />
+                    <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(1) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>1</Text>
                     </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(2) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>2</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(3) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>3</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(4) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>4</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(5) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>5</Text>
+                    </Button>
+
                 </Footer>
+                <Footer style={{ backgroundColor: null }}>
+                    <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(6) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>6</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(7) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>7</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(8) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>8</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(9) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>9</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(0) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>0</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={this.clean} >
+
+                        <Text style={{ color: "#8ea3e2", fontSize: 20 }}>SİL</Text>
+                    </Button>
+
+                </Footer>
+
             </Container >
+
         );
     }
 
