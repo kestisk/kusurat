@@ -11,9 +11,13 @@ import {
     Icon,
     View,
     Footer,
-    Content
+    Content,
+    Card,
+    CardItem,
+    FooterTab
+
 } from "native-base";
-import { Platform, FlatList } from "react-native";
+import { Platform, FlatList, ImageBackground } from "react-native";
 
 import { StyleSheet } from "react-native";
 
@@ -194,80 +198,99 @@ export class Multips_primeFactorPage extends Component {
     render() {
         return (
             <Container>
-                <Content>
+                <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
 
-                    <Text>{this.state.message}</Text>
-                    <View style={{ flexDirection: "row" }}>
-                        <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20 }}>{this.state.number}{this.state.numberarr}</Text>
-                        <Text style={{ marginTop: 20, backgroundColor: "red", height: 450, width: 5 }}></Text>
-                        <Text style={{ marginTop: 20, fontSize: 30 }}>{this.state.array}</Text>
-                        <View style={{ flexDirection: "column", marginLeft: 150 }}>
-                            <Button disabled={this.state.disable} onPress={this.direct} style={{ marginTop: 50 }}><Text style={{ fontSize: 30 }}>AYIR</Text></Button>
-                            <View>
-                                <FlatList horizontal={true}
-                                    data={this.state.storePow}
-                                    renderItem={({ item }) => {
 
-                                        return (
+                    <Content >
 
-                                            <View style={{ flexDirection: "row" }}>
+                        <Text>{this.state.message}</Text>
+                        <View style={{ flexDirection: "column" }}>
 
-                                                <Text style={{ fontSize: 30 }}>{item.storenumber}</Text>
-                                                <Text style={{ fontSize: 20, marginBottom: 20 }}>{item.key}</Text>
-                                                <Text style={{ fontSize: 30 }}>{item.x}</Text>
-                                            </View>
-                                        );
+                            <View style={{ flexDirection: "row" }}>
+                                <Text style={{ fontSize: 30, marginLeft: 50, color: "white", textShadowColor: "black", textShadowOffset: { width: -3, height: 5 }, }}>{this.state.number}</Text>
+                                <Button rounded disabled={this.state.disable} onPress={this.direct}><Text style={{ fontSize: 50 }}>=</Text></Button>
+                                <View>
+                                    <FlatList horizontal={true}
+                                        data={this.state.storePow}
+                                        renderItem={({ item }) => {
 
-                                    }}
-                                    // keyExtractor={item => item.key}
-                                    at={this.state.storePow2}
-                                />
+                                            return (
 
+                                                <View style={{ flexDirection: "row" }}>
+
+                                                    <Text style={{ fontSize: 30, color: "white", textShadowColor: "black", textShadowOffset: { width: -3, height: 5 } }}>{item.storenumber}</Text>
+                                                    <Text style={{ fontSize: 20, marginBottom: 20, color: "white", textShadowColor: "black", textShadowOffset: { width: -3, height: 5 } }}>{item.key}</Text>
+                                                    <Text style={{ fontSize: 30, color: "white", textShadowColor: "black", textShadowOffset: { width: -3, height: 5 } }}>{item.x}</Text>
+                                                </View>
+                                            );
+
+                                        }}
+                                        // keyExtractor={item => item.key}
+                                        at={this.state.storePow2}
+                                    />
+
+                                </View>
                             </View>
-
+                            <Card style={{ marginLeft: 10, marginRight: 10 }}>
+                                <CardItem>
+                                    <Body>
+                                        <Text>{this.state.message}</Text>
+                                        <View style={{ flexDirection: "row" }}>
+                                            <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20 }}>{this.state.number}{this.state.numberarr}</Text>
+                                            <Text style={{ marginTop: 20, backgroundColor: "red", height: 450, width: 5 }}></Text>
+                                            <Text style={{ marginTop: 20, fontSize: 30 }}>{this.state.array}</Text>
+                                        </View>
+                                    </Body>
+                                </CardItem>
+                            </Card>
                         </View>
-                    </View>
 
-                </Content>
-                <Footer>
-                    <Button info rounded onPress={() => { this.keybort(1) }} >
-                        <Icon type="MaterialIcons" name="filter-1" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(2) }} >
-                        <Icon type="MaterialIcons" name="filter-2" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(3) }} >
-                        <Icon type="MaterialIcons" name="filter-3" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(4) }} >
-                        <Icon type="MaterialIcons" name="filter-4" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(5) }} >
-                        <Icon type="MaterialIcons" name="filter-5" />
-                    </Button>
-                </Footer>
-                <Footer>
-                    <Button info rounded onPress={() => { this.keybort(6) }} >
-                        <Icon type="MaterialIcons" name="filter-6" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(7) }} >
-                        <Icon type="MaterialIcons" name="filter-7" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(8) }} >
-                        <Icon type="MaterialIcons" name="filter-8" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(9) }} >
-                        <Icon type="MaterialIcons" name="filter-9" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(0) }} >
-                        <Icon type="MaterialIcons" name="exposure-zero" />
-                    </Button>
-                    <Button info rounded onPress={this.clean} >
 
-                        <Icon type="MaterialIcons" name="keyboard-arrow-left" />
-                    </Button>
-                </Footer>
 
+
+                    </Content>
+                    <Footer style={{ backgroundColor: null }}>
+
+                        <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(1) }} >
+                          <Text style={{color:"#8ea3e2",fontSize:30}}>1</Text>
+                        </Button>
+                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(2) }} >
+                        <Text style={{color:"#8ea3e2",fontSize:30}}>2</Text>
+                        </Button>
+                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(3) }} >
+                        <Text style={{color:"#8ea3e2",fontSize:30}}>3</Text>
+                        </Button>
+                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(4) }} >
+                        <Text style={{color:"#8ea3e2",fontSize:30}}>4</Text>
+                        </Button>
+                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(5) }} >
+                        <Text style={{color:"#8ea3e2",fontSize:30}}>5</Text>
+                        </Button>
+
+                    </Footer>
+                    <Footer style={{ backgroundColor: null }}>
+                        <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(6) }} >
+                        <Text style={{color:"#8ea3e2",fontSize:30}}>6</Text>
+                        </Button>
+                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(7) }} >
+                        <Text style={{color:"#8ea3e2",fontSize:30}}>7</Text>
+                        </Button>
+                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(8) }} >
+                        <Text style={{color:"#8ea3e2",fontSize:30}}>8</Text>
+                        </Button>
+                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(9) }} >
+                        <Text style={{color:"#8ea3e2",fontSize:30}}>9</Text>
+                        </Button>
+                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(0) }} >
+                        <Text style={{color:"#8ea3e2",fontSize:30}}>0</Text>
+                        </Button>
+                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={this.clean} >
+
+                            <Icon style={{color:"#8ea3e2",fontSize:30}} type="MaterialIcons" name="keyboard-arrow-left" />
+                        </Button>
+
+                    </Footer>
+                </ImageBackground>
             </Container >
         );
     }
@@ -287,7 +310,7 @@ export class At extends Multips_primeFactorPage {
         var storePow = [{ storenumber: "", x: "", keyA: "", keyB: "", keyC: "", keyD: "" }];
 
 
-        //  this.setState({ storePow: [{ storenumber: "", x: "", key: "" }], storePow2: [""] });
+        //  this.setState({storePow: [{storenumber: "", x: "", key: "" }], storePow2: [""] });
         first = true;
         count = 0;
         i = 2
