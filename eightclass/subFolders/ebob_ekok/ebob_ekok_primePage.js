@@ -12,9 +12,11 @@ import {
     Footer,
     Content,
     ListItem,
-    List
+    List,
+    Card,
+    CardItem
 } from "native-base";
-import { Platform } from "react-native";
+import { Platform, ImageBackground  } from "react-native";
 import { StyleSheet } from "react-native";
 export default class Ebob_ekok_primePage extends Component {
     constructor(props) {
@@ -169,7 +171,7 @@ export default class Ebob_ekok_primePage extends Component {
             }
         }
     }
-    write = (param) => {
+    keybort = (param) => {
         var clearctrl = this.state.cleardoor;
         if (clearctrl) {
             this.setState({ cleardoor: false, btnflag: true });
@@ -557,26 +559,33 @@ export default class Ebob_ekok_primePage extends Component {
     render() {
         return (
             <Container>
+                    <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
                 <Content>
+
                     <Text>{this.state.message}</Text>
                     <Text>{this.state.ebobkac}</Text>
                     <View style={{ flexDirection: "column" }}>
                         <View style={{ flexDirection: "row" }}>
-                            <Button disabled={this.state.btnflag} onPress={this.backup} style={{ marginTop: 5 }}><Text style={{ fontSize: 10 }}>Cevabı Gör</Text></Button>
-                            <Button onPress={this.firstNum} style={{ marginTop: 5, backgroundColor: this.state.firstnumBColor }}>
-                                <Icon type="FontAwesome" name={this.state.iconname} />
-                                <Text style={{ fontSize: 10 }}>Birinci Sayıyı Gir</Text>
-                            </Button></View>
+                            <Button rounded disabled={this.state.btnflag} onPress={this.backup} style={{ marginTop: 5 }}><Text style={{ fontSize: 50 }}>=</Text></Button>
+                           </View>
                         <View style={{ flexDirection: "row" }}>
+                        <Button onPress={this.firstNum} style={{ marginTop: 5, backgroundColor: this.state.firstnumBColor }}>
+                                <Icon type="FontAwesome" name={this.state.iconname} />
+                                <Text style={{ fontSize: 10 }}>1.Sayı</Text>
+                            </Button>
                             <Button onPress={this.twoNum} style={{ marginTop: 5, backgroundColor: this.state.twonumBColor }}>
                                 <Icon type="FontAwesome" name={this.state.iconname1} />
-                                <Text style={{ fontSize: 10 }}>Ikinci Sayıyı Gir</Text>
+                                <Text style={{ fontSize: 10 }}>2.Sayı</Text>
                             </Button>
                             <Button onPress={this.threeNum} style={{ marginTop: 5, backgroundColor: this.state.threenumBColor }}>
                                 <Icon type="FontAwesome" name={this.state.iconname2} />
-                                <Text style={{ fontSize: 10 }}>Üçüncü Sayıyı Gir</Text>
+                                <Text style={{ fontSize: 10 }}>3.Sayı</Text>
                             </Button>
                         </View>
+                        </View>
+                        <Card style={{ marginLeft: 10, marginRight: 10 }}>
+                                <CardItem>
+                                <View style={{ flexDirection: "column" }}>    
                         <View style={{ flexDirection: "row" }}>
 
                             <View style={{ flexDirection: "column" }}>
@@ -626,47 +635,51 @@ export default class Ebob_ekok_primePage extends Component {
                             </List>
                         </View>
                     </View>
+                    </CardItem>
+                            </Card>
                 </Content>
-                <Footer>
-                    <Button info rounded onPress={() => { this.write(1) }} >
-                        <Icon type="MaterialIcons" name="filter-1" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(2) }} >
-                        <Icon type="MaterialIcons" name="filter-2" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(3) }}>
-                        <Icon type="MaterialIcons" name="filter-3" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(4) }}>
-                        <Icon type="MaterialIcons" name="filter-4" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(5) }} >
-                        <Icon type="MaterialIcons" name="filter-5" />
-                    </Button>
-                    <Button info rounded onPress={this.cleanOnePart} >
-                        <Text style={{ color: "white", fontSize: 15 }}>Sil</Text>
-                    </Button>
-                </Footer>
-                <Footer>
-                    <Button info rounded onPress={() => { this.write(6) }} >
-                        <Icon type="MaterialIcons" name="filter-6" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(7) }} >
-                        <Icon type="MaterialIcons" name="filter-7" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(8) }} >
-                        <Icon type="MaterialIcons" name="filter-8" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(9) }} >
-                        <Icon type="MaterialIcons" name="filter-9" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(0) }} >
-                        <Icon type="MaterialIcons" name="exposure-zero" />
-                    </Button>
-                    <Button info rounded onPress={this.clean} >
-                        <Text style={{ color: "white", fontSize: 10 }}>Sıfırla</Text>
-                    </Button>
-                </Footer>
+                <Footer style={{ backgroundColor: null }}>
+
+<Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(1) }} >
+  <Text style={{color:"#8ea3e2",fontSize:30}}>1</Text>
+</Button>
+<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(2) }} >
+<Text style={{color:"#8ea3e2",fontSize:30}}>2</Text>
+</Button>
+<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(3) }} >
+<Text style={{color:"#8ea3e2",fontSize:30}}>3</Text>
+</Button>
+<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(4) }} >
+<Text style={{color:"#8ea3e2",fontSize:30}}>4</Text>
+</Button>
+<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(5) }} >
+<Text style={{color:"#8ea3e2",fontSize:30}}>5</Text>
+</Button>
+
+</Footer>
+<Footer style={{ backgroundColor: null }}>
+<Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(6) }} >
+<Text style={{color:"#8ea3e2",fontSize:30}}>6</Text>
+</Button>
+<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(7) }} >
+<Text style={{color:"#8ea3e2",fontSize:30}}>7</Text>
+</Button>
+<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(8) }} >
+<Text style={{color:"#8ea3e2",fontSize:30}}>8</Text>
+</Button>
+<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(9) }} >
+<Text style={{color:"#8ea3e2",fontSize:30}}>9</Text>
+</Button>
+<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(0) }} >
+<Text style={{color:"#8ea3e2",fontSize:30}}>0</Text>
+</Button>
+<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={this.clean} >
+
+    <Text style={{color:"#8ea3e2",fontSize:20}}>SİL</Text>
+</Button>
+
+</Footer>
+</ImageBackground>
 
             </Container >
         );
