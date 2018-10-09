@@ -194,8 +194,9 @@ export class Multips_primeFactorPage extends Component {
     }
     render() {
         return (
+            <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
             <Container>
-                <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+               
 
 
                     <Content >
@@ -213,7 +214,7 @@ export class Multips_primeFactorPage extends Component {
 
                                             return (
 
-                                                <View style={{ flexDirection: "row" }}>
+                                        <View style={{ flexDirection: "row" }}>
 
                                                     <Text style={{ fontSize: 30, color: "white", textShadowColor: "black", textShadowOffset: { width: -3, height: 5 } }}>{item.storenumber}</Text>
                                                     <Text style={{ fontSize: 20, marginBottom: 20, color: "white", textShadowColor: "black", textShadowOffset: { width: -3, height: 5 } }}>{item.key}</Text>
@@ -248,7 +249,7 @@ export class Multips_primeFactorPage extends Component {
                     </Content>
                     <Footer style={{ backgroundColor: null }}>
 
-                        <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(1) }} >
+            <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(1) }} >
                           <Text style={{color:"#8ea3e2",fontSize:30}}>1</Text>
                         </Button>
                         <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(2) }} >
@@ -287,8 +288,9 @@ export class Multips_primeFactorPage extends Component {
                         </Button>
 
                     </Footer>
-                </ImageBackground>
+              
             </Container >
+            </ImageBackground>
         );
     }
 }
