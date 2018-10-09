@@ -75,18 +75,21 @@ export default class Ebob_ekok_primePage extends Component {
             this.setState({ firstnumBColor: "red", iconname: "check", btnflag: false });
         else
             this.setState({ firstnumBColor: "gray", iconname: null, btnflag: true });
-        if (this.state.tempnumber3 != "")
-            this.setState({ threenumBColor: "red", iconname2: "check", btnflag: false });
-        else
-            this.setState({ threenumBColor: "gray", iconname2: null, btnflag: true });
+
         if (this.state.tempnumber2 != "")
             this.setState({ twonumBColor: "red", iconname1: "check", btnflag: false });
         else
             this.setState({ twonumBColor: "gray", iconname1: null, btnflag: true });
+
+        if (this.state.tempnumber3 != "")
+            this.setState({ threenumBColor: "red", iconname2: "check", btnflag: false });
+        else
+            this.setState({ threenumBColor: "gray", iconname2: null, btnflag: true });
     }
     firstNum = () => {
         this.checkNumberButtonState();
-
+            if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
+            this.setState({btnflag:false});
         this.setState({
             message: "",
             shownumber1: [{ no1: "" }],
@@ -106,7 +109,8 @@ export default class Ebob_ekok_primePage extends Component {
     }
     twoNum = () => {
         this.checkNumberButtonState();
-
+        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
+        this.setState({btnflag:false});
         this.setState({
             message: "",
             shownumber1: [{ no1: "" }],
@@ -155,6 +159,8 @@ export default class Ebob_ekok_primePage extends Component {
                 this.setState({ iconname1: null, twonumBColor: "gray", tempnumber2: "", message: "", btnflag: true });
 
             }
+         if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
+            this.setState({btnflag:false});
         }
         if (maxdoorctrl == "3") {
             if (doorctrl == "1") {
@@ -169,6 +175,7 @@ export default class Ebob_ekok_primePage extends Component {
                 this.setState({ iconname2: null, threenumBColor: "gray", tempnumber3: "", message: "", btnflag: true });
 
             }
+
         }
     }
     keybort = (param) => {
