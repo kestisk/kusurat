@@ -283,7 +283,7 @@ export class Multips_primeFactorPage extends Component {
                         </Button>
                         <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={this.clean} >
 
-                            <Icon style={{color:"#8ea3e2",fontSize:30}} type="MaterialIcons" name="keyboard-arrow-left" />
+                            <Text style={{color:"#8ea3e2",fontSize:20}}>SİL</Text>
                         </Button>
 
                     </Footer>
