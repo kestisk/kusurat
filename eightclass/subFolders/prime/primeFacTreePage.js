@@ -174,112 +174,112 @@ export default class PrimeFacTreePage extends Component {
             outputRange: [0, 70]
         });
         return (
-          
-                <Container>
 
-                    <Content>
+            <Container>
 
-                        <View style={{ flexDirection: "column" }}>
-                            <View style={{ flexDirection: "row" }}>
-                                <Animated.View
-                                    style={{
-                                        top: intro
+                <Content>
 
-                                    }}
+                    <View style={{ flexDirection: "column" }}>
+                        <View style={{ flexDirection: "row" }}>
+                            <Animated.View
+                                style={{
+                                    top: intro
+
+                                }}
+                            >
+                                <Text
+
+                                    style={{ position: "relative", fontSize: 30, marginLeft: 100, color: "white" }}
                                 >
-                                    <Text
+                                    {this.state.number}
+                                </Text>
+                            </Animated.View>
 
-                                        style={{ position: "relative", fontSize: 30, marginLeft: 100, color: "white" }}
-                                    >
-                                        {this.state.number}
-                                    </Text>
-                                </Animated.View>
-
-                                <Button style={{ display: "flex" }} onPress={this.tree}><Text style={{ fontSize: 30, color: "white" }}>AYIR</Text></Button>
-                            </View>
-                            <View>
-                              
-                                        <List dataArray={this.state.numberarrayshow}
-
-                                            renderRow={(item) =>
-                                                <ListItem >
-
-
-                                                    <Text style={{
-                                                        textAlign: "center",
-                                                        fontSize: 20,
-                                                        backgroundColor: item.colorr,
-                                                        height: 35,
-                                                        width: 45,
-                                                        borderRadius: 50,
-                                                        color: "white",
-                                                        marginLeft: item.id2
-                                                    }}>{item.key}</Text>
-                                                    <Text style={{
-                                                        textAlign: "center",
-                                                        fontSize: 20,
-                                                        backgroundColor: item.colorr,
-                                                        height: 35,
-                                                        width: 45,
-                                                        borderRadius: 50,
-                                                        color: "white",
-                                                        marginLeft: item.id
-                                                    }}>{item.key2}</Text>
-
-                                                </ListItem>
-
-                                            }>
-
-
-                                        </List>
-                               
-                            </View>
+                            <Button style={{ display: "flex" }} onPress={this.tree}><Text style={{ fontSize: 30, color: "white" }}>AYIR</Text></Button>
                         </View>
-                    </Content>
-                    <Footer style={{ backgroundColor: null }}>
+                        <View>
 
-                        <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(1) }} >
-                            <Text style={{ color: "#8ea3e2", fontSize: 30 }}>1</Text>
-                        </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(2) }} >
-                            <Text style={{ color: "#8ea3e2", fontSize: 30 }}>2</Text>
-                        </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(3) }} >
-                            <Text style={{ color: "#8ea3e2", fontSize: 30 }}>3</Text>
-                        </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(4) }} >
-                            <Text style={{ color: "#8ea3e2", fontSize: 30 }}>4</Text>
-                        </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(5) }} >
-                            <Text style={{ color: "#8ea3e2", fontSize: 30 }}>5</Text>
-                        </Button>
+                            <List dataArray={this.state.numberarrayshow}
 
-                    </Footer>
-                    <Footer style={{ backgroundColor: null }}>
-                        <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(6) }} >
-                            <Text style={{ color: "#8ea3e2", fontSize: 30 }}>6</Text>
-                        </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(7) }} >
-                            <Text style={{ color: "#8ea3e2", fontSize: 30 }}>7</Text>
-                        </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(8) }} >
-                            <Text style={{ color: "#8ea3e2", fontSize: 30 }}>8</Text>
-                        </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(9) }} >
-                            <Text style={{ color: "#8ea3e2", fontSize: 30 }}>9</Text>
-                        </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(0) }} >
-                            <Text style={{ color: "#8ea3e2", fontSize: 30 }}>0</Text>
-                        </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={this.clean} >
+                                renderRow={(item) =>
+                                    <ListItem >
 
-                            <Text style={{ color: "#8ea3e2", fontSize: 20 }}>SİL</Text>
-                        </Button>
 
-                    </Footer>
+                                        <Text style={{
+                                            textAlign: "center",
+                                            fontSize: 20,
+                                            backgroundColor: item.colorr,
+                                            height: 35,
+                                            width: 45,
+                                            borderRadius: 50,
+                                            color: "white",
+                                            marginLeft: item.id2
+                                        }}>{item.key}</Text>
+                                        <Text style={{
+                                            textAlign: "center",
+                                            fontSize: 20,
+                                            backgroundColor: item.colorr,
+                                            height: 35,
+                                            width: 45,
+                                            borderRadius: 50,
+                                            color: "white",
+                                            marginLeft: item.id
+                                        }}>{item.key2}</Text>
 
-                </Container >
-           
+                                    </ListItem>
+
+                                }>
+
+
+                            </List>
+
+                        </View>
+                    </View>
+                </Content>
+                <Footer style={{ backgroundColor: null }}>
+
+                    <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(1) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>1</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(2) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>2</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(3) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>3</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(4) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>4</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(5) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>5</Text>
+                    </Button>
+
+                </Footer>
+                <Footer style={{ backgroundColor: null }}>
+                    <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(6) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>6</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(7) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>7</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(8) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>8</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(9) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>9</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(0) }} >
+                        <Text style={{ color: "#8ea3e2", fontSize: 30 }}>0</Text>
+                    </Button>
+                    <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={this.clean} >
+
+                        <Text style={{ color: "#8ea3e2", fontSize: 20 }}>SİL</Text>
+                    </Button>
+
+                </Footer>
+
+            </Container >
+
         );
     }
 
