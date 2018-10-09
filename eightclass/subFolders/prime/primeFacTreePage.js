@@ -178,7 +178,6 @@ export default class PrimeFacTreePage extends Component {
             <Container>
 
                 <Content>
-
                     <View style={{ flexDirection: "column" }}>
                         <View style={{ flexDirection: "row" }}>
                             <Animated.View
