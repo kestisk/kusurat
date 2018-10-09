@@ -56,6 +56,7 @@ export default class RollingNumberPage extends Component {
               rounded
               onPress={this.closeTen}
             >
+
               <Text style={styles.buttontext}>En Yakın Onluğa</Text>
             </Button>
             <Button

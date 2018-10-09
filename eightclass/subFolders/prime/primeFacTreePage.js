@@ -1,10 +1,10 @@
 
 
 import React, { Component } from 'react';
-import { Container, Content, Button, Header, Left, Icon, Body, Title, List, ListItem, Footer, Card, CardItem } from 'native-base';
+import { Container, Content, Button, Header, Left, Icon, Body, Title, List, ListItem, Footer } from 'native-base';
 import {
     Platform, StyleSheet, Text, View, Alert, Image, ScrollView, ListView, Animated,
-    Easing, ImageBackground
+    Easing
 } from 'react-native';
 import { BackHandler } from 'react-native';
 
@@ -174,11 +174,11 @@ export default class PrimeFacTreePage extends Component {
             outputRange: [0, 70]
         });
         return (
-            <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+          
                 <Container>
 
                     <Content>
-                        
+
                         <View style={{ flexDirection: "column" }}>
                             <View style={{ flexDirection: "row" }}>
                                 <Animated.View
@@ -198,8 +198,7 @@ export default class PrimeFacTreePage extends Component {
                                 <Button style={{ display: "flex" }} onPress={this.tree}><Text style={{ fontSize: 30, color: "white" }}>AYIR</Text></Button>
                             </View>
                             <View>
-                                <Card style={{ marginLeft: 10, marginRight: 10 }}>
-                                    <CardItem>
+                              
                                         <List dataArray={this.state.numberarrayshow}
 
                                             renderRow={(item) =>
@@ -233,8 +232,7 @@ export default class PrimeFacTreePage extends Component {
 
 
                                         </List>
-                                    </CardItem>
-                                </Card>
+                               
                             </View>
                         </View>
                     </Content>
@@ -281,7 +279,7 @@ export default class PrimeFacTreePage extends Component {
                     </Footer>
 
                 </Container >
-            </ImageBackground>
+           
         );
     }
 
