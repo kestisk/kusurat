@@ -88,8 +88,8 @@ export default class EbobPage extends Component {
     }
     firstNum = () => {
         this.checkNumberButtonState();
-        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-        this.setState({btnflag:false});
+        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+            this.setState({ btnflag: false });
         this.setState({
             maxdoor: "2", door: "1",
             backUpflag: false,
@@ -101,8 +101,8 @@ export default class EbobPage extends Component {
     }
     twoNum = () => {
         this.checkNumberButtonState();
-        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-        this.setState({btnflag:false});
+        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+            this.setState({ btnflag: false });
         this.setState({
             maxdoor: "2", door: "2",
             backUpflag: false,
@@ -113,7 +113,7 @@ export default class EbobPage extends Component {
         });
     }
     threeNum = () => {
-      
+
         this.checkNumberButtonState();
         this.setState({
             maxdoor: "3", door: "3",
@@ -135,8 +135,8 @@ export default class EbobPage extends Component {
                 this.setState({ iconname1: null, twonumBColor: "gray", tempnumber2: "", message: "", btnflag: true });
                 this.setState(this.state.number2);
             }
-            if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-            this.setState({btnflag:false});
+            if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+                this.setState({ btnflag: false });
         }
         if (maxdoorctrl == "3") {
             if (doorctrl == "1") {
@@ -151,8 +151,8 @@ export default class EbobPage extends Component {
                 this.setState({ iconname2: null, threenumBColor: "gray", tempnumber3: "", message: "", btnflag: true });
                 this.setState(this.state.number3);
             }
-            if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-            this.setState({btnflag:false});
+            if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+                this.setState({ btnflag: false });
 
         }
     }
@@ -162,8 +162,8 @@ export default class EbobPage extends Component {
             this.setState({ cleardoor: false, btnflag: true });
             this.setState(() => ({ backUpflag: false, showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", }));
         }
-        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-        this.setState({btnflag:false,maxdoor:"2"});
+        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+            this.setState({ btnflag: false, maxdoor: "2" });
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
         var num1 = this.state.tempnumber1;
@@ -667,14 +667,14 @@ const styles = StyleSheet.create({
     },
     footerbtn: {
         marginLeft: 5,
-        backgroundColor: "#384168"
+        backgroundColor: "rgb(56,65,104)"
     },
     footerbtnmain: {
 
-        backgroundColor: "#384168"
+        backgroundColor: "rgb(56,65,104)"
     },
     footertxt: {
-        color: "#8ea3e2",
+        color: "rgb(142,163,226)",
         fontSize: 30
     },
     buttontext: {

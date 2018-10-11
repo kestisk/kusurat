@@ -65,10 +65,10 @@ export default class PrimeFactabPage extends Component {
     render() {
         return (
             <Container>
-                <Header style={{ backgroundColor: "#384168" }}>
+                <Header style={{ backgroundColor: "rgb(56,65,104)" }}>
                     <Left>
                         <Button transparent onPress={this.back}>
-                            <Icon style={{color:"#8ea3e2",fontSize:30}} name="arrow-back" />
+                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} name="arrow-back" />
                         </Button>
                     </Left>
                     <Body>
@@ -98,7 +98,7 @@ export default class PrimeFactabPage extends Component {
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: "#bcd0f1",
+        color: "rgb(142,163,226)",
         fontSize: 30,
         padding: 5
     },

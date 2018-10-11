@@ -71,10 +71,10 @@ export default class Ebob_ekok_primePage extends Component {
         });
     }
     checkNumberButtonState = () => {
-        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-        this.setState({btnflag:false});
-        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3!="")
-        this.setState({btnflag:false});
+        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+            this.setState({ btnflag: false });
+        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 != "")
+            this.setState({ btnflag: false });
         if (this.state.tempnumber1 != "")
             this.setState({ firstnumBColor: "red", iconname: "check", btnflag: false });
         else
@@ -92,8 +92,8 @@ export default class Ebob_ekok_primePage extends Component {
     }
     firstNum = () => {
         this.checkNumberButtonState();
-            if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-            this.setState({btnflag:false});
+        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+            this.setState({ btnflag: false });
         this.setState({
             message: "",
             shownumber1: [{ no1: "" }],
@@ -113,8 +113,8 @@ export default class Ebob_ekok_primePage extends Component {
     }
     twoNum = () => {
         this.checkNumberButtonState();
-        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-        this.setState({btnflag:false});
+        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+            this.setState({ btnflag: false });
         this.setState({
             message: "",
             shownumber1: [{ no1: "" }],
@@ -163,8 +163,8 @@ export default class Ebob_ekok_primePage extends Component {
                 this.setState({ iconname1: null, twonumBColor: "gray", tempnumber2: "", message: "", btnflag: true });
 
             }
-         if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-            this.setState({btnflag:false});
+            if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+                this.setState({ btnflag: false });
         }
         if (maxdoorctrl == "3") {
             if (doorctrl == "1") {
@@ -179,8 +179,8 @@ export default class Ebob_ekok_primePage extends Component {
                 this.setState({ iconname2: null, threenumBColor: "gray", tempnumber3: "", message: "", btnflag: true });
 
             }
-            if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-            this.setState({btnflag:false});
+            if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+                this.setState({ btnflag: false });
 
         }
     }
@@ -191,8 +191,8 @@ export default class Ebob_ekok_primePage extends Component {
             this.setState({ showrightarray: [{ rightNumber: "", colorKey: "" }], shownumber1: [{ no1: "" }], shownumber2: [""], shownumber3: [""], ebobkac: "", que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", ebobkac: "yok", message: "", number1: [""], number2: [""], number3: [""], doorstate: "Ikinci Sayiya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", });
 
         }
-        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
-        this.setState({btnflag:false,maxdoor:"2"});
+        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
+            this.setState({ btnflag: false, maxdoor: "2" });
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
         var num1 = this.state.tempnumber1;
@@ -573,8 +573,9 @@ export default class Ebob_ekok_primePage extends Component {
     }
     render() {
         return (
-            <Container>
-                <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+            <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+                <Container>
+
                     <Content>
 
                         <Text>{this.state.message}</Text>
@@ -654,49 +655,50 @@ export default class Ebob_ekok_primePage extends Component {
                         </Card>
                     </Content>
 
-                </ImageBackground>
-                <Footer style={{ backgroundColor: null }}>
 
-                    <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
-                        <Text style={styles.footertxt}>1</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(2) }} >
-                        <Text style={styles.footertxt}>2</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(3) }} >
-                        <Text style={styles.footertxt}>3</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(4) }} >
-                        <Text style={styles.footertxt}>4</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
-                        <Text style={styles.footertxt}>5</Text>
-                    </Button>
+                    <Footer style={{ backgroundColor: null }}>
 
-                </Footer>
-                <Footer style={{ backgroundColor: null }}>
-                    <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
-                        <Text style={styles.footertxt}>6</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(7) }} >
-                        <Text style={styles.footertxt}>7</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(8) }} >
-                        <Text style={styles.footertxt}>8</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(9) }} >
-                        <Text style={styles.footertxt}>9</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
-                        <Text style={styles.footertxt}>0</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={this.clean} >
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
+                            <Text style={styles.footertxt}>1</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(2) }} >
+                            <Text style={styles.footertxt}>2</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(3) }} >
+                            <Text style={styles.footertxt}>3</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(4) }} >
+                            <Text style={styles.footertxt}>4</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
+                            <Text style={styles.footertxt}>5</Text>
+                        </Button>
 
-                        <Text style={styles.footertxt}>SİL</Text>
-                    </Button>
+                    </Footer>
+                    <Footer style={{ backgroundColor: null }}>
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
+                            <Text style={styles.footertxt}>6</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(7) }} >
+                            <Text style={styles.footertxt}>7</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(8) }} >
+                            <Text style={styles.footertxt}>8</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(9) }} >
+                            <Text style={styles.footertxt}>9</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
+                            <Text style={styles.footertxt}>0</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={this.clean} >
 
-                </Footer>
-            </Container >
+                            <Text style={styles.footertxt}>SİL</Text>
+                        </Button>
+
+                    </Footer>
+                </Container >
+            </ImageBackground>
         );
     }
 }
@@ -709,14 +711,14 @@ const styles = StyleSheet.create({
     },
     footerbtn: {
         marginLeft: 5,
-        backgroundColor: "#384168"
+        backgroundColor: "rgb(56,65,104)"
     },
     footerbtnmain: {
 
-        backgroundColor: "#384168"
+        backgroundColor: "rgb(56,65,104)"
     },
     footertxt: {
-        color: "#8ea3e2",
+        color: "rgb(142,163,226)",
         fontSize: 30
     },
     buttontext: {

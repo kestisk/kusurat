@@ -1,10 +1,10 @@
 
 
 import React, { Component } from 'react';
-import { Container, Content, Button, Header, Left, Icon, Body, Title, List, ListItem, Footer } from 'native-base';
+import { Container, Content, Button, Header, Left, Icon, Body, Title, List, ListItem, Footer, Text, Card, CardItem } from 'native-base';
 import {
-    Platform, StyleSheet, Text, View, Alert, Image, ScrollView, ListView, Animated,
-    Easing
+    Platform, StyleSheet, View, Alert, Image, ScrollView, ListView, Animated,
+    Easing, ImageBackground
 } from 'react-native';
 import { BackHandler } from 'react-native';
 
@@ -44,7 +44,27 @@ export default class PrimeFacTreePage extends Component {
         clearInterval(this.delayed);
 
     }
+    keybort(variable) {
+        if (this.state.flagg == true) {
+            this.setState({ number: variable.toString(), numberarr: [""], array: [""], numberarrshow: [""], arrayshow: [""], flagg: false, storePow: [{ storenumber: "", x: "", key: "" }], storePow2: [""] });
 
+
+
+
+        }
+
+        else {
+            if (this.state.number.length < 4) {
+                this.setState({
+                    number: (this.state.number + variable.toString())
+                });
+            }
+            else {
+                this.warn();
+            }
+
+        }
+    }
 
     clean = () => {
         this.setState(() => ({ number: "", numberarray: [""], numberarrayshow: [""] }));
@@ -171,114 +191,117 @@ export default class PrimeFacTreePage extends Component {
     render() {
         const intro = this.animasyonDegeri.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 70]
+            outputRange: [0, 70],
+
         });
         return (
+            <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+                <Container>
 
-            <Container>
+                    <Content>
+                        <View style={{ flexDirection: "column" }}>
+                            <View style={{ flexDirection: "row" }}>
+                                <Animated.View
+                                    style={{
+                                        top: intro
 
-                <Content>
-                    <View style={{ flexDirection: "column" }}>
-                        <View style={{ flexDirection: "row" }}>
-                            <Animated.View
-                                style={{
-                                    top: intro
-
-                                }}
-                            >
-                                <Text
-
-                                    style={{ position: "relative", fontSize: 30, marginLeft: 100, color: "white" }}
+                                    }}
                                 >
-                                    {this.state.number}
-                                </Text>
-                            </Animated.View>
+                                    <Text
 
-                            <Button style={{ display: "flex" }} onPress={this.tree}><Text style={{ fontSize: 30, color: "white" }}>AYIR</Text></Button>
+                                        style={{ position: "relative", fontSize: 30, marginLeft: 100, color: "gray" }}
+                                    >
+                                        {this.state.number}
+                                    </Text>
+                                </Animated.View>
+
+                                <Button style={{ display: "flex" }} onPress={this.tree}><Text style={{ fontSize: 50, color: "white" }}>=</Text></Button>
+                            </View>
+                            <View>
+                                <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 500 }}>
+                                    <CardItem>
+                                        <List dataArray={this.state.numberarrayshow}
+
+                                            renderRow={(item) =>
+                                                <ListItem >
+
+
+                                                    <Text style={{
+                                                        textAlign: "center",
+                                                        fontSize: 20,
+                                                        backgroundColor: item.colorr,
+                                                        height: 35,
+                                                        width: 45,
+                                                        borderRadius: 50,
+                                                        color: "white",
+                                                        marginLeft: item.id2
+                                                    }}>{item.key}</Text>
+                                                    <Text style={{
+                                                        textAlign: "center",
+                                                        fontSize: 20,
+                                                        backgroundColor: item.colorr,
+                                                        height: 35,
+                                                        width: 45,
+                                                        borderRadius: 50,
+                                                        color: "white",
+                                                        marginLeft: item.id
+                                                    }}>{item.key2}</Text>
+
+                                                </ListItem>
+
+                                            }>
+
+
+                                        </List>
+                                    </CardItem>
+                                </Card>
+                            </View>
                         </View>
-                        <View>
+                    </Content>
+                    <Footer style={{ backgroundColor: null }}>
 
-                            <List dataArray={this.state.numberarrayshow}
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
+                            <Text style={styles.footertxt}>1</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(2) }} >
+                            <Text style={styles.footertxt}>2</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(3) }} >
+                            <Text style={styles.footertxt}>3</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(4) }} >
+                            <Text style={styles.footertxt}>4</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
+                            <Text style={styles.footertxt}>5</Text>
+                        </Button>
 
-                                renderRow={(item) =>
-                                    <ListItem >
+                    </Footer>
+                    <Footer style={{ backgroundColor: null }}>
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
+                            <Text style={styles.footertxt}>6</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(7) }} >
+                            <Text style={styles.footertxt}>7</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(8) }} >
+                            <Text style={styles.footertxt}>8</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(9) }} >
+                            <Text style={styles.footertxt}>9</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
+                            <Text style={styles.footertxt}>0</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={this.clean} >
 
+                            <Text style={styles.footertxt}>SİL</Text>
+                        </Button>
 
-                                        <Text style={{
-                                            textAlign: "center",
-                                            fontSize: 20,
-                                            backgroundColor: item.colorr,
-                                            height: 35,
-                                            width: 45,
-                                            borderRadius: 50,
-                                            color: "white",
-                                            marginLeft: item.id2
-                                        }}>{item.key}</Text>
-                                        <Text style={{
-                                            textAlign: "center",
-                                            fontSize: 20,
-                                            backgroundColor: item.colorr,
-                                            height: 35,
-                                            width: 45,
-                                            borderRadius: 50,
-                                            color: "white",
-                                            marginLeft: item.id
-                                        }}>{item.key2}</Text>
+                    </Footer>
 
-                                    </ListItem>
-
-                                }>
-
-
-                            </List>
-
-                        </View>
-                    </View>
-                </Content>
-                <Footer style={{ backgroundColor: null }}>
-
-                    <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
-                        <Text style={styles.footertxt}>1</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(2) }} >
-                        <Text style={styles.footertxt}>2</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(3) }} >
-                        <Text style={styles.footertxt}>3</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(4) }} >
-                        <Text style={styles.footertxt}>4</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
-                        <Text style={styles.footertxt}>5</Text>
-                    </Button>
-
-                </Footer>
-                <Footer style={{ backgroundColor: null }}>
-                    <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
-                        <Text style={styles.footertxt}>6</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(7) }} >
-                        <Text style={styles.footertxt}>7</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(8) }} >
-                        <Text style={styles.footertxt}>8</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(9) }} >
-                        <Text style={styles.footertxt}>9</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
-                        <Text style={styles.footertxt}>0</Text>
-                    </Button>
-                    <Button style={styles.footerbtn} rounded onPress={this.clean} >
-
-                        <Text style={styles.footertxt}>SİL</Text>
-                    </Button>
-
-                </Footer>
-
-            </Container >
-
+                </Container >
+            </ImageBackground>
         );
     }
 
