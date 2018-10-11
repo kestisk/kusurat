@@ -195,8 +195,8 @@ export class Multips_primeFactorPage extends Component {
     render() {
         return (
             <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
-            <Container>
-               
+                <Container>
+
 
 
                     <Content >
@@ -214,7 +214,7 @@ export class Multips_primeFactorPage extends Component {
 
                                             return (
 
-                                        <View style={{ flexDirection: "row" }}>
+                                                <View style={{ flexDirection: "row" }}>
 
                                                     <Text style={{ fontSize: 30, color: "white", textShadowColor: "black", textShadowOffset: { width: -3, height: 5 } }}>{item.storenumber}</Text>
                                                     <Text style={{ fontSize: 20, marginBottom: 20, color: "white", textShadowColor: "black", textShadowOffset: { width: -3, height: 5 } }}>{item.key}</Text>
@@ -249,47 +249,47 @@ export class Multips_primeFactorPage extends Component {
                     </Content>
                     <Footer style={{ backgroundColor: null }}>
 
-            <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(1) }} >
-                          <Text style={{color:"#8ea3e2",fontSize:30}}>1</Text>
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
+                            <Text style={styles.footertxt}>1</Text>
                         </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(2) }} >
-                        <Text style={{color:"#8ea3e2",fontSize:30}}>2</Text>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(2) }} >
+                            <Text style={styles.footertxt}>2</Text>
                         </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(3) }} >
-                        <Text style={{color:"#8ea3e2",fontSize:30}}>3</Text>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(3) }} >
+                            <Text style={styles.footertxt}>3</Text>
                         </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(4) }} >
-                        <Text style={{color:"#8ea3e2",fontSize:30}}>4</Text>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(4) }} >
+                            <Text style={styles.footertxt}>4</Text>
                         </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(5) }} >
-                        <Text style={{color:"#8ea3e2",fontSize:30}}>5</Text>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
+                            <Text style={styles.footertxt}>5</Text>
                         </Button>
 
                     </Footer>
                     <Footer style={{ backgroundColor: null }}>
-                        <Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(6) }} >
-                        <Text style={{color:"#8ea3e2",fontSize:30}}>6</Text>
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
+                            <Text style={styles.footertxt}>6</Text>
                         </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(7) }} >
-                        <Text style={{color:"#8ea3e2",fontSize:30}}>7</Text>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(7) }} >
+                            <Text style={styles.footertxt}>7</Text>
                         </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(8) }} >
-                        <Text style={{color:"#8ea3e2",fontSize:30}}>8</Text>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(8) }} >
+                            <Text style={styles.footertxt}>8</Text>
                         </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(9) }} >
-                        <Text style={{color:"#8ea3e2",fontSize:30}}>9</Text>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(9) }} >
+                            <Text style={styles.footertxt}>9</Text>
                         </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(0) }} >
-                        <Text style={{color:"#8ea3e2",fontSize:30}}>0</Text>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
+                            <Text style={styles.footertxt}>0</Text>
                         </Button>
-                        <Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={this.clean} >
+                        <Button style={styles.footerbtn} rounded onPress={this.clean} >
 
-                            <Text style={{color:"#8ea3e2",fontSize:20}}>SİL</Text>
+                            <Text style={styles.footertxt}>SİL</Text>
                         </Button>
 
                     </Footer>
-              
-            </Container >
+
+                </Container >
             </ImageBackground>
         );
     }
@@ -412,6 +412,18 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 30,
         padding: 5
+    },
+    footerbtn: {
+        marginLeft: 5,
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footerbtnmain: {
+
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footertxt: {
+        color: "rgb(142,163,226)",
+        fontSize: 30
     },
     buttontext: {
         textAlign: "center",

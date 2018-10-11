@@ -16,7 +16,7 @@ import {
     Card,
     CardItem
 } from "native-base";
-import { Platform,ImageBackground } from "react-native";
+import { Platform, ImageBackground } from "react-native";
 import { StyleSheet } from "react-native";
 export default class EbobPage extends Component {
     constructor(props) {
@@ -520,127 +520,127 @@ export default class EbobPage extends Component {
     render() {
         return (
             <Container>
-                 <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
-                <Content>
-                    <Text>{this.state.message}</Text>
-                    <View style={{ flexDirection: "column" }}>
-                        <View style={{ flexDirection: "row" }}>
-                        <Text style={{ fontSize: 30, color: "white", marginLeft: 50 }}>EBOB</Text>
-                            <Button rounded disabled={this.state.btnflag} onPress={this.backup} ><Text style={{ fontSize: 50 }}>=</Text></Button>
-                            <Text style={{ fontSize: 30, color: "white" }}>{this.state.returnebob}</Text>
+                <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+                    <Content>
+                        <Text>{this.state.message}</Text>
+                        <View style={{ flexDirection: "column" }}>
+                            <View style={{ flexDirection: "row" }}>
+                                <Text style={{ fontSize: 30, color: "white", marginLeft: 50 }}>EBOB</Text>
+                                <Button rounded disabled={this.state.btnflag} onPress={this.backup} ><Text style={{ fontSize: 50 }}>=</Text></Button>
+                                <Text style={{ fontSize: 30, color: "white" }}>{this.state.returnebob}</Text>
+                            </View>
+                            <View style={{ flexDirection: "row" }}>
+                                <Button onPress={this.firstNum} style={{ marginTop: 5, backgroundColor: this.state.firstnumBColor }}>
+                                    <Icon type="FontAwesome" name={this.state.iconname} />
+                                    <Text style={{ fontSize: 10 }}>1.Sayı</Text>
+                                </Button>
+                                <Button onPress={this.twoNum} style={{ marginTop: 5, backgroundColor: this.state.twonumBColor }}>
+                                    <Icon type="FontAwesome" name={this.state.iconname1} />
+                                    <Text style={{ fontSize: 10 }}>2.Sayı</Text>
+                                </Button>
+                                <Button onPress={this.threeNum} style={{ marginTop: 5, backgroundColor: this.state.threenumBColor }}>
+                                    <Icon type="FontAwesome" name={this.state.iconname2} />
+                                    <Text style={{ fontSize: 10 }}>3.Sayı</Text>
+                                </Button>
+                            </View>
                         </View>
-                        <View style={{ flexDirection: "row" }}>
-                        <Button onPress={this.firstNum} style={{ marginTop: 5, backgroundColor: this.state.firstnumBColor }}>
-                                <Icon type="FontAwesome" name={this.state.iconname} />
-                                <Text style={{ fontSize: 10 }}>1.Sayı</Text>
-                            </Button>
-                            <Button onPress={this.twoNum} style={{ marginTop: 5, backgroundColor: this.state.twonumBColor }}>
-                                <Icon type="FontAwesome" name={this.state.iconname1} />
-                                <Text style={{ fontSize: 10 }}>2.Sayı</Text>
-                            </Button>
-                            <Button onPress={this.threeNum} style={{ marginTop: 5, backgroundColor: this.state.threenumBColor }}>
-                                <Icon type="FontAwesome" name={this.state.iconname2} />
-                                <Text style={{ fontSize: 10 }}>3.Sayı</Text>
-                            </Button>
-                        </View>
-                         </View>
                         <Card style={{ marginLeft: 10, marginRight: 10 }}>
-                                <CardItem>
+                            <CardItem>
                                 <View style={{ flexDirection: "column" }}>
-                        <View style={{ flexDirection: "row" }}>
-                            <View style={{ flexDirection: "column" }}>
-                                <Text>{this.state.que1}</Text>
-                                <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
-                            </View>
-                            <List dataArray={this.state.shownumber1}
-                                renderRow={(item) =>
-                                    <ListItem style={{ borderColor: "white" }}>
-                                        <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
-                                    </ListItem>
-                                }>
-                            </List>
+                                    <View style={{ flexDirection: "row" }}>
+                                        <View style={{ flexDirection: "column" }}>
+                                            <Text>{this.state.que1}</Text>
+                                            <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
+                                        </View>
+                                        <List dataArray={this.state.shownumber1}
+                                            renderRow={(item) =>
+                                                <ListItem style={{ borderColor: "white" }}>
+                                                    <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                </ListItem>
+                                            }>
+                                        </List>
 
-                            <View style={{ flexDirection: "column" }}>
-                                <Text>{this.state.que2}</Text>
-                                <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
-                            </View>
-                            <List dataArray={this.state.shownumber2}
-                                renderRow={(item) =>
-                                    <ListItem style={{ borderColor: "white" }}>
-                                        <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
-                                    </ListItem>
-                                }>
-                            </List>
+                                        <View style={{ flexDirection: "column" }}>
+                                            <Text>{this.state.que2}</Text>
+                                            <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
+                                        </View>
+                                        <List dataArray={this.state.shownumber2}
+                                            renderRow={(item) =>
+                                                <ListItem style={{ borderColor: "white" }}>
+                                                    <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                </ListItem>
+                                            }>
+                                        </List>
 
-                            <View style={{ flexDirection: "column" }}>
-                                <Text>{this.state.que3}</Text>
-                                <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
-                            </View>
-                            <List dataArray={this.state.shownumber3}
-                                renderRow={(item) =>
-                                    <ListItem style={{ borderColor: "white" }}>
-                                        <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
-                                    </ListItem>
-                                }>
-                            </List>
+                                        <View style={{ flexDirection: "column" }}>
+                                            <Text>{this.state.que3}</Text>
+                                            <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
+                                        </View>
+                                        <List dataArray={this.state.shownumber3}
+                                            renderRow={(item) =>
+                                                <ListItem style={{ borderColor: "white" }}>
+                                                    <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                </ListItem>
+                                            }>
+                                        </List>
 
 
-                            <Text style={{ marginTop: 20, backgroundColor: "red", height: 450, width: 5, marginLeft: 5 }}></Text>
-                            <List dataArray={this.state.showrightarray}
-                                renderRow={(item) =>
-                                    <ListItem style={{ borderColor: "red" }}>
-                                        <Text style={{ color: "white", fontSize: 30, backgroundColor: (item.key == "1") ? "red" : "blue" }}>{item.rightNumber}</Text>
-                                    </ListItem>
-                                }>
-                            </List>
-                        </View>
-                      
-                    </View>
-                    </CardItem>
-                            </Card>
-                </Content>
-                <Footer style={{ backgroundColor: null }}>
+                                        <Text style={{ marginTop: 20, backgroundColor: "red", height: 450, width: 5, marginLeft: 5 }}></Text>
+                                        <List dataArray={this.state.showrightarray}
+                                            renderRow={(item) =>
+                                                <ListItem style={{ borderColor: "red" }}>
+                                                    <Text style={{ color: "white", fontSize: 30, backgroundColor: (item.key == "1") ? "red" : "blue" }}>{item.rightNumber}</Text>
+                                                </ListItem>
+                                            }>
+                                        </List>
+                                    </View>
 
-<Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(1) }} >
-  <Text style={{color:"#8ea3e2",fontSize:30}}>1</Text>
-</Button>
-<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(2) }} >
-<Text style={{color:"#8ea3e2",fontSize:30}}>2</Text>
-</Button>
-<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(3) }} >
-<Text style={{color:"#8ea3e2",fontSize:30}}>3</Text>
-</Button>
-<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(4) }} >
-<Text style={{color:"#8ea3e2",fontSize:30}}>4</Text>
-</Button>
-<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(5) }} >
-<Text style={{color:"#8ea3e2",fontSize:30}}>5</Text>
-</Button>
+                                </View>
+                            </CardItem>
+                        </Card>
+                    </Content>
+                    <Footer style={{ backgroundColor: null }}>
 
-</Footer>
-<Footer style={{ backgroundColor: null }}>
-<Button style={{ backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(6) }} >
-<Text style={{color:"#8ea3e2",fontSize:30}}>6</Text>
-</Button>
-<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(7) }} >
-<Text style={{color:"#8ea3e2",fontSize:30}}>7</Text>
-</Button>
-<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(8) }} >
-<Text style={{color:"#8ea3e2",fontSize:30}}>8</Text>
-</Button>
-<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(9) }} >
-<Text style={{color:"#8ea3e2",fontSize:30}}>9</Text>
-</Button>
-<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={() => { this.keybort(0) }} >
-<Text style={{color:"#8ea3e2",fontSize:30}}>0</Text>
-</Button>
-<Button style={{ marginLeft: 5, backgroundColor: "#384168" }} rounded onPress={this.cleanOnePart} >
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
+                            <Text style={styles.footertxt}>1</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(2) }} >
+                            <Text style={styles.footertxt}>2</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(3) }} >
+                            <Text style={styles.footertxt}>3</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(4) }} >
+                            <Text style={styles.footertxt}>4</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
+                            <Text style={styles.footertxt}>5</Text>
+                        </Button>
 
-    <Text style={{color:"#8ea3e2",fontSize:20}}>SİL</Text>
-</Button>
+                    </Footer>
+                    <Footer style={{ backgroundColor: null }}>
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
+                            <Text style={styles.footertxt}>6</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(7) }} >
+                            <Text style={styles.footertxt}>7</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(8) }} >
+                            <Text style={styles.footertxt}>8</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(9) }} >
+                            <Text style={styles.footertxt}>9</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
+                            <Text style={styles.footertxt}>0</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={this.clean} >
 
-</Footer>
-</ImageBackground>
+                            <Text style={styles.footertxt}>SİL</Text>
+                        </Button>
+
+                    </Footer>
+                </ImageBackground>
             </Container >
         );
     }
@@ -651,6 +651,18 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 30,
         padding: 5
+    },
+    footerbtn: {
+        marginLeft: 5,
+        backgroundColor: "#384168"
+    },
+    footerbtnmain: {
+
+        backgroundColor: "#384168"
+    },
+    footertxt: {
+        color: "#8ea3e2",
+        fontSize: 30
     },
     buttontext: {
         textAlign: "center",
