@@ -73,17 +73,21 @@ export default class EkokPage extends Component {
             this.setState({ firstnumBColor: "red", iconname: "check", btnflag: false });
         else
             this.setState({ firstnumBColor: "gray", iconname: null, btnflag: true });
-        if (this.state.tempnumber3 != "")
-            this.setState({ threenumBColor: "red", iconname2: "check", btnflag: false });
-        else
-            this.setState({ threenumBColor: "gray", iconname2: null, btnflag: true });
+
         if (this.state.tempnumber2 != "")
             this.setState({ twonumBColor: "red", iconname1: "check", btnflag: false });
         else
             this.setState({ twonumBColor: "gray", iconname1: null, btnflag: true });
+
+        if (this.state.tempnumber3 != "")
+            this.setState({ threenumBColor: "red", iconname2: "check", btnflag: false });
+        else
+            this.setState({ threenumBColor: "gray", iconname2: null, btnflag: true });
     }
     firstNum = () => {
         this.checkNumberButtonState();
+        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
+        this.setState({btnflag:false});
         this.setState({
             message: "", returnekok: 1,
             shownumber1: [{ no1: "" }],
@@ -102,7 +106,8 @@ export default class EkokPage extends Component {
     }
     twoNum = () => {
         this.checkNumberButtonState();
-
+        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
+        this.setState({btnflag:false});
         this.setState({
             message: "", returnekok: 1,
             shownumber1: [{ no1: "" }],
@@ -150,6 +155,8 @@ export default class EkokPage extends Component {
                 this.setState({ iconname1: null, twonumBColor: "gray", tempnumber2: "", message: "", btnflag: true });
 
             }
+            if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
+            this.setState({btnflag:false});
         }
         if (maxdoorctrl == "3") {
             if (doorctrl == "1") {
@@ -164,6 +171,8 @@ export default class EkokPage extends Component {
                 this.setState({ iconname2: null, threenumBColor: "gray", tempnumber3: "", message: "", btnflag: true });
 
             }
+            if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
+            this.setState({btnflag:false});
         }
     }
     keybort = (param) => {
@@ -172,6 +181,8 @@ export default class EkokPage extends Component {
             this.setState({ cleardoor: false, btnflag: true });
             this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnekok: 1, message: "", number1: [""], number2: [""], number3: [""], doorstate: "İkinci Sayıya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "" });
         }
+        if(this.state.tempnumber1!="" && this.state.tempnumber2!="" && this.state.tempnumber3=="")
+        this.setState({btnflag:false,maxdoor:"2"});
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
         var num1 = this.state.tempnumber1;
