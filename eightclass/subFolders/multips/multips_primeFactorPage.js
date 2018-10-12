@@ -28,14 +28,14 @@ export class Multips_primeFactorPage extends Component {
         this.state = {
             array: [""], number: "130",
             numberarr: [""],
-
+            stick: 400,
             one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0",
             message: "",
             prime: [""],
             disable: false,
             flagg: false,
             storePow: [{ storenumber: "", x: "", key: "" }],
-
+            footdsp: "flex",
             storePow2: []
         }
 
@@ -47,8 +47,11 @@ export class Multips_primeFactorPage extends Component {
         this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
     }
     clean = () => {
-        this.setState({ message: "", flagg: false, disable: false, numberarr: [""], array: [""], number: "", numberarrshow: [""], arrayshow: [""], storePow: [{ storenumber: "", x: "", key: "" }], storePow2: [""] })
-
+        this.setState({ message: "", flagg: true, disable: true, numberarr: [""], array: [""], number: "", numberarrshow: [""], arrayshow: [""], storePow: [{ storenumber: "", x: "", key: "" }], storePow2: [""] })
+        this.arrayleft = [];
+        this.arrayright = [];
+        clearInterval(this.delayed1);
+        clearTimeout(this.delayed2);
     }
     componentWillUnmount() {
         clearInterval(this.delayed1);
@@ -56,7 +59,7 @@ export class Multips_primeFactorPage extends Component {
     }
     keybort(variable) {
         if (this.state.flagg == true) {
-            this.setState({ number: variable.toString(), numberarr: [""], array: [""], numberarrshow: [""], arrayshow: [""], flagg: false, storePow: [{ storenumber: "", x: "", key: "" }], storePow2: [""] });
+            this.setState({ number: variable.toString(), disable: false, numberarr: [""], array: [""], numberarrshow: [""], arrayshow: [""], flagg: false, storePow: [{ storenumber: "", x: "", key: "" }], storePow2: [""] });
 
 
 
@@ -77,12 +80,17 @@ export class Multips_primeFactorPage extends Component {
     }
     direct = () => {
         if (this.state.flagg == false) {
+            this.arrayleft = [];
+            this.arrayright = [];
             num = this.state.number;
+            this.setState({ footdsp: "none" });
             this.devided(num);
         }
         else {
-            this.setState({ message: "", flagg: false, numberarr: [""], array: [""], numberarrshow: [""], arrayshow: [""], storePow: [{ storenumber: "", x: "", key: "" }], storePow2: [""] })
+            this.setState({ message: "", flagg: false, numberarr: [""], array: [""], numberarrshow: [""], arrayshow: [""], storePow: [{ storenumber: "", x: "", key: "" }], storePow2: [""], footdsp: "none" })
             this.delayed3 = setTimeout(function () {
+                this.arrayleft = [];
+                this.arrayright = [];
                 num = this.state.number;
                 this.devided(num);
             }.bind(this), 0);
@@ -95,6 +103,18 @@ export class Multips_primeFactorPage extends Component {
         this.state.storePow.push(({ storenumber: i, x: "x", key: count.toString() }));
         this.setState(this.state.storePow);
 
+
+    }
+    cleanOnePart = () => {
+        if (this.state.flagg == false) {
+            this.setState({ number: this.state.number.slice(0, -1) })
+            if (this.state.number.length == 1) {
+                this.clean();
+            }
+        }
+        else {
+            this.clean();
+        }
 
     }
     devided = (num) => {
@@ -140,6 +160,8 @@ export class Multips_primeFactorPage extends Component {
                 i++;
             }
         }
+        if (this.arrayright.length > 10)
+            this.setState({ stick: 600 });
         this.settimem();
 
     }
@@ -160,7 +182,7 @@ export class Multips_primeFactorPage extends Component {
                 clearInterval(this.delayed1);
                 clearTimeout(this.delayed2);
 
-                this.setState({ disable: false });
+                this.setState({ disable: false, footdsp: "flex" });
                 var arr = [];
                 this.state.storePow.map(obj => {
 
@@ -231,14 +253,19 @@ export class Multips_primeFactorPage extends Component {
                             </View>
                             <Card style={{ marginLeft: 10, marginRight: 10 }}>
                                 <CardItem>
+
                                     <Body>
                                         <Text>{this.state.message}</Text>
                                         <View style={{ flexDirection: "row" }}>
                                             <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20 }}>{this.state.number}{this.state.numberarr}</Text>
-                                            <Text style={{ marginTop: 20, backgroundColor: "red", height: 450, width: 5 }}></Text>
+                                            <Text style={{ marginTop: 20, backgroundColor: "red", height: this.state.stick, width: 5 }}></Text>
                                             <Text style={{ marginTop: 20, fontSize: 30 }}>{this.state.array}</Text>
                                         </View>
                                     </Body>
+                                    <Button onPress={this.clean} transparent bordered>
+                                        <Icon style={{ fontSize: 30 }} name='trash' />
+
+                                    </Button>
                                 </CardItem>
                             </Card>
                         </View>
@@ -247,7 +274,7 @@ export class Multips_primeFactorPage extends Component {
 
 
                     </Content>
-                    <Footer style={{ backgroundColor: null }}>
+                    <Footer style={{ backgroundColor: null, display: this.state.footdsp }}>
 
                         <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
                             <Text style={styles.footertxt}>1</Text>
@@ -266,7 +293,7 @@ export class Multips_primeFactorPage extends Component {
                         </Button>
 
                     </Footer>
-                    <Footer style={{ backgroundColor: null }}>
+                    <Footer style={{ backgroundColor: null, display: this.state.footdsp }}>
                         <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
                             <Text style={styles.footertxt}>6</Text>
                         </Button>
@@ -282,7 +309,7 @@ export class Multips_primeFactorPage extends Component {
                         <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
-                        <Button style={styles.footerbtn} rounded onPress={this.clean} >
+                        <Button style={styles.footerbtn} rounded onPress={this.cleanOnePart} >
 
                             <Text style={styles.footertxt}>SİL</Text>
                         </Button>

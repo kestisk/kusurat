@@ -1,7 +1,7 @@
 
 
 import React, { Component } from 'react';
-import { Container, Content, Button, Header, Left, Icon, Body, Title, List, ListItem, Footer, Text, Card, CardItem } from 'native-base';
+import { Container, Content, Button, Header, Left, Icon, Body, Title, List, ListItem, Footer, Text, Card, CardItem, Right } from 'native-base';
 import {
     Platform, StyleSheet, View, Alert, Image, ScrollView, ListView, Animated,
     Easing, ImageBackground
@@ -34,7 +34,9 @@ export default class PrimeFacTreePage extends Component {
             ],
             number: "100",
             one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0",
-
+            footdsp: "flex",
+            flagg: false,
+            disable: false
         }
     }
 
@@ -46,7 +48,7 @@ export default class PrimeFacTreePage extends Component {
     }
     keybort(variable) {
         if (this.state.flagg == true) {
-            this.setState({ number: variable.toString(), numberarr: [""], array: [""], numberarrshow: [""], arrayshow: [""], flagg: false, storePow: [{ storenumber: "", x: "", key: "" }], storePow2: [""] });
+            this.setState({ number: variable.toString(), disable: false, flagg: false, numberarray: [""], numberarrayshow: [""], });
 
 
 
@@ -67,23 +69,16 @@ export default class PrimeFacTreePage extends Component {
     }
 
     clean = () => {
-        this.setState(() => ({ number: "", numberarray: [""], numberarrayshow: [""] }));
-        this.animasyonDegeri.setValue(0);
+        this.setState(() => ({ number: "", flagg: true, numberarray: [""], numberarrayshow: [""], disable: true }));
 
-    }
-    tree = () => {
         clearInterval(this.delayed);
-        this.animasyonDegeri.setValue(0);
-        const doanimate = function (value, duration, easing, delay = 0) {
-            return Animated.timing(value, {
-                toValue: 1,
-                duration,
-                easing,
-                delay
-            });
-        };
-        doanimate(this.animasyonDegeri, 300, Easing.ease, 0).start();
-        num = this.state.number;
+    }
+    async tree() {
+        clearInterval(this.delayed);
+
+        await this.setState(() => ({ flagg: true, footdsp: "none", numberarray: [""], numberarrayshow: [""], disable: true }));
+
+        let num = this.state.number;
         i = 2
         distance = 0;
         count = 0
@@ -101,11 +96,10 @@ export default class PrimeFacTreePage extends Component {
                 }
 
 
-
                 if (this.state.numberarray.length < 5) {
-                    distance += 50;
+                    distance += 40;
 
-                    this.state.numberarray.push({ key2: num, key: i, id: 50, id2: distance, colorr: mycolorr });
+                    this.state.numberarray.push({ key2: num, key: i, id: 40, id2: distance, colorr: mycolorr });
 
 
                     this.setState(this.state.numberarray);
@@ -116,17 +110,17 @@ export default class PrimeFacTreePage extends Component {
 
 
                 else if (this.state.numberarray.length == 5) {
-                    distance += 50;
-                    this.state.numberarray.push({ key2: i, key: num, id: 50, id2: distance, colorr: mycolorr });
+                    distance += 40;
+                    this.state.numberarray.push({ key2: i, key: num, id: 40, id2: distance, colorr: mycolorr });
 
 
                     this.setState(this.state.numberarray);
                 }
                 else if (this.state.numberarray.length >= 6 && this.state.numberarray.length < 10) {
 
-                    distance -= 50;
+                    distance -= 40;
 
-                    this.state.numberarray.push({ key2: i, key: num, id: 50, id2: distance, colorr: mycolorr });
+                    this.state.numberarray.push({ key2: i, key: num, id: 40, id2: distance, colorr: mycolorr });
 
 
                     this.setState(this.state.numberarray);
@@ -134,17 +128,17 @@ export default class PrimeFacTreePage extends Component {
                 }
                 else if (this.state.numberarray.length == 10) {
 
-                    distance -= 50;
+                    distance -= 40;
 
-                    this.state.numberarray.push({ key2: num, key: i, id: 50, id2: distance, colorr: mycolorr });
+                    this.state.numberarray.push({ key2: num, key: i, id: 40, id2: distance, colorr: mycolorr });
 
 
                     this.setState(this.state.numberarray);
 
                 }
                 else {
-                    distance += 50;
-                    this.state.numberarray.push({ key2: num, key: i, id: 50, id2: distance, colorr: mycolorr });
+                    distance += 40;
+                    this.state.numberarray.push({ key2: num, key: i, id: 40, id2: distance, colorr: mycolorr });
 
 
                     this.setState(this.state.numberarray);
@@ -184,6 +178,9 @@ export default class PrimeFacTreePage extends Component {
 
 
             }
+            else {
+                this.setState({ disable: false, footdsp: "flex" })
+            }
             i++;
 
         }.bind(this), 600);
@@ -191,7 +188,7 @@ export default class PrimeFacTreePage extends Component {
     render() {
         const intro = this.animasyonDegeri.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 70],
+            outputRange: [0, 10],
 
         });
         return (
@@ -201,25 +198,16 @@ export default class PrimeFacTreePage extends Component {
                     <Content>
                         <View style={{ flexDirection: "column" }}>
                             <View style={{ flexDirection: "row" }}>
-                                <Animated.View
-                                    style={{
-                                        top: intro
 
-                                    }}
-                                >
-                                    <Text
-
-                                        style={{ position: "relative", fontSize: 30, marginLeft: 100, color: "gray" }}
-                                    >
-                                        {this.state.number}
-                                    </Text>
-                                </Animated.View>
-
-                                <Button style={{ display: "flex" }} onPress={this.tree}><Text style={{ fontSize: 50, color: "white" }}>=</Text></Button>
+                                <Text style={{ fontSize: 30, marginLeft: 100, color: "white" }}>{this.state.number}</Text>
+                                <Button disabled={this.state.disable} onPress={() => this.tree()}><Text style={{ fontSize: 50, color: "white" }}>=</Text></Button>
                             </View>
                             <View>
-                                <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 500 }}>
-                                    <CardItem>
+                                <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 400 }}>
+
+
+                                    <CardItem style={{ marginTop: 0 }}>
+
                                         <List dataArray={this.state.numberarrayshow}
 
                                             renderRow={(item) =>
@@ -253,12 +241,14 @@ export default class PrimeFacTreePage extends Component {
 
 
                                         </List>
+
                                     </CardItem>
+
                                 </Card>
                             </View>
                         </View>
                     </Content>
-                    <Footer style={{ backgroundColor: null }}>
+                    <Footer style={{ backgroundColor: null, display: this.state.footdsp }}>
 
                         <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
                             <Text style={styles.footertxt}>1</Text>
@@ -277,7 +267,7 @@ export default class PrimeFacTreePage extends Component {
                         </Button>
 
                     </Footer>
-                    <Footer style={{ backgroundColor: null }}>
+                    <Footer style={{ backgroundColor: null, display: this.state.footdsp }}>
                         <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
                             <Text style={styles.footertxt}>6</Text>
                         </Button>
@@ -301,7 +291,7 @@ export default class PrimeFacTreePage extends Component {
                     </Footer>
 
                 </Container >
-            </ImageBackground>
+            </ImageBackground >
         );
     }
 
