@@ -39,8 +39,10 @@ export default class EbobPage extends Component {
             returnebob: "",
             backUpflag: false,
             btnflag: true,
-            twonumBColor: "gray", threenumBColor: "gray", firstnumBColor: "gray",
-            iconname: null, iconname2: null, iconname1: null
+            twonumBColor: null, threenumBColor: null, firstnumBColor: "green",
+            iconname: null, iconname2: null, iconname1: null,
+            btn2disable: true, btn3disable: true,
+            sayi2: "", sayi3: "", footerdisplay: "flex"
         }
     }
     warn = () => {
@@ -66,95 +68,109 @@ export default class EbobPage extends Component {
             returnebob: "yok",
             backUpflag: false,
             btnflag: true,
-            twonumBColor: "gray", threenumBColor: "gray", firstnumBColor: "gray",
-            iconname: null, iconname2: null, iconname1: null
+            twonumBColor: null, threenumBColor: null, firstnumBColor: "green",
+            iconname: null, iconname2: null, iconname1: null,
+            btn2disable: true, btn3disable: true,
+            sayi2: "", sayi3: "", footerdisplay: "flex"
         });
     }
-    checkNumberButtonState = () => {
-        if (this.state.tempnumber1 != "")
-            this.setState({ firstnumBColor: "red", iconname: "check", btnflag: false });
-        else
-            this.setState({ firstnumBColor: "gray", iconname: null, btnflag: true });
+    checkState = () => {
+        if (this.state.tempnumber2 == "" && this.state.tempnumber3 == "" && this.state.tempnumber1 == "")
+            this.clean();
+        else if (this.state.tempnumber2 != "" && this.state.tempnumber3 == "" && this.state.tempnumber1 == "")
+            this.setState({
+                iconname2: null, iconname1: "check", iconname: null,
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
+                twonumBColor: "red", firstnumBColor: "rgb(56,65,104)", threenumBColor: "rgb(56,65,104)"
+            });
+        else if (this.state.tempnumber2 == "" && this.state.tempnumber3 != "" && this.state.tempnumber1 == "")
+            this.setState({
+                iconname2: "check", iconname1: null, iconname: null,
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
+                twonumBColor: "rgb(56,65,104)", firstnumBColor: "rgb(56,65,104)", threenumBColor: "red"
+            });
+        else if (this.state.tempnumber2 != "" && this.state.tempnumber3 != "" && this.state.tempnumber1 == "")
+            this.setState({
+                iconname2: "check", iconname1: "check", iconname: null,
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
+                twonumBColor: "red", firstnumBColor: "rgb(56,65,104)", threenumBColor: "red"
+            });
+        else if (this.state.tempnumber2 == "" && this.state.tempnumber3 == "" && this.state.tempnumber1 != "")
+            this.setState({
+                iconname2: null, iconname1: null, iconname: "check", btn3disable: true,
+                sayi2: "2.Sayı", sayi3: "",
+                twonumBColor: "rgb(56,65,104)", firstnumBColor: "red", threenumBColor: null
+            });
 
-        if (this.state.tempnumber2 != "")
-            this.setState({ twonumBColor: "red", iconname1: "check", btnflag: false });
-        else
-            this.setState({ twonumBColor: "gray", iconname1: null, btnflag: true });
-
-        if (this.state.tempnumber3 != "")
-            this.setState({ threenumBColor: "red", iconname2: "check", btnflag: false });
-        else
-            this.setState({ threenumBColor: "gray", iconname2: null, btnflag: true });
+        else if (this.state.tempnumber2 == "" && this.state.tempnumber3 != "" && this.state.tempnumber1 != "")
+            this.setState({
+                iconname2: "check", iconname1: null, iconname: "check",
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
+                twonumBColor: "rgb(56,65,104)", firstnumBColor: "red", threenumBColor: "red"
+            });
+        else if (this.state.tempnumber2 != "" && this.state.tempnumber3 == "" && this.state.tempnumber1 != "")
+            this.setState({
+                iconname2: null, iconname1: "check", iconname: "check", btn3disable: false, btn2disable: false,
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
+                twonumBColor: "red", firstnumBColor: "red", threenumBColor: "rgb(56,65,104)"
+            });
+        else if (this.state.tempnumber2 != "" && this.state.tempnumber3 != "" && this.state.tempnumber1 != "")
+            this.setState({
+                iconname2: "check", iconname1: "check", iconname: "check",
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
+                twonumBColor: "red", firstnumBColor: "red", threenumBColor: "red"
+            });
+        if ((this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "") || (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 != ""))
+            this.setState({ btnflag: false });
     }
     firstNum = () => {
-        this.checkNumberButtonState();
-        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
-            this.setState({ btnflag: false });
         this.setState({
             maxdoor: "2", door: "1",
             backUpflag: false,
             showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
             que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white",
-            returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
-
+            returnebob: "", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""],
+            firstnumBColor: "green",
         });
+        this.checkState();
     }
     twoNum = () => {
-        this.checkNumberButtonState();
-        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
-            this.setState({ btnflag: false });
         this.setState({
             maxdoor: "2", door: "2",
             backUpflag: false,
             showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
             que1: "", que2: "2.Sayı", que3: "", backColorT1: "white", backColorT2: "green", backColorT3: "white",
-            returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
-
+            returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""],
+            twonumBColor: "green"
         });
+        this.checkState();
+
     }
     threeNum = () => {
-
-        this.checkNumberButtonState();
         this.setState({
             maxdoor: "3", door: "3",
             backUpflag: false,
             showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
             que1: "", que2: "", que3: "3.Sayı", backColorT1: "white", backColorT2: "white", backColorT3: "green",
-            returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
+            returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""],
+            threenumBColor: "green"
         });
+        this.checkState();
     }
     cleanOnePart = () => {
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
         if (maxdoorctrl == "2") {
-            if (doorctrl == "1") {
-                this.setState({ iconname: null, firstnumBColor: "gray", tempnumber1: "", message: "", btnflag: true });
-                this.setState(this.state.number1);
-            }
-            else if (doorctrl == "2") {
-                this.setState({ iconname1: null, twonumBColor: "gray", tempnumber2: "", message: "", btnflag: true });
-                this.setState(this.state.number2);
-            }
-            if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
-                this.setState({ btnflag: false });
+            if (doorctrl == "1")
+                this.setState({ iconname: null, firstnumBColor: "green", tempnumber1: "", message: "", btnflag: true });
+
+            else if (doorctrl == "2")
+                this.setState({ iconname1: null, twonumBColor: "green", tempnumber2: "", message: "", btnflag: true });
         }
         if (maxdoorctrl == "3") {
-            if (doorctrl == "1") {
-                this.setState({ iconname: null, firstnumBColor: "gray", tempnumber1: "", message: "", btnflag: true });
-                this.setState(this.state.number1);
-            }
-            else if (doorctrl == "2") {
-                this.setState({ iconname1: null, twonumBColor: "gray", tempnumber2: "", message: "", btnflag: true });
-                this.setState(this.state.number2);
-            }
-            else if (doorctrl == "3") {
-                this.setState({ iconname2: null, threenumBColor: "gray", tempnumber3: "", message: "", btnflag: true });
-                this.setState(this.state.number3);
-            }
-            if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
-                this.setState({ btnflag: false });
-
+            this.setState({ iconname2: null, threenumBColor: "green", tempnumber3: "", message: "", btnflag: true });
         }
+        this.checkState();
     }
     keybort = (param) => {
         var clearctrl = this.state.cleardoor;
@@ -162,8 +178,6 @@ export default class EbobPage extends Component {
             this.setState({ cleardoor: false, btnflag: true });
             this.setState(() => ({ backUpflag: false, showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnebob: "yok", message: "", number1: [""], number2: [""], number3: [""], door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "", }));
         }
-        if (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "")
-            this.setState({ btnflag: false, maxdoor: "2" });
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
         var num1 = this.state.tempnumber1;
@@ -173,68 +187,32 @@ export default class EbobPage extends Component {
             if (doorctrl == "1") {
                 if (num1.length < 4) {
                     num1 = num1 + param;
-                    this.setState({ tempnumber1: num1 });
-
+                    this.setState({ tempnumber1: num1, btn2disable: false });
+                    if (this.state.tempnumber2 == "")
+                        this.setState({ firstnumBColor: "red", iconname: "check", twonumBColor: "rgb(56,65,104)", sayi2: "2.Sayı" });
                 }
-                else {
+                else
                     this.warn();
-                }
-                if (num2.length > 0)
-                    this.setState({ btnflag: false });
             }
             else if (doorctrl == "2") {
                 if (num2.length < 4) {
                     num2 = num2 + param;
                     this.setState({ tempnumber2: num2 });
-                    if (num1.length > 0)
-                        this.setState({ btnflag: false });
-
+                    if (num2.length > 0)
+                        this.setState({ twonumBColor: "red", iconname1: "check", btn3disable: false, threenumBColor: "rgb(56,65,104)", sayi3: "3.Sayı" });
                 }
-                else {
-                    this.setState({ btnflag: false });
+                else
                     this.warn();
-                }
             }
         }
         if (maxdoorctrl == "3") {
-            if (doorctrl == "1") {
-                if (num1.length < 4) {
-                    num1 = num1 + param;
-                    this.setState({ tempnumber1: num1 });
-
-                }
-                else {
-                    this.warn();
-                }
-                if (num2.length > 0 && num3.length)
-                    this.setState({ btnflag: false });
+            if (num3.length < 4) {
+                num3 = num3 + param;
+                this.setState({ threenumBColor: "red", iconname2: "check", tempnumber3: num3, maxdoor: "3", door: "3" });
             }
-            else if (doorctrl == "2") {
-                if (num2.length < 4) {
-                    num2 = num2 + param;
-                    this.setState({ tempnumber2: num2 });
+            else
+                this.warn();
 
-                }
-                else {
-                    this.warn();
-                }
-                if (num1.length > 0 && num3.length)
-                    this.setState({ btnflag: false });
-            }
-            else if (doorctrl == "3") {
-
-                if (num3.length < 4) {
-                    num3 = num3 + param;
-                    this.setState({ tempnumber3: num3 });
-
-                    if (num2.length > 0 && num1.length)
-                        this.setState({ btnflag: false });
-                }
-                else {
-                    this.setState({ btnflag: false });
-                    this.warn();
-                }
-            }
         }
 
     }
@@ -283,11 +261,12 @@ export default class EbobPage extends Component {
         if (this.state.tempnumber3 != "")
             this.setState({ threenumBColor: "red", iconname2: "check" });
         else
-            this.setState({ threenumBColor: "gray", iconname2: null });
+            this.setState({ threenumBColor: "green", iconname2: null });
         if (maxdoorctrl == "2" && num1 != "" && num2 != "") {
+
             clearInterval(this.delay2);
             clearTimeout(this.delay);
-            this.setState({ backUpflag: true, cleardoor: true, que1: "", que2: "", que3: "", door: "1", backColorT1: "green", backColorT2: "white", backColorT3: "white", message: "" });
+            this.setState({ footerdisplay: "none", backUpflag: true, cleardoor: true, que1: "", que2: "", que3: "", door: "1", backColorT1: "green", backColorT2: "white", backColorT3: "white", message: "" });
             this.state.number1.push({ no1: num1 });
             this.state.number2.push({ no1: num2 });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
@@ -341,7 +320,8 @@ export default class EbobPage extends Component {
         else if (maxdoorctrl == "3" && num1 != "" && num2 != "" && num3 != "") {
             clearInterval(this.delay12);
             clearTimeout(this.delay22);
-            this.setState({ backUpflag: true, message: "", cleardoor: true, que1: "", que2: "", que3: "", door: "1", backColorT1: "green", backColorT2: "white", backColorT3: "white" });
+
+            this.setState({ footerdisplay: "none", backUpflag: true, message: "", cleardoor: true, que1: "", que2: "", que3: "", door: "1", backColorT1: "green", backColorT2: "white", backColorT3: "white" });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
@@ -468,7 +448,7 @@ export default class EbobPage extends Component {
             else {
                 clearInterval(this.delay);
                 clearTimeout(this.delay2);
-                this.setState({ btnflag: false });
+                this.setState({ btnflag: false, footerdisplay: "flex" });
             }
             i++;
         }.bind(this), 1000);
@@ -516,7 +496,7 @@ export default class EbobPage extends Component {
             else {
                 clearInterval(this.delay12);
                 clearTimeout(this.delay22);
-                this.setState({ btnflag: false, });
+                this.setState({ btnflag: false, footerdisplay: "flex" });
             }
             i++;
         }.bind(this), 1000);
@@ -539,7 +519,7 @@ export default class EbobPage extends Component {
                         <View style={{ flexDirection: "column" }}>
                             <View style={{ flexDirection: "row" }}>
                                 <Text style={{ fontSize: 30, color: "white", marginLeft: 50 }}>EBOB</Text>
-                                <Button rounded disabled={this.state.btnflag} onPress={this.backup} ><Text style={{ fontSize: 50 }}>=</Text></Button>
+                                <Button rounded onPress={this.backup} ><Text style={{ fontSize: 50 }}>=</Text></Button>
                                 <Text style={{ fontSize: 30, color: "white" }}>{this.state.returnebob}</Text>
                             </View>
                             <View style={{ flexDirection: "row" }}>
@@ -547,13 +527,13 @@ export default class EbobPage extends Component {
                                     <Icon type="FontAwesome" name={this.state.iconname} />
                                     <Text style={{ fontSize: 10 }}>1.Sayı</Text>
                                 </Button>
-                                <Button onPress={this.twoNum} style={{ marginTop: 5, backgroundColor: this.state.twonumBColor }}>
+                                <Button disabled={this.state.btn2disable} onPress={this.twoNum} style={{ marginTop: 5, backgroundColor: this.state.twonumBColor }}>
                                     <Icon type="FontAwesome" name={this.state.iconname1} />
-                                    <Text style={{ fontSize: 10 }}>2.Sayı</Text>
+                                    <Text style={{ fontSize: 10 }}>{this.state.sayi2}</Text>
                                 </Button>
-                                <Button onPress={this.threeNum} style={{ marginTop: 5, backgroundColor: this.state.threenumBColor }}>
+                                <Button disabled={this.state.btn3disable} onPress={this.threeNum} style={{ marginTop: 5, backgroundColor: this.state.threenumBColor }}>
                                     <Icon type="FontAwesome" name={this.state.iconname2} />
-                                    <Text style={{ fontSize: 10 }}>3.Sayı</Text>
+                                    <Text style={{ fontSize: 10 }}>{this.state.sayi3}</Text>
                                 </Button>
                             </View>
                         </View>
@@ -606,13 +586,19 @@ export default class EbobPage extends Component {
                                                 </ListItem>
                                             }>
                                         </List>
+
                                     </View>
 
                                 </View>
+                                <Button onPress={this.clean} transparent bordered>
+                                    <Icon style={{ fontSize: 30 }} name='trash' />
+
+                                </Button>
+
                             </CardItem>
                         </Card>
                     </Content>
-                    <Footer style={{ backgroundColor: null }}>
+                    <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
 
                         <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
                             <Text style={styles.footertxt}>1</Text>
@@ -631,7 +617,7 @@ export default class EbobPage extends Component {
                         </Button>
 
                     </Footer>
-                    <Footer style={{ backgroundColor: null }}>
+                    <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
                         <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
                             <Text style={styles.footertxt}>6</Text>
                         </Button>
@@ -647,7 +633,7 @@ export default class EbobPage extends Component {
                         <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
-                        <Button style={styles.footerbtn} rounded onPress={this.clean} >
+                        <Button style={styles.footerbtn} rounded onPress={this.cleanOnePart} >
 
                             <Text style={styles.footertxt}>SİL</Text>
                         </Button>

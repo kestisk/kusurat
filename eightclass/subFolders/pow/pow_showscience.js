@@ -1,8 +1,8 @@
 
 
 import React, { Component } from 'react';
-import { Container, Content, Button, Header, Left, Icon, Body, Title, Footer } from 'native-base';
-import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
+import { Container, Content, Button, Header, Text, Left, Icon, Body, Title, Footer, Card, CardItem } from 'native-base';
+import { Platform, StyleSheet, View, Alert, Image, ScrollView, ImageBackground } from 'react-native';
 export default class Pow_showscience extends Component {
     constructor(props) {
         super(props)
@@ -23,7 +23,8 @@ export default class Pow_showscience extends Component {
             answer: "",
             newpow: "",
             dot: true,
-            dotflag: false
+            dotflag: false,
+            footerdisplay: "flex"
         }
     }
     warn = () => {
@@ -54,7 +55,7 @@ export default class Pow_showscience extends Component {
     clean = () => {
         this.setState({
             message: "Lütfen Klavyeden Bir Sayı Giriniz", flagg: true, disableten: "none", number: "", answer: "", newpow: "", disableten2: "none", disable: true,
-            disableans: true, flagg: true, explain: "Kuvveti Giriniz", powornumber: true, pow: "", powbgc: "white", dot: true, dotflag: false
+            footerdisplay: "flex", disableans: true, flagg: true, explain: "Kuvveti Giriniz", powornumber: true, pow: "", powbgc: "white", dot: true, dotflag: false
         })
 
     }
@@ -159,7 +160,7 @@ export default class Pow_showscience extends Component {
 
     }
     science = () => {
-        debugger;
+        this.setState({ footerdisplay: "none" });
         let array = [... this.state.number];
         let part1;
         let part2 = [];
@@ -210,107 +211,121 @@ export default class Pow_showscience extends Component {
             this.setState(() => ({ answer: lastarray, disableten2: "flex" }));
 
         }
+        this.setState({ footerdisplay: "flex" });
     }
     render() {
         return (
             <Container>
-                <Content style={{ padding: 10 }}>
-                    <Text>{this.state.message}</Text>
-                    <View style={{ flexDirection: "column" }}>
-                        <View style={{ flexDirection: "row" }}>
-                            <Button disabled={this.state.disableans} onPress={this.science}><Text style={{ fontSize: 30 }}>CEVAP</Text></Button>
-                            <Button disabled={this.state.disable} onPress={this.powset}><Text style={{ fontSize: 30, fontStyle: "italic" }}>{this.state.explain}</Text></Button>
+                <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+                    <Content style={{ padding: 10 }}>
 
+                        <View style={{ flexDirection: "column" }}>
+                            <View style={{ flexDirection: "row" }}>
+                                <Button disabled={this.state.disableans} onPress={this.science}><Text style={{ fontSize: 30 }}>CEVAP</Text></Button>
+                                <Button disabled={this.state.disable} onPress={this.powset}><Text style={{ fontSize: 30, fontStyle: "italic" }}>{this.state.explain}</Text></Button>
+
+                            </View>
+                            <Card style={{ marginLeft: 10, marginRight: 10, height: 250 }}>
+                                <CardItem>
+                                    <Text>{this.state.message}</Text>
+                                    <View style={{ flexDirection: "row" }}>
+                                        <Button onPress={this.clean} transparent bordered>
+                                            <Icon style={{ fontSize: 30 }} name='trash' />
+
+                                        </Button>
+                                        <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20, backgroundColor: this.state.numbgc }}>{this.state.number}</Text>
+                                        <Text style={{
+                                            marginTop: 20, fontSize: 30,
+                                            display: this.state.disableten,
+
+                                            color: "red"
+                                        }}>{this.state.ten}</Text>
+
+                                        <Text style={{
+                                            height: 30,
+                                            width: 50,
+                                            marginTop: 8, fontSize: 20,
+
+                                            display: this.state.disableten,
+                                            color: "red",
+                                            backgroundColor: this.state.powbgc
+                                        }}>{this.state.pow}</Text>
+
+
+
+                                    </View>
+
+                                    <View style={{ flexDirection: "row" }}>
+                                        <Text style={{
+
+                                            marginTop: 20, fontSize: 30,
+                                            display: this.state.disableten,
+
+
+                                        }}>{this.state.answer}</Text>
+                                        <Text style={{
+                                            marginTop: 20, fontSize: 30,
+                                            display: this.state.disableten2,
+                                            color: "red"
+                                        }}>{this.state.ten}</Text>
+                                        <Text style={{
+                                            height: 30,
+                                            width: 50,
+                                            color: "red",
+                                            marginTop: 8, fontSize: 20,
+
+                                        }}>{this.state.newpow}</Text>
+
+                                    </View>
+
+                                    <Button style={{ position: "absolute", alignSelf: "flex-end", marginTop: 40 }} onPress={this.clean}><Text style={{ fontSize: 30, fontStyle: "italic" }}>Temizle</Text></Button>
+
+                                </CardItem>
+                            </Card>
                         </View>
-                        <View style={{ flexDirection: "row" }}>
-                            <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20, backgroundColor: this.state.numbgc }}>{this.state.number}</Text>
-                            <Text style={{
-                                marginTop: 20, fontSize: 30,
-                                display: this.state.disableten,
+                    </Content>
+                    <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
 
-                                color: "red"
-                            }}>{this.state.ten}</Text>
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
+                            <Text style={styles.footertxt}>1</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(2) }} >
+                            <Text style={styles.footertxt}>2</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(3) }} >
+                            <Text style={styles.footertxt}>3</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(4) }} >
+                            <Text style={styles.footertxt}>4</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
+                            <Text style={styles.footertxt}>5</Text>
+                        </Button>
 
-                            <Text style={{
-                                height: 30,
-                                width: 50,
-                                marginTop: 8, fontSize: 20,
+                    </Footer>
+                    <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
+                            <Text style={styles.footertxt}>6</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(7) }} >
+                            <Text style={styles.footertxt}>7</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(8) }} >
+                            <Text style={styles.footertxt}>8</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(9) }} >
+                            <Text style={styles.footertxt}>9</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
+                            <Text style={styles.footertxt}>0</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={this.cleanOnePart} >
 
-                                display: this.state.disableten,
-                                color: "red",
-                                backgroundColor: this.state.powbgc
-                            }}>{this.state.pow}</Text>
+                            <Text style={styles.footertxt}>SİL</Text>
+                        </Button>
 
-
-
-                        </View>
-
-                        <View style={{ flexDirection: "row" }}>
-                            <Text style={{
-
-                                marginTop: 20, fontSize: 30,
-                                display: this.state.disableten,
-
-
-                            }}>{this.state.answer}</Text>
-                            <Text style={{
-                                marginTop: 20, fontSize: 30,
-                                display: this.state.disableten2,
-                                color: "red"
-                            }}>{this.state.ten}</Text>
-                            <Text style={{
-                                height: 30,
-                                width: 50,
-                                color: "red",
-                                marginTop: 8, fontSize: 20,
-
-                            }}>{this.state.newpow}</Text>
-
-                        </View>
-                        <Button style={{ position: "absolute", alignSelf: "flex-end", marginTop: 40 }} onPress={this.clean}><Text style={{ fontSize: 30, fontStyle: "italic" }}>Temizle</Text></Button>
-                    </View>
-                </Content>
-                <Footer>
-                    <Button info rounded onPress={() => { this.keybort(1) }} >
-                        <Icon type="MaterialIcons" name="filter-1" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(2) }} >
-                        <Icon type="MaterialIcons" name="filter-2" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(3) }} >
-                        <Icon type="MaterialIcons" name="filter-3" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(4) }} >
-                        <Icon type="MaterialIcons" name="filter-4" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(5) }} >
-                        <Icon type="MaterialIcons" name="filter-5" />
-                    </Button>
-                    <Button disabled={this.state.dot} rounded onPress={() => { this.keybort(",") }} >
-                        <Icon type="Foundation" name="italic" />
-                    </Button>
-                </Footer>
-                <Footer>
-                    <Button info rounded onPress={() => { this.keybort(6) }} >
-                        <Icon type="MaterialIcons" name="filter-6" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(7) }} >
-                        <Icon type="MaterialIcons" name="filter-7" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(8) }} >
-                        <Icon type="MaterialIcons" name="filter-8" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(9) }} >
-                        <Icon type="MaterialIcons" name="filter-9" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.keybort(0) }} >
-                        <Icon type="MaterialIcons" name="exposure-zero" />
-                    </Button>
-                    <Button info rounded onPress={this.cleanpart} >
-
-                        <Icon type="MaterialIcons" name="keyboard-arrow-left" />
-                    </Button>
-                </Footer>
+                    </Footer>
+                </ImageBackground>
 
 
 
@@ -326,6 +341,18 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 30,
         padding: 5
+    },
+    footerbtn: {
+        marginLeft: 5,
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footerbtnmain: {
+
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footertxt: {
+        color: "rgb(142,163,226)",
+        fontSize: 30
     },
     buttontext: {
         textAlign: "center",

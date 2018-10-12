@@ -1,8 +1,8 @@
 
 
 import React, { Component } from 'react';
-import { Container, Content, Button, Header, Left, Icon, Body, Title, Footer, List, ListItem } from 'native-base';
-import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView, FlatList } from 'react-native';
+import { Container, Content, Button, Header, Left, Text, Icon, Body, Title, Footer, List, ListItem, Card, CardItem } from 'native-base';
+import { Platform, StyleSheet, View, Alert, Image, ScrollView, FlatList, ImageBackground } from 'react-native';
 export default class Pow_findpow extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +16,8 @@ export default class Pow_findpow extends Component {
             storePow: [{ storenumber: "", x: "", key: "" }],
             clearctrl: false,
             storePow2: [],
-            btnflag: false
+            btnflag: false,
+            footerdisplay: "flex"
         };
 
     }
@@ -38,7 +39,7 @@ export default class Pow_findpow extends Component {
             storePow2: [],
         });
     }
-    write = (param) => {
+    keybort = (param) => {
         var cleardoor = this.state.clearctrl;
         if (cleardoor) {
             this.setState({ showtempnumber: "", clearctrl: false, leftNumberArray: [""], rightNumberArray: [""], showleftNumberArray: [""], showrightNumberArray: [""], storePow: [{ storenumber: "", x: "", key: "" }], });
@@ -64,7 +65,8 @@ export default class Pow_findpow extends Component {
             storePow: [{ storenumber: "", x: "", key: "" }],
             clearctrl: false,
             storePow2: [],
-            btnflag: true
+            btnflag: true,
+            footerdisplay: "flex"
         });
     }
     callCheckAgain = () => {
@@ -87,7 +89,7 @@ export default class Pow_findpow extends Component {
             this.findpow();
     }
     findpow = () => {
-        this.setState({ showtempnumber: this.state.tempnumber, btnflag: true });
+        this.setState({ showtempnumber: this.state.tempnumber, btnflag: true, footerdisplay: "none" });
         var num1 = this.state.tempnumber;
         if (num1 != "") {
             clearInterval(this.delay);
@@ -160,7 +162,7 @@ export default class Pow_findpow extends Component {
                 this.settimem2(i);
             }
             else {
-                this.setState({ btnflag: false });
+                this.setState({ btnflag: false, footerdisplay: "flex" });
             }
             i++;
         }.bind(this), 600);
@@ -178,76 +180,87 @@ export default class Pow_findpow extends Component {
     render() {
         return (
             <Container>
-                <Content>
-                    <Text>{this.state.message}</Text>
-                    <View style={{ flexDirection: "row" }}>
-                        <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20 }}>{this.state.tempnumber}{this.state.showtempnumber}{this.state.showleftNumberArray}</Text>
-                        <Text style={{ marginTop: 20, backgroundColor: "red", height: 450, width: 5 }}></Text>
-                        <Text style={{ marginTop: 20, fontSize: 30 }}>{this.state.showrightNumberArray}</Text>
-                        <Button onPress={this.callCheckAgain} disabled={this.state.btnflag} style={{ marginTop: 50, marginLeft: 150 }}><Text style={{ fontSize: 20 }}>Kuvvetini Bul</Text></Button>
+                <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+                    <Content>
+                        <Card style={{ marginLeft: 10, marginRight: 10 }}>
+                            <CardItem>
+                                <Text>{this.state.message}</Text>
+                                <View style={{ flexDirection: "row" }}>
+                                    <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20 }}>{this.state.tempnumber}{this.state.showtempnumber}{this.state.showleftNumberArray}</Text>
+                                    <Text style={{ marginTop: 20, backgroundColor: "red", height: 450, width: 5 }}></Text>
+                                    <Text style={{ marginTop: 20, fontSize: 30 }}>{this.state.showrightNumberArray}</Text>
+                                    <Button onPress={this.callCheckAgain} disabled={this.state.btnflag} style={{ marginTop: 50, marginLeft: 100 }}><Text style={{ fontSize: 20 }}>Kuvvetini Bul</Text></Button>
+                                    <Button onPress={this.clean} transparent bordered>
+                                        <Icon style={{ fontSize: 30 }} name='trash' />
 
-                    </View>
-                    <View>
-                        <FlatList horizontal={true}
-                            data={this.state.storePow}
-                            renderItem={({ item }) => {
+                                    </Button>
+                                </View>
+                                <View>
+                                    <FlatList horizontal={true}
+                                        data={this.state.storePow}
+                                        renderItem={({ item }) => {
 
-                                return (
+                                            return (
 
-                                    <View style={{ flexDirection: "row" }}>
+                                                <View style={{ flexDirection: "row" }}>
 
-                                        <Text style={{ fontSize: 30 }}>{item.storenumber}</Text>
-                                        <Text style={{ fontSize: 20, marginBottom: 20 }}>{item.key}</Text>
-                                        <Text style={{ fontSize: 30 }}>{item.x}</Text>
-                                    </View>
-                                );
+                                                    <Text style={{ fontSize: 30 }}>{item.storenumber}</Text>
+                                                    <Text style={{ fontSize: 20, marginBottom: 20 }}>{item.key}</Text>
+                                                    <Text style={{ fontSize: 30 }}>{item.x}</Text>
+                                                </View>
+                                            );
 
-                            }}
-                            // keyExtractor={item => item.key}
-                            at={this.state.storePow2}
-                        />
-                    </View>
-                </Content>
-                <Footer>
-                    <Button info rounded onPress={() => { this.write(1) }} >
-                        <Icon type="MaterialIcons" name="filter-1" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(2) }} >
-                        <Icon type="MaterialIcons" name="filter-2" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(3) }}>
-                        <Icon type="MaterialIcons" name="filter-3" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(4) }}>
-                        <Icon type="MaterialIcons" name="filter-4" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(5) }} >
-                        <Icon type="MaterialIcons" name="filter-5" />
-                    </Button>
-                    <Button info rounded onPress={this.cleanOnePart} >
-                        <Text style={{ color: "white", fontSize: 15 }}>Sil</Text>
-                    </Button>
-                </Footer>
-                <Footer>
-                    <Button info rounded onPress={() => { this.write(6) }} >
-                        <Icon type="MaterialIcons" name="filter-6" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(7) }} >
-                        <Icon type="MaterialIcons" name="filter-7" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(8) }} >
-                        <Icon type="MaterialIcons" name="filter-8" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(9) }} >
-                        <Icon type="MaterialIcons" name="filter-9" />
-                    </Button>
-                    <Button info rounded onPress={() => { this.write(0) }} >
-                        <Icon type="MaterialIcons" name="exposure-zero" />
-                    </Button>
-                    <Button info rounded onPress={this.clean} >
-                        <Text style={{ color: "white", fontSize: 10 }}>Sıfırla</Text>
-                    </Button>
-                </Footer>
+                                        }}
+                                        // keyExtractor={item => item.key}
+                                        at={this.state.storePow2}
+                                    />
+                                </View>
+
+                            </CardItem>
+                        </Card>
+                    </Content>
+                    <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
+
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
+                            <Text style={styles.footertxt}>1</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(2) }} >
+                            <Text style={styles.footertxt}>2</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(3) }} >
+                            <Text style={styles.footertxt}>3</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(4) }} >
+                            <Text style={styles.footertxt}>4</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
+                            <Text style={styles.footertxt}>5</Text>
+                        </Button>
+
+                    </Footer>
+                    <Footer style={{ backgroundColor: null, ddisplay: this.state.footerdisplay }}>
+                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
+                            <Text style={styles.footertxt}>6</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(7) }} >
+                            <Text style={styles.footertxt}>7</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(8) }} >
+                            <Text style={styles.footertxt}>8</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(9) }} >
+                            <Text style={styles.footertxt}>9</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
+                            <Text style={styles.footertxt}>0</Text>
+                        </Button>
+                        <Button style={styles.footerbtn} rounded onPress={this.cleanOnePart} >
+
+                            <Text style={styles.footertxt}>SİL</Text>
+                        </Button>
+
+                    </Footer>
+                </ImageBackground>
 
             </Container >
         );
@@ -261,6 +274,18 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 30,
         padding: 5
+    },
+    footerbtn: {
+        marginLeft: 5,
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footerbtnmain: {
+
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footertxt: {
+        color: "rgb(142,163,226)",
+        fontSize: 30
     },
     buttontext: {
         textAlign: "center",

@@ -76,7 +76,7 @@ export default class EbobTabPage extends Component {
                     </Body>
                 </Header>
                 <Tabs>
-                    <Tab heading="Asistan">
+                    <Tab style={{ backgroundColor: "rgb(56,65,104)" }} heading="Asistan">
                         <EbobPage />
                     </Tab>
                     <Tab heading="Kendini Dene">
