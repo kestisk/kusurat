@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Container, Content, Button, Header, Left, Icon, Body, Title, Footer } from 'native-base';
-import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
+import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView, BackHandler } from 'react-native';
 
 export default class Ebob_ekok_primePageTYS extends Component {
     constructor(props) {
@@ -153,7 +153,16 @@ export default class Ebob_ekok_primePageTYS extends Component {
     render() {
         return (
             <Container>
-
+                <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+                    <Left style={{ flex: 1 }}>
+                        <Button transparent onPress={this.back}>
+                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+                        </Button>
+                    </Left>
+                    <Body style={{ flex: 5 }}>
+                        <Title style={styles.heade}>KENDİNİ DENE</Title>
+                    </Body>
+                </Header>
                 <Content >
                     <View style={{ flexDirection: "column" }}>
                         <View style={{ flexDirection: "row", marginLeft: 8 }}>
@@ -206,33 +215,44 @@ export default class Ebob_ekok_primePageTYS extends Component {
             </Container >
         );
     }
+    componentWillMount() {
+        BackHandler.addEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
+    handleBackButtonClick() {
+        this.props.navigation.navigate("Ebob_Ekok_PrimeTabPages");
 
+    }
+    back = () => {
+        this.props.navigation.navigate("Ebob_Ekok_PrimeTabPages");
+    };
 }
-
 
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: 'white',
+        color: "rgb(142,163,226)",
         fontSize: 30,
         padding: 5
     },
+    footerbtn: {
+        marginLeft: 5,
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footerbtnmain: {
+
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footertxt: {
+        color: "rgb(142,163,226)",
+        fontSize: 30
+    },
     buttontext: {
         textAlign: "center",
-        color: "blue",
+        color: 'white',
+        padding: 5,
         fontSize: 20,
-    },
-    buttontext2: {
-        textAlign: "center",
-        color: "gray",
-        fontSize: 20,
-    },
-    buttonstyle: {
-        marginLeft: 5
-    },
-    buttonstyle2: {
-
-        marginLeft: 10
     }
 });
-

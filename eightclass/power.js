@@ -30,12 +30,12 @@ export default class Power extends Component {
     return (
       <Container>
         <Header style={{ backgroundColor: "#62B1F6" }}>
-          <Left>
+          <Left style={{ flex: 1 }}>
             <Button transparent onPress={this.back}>
               <Icon name="arrow-back" />
             </Button>
           </Left>
-          <Body>
+          <Body style={{ flex: 5 }}>
             <Title style={styles.heade}>KÜSUR-AT</Title>
           </Body>
         </Header>
@@ -79,9 +79,21 @@ export default class Power extends Component {
 const styles = StyleSheet.create({
   heade: {
     textAlign: "center",
-    color: 'white',
+    color: "white",
     fontSize: 30,
     padding: 5
+  },
+  footerbtn: {
+    marginLeft: 5,
+    backgroundColor: "rgb(56,65,104)"
+  },
+  footerbtnmain: {
+
+    backgroundColor: "rgb(56,65,104)"
+  },
+  footertxt: {
+    color: "rgb(142,163,226)",
+    fontSize: 30
   },
   buttontext: {
     textAlign: "center",
