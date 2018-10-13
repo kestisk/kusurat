@@ -175,7 +175,7 @@ export default class EbobPage extends Component {
         var num3 = this.state.tempnumber3;
         if (maxdoorctrl == "2") {
             if (doorctrl == "1") {
-                if (num1.length < 4) {
+                if (num1.length < 3) {
                     num1 = num1 + param;
                     this.setState({ tempnumber1: num1, btn2disable: false });
                     if (this.state.tempnumber2 == "")
@@ -185,7 +185,7 @@ export default class EbobPage extends Component {
                     this.warn();
             }
             else if (doorctrl == "2") {
-                if (num2.length < 4) {
+                if (num2.length < 3) {
                     num2 = num2 + param;
                     this.setState({ tempnumber2: num2 });
                     if (num2.length > 0)
@@ -196,7 +196,7 @@ export default class EbobPage extends Component {
             }
         }
         if (maxdoorctrl == "3") {
-            if (num3.length < 4) {
+            if (num3.length < 3) {
                 num3 = num3 + param;
                 this.setState({ tempnumber3: num3, maxdoor: "3", door: "3" });
             }
@@ -532,7 +532,7 @@ export default class EbobPage extends Component {
                             </View>
                         </View>
 
-                        <Card style={{ marginLeft: 10, marginRight: 10 }}>
+                        <Card style={{ marginLeft: 10, marginRight: 10, marginTop: 40 }}>
                             <CardItem>
                                 <Body>
                                     <View style={{ flexDirection: "column" }}>

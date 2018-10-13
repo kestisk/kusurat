@@ -204,7 +204,7 @@ export default class Ebob_ekok_primePage extends Component {
         var num3 = this.state.tempnumber3;
         if (maxdoorctrl == "2") {
             if (doorctrl == "1") {
-                if (num1.length < 4) {
+                if (num1.length < 3) {
                     num1 = num1 + param;
                     this.setState({ tempnumber1: num1, btn2disable: false });
                     this.setState(this.state.number1);
@@ -216,7 +216,7 @@ export default class Ebob_ekok_primePage extends Component {
                     this.warn();
             }
             else if (doorctrl == "2") {
-                if (num2.length < 4) {
+                if (num2.length < 3) {
                     num2 = num2 + param;
                     this.setState({ tempnumber2: num2 });
                     this.setState(this.state.number2);
@@ -233,7 +233,7 @@ export default class Ebob_ekok_primePage extends Component {
             }
         }
         if (maxdoorctrl == "3") {
-            if (num3.length < 4) {
+            if (num3.length < 3) {
                 num3 = num3 + param;
                 this.setState({ tempnumber3: num3, maxdoor: "3", door: "3" });
                 this.setState(this.state.number3);
@@ -584,7 +584,7 @@ export default class Ebob_ekok_primePage extends Component {
                         <Card style={{ marginLeft: 10, marginRight: 10 }}>
                             <CardItem>
                                 <Body>
-                                    <View style={{ flexDirection: "column", marginTop: 10 }}>
+                                    <View style={{ flexDirection: "column", marginTop: 40 }}>
                                         <View style={{ flexDirection: "row" }}>
 
                                             <View style={{ flexDirection: "column" }}>

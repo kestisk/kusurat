@@ -23,7 +23,7 @@ export default class EkokPage extends Component {
         super(props);
         this.state = {
             one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0",
-            message: "", returnekok: 1,
+            message: "", returnekok: "",
             tempnumber1: "", tempnumber2: "", tempnumber3: "",
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
@@ -196,7 +196,7 @@ export default class EkokPage extends Component {
         var num3 = this.state.tempnumber3;
         if (maxdoorctrl == "2") {
             if (doorctrl == "1") {
-                if (num1.length < 4) {
+                if (num1.length < 3) {
                     num1 = num1 + param;
                     this.setState({ tempnumber1: num1, btn2disable: false });
                     this.state.number1[0] = num1;
@@ -208,7 +208,7 @@ export default class EkokPage extends Component {
                     this.warn();
             }
             else if (doorctrl == "2") {
-                if (num2.length < 4) {
+                if (num2.length < 3) {
                     num2 = num2 + param;
                     this.setState({ tempnumber2: num2 });
                     this.state.number2[0] = num2;
@@ -222,7 +222,7 @@ export default class EkokPage extends Component {
                 this.warn();
         }
         if (maxdoorctrl == "3") {
-            if (num3.length < 4) {
+            if (num3.length < 3) {
                 num3 = num3 + param;
                 this.setState({ tempnumber3: num3, maxdoor: "3", door: "3" });
                 this.state.number3[0] = num3;
@@ -567,7 +567,7 @@ export default class EkokPage extends Component {
                         <Card style={{ marginLeft: 10, marginRight: 10 }}>
                             <CardItem>
                                 <Body>
-                                    <View style={{ flexDirection: "column", marginTop: 10 }}>
+                                    <View style={{ flexDirection: "column", marginTop: 40 }}>
                                         <View style={{ flexDirection: "row" }}>
                                             <View style={{ flexDirection: "column" }}>
                                                 <Text onPress={this.firstNum}>{this.state.que1}</Text>
