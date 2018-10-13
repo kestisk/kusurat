@@ -243,7 +243,7 @@ export class Multips_primeFactorPage extends Component {
 
             <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
                 <Container>
-                    <Header style={{ backgroundColor: "rgb(56,65,104)" }}>
+                    <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
                         <Left>
                             <Button transparent onPress={this.back}>
                                 <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
@@ -256,8 +256,8 @@ export class Multips_primeFactorPage extends Component {
                         </Body>
                         <Right>
                             <Button transparent onPress={this.forward}>
-                                <Text style={{ color: "red", fontSize: 20 }} >DENE</Text>
-                                <Icon style={{ color: "red", fontSize: 30 }} name="arrow-forward" />
+
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="EvilIcons" name="pencil" />
 
                             </Button>
                         </Right>
@@ -294,7 +294,7 @@ export class Multips_primeFactorPage extends Component {
 
                                 </View>
                             </View>
-                            <Card style={{ marginLeft: 10, marginRight: 10 }}>
+                            <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 400 }}>
                                 <CardItem>
 
                                     <Body>
@@ -305,8 +305,8 @@ export class Multips_primeFactorPage extends Component {
                                             <Text style={{ marginTop: 20, fontSize: 30 }}>{this.state.array}</Text>
                                         </View>
                                     </Body>
-                                    <Button onPress={this.clean} transparent bordered>
-                                        <Icon style={{ fontSize: 30 }} name='trash' />
+                                    <Button onPress={this.clean} transparent>
+                                        <Icon style={{ color: "rgb(75,0,130)", fontSize: 50 }} type="EvilIcons" name='refresh' />
 
                                     </Button>
                                 </CardItem>
@@ -353,8 +353,8 @@ export class Multips_primeFactorPage extends Component {
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
                         <Button style={styles.footerbtn} rounded onPress={this.cleanOnePart} >
+                            <Icon style={styles.footertxt} name='trash' />
 
-                            <Text style={styles.footertxt}>SİL</Text>
                         </Button>
 
                     </Footer>

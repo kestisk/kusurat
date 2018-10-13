@@ -9,7 +9,7 @@ import {
 import { BackHandler } from 'react-native';
 
 
-export default class PrimeFacTreePage extends Component {
+export default class primeFacTreePagesTYS extends Component {
     constructor(props) {
         super(props)
 

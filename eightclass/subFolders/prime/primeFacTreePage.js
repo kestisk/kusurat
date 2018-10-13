@@ -36,7 +36,8 @@ export default class PrimeFacTreePage extends Component {
             one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0",
             footdsp: "flex",
             flagg: false,
-            disable: false
+            disable: false,
+            message: ""
         }
     }
 
@@ -67,7 +68,9 @@ export default class PrimeFacTreePage extends Component {
 
         }
     }
-
+    warn = () => {
+        this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
+    }
     clean = () => {
         this.setState(() => ({ number: "", flagg: true, numberarray: [""], numberarrayshow: [""], disable: true }));
 
@@ -185,6 +188,14 @@ export default class PrimeFacTreePage extends Component {
 
         }.bind(this), 600);
     }
+    forward = () => {
+        this.props.navigation.navigate("primeFacTreePagesTYS");
+
+    }
+
+    back = () => {
+        this.props.navigation.navigate("MultipPages");
+    }
     render() {
         const intro = this.animasyonDegeri.interpolate({
             inputRange: [0, 1],
@@ -194,16 +205,36 @@ export default class PrimeFacTreePage extends Component {
         return (
             <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
                 <Container>
+                    <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+                        <Left>
+                            <Button transparent onPress={this.back}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+                            </Button>
 
+                        </Left>
+
+                        <Body>
+                            <Title style={styles.heade}>KÜSUR-AT</Title>
+                        </Body>
+                        <Right>
+                            <Button transparent onPress={this.forward}>
+
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="EvilIcons" name="pencil" />
+
+                            </Button>
+                        </Right>
+                    </Header>
                     <Content>
+                        <Text style={{ color: "white" }}>{this.state.message}</Text>
                         <View style={{ flexDirection: "column" }}>
+
                             <View style={{ flexDirection: "row" }}>
 
                                 <Text style={{ fontSize: 30, marginLeft: 100, color: "white" }}>{this.state.number}</Text>
-                                <Button disabled={this.state.disable} onPress={() => this.tree()}><Text style={{ fontSize: 50, color: "white" }}>=</Text></Button>
+                                <Button rounded disabled={this.state.disable} onPress={() => this.tree()}><Text style={{ fontSize: 50, color: "white" }}>=</Text></Button>
                             </View>
                             <View>
-                                <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 400 }}>
+                                <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 450 }}>
 
 
                                     <CardItem style={{ marginTop: 0 }}>
@@ -285,7 +316,7 @@ export default class PrimeFacTreePage extends Component {
                         </Button>
                         <Button style={styles.footerbtn} rounded onPress={this.clean} >
 
-                            <Text style={styles.footertxt}>SİL</Text>
+                            <Icon style={styles.footertxt} name='trash' />
                         </Button>
 
                     </Footer>
@@ -300,7 +331,7 @@ export default class PrimeFacTreePage extends Component {
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: 'white',
+        color: "rgb(142,163,226)",
         fontSize: 30,
         padding: 5
 
