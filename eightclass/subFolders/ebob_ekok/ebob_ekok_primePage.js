@@ -32,7 +32,7 @@ export default class Ebob_ekok_primePage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "green", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
@@ -58,7 +58,7 @@ export default class Ebob_ekok_primePage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "green", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
@@ -122,14 +122,14 @@ export default class Ebob_ekok_primePage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "green", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             ebobkac: "",
             backUpflag: false,
-            firstnumBColor: "green"
+            firstnumBColor: "rgb(25,25,112)"
         });
         this.checkState();
     }
@@ -142,14 +142,14 @@ export default class Ebob_ekok_primePage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "white", backColorT2: "green", backColorT3: "white",
+            backColorT1: "white", backColorT2: "rgb(25,25,112)", backColorT3: "white",
             door: "2", maxdoor: "2",
             ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             ebobkac: "",
             backUpflag: false,
-            twonumBColor: "green"
+            twonumBColor: "rgb(25,25,112)"
         });
         this.checkState();
     }
@@ -162,14 +162,14 @@ export default class Ebob_ekok_primePage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "white", backColorT2: "white", backColorT3: "green",
+            backColorT1: "white", backColorT2: "white", backColorT3: "rgb(25,25,112)",
             door: "3", maxdoor: "3",
             ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             ebobkac: "",
             backUpflag: false,
-            threenumBColor: "green"
+            threenumBColor: "rgb(25,25,112)"
         });
         this.checkState();
     }
@@ -290,7 +290,7 @@ export default class Ebob_ekok_primePage extends Component {
         if (maxdoorctrl == "2" && num1 != "" && num2 != "") {
             clearInterval(this.delay2);
             clearTimeout(this.delay);
-            this.setState({ sayi2: "", sayi3: "", que1: "", footerdisplay: "none", backUpflag: true, cleardoor: true, door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "green", backColorT2: "white", backColorT3: "white", message: "" });
+            this.setState({ sayi2: "", sayi3: "", que1: "", footerdisplay: "none", backUpflag: true, cleardoor: true, door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white", message: "" });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
@@ -351,7 +351,7 @@ export default class Ebob_ekok_primePage extends Component {
         else if (maxdoorctrl == "3" && (num1 != "" && num2 != "" && num3 != "")) {
             clearInterval(this.delay12);
             clearTimeout(this.delay22);
-            this.setState({ sayi2: "", sayi3: "", que1: "", footerdisplay: "none", backUpflag: true, message: "", cleardoor: true, door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "green", backColorT2: "white", backColorT3: "white" });
+            this.setState({ sayi2: "", sayi3: "", que1: "", footerdisplay: "none", backUpflag: true, message: "", cleardoor: true, door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white" });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
@@ -583,60 +583,64 @@ export default class Ebob_ekok_primePage extends Component {
                         </View>
                         <Card style={{ marginLeft: 10, marginRight: 10 }}>
                             <CardItem>
-                                <View style={{ flexDirection: "column" }}>
-                                    <View style={{ flexDirection: "row" }}>
+                                <Body>
+                                    <View style={{ flexDirection: "column", marginTop: 10 }}>
+                                        <View style={{ flexDirection: "row" }}>
 
-                                        <View style={{ flexDirection: "column" }}>
-                                            <Text onPress={this.firstNum}>{this.state.que1}</Text>
-                                            <Text onPress={this.firstNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
+                                            <View style={{ flexDirection: "column" }}>
+                                                <Text onPress={this.firstNum}>{this.state.que1}</Text>
+                                                <Text onPress={this.firstNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
+                                            </View>
+                                            <List dataArray={this.state.shownumber1}
+                                                renderRow={(item) =>
+                                                    <ListItem style={{ borderColor: "white" }}>
+                                                        <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                    </ListItem>
+                                                }>
+                                            </List>
+
+                                            <View style={{ flexDirection: "column" }}>
+                                                <Text onPress={this.twoNum}>{this.state.sayi2}</Text>
+                                                <Text onPress={this.twoNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
+                                            </View>
+                                            <List dataArray={this.state.shownumber2}
+                                                renderRow={(item) =>
+                                                    <ListItem style={{ borderColor: "white" }}>
+                                                        <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                    </ListItem>
+                                                }>
+                                            </List>
+
+                                            <View style={{ flexDirection: "column" }}>
+                                                <Text onPress={this.threeNum}>{this.state.sayi3}</Text>
+                                                <Text onPress={this.threeNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
+                                            </View>
+                                            <List dataArray={this.state.shownumber3}
+                                                renderRow={(item) =>
+                                                    <ListItem style={{ borderColor: "white" }}>
+                                                        <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                    </ListItem>
+                                                }>
+                                            </List>
+
+
+                                            <Text style={{ marginTop: 20, backgroundColor: "rgb(25,25,112)", height: 450, width: 5, marginLeft: 5 }}></Text>
+                                            <List dataArray={this.state.showrightarray}
+                                                renderRow={(item) =>
+                                                    <ListItem style={{ borderColor: "red" }}>
+                                                        <Text style={{ color: "white", fontSize: 30, backgroundColor: (item.key == "1") ? "red" : "blue" }}>{item.rightNumber}</Text>
+                                                    </ListItem>
+                                                }>
+                                            </List>
                                         </View>
-                                        <List dataArray={this.state.shownumber1}
-                                            renderRow={(item) =>
-                                                <ListItem style={{ borderColor: "white" }}>
-                                                    <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
-                                                </ListItem>
-                                            }>
-                                        </List>
-
-                                        <View style={{ flexDirection: "column" }}>
-                                            <Text onPress={this.twoNum}>{this.state.sayi2}</Text>
-                                            <Text onPress={this.twoNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
-                                        </View>
-                                        <List dataArray={this.state.shownumber2}
-                                            renderRow={(item) =>
-                                                <ListItem style={{ borderColor: "white" }}>
-                                                    <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
-                                                </ListItem>
-                                            }>
-                                        </List>
-
-                                        <View style={{ flexDirection: "column" }}>
-                                            <Text onPress={this.threeNum}>{this.state.sayi3}</Text>
-                                            <Text onPress={this.threeNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
-                                        </View>
-                                        <List dataArray={this.state.shownumber3}
-                                            renderRow={(item) =>
-                                                <ListItem style={{ borderColor: "white" }}>
-                                                    <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
-                                                </ListItem>
-                                            }>
-                                        </List>
-
-
-                                        <Text style={{ marginTop: 20, backgroundColor: "red", height: 450, width: 5, marginLeft: 5 }}></Text>
-                                        <List dataArray={this.state.showrightarray}
-                                            renderRow={(item) =>
-                                                <ListItem style={{ borderColor: "red" }}>
-                                                    <Text style={{ color: "white", fontSize: 30, backgroundColor: (item.key == "1") ? "red" : "blue" }}>{item.rightNumber}</Text>
-                                                </ListItem>
-                                            }>
-                                        </List>
                                     </View>
-                                </View>
-                                <Button onPress={this.clean} transparent bordered>
-                                    <Icon style={{ fontSize: 30 }} name='trash' />
+                                </Body>
+
+                                <Button onPress={this.clean} transparent >
+                                    <Icon style={{ fontSize: 50 }} type="EvilIcons" name='refresh' />
 
                                 </Button>
+
                             </CardItem>
                         </Card>
                     </Content>
@@ -678,8 +682,7 @@ export default class Ebob_ekok_primePage extends Component {
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
                         <Button style={styles.footerbtn} rounded onPress={() => { this.cleanOnePart(0) }} >
-
-                            <Text style={styles.footertxt}>SİL</Text>
+                            <Icon style={{ fontSize: 30 }} name='trash' />
                         </Button>
 
                     </Footer>

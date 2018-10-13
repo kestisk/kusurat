@@ -32,7 +32,7 @@ export default class Ebob_ekokPage extends Component {
         <Header style={{ backgroundColor: "rgb(56,65,104)" }}>
           <Left style={{ flex: 1 }}>
             <Button transparent onPress={this.back}>
-              <Icon name="arrow-back" />
+              <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
             </Button>
           </Left>
           <Body style={{ flex: 5 }}>
