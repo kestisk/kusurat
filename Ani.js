@@ -3,7 +3,7 @@ import Classes from "./Class";
 import { AppRegistry, StyleSheet, Text, View, Animated } from "react-native";
 
 const dizi1 = ["L", "Ü", "T", "F", "E", "N", "", "", "", ""];
-const dizi2 = ["S", "I", "N", "I", "F", "I", "N", "I", "Z", "I"];
+const dizi2 = ["S", "I", "N", "I", "F", "I", "N", "I", "Z", "I", "", "", "", "", "", ""];
 const dizi3 = ["S", "E", "Ç", "İ", "N", "İ", "Z", "", "", ""];
 
 class Anime extends Component {
@@ -48,7 +48,7 @@ class Anime extends Component {
             height: 30,
             fontSize: 25,
             marginLeft: 3,
-            color: "red",
+            color: "white",
             marginTop: 3
           }}
         >
@@ -65,7 +65,7 @@ class Anime extends Component {
             height: 30,
             fontSize: 25,
             marginLeft: 3,
-            color: "red",
+            color: "white",
             marginTop: 3
           }}
         >
@@ -82,7 +82,7 @@ class Anime extends Component {
             height: 30,
             fontSize: 25,
             marginLeft: 3,
-            color: "red",
+            color: "white",
             marginTop: 3
           }}
         >
@@ -92,8 +92,8 @@ class Anime extends Component {
     });
 
     return (
-      <View style={{ flexDirection: "column" }}>
-        <View style={styles.container}>{animasyonla1}</View>
+      <View style={{ flexDirection: "row" }}>
+
         <View style={styles.container}>{animasyonla2}</View>
         <View style={styles.container}>{animasyonla3}</View>
       </View>

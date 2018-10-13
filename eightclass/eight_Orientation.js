@@ -16,6 +16,8 @@ import Pow_showdecimaltabPage from './tabs/pow/pow_showdecimaltabPage';
 import Pow_showsciencetabPage from './tabs/pow/pow_showsciencetabPage';
 import { Multips_primeFactorPage } from "./subFolders/multips/multips_primeFactorPage";
 import Multips_primeFactorPageTYS from "./subFolders/multips/multips_primeFactorPageTYS";
+import PrimeFacTreePage from "./subFolders/prime/primeFacTreePage";
+import primeFacTreePagesTYS from "./subFolders/prime/primeFacTreePageTYS";
 
 const eight_Ori = createSwitchNavigator({
   Main_eight: {
@@ -37,7 +39,10 @@ const eight_Ori = createSwitchNavigator({
     screen: Multips_primeFactorPageTYS
   },
   primeFacTreePages: {
-    screen: PrimeFacTreetabPage,
+    screen: PrimeFacTreePage,
+  },
+  primeFacTreePagesTYS: {
+    screen: primeFacTreePagesTYS,
   },
   Ebob_Ekok_PrimeTabPages: {
     screen: Ebob_Ekok_PrimeTabPage,
