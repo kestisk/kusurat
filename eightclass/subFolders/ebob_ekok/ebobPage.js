@@ -542,8 +542,8 @@ export default class EbobPage extends Component {
                                 <View style={{ flexDirection: "column" }}>
                                     <View style={{ flexDirection: "row" }}>
                                         <View style={{ flexDirection: "column" }}>
-                                            <Text>{this.state.que1}</Text>
-                                            <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
+                                            <Text onPress={this.firstNum}>{this.state.que1}</Text>
+                                            <Text onPress={this.firstNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
                                         </View>
                                         <List dataArray={this.state.shownumber1}
                                             renderRow={(item) =>
@@ -554,8 +554,8 @@ export default class EbobPage extends Component {
                                         </List>
 
                                         <View style={{ flexDirection: "column" }}>
-                                            <Text>{this.state.que2}</Text>
-                                            <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
+                                            <Text onPress={this.twoNum}>{this.state.sayi2}</Text>
+                                            <Text onPress={this.twoNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
                                         </View>
                                         <List dataArray={this.state.shownumber2}
                                             renderRow={(item) =>
@@ -566,8 +566,8 @@ export default class EbobPage extends Component {
                                         </List>
 
                                         <View style={{ flexDirection: "column" }}>
-                                            <Text>{this.state.que3}</Text>
-                                            <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
+                                            <Text onPress={this.threeNum}>{this.state.sayi3}</Text>
+                                            <Text onPress={this.threeNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
                                         </View>
                                         <List dataArray={this.state.shownumber3}
                                             renderRow={(item) =>

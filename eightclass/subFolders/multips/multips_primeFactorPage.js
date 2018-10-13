@@ -14,10 +14,11 @@ import {
     Content,
     Card,
     CardItem,
-    FooterTab
+    FooterTab,
+    Right
 
 } from "native-base";
-import { Platform, FlatList, ImageBackground } from "react-native";
+import { Platform, FlatList, ImageBackground, BackHandler } from "react-native";
 
 import { StyleSheet } from "react-native";
 
@@ -56,7 +57,22 @@ export class Multips_primeFactorPage extends Component {
     componentWillUnmount() {
         clearInterval(this.delayed1);
         clearTimeout(this.delayed2);
+        BackHandler.addEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
     }
+    componentWillMount() {
+        BackHandler.addEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
+    handleBackButtonClick = () => {
+        this.props.navigation.navigate("MultipPages");
+        return true;
+    }
+
     keybort(variable) {
         if (this.state.flagg == true) {
             this.setState({ number: variable.toString(), disable: false, numberarr: [""], array: [""], numberarrshow: [""], arrayshow: [""], flagg: false, storePow: [{ storenumber: "", x: "", key: "" }], storePow2: [""] });
@@ -214,11 +230,38 @@ export class Multips_primeFactorPage extends Component {
         }.bind(this), 0);
 
     }
+    forward = () => {
+        this.props.navigation.navigate("primeFacPagesTYS");
+
+    }
+
+    back = () => {
+        this.props.navigation.navigate("MultipPages");
+    }
     render() {
         return (
+
             <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
                 <Container>
+                    <Header style={{ backgroundColor: "rgb(56,65,104)" }}>
+                        <Left>
+                            <Button transparent onPress={this.back}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+                            </Button>
 
+                        </Left>
+
+                        <Body>
+                            <Title style={styles.heade}>KÜSUR-AT</Title>
+                        </Body>
+                        <Right>
+                            <Button transparent onPress={this.forward}>
+                                <Text style={{ color: "red", fontSize: 20 }} >DENE</Text>
+                                <Icon style={{ color: "red", fontSize: 30 }} name="arrow-forward" />
+
+                            </Button>
+                        </Right>
+                    </Header>
 
 
                     <Content >
@@ -258,7 +301,7 @@ export class Multips_primeFactorPage extends Component {
                                         <Text>{this.state.message}</Text>
                                         <View style={{ flexDirection: "row" }}>
                                             <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20 }}>{this.state.number}{this.state.numberarr}</Text>
-                                            <Text style={{ marginTop: 20, backgroundColor: "red", height: this.state.stick, width: 5 }}></Text>
+                                            <Text style={{ marginTop: 20, marginLeft: 10, backgroundColor: "#191970", height: this.state.stick, width: 4 }}></Text>
                                             <Text style={{ marginTop: 20, fontSize: 30 }}>{this.state.array}</Text>
                                         </View>
                                     </Body>
@@ -436,7 +479,7 @@ export class At extends Multips_primeFactorPage {
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: "white",
+        color: "rgb(142,163,226)",
         fontSize: 30,
         padding: 5
     },

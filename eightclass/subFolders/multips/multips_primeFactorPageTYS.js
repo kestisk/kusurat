@@ -64,6 +64,9 @@ export default class Multips_primeFactorPageTYS extends At {
         this.fill(1, randnum);
 
     }
+    back = () => {
+        this.props.navigation.navigate("primeFacPages");
+    }
     async  fill(index, num) {
         await this.setState({
 
@@ -112,6 +115,19 @@ export default class Multips_primeFactorPageTYS extends At {
     render() {
         return (
             <Container>
+                <Header style={{ backgroundColor: "rgb(56,65,104)" }}>
+                    <Left>
+                        <Button transparent onPress={this.back}>
+                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} name="arrow-back" />
+                        </Button>
+
+                    </Left>
+
+                    <Body>
+                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    </Body>
+
+                </Header>
                 <Content>
                     <View style={{ flexDirection: "column" }}>
 
@@ -221,7 +237,7 @@ export default class Multips_primeFactorPageTYS extends At {
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: 'white',
+        color: "rgb(142,163,226)",
         fontSize: 30,
         padding: 5
     },
