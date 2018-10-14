@@ -234,83 +234,46 @@ export default class PrimeFacTreePage extends Component {
                                     <Text style={{ fontSize: 50, color: "white" }}>=</Text>
                                 </Button>
                             </View>
-                            <View>
-                                <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 450 }}>
-                                    <CardItem style={{ marginTop: 0 }}>
-<<<<<<< HEAD
-                                        <Body>
-                                            <List dataArray={this.state.numberarrayshow}
-
-                                                renderRow={(item) =>
-                                                    <ListItem >
+                            <View style={{ marginLeft: 10, marginRight: 10, marginTop: 5 }}>
+                                <View style={{ backgroundColor: "white", width: '100%', minHeight: 450 }}>
 
 
-                                                        <Text style={{
-                                                            textAlign: "center",
-                                                            fontSize: 20,
-                                                            backgroundColor: item.colorr,
-                                                            height: 35,
-                                                            width: 45,
-                                                            borderRadius: 50,
-                                                            color: "white",
-                                                            marginLeft: item.id2
-                                                        }}>{item.key}</Text>
-                                                        <Text style={{
-                                                            textAlign: "center",
-                                                            fontSize: 20,
-                                                            backgroundColor: item.colorr,
-                                                            height: 35,
-                                                            width: 45,
-                                                            borderRadius: 50,
-                                                            color: "white",
-                                                            marginLeft: item.id
-                                                        }}>{item.key2}</Text>
+                                    <List dataArray={this.state.numberarrayshow}
 
-                                                    </ListItem>
-
-                                                }>
+                                        renderRow={(item) =>
+                                            <ListItem >
 
 
-                                            </List>
-                                        </Body>
-=======
-                                        <List dataArray={this.state.numberarrayshow}
-                                            renderRow={(item) =>
-                                                <ListItem >
-                                                    <Text style={{
-                                                        textAlign: "center",
-                                                        fontSize: 20,
-                                                        backgroundColor: item.colorr,
-                                                        height: 35,
-                                                        width: 45,
-                                                        borderRadius: 50,
-                                                        color: "white",
-                                                        marginLeft: item.id2
-                                                    }}>
-                                                        {item.key}
-                                                    </Text>
-                                                    <Text style={{
-                                                        textAlign: "center",
-                                                        fontSize: 20,
-                                                        backgroundColor: item.colorr,
-                                                        height: 35,
-                                                        width: 45,
-                                                        borderRadius: 50,
-                                                        color: "white",
-                                                        marginLeft: item.id
-                                                    }}>{item.key2}</Text>
+                                                <Text style={{
+                                                    textAlign: "center",
+                                                    fontSize: 20,
+                                                    backgroundColor: item.colorr,
+                                                    height: 35,
+                                                    width: 45,
+                                                    borderRadius: 50,
+                                                    color: "white",
+                                                    marginLeft: item.id2
+                                                }}>{item.key}</Text>
+                                                <Text style={{
+                                                    textAlign: "center",
+                                                    fontSize: 20,
+                                                    backgroundColor: item.colorr,
+                                                    height: 35,
+                                                    width: 45,
+                                                    borderRadius: 50,
+                                                    color: "white",
+                                                    marginLeft: item.id
+                                                }}>{item.key2}</Text>
 
-                                                </ListItem>
+                                            </ListItem>
 
-                                            }>
+                                        }>
 
 
-                                        </List>
+                                    </List>
 
->>>>>>> refs/remotes/origin/kusurat
-                                    </CardItem>
 
-                                </Card>
+                                </View>
                             </View>
                         </View>
                     </Content>

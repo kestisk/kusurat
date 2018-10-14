@@ -537,7 +537,7 @@ export default class EbobPage extends Component {
                                 <Text style={{ fontSize: 30, color: "white" }}>{this.state.returnebob}</Text>
                             </View>
                         </View>
-                        <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 340, minWidth: 340 }}>
+                        <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 340 }}>
                             <CardItem>
                                 <Body>
                                     <Text>{this.state.message}</Text>

@@ -14,16 +14,18 @@ import {
   Badge,
   FooterTab,
   Row,
-  Icon
+  Icon,
+  Text
 } from "native-base";
 import {
   Platform,
   StyleSheet,
-  Text,
+
   View,
   Alert,
   Image,
-  ScrollView
+  ScrollView,
+  ImageBackground
 } from "react-native";
 import Aniforrol from "../../Aniforroll";
 import rollingNumberTYS from "./rollingNumberTYS"
@@ -34,87 +36,111 @@ export default class RollingNumberPage extends Component {
   constructor(props) {
 
     super(props);
-    this.state = { message: "", number: "2355", one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0" }
+    this.state = {
+      message: "", number: "2355", one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0",
+      footdsp: "flex"
+    }
+
   }
   warn() {
     this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
   }
+  keybort(variable) {
+    if (this.state.flagg == true) {
+      this.setState({ number: variable.toString(), disable: false, flagg: false, numberarray: [""], numberarrayshow: [""], });
+
+
+
+
+    }
+
+    else {
+      if (this.state.number.length < 4) {
+        this.setState({
+          number: (this.state.number + variable.toString())
+        });
+      }
+      else {
+        this.warn();
+      }
+
+    }
+  }
   render() {
     return (
-      <Container>
-        <Content style={{ padding: 10 }}>
-          <Item>
-            <Text style={{ fontSize: 30 }}>{this.state.number}</Text>
-          </Item>
-          <Item>
-            <Text>{this.state.message}</Text>
-          </Item>
-          <View style={{ flexDirection: "row", zIndex: 2 }}>
-            <Button
-              style={{ marginTop: 15 }}
-              info
-              rounded
-              onPress={this.closeTen}
-            >
+      <ImageBackground source={require("../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+        <Container>
+          <Content style={{ padding: 10 }}>
+            <Item>
+              <Text style={{ fontSize: 30, color: "white" }}>{this.state.number}</Text>
+            </Item>
+            <Item>
+              <Text>{this.state.message}</Text>
+            </Item>
+            <View style={{ flexDirection: "row", zIndex: 2 }}>
+              <Button
+                style={styles.footerbtnmain}
 
-              <Text style={styles.buttontext}>En Yakın Onluğa</Text>
+                rounded
+                onPress={this.closeTen}
+              >
+
+                <Text style={styles.footertxt}>10'luk</Text>
+              </Button>
+
+
+            </View>
+            <View style={{ marginTop: 0, height: 1500 }}>
+              <Aniforrol ref="Aniforrol"></Aniforrol>
+            </View>
+          </Content>
+
+
+          <Footer style={{ backgroundColor: null, display: this.state.footdsp }}>
+
+            <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
+              <Text style={styles.footertxt}>1</Text>
             </Button>
-            <Button
-              style={{ marginTop: 15 }}
-              info
-              rounded
-              onPress={this.closeHund}
-            >
-              <Text style={styles.buttontext}>En Yakın Yüzlüğe</Text>
+            <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(2) }} >
+              <Text style={styles.footertxt}>2</Text>
+            </Button>
+            <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(3) }} >
+              <Text style={styles.footertxt}>3</Text>
+            </Button>
+            <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(4) }} >
+              <Text style={styles.footertxt}>4</Text>
+            </Button>
+            <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
+              <Text style={styles.footertxt}>5</Text>
             </Button>
 
-          </View>
-          <View style={{ marginTop: 0, height: 1500 }}>
-            <Aniforrol ref="Aniforrol"></Aniforrol>
-          </View>
-        </Content>
+          </Footer>
+          <Footer style={{ backgroundColor: null, display: this.state.footdsp }}>
+            <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
+              <Text style={styles.footertxt}>6</Text>
+            </Button>
+            <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(7) }} >
+              <Text style={styles.footertxt}>7</Text>
+            </Button>
+            <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(8) }} >
+              <Text style={styles.footertxt}>8</Text>
+            </Button>
+            <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(9) }} >
+              <Text style={styles.footertxt}>9</Text>
+            </Button>
+            <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
+              <Text style={styles.footertxt}>0</Text>
+            </Button>
+            <Button style={styles.footerbtn} rounded onPress={this.clean} >
 
+              <Icon style={styles.footertxt} name='trash' />
+            </Button>
 
-        <Footer>
-          <Button info rounded onPress={(number) =>
-            (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.one) }) : this.warn()} >
-            <Icon type="MaterialIcons" name="filter-1" />
-          </Button>
-          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.two) }) : this.warn()} >
-            <Icon type="MaterialIcons" name="filter-2" />
-          </Button>
-          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.three) }) : this.warn()} >
-            <Icon type="MaterialIcons" name="filter-3" />
-          </Button>
-          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.four) }) : this.warn()} >
-            <Icon type="MaterialIcons" name="filter-4" />
-          </Button>
-          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.five) }) : this.warn()} >
-            <Icon type="MaterialIcons" name="filter-5" />
-          </Button>
-        </Footer>
-        <Footer>
-          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.six) }) : this.warn()} >
-            <Icon type="MaterialIcons" name="filter-6" />
-          </Button>
-          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.seven) }) : this.warn()} >
-            <Icon type="MaterialIcons" name="filter-7" />
-          </Button>
-          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.eight) }) : this.warn()} >
-            <Icon type="MaterialIcons" name="filter-8" />
-          </Button>
-          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.nine) }) : this.warn()} >
-            <Icon type="MaterialIcons" name="filter-9" />
-          </Button>
-          <Button info rounded onPress={(number) => (this.state.number.length < 4) ? this.setState({ number: (this.state.number + this.state.zero) }) : this.warn()} >
-            <Icon type="MaterialIcons" name="exposure-zero" />
-          </Button>
-          <Button info rounded onPress={(number) => this.setState({ number: this.state.number.slice(0, -1), message: "" })} >
+          </Footer>
 
-            <Icon type="MaterialIcons" name="keyboard-arrow-left" />
-          </Button>
-        </Footer>
-      </Container >
+        </Container >
+      </ImageBackground >
+
     )
   }
 
@@ -138,6 +164,18 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 30,
     padding: 5
+  },
+  footerbtn: {
+    marginLeft: 5,
+    backgroundColor: "rgb(56,65,104)"
+  },
+  footerbtnmain: {
+
+    backgroundColor: "rgb(56,65,104)"
+  },
+  footertxt: {
+    color: "rgb(142,163,226)",
+    fontSize: 30
   },
   buttontext: {
     textAlign: "center",
