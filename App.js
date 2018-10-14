@@ -54,6 +54,7 @@ export default class App extends Component<Props> {
               width: 240,
               backgroundColor: "grey",
               alignSelf: "center",
+
               alignItems: "center"
             }}
           >
