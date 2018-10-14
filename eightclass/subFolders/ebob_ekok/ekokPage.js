@@ -104,13 +104,12 @@ export default class EkokPage extends Component {
 
                 sayi2: "2.Sayı", sayi3: "3.Sayı"
             });
-        if ((this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "") || (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 != ""))
-            this.setState({ btnflag: false });
+
     }
     firstNum = () => {
 
         this.setState({
-            message: "", returnekok: 1,
+            message: "",
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
@@ -128,7 +127,7 @@ export default class EkokPage extends Component {
     }
     twoNum = () => {
         this.setState({
-            message: "", returnekok: 1,
+            message: "",
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
@@ -147,7 +146,7 @@ export default class EkokPage extends Component {
     }
     threeNum = () => {
         this.setState({
-            message: "", returnekok: 1,
+            message: "",
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
@@ -198,7 +197,7 @@ export default class EkokPage extends Component {
             if (doorctrl == "1") {
                 if (num1.length < 3) {
                     num1 = num1 + param;
-                    this.setState({ tempnumber1: num1, btn2disable: false });
+                    this.setState({ tempnumber1: num1 });
                     this.state.number1[0] = num1;
                     this.setState(this.state.number1);
                     if (this.state.tempnumber2 == "")
@@ -231,6 +230,11 @@ export default class EkokPage extends Component {
             else
                 this.warn();
         }
+        if (this.state.tempnumber3 != "")
+            this.setState({ maxdoor: "3" });
+
+        if ((this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "") || (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 != ""))
+            this.setState({ btnflag: false });
 
     }
     backup = () => {
@@ -255,7 +259,7 @@ export default class EkokPage extends Component {
                     if (maxdoorctrl == "3")
                         this.setState(() => ({ tempnumber3: this.state.shownumber3[1].no1 }));
 
-                    this.setState(() => ({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], returnekok: "yok", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""] }));
+                    this.setState(() => ({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], message: "", number1: [""], number2: [""], number3: [""], rightarray: [""] }));
 
                     this.ekok();
                 }.bind(this), 10);
@@ -282,7 +286,7 @@ export default class EkokPage extends Component {
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
-            var tempekok = this.state.returnekok;
+            var tempekok = 1;
             num1 = parseInt(num1, 10);
             num2 = parseInt(num2, 10);
             var max = (num1 > num2) ? (max = num1) : (max = num2);
@@ -296,7 +300,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num1 /= i;
                     this.state.number1.push({ no1: num1 });
                     this.state.number2.push({ no1: num2 });
@@ -308,7 +312,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num2 /= i;
                     this.state.number1.push({ no1: num1 });
                     this.state.number2.push({ no1: num2 });
@@ -320,7 +324,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "1" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num2 /= i;
                     num1 /= i;
                     this.state.number1.push({ no1: num1 });
@@ -330,6 +334,7 @@ export default class EkokPage extends Component {
                     i--;
                 }
             }
+            this.setState({ returnekok: tempekok });
             this.settimem();
         }
         else if (maxdoorctrl == "3" && num1 != "" && num2 != "" && num3 != "") {
@@ -340,7 +345,7 @@ export default class EkokPage extends Component {
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
-            var tempekok = this.state.returnekok;
+            var tempekok = 1;
             num1 = parseInt(num1, 10);
             num2 = parseInt(num2, 10);
             num3 = parseInt(num3, 10);
@@ -354,6 +359,8 @@ export default class EkokPage extends Component {
                 max = num2;
             else if (num3 > num2 && num3 > num2)
                 max = num3;
+            else if (num1 == num2 && num3 == num2)
+                max = num3;
             for (i = 2; i <= max; i++) {
                 ctrl1 = num1 % i;
                 ctrl2 = num2 % i;
@@ -363,7 +370,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num1 /= i;
                     if (ctrl3 == 0) {
                         num3 /= i;
@@ -380,7 +387,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num2 /= i;
                     if (ctrl3 == 0) {
                         num3 /= i;
@@ -397,7 +404,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num3 /= i;
                     this.state.number1.push({ no1: num1 });
                     this.state.number2.push({ no1: num2 });
@@ -411,7 +418,7 @@ export default class EkokPage extends Component {
 
 
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num2 /= i;
                     num1 /= i;
                     if (ctrl3 == 0) {
@@ -432,6 +439,7 @@ export default class EkokPage extends Component {
                     i--;
                 }
             }
+            this.setState({ returnekok: tempekok });
             this.settimem12();
         }
         else {
@@ -552,11 +560,8 @@ export default class EkokPage extends Component {
                             </Button>
                         </Right>
                     </Header>
-
                     <Content>
-
-                        <Text>{this.state.message}</Text>
-                        <View style={{ flexDirection: "column" }}>
+                        <View style={{ flexDirection: "column", marginTop: 10 }}>
                             <View style={{ flexDirection: "row" }}>
                                 <Text style={{ fontSize: 30, color: "white", marginLeft: 50 }}>EKOK</Text>
                                 <Button rounded disabled={this.state.btnflag} onPress={this.backup}><Text style={{ fontSize: 50 }}>=</Text></Button>
@@ -564,14 +569,24 @@ export default class EkokPage extends Component {
 
                             </View>
                         </View>
-                        <Card style={{ marginLeft: 10, marginRight: 10 }}>
+                        <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 350, minWidth: 340 }}>
                             <CardItem>
                                 <Body>
-                                    <View style={{ flexDirection: "column", marginTop: 40 }}>
+                                    <Text>{this.state.message}</Text>
+                                    <View style={{ flexDirection: "column" }}>
                                         <View style={{ flexDirection: "row" }}>
                                             <View style={{ flexDirection: "column" }}>
                                                 <Text onPress={this.firstNum}>{this.state.que1}</Text>
-                                                <Text onPress={this.firstNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
+                                                <Text
+                                                    onPress={this.firstNum}
+                                                    style={{
+                                                        color: "black",
+                                                        fontSize: 30,
+                                                        backgroundColor: this.state.backColorT1
+                                                    }}
+                                                >
+                                                    {this.state.tempnumber1}
+                                                </Text>
                                             </View>
                                             <List dataArray={this.state.shownumber1}
                                                 renderRow={(item) =>
@@ -580,10 +595,18 @@ export default class EkokPage extends Component {
                                                     </ListItem>
                                                 }>
                                             </List>
-
                                             <View style={{ flexDirection: "column" }}>
                                                 <Text onPress={this.twoNum}>{this.state.sayi2}</Text>
-                                                <Text onPress={this.twoNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
+                                                <Text
+                                                    onPress={this.twoNum}
+                                                    style={{
+                                                        color: "black",
+                                                        fontSize: 30,
+                                                        backgroundColor: this.state.backColorT2
+                                                    }}
+                                                >
+                                                    {this.state.tempnumber2}
+                                                </Text>
                                             </View>
                                             <List dataArray={this.state.shownumber2}
                                                 renderRow={(item) =>
@@ -604,8 +627,6 @@ export default class EkokPage extends Component {
                                                     </ListItem>
                                                 }>
                                             </List>
-
-
                                             <Text style={{ marginTop: 20, backgroundColor: "rgb(25,25,112)", height: 450, width: 5, marginLeft: 5 }}></Text>
                                             <List dataArray={this.state.showrightarray}
                                                 renderRow={(item) =>
@@ -615,8 +636,6 @@ export default class EkokPage extends Component {
                                                 }>
                                             </List>
                                         </View>
-
-
                                     </View>
                                 </Body>
                                 <Button onPress={this.clean} transparent >
@@ -666,7 +685,6 @@ export default class EkokPage extends Component {
                         </Button>
 
                     </Footer>
-
                 </Container >
             </ImageBackground>
 

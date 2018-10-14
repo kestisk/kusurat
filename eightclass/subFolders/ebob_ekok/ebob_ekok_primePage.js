@@ -110,8 +110,7 @@ export default class Ebob_ekok_primePage extends Component {
 
                 sayi2: "2.Sayı", sayi3: "3.Sayı"
             });
-        if ((this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "") || (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 != ""))
-            this.setState({ btnflag: false });
+
     }
     firstNum = () => {
         this.setState({
@@ -244,7 +243,11 @@ export default class Ebob_ekok_primePage extends Component {
             }
 
         }
+        if (this.state.tempnumber3 != "")
+            this.setState({ maxdoor: "3" });
 
+        if ((this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "") || (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 != ""))
+            this.setState({ btnflag: false });
     }
     backup = () => {
         var num1 = this.state.tempnumber1;
@@ -370,8 +373,8 @@ export default class Ebob_ekok_primePage extends Component {
                 max = num2;
             else if (num3 > num2 && num3 > num2)
                 max = num3;
-
-
+            else if (num1 == num2 && num3 == num2)
+                max = num3;
             for (i = 2; i <= max; i++) {
                 ctrl1 = num1 % i;
                 ctrl2 = num2 % i;
@@ -460,6 +463,8 @@ export default class Ebob_ekok_primePage extends Component {
     componentWillUnmount() {
         clearInterval(this.delay);
         clearTimeout(this.delay2);
+        clearInterval(this.delay12);
+        clearTimeout(this.delay22);
         BackHandler.removeEventListener(
             "hardwareBackPress",
             this.handleBackButtonClick
@@ -571,20 +576,17 @@ export default class Ebob_ekok_primePage extends Component {
                     </Header>
 
                     <Content>
-
-
-
-                        <View style={{ flexDirection: "column" }}>
+                        <View style={{ flexDirection: "column", marginTop: 10 }}>
                             <Text style={{ color: "white", fontSize: 30 }}>{this.state.message}</Text>
                             <View style={{ flexDirection: "row" }}>
                                 <Button rounded disabled={this.state.btnflag} onPress={this.backup} style={{ marginTop: 5 }}><Text style={{ fontSize: 50 }}>=</Text></Button>
                                 <Text style={{ color: "white", fontSize: 30 }}>{this.state.ebobkac}</Text>
                             </View>
                         </View>
-                        <Card style={{ marginLeft: 10, marginRight: 10 }}>
+                        <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 350, minWidth: 340 }}>
                             <CardItem>
                                 <Body>
-                                    <View style={{ flexDirection: "column", marginTop: 40 }}>
+                                    <View style={{ flexDirection: "column", marginTop: 20 }}>
                                         <View style={{ flexDirection: "row" }}>
 
                                             <View style={{ flexDirection: "column" }}>
@@ -635,12 +637,9 @@ export default class Ebob_ekok_primePage extends Component {
                                         </View>
                                     </View>
                                 </Body>
-
                                 <Button onPress={this.clean} transparent >
                                     <Icon style={{ fontSize: 50 }} type="EvilIcons" name='refresh' />
-
                                 </Button>
-
                             </CardItem>
                         </Card>
                     </Content>
@@ -686,7 +685,6 @@ export default class Ebob_ekok_primePage extends Component {
                         </Button>
 
                     </Footer>
-
                 </Container >
             </ImageBackground >
         );
@@ -726,6 +724,11 @@ const styles = StyleSheet.create({
     footertxt: {
         color: "rgb(142,163,226)",
         fontSize: 30
+    },
+    buttontext2: {
+        textAlign: "center",
+        color: "gray",
+        fontSize: 40,
     },
     buttontext: {
         textAlign: "center",

@@ -318,6 +318,11 @@ const styles = StyleSheet.create({
         color: "rgb(142,163,226)",
         fontSize: 30
     },
+    buttontext2: {
+        textAlign: "center",
+        color: "gray",
+        fontSize: 40,
+    },
     buttontext: {
         textAlign: "center",
         color: 'white',

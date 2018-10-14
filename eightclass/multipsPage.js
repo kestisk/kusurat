@@ -27,24 +27,15 @@ export default class MultipPage extends Component {
 
     render() {
         return (
-<<<<<<< HEAD
-            <Container>
-                <Header style={{ backgroundColor: "#62B1F6" }}>
-=======
             <ImageBackground source={require("../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
 
                 <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
->>>>>>> refs/remotes/origin/kusurat
                     <Left style={{ flex: 1 }}>
                         <Button transparent onPress={this.back}>
                             <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
                         </Button>
 
                     </Left>
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/kusurat
                     <Body style={{ flex: 5 }}>
                         <Title style={styles.heade}>KÜSUR-AT</Title>
                     </Body>
@@ -81,11 +72,7 @@ export default class MultipPage extends Component {
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-<<<<<<< HEAD
-        color: "white",
-=======
         color: "rgb(142,163,226)",
->>>>>>> refs/remotes/origin/kusurat
         fontSize: 30,
         padding: 5
     },

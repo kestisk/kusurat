@@ -276,6 +276,11 @@ const styles = StyleSheet.create({
         fontSize: 30,
         padding: 5
     },
+    buttontext2: {
+        textAlign: "center",
+        color: "gray",
+        fontSize: 40,
+    },
     footerbtn: {
         marginLeft: 5,
         backgroundColor: "rgb(56,65,104)"
