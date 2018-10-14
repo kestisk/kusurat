@@ -32,7 +32,7 @@ export default class Ebob_ekok_primePage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
@@ -58,7 +58,7 @@ export default class Ebob_ekok_primePage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
@@ -121,14 +121,14 @@ export default class Ebob_ekok_primePage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             ebobkac: "",
             backUpflag: false,
-            firstnumBColor: "rgb(25,25,112)"
+            firstnumBColor: "rgb(193,205,205)"
         });
         this.checkState();
     }
@@ -141,14 +141,14 @@ export default class Ebob_ekok_primePage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "white", backColorT2: "rgb(25,25,112)", backColorT3: "white",
+            backColorT1: "white", backColorT2: "rgb(193,205,205)", backColorT3: "white",
             door: "2", maxdoor: "2",
             ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             ebobkac: "",
             backUpflag: false,
-            twonumBColor: "rgb(25,25,112)"
+            twonumBColor: "rgb(193,205,205)"
         });
         this.checkState();
     }
@@ -161,14 +161,14 @@ export default class Ebob_ekok_primePage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "white", backColorT2: "white", backColorT3: "rgb(25,25,112)",
+            backColorT1: "white", backColorT2: "white", backColorT3: "rgb(193,205,205)",
             door: "3", maxdoor: "3",
             ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             ebobkac: "",
             backUpflag: false,
-            threenumBColor: "rgb(25,25,112)"
+            threenumBColor: "rgb(193,205,205)"
         });
         this.checkState();
     }
@@ -184,7 +184,7 @@ export default class Ebob_ekok_primePage extends Component {
                 this.setState({ tempnumber1: "", message: "", btnflag: true });
 
             else if (doorctrl == "2")
-                this.setState({ message: "", btnflag: true });
+                this.setState({ tempnumber2: "", message: "", btnflag: true });
         }
         if (maxdoorctrl == "3") {
             this.setState({ tempnumber3: "", message: "", btnflag: true });
@@ -290,10 +290,12 @@ export default class Ebob_ekok_primePage extends Component {
         var num3 = this.state.tempnumber3;
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
+        if (this.state.tempnumber3 != "")
+            this.setState({ que1: "", sayi2: "", sayi3: "" });
         if (maxdoorctrl == "2" && num1 != "" && num2 != "") {
             clearInterval(this.delay2);
             clearTimeout(this.delay);
-            this.setState({ sayi2: "", sayi3: "", que1: "", footerdisplay: "none", backUpflag: true, cleardoor: true, door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white", message: "" });
+            this.setState({ sayi2: "", sayi3: "", que1: "", footerdisplay: "none", backUpflag: true, cleardoor: true, door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white", message: "" });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
@@ -354,7 +356,7 @@ export default class Ebob_ekok_primePage extends Component {
         else if (maxdoorctrl == "3" && (num1 != "" && num2 != "" && num3 != "")) {
             clearInterval(this.delay12);
             clearTimeout(this.delay22);
-            this.setState({ sayi2: "", sayi3: "", que1: "", footerdisplay: "none", backUpflag: true, message: "", cleardoor: true, door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white" });
+            this.setState({ footerdisplay: "none", backUpflag: true, message: "", cleardoor: true, door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white" });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
@@ -371,9 +373,9 @@ export default class Ebob_ekok_primePage extends Component {
                 max = num1;
             else if (num2 > num1 && num2 > num3)
                 max = num2;
-            else if (num3 > num2 && num3 > num2)
+            else if (num3 > num2 && num3 > num1)
                 max = num3;
-            else if (num1 == num2 && num3 == num2)
+            else if (num3 == num2 && num3 == num2)
                 max = num3;
             for (i = 2; i <= max; i++) {
                 ctrl1 = num1 % i;
@@ -431,6 +433,7 @@ export default class Ebob_ekok_primePage extends Component {
                         this.state.rightarray.push({ rightNumber: i, key: "1" });
                         tempebob *= i;
                         this.setState({ ebobkac: tempebob });
+                        i = max + 1;
                         num3 /= i;
                     }
                     else
@@ -445,12 +448,13 @@ export default class Ebob_ekok_primePage extends Component {
                     this.setState(this.state.number3);
                     i--;
                 }
-                if (tempebob > 1) {
-                    this.setState({ ebobkac: "aralarında asal değil" })
-                }
-                else {
-                    this.setState({ ebobkac: "aralarında asal " })
-                }
+
+            }
+            if (tempebob > 1) {
+                this.setState({ ebobkac: "aralarında asal değil" })
+            }
+            else {
+                this.setState({ ebobkac: "aralarında asal " })
             }
             this.settimem12();
         }
@@ -538,6 +542,13 @@ export default class Ebob_ekok_primePage extends Component {
                 this.setState(this.state.shownumber2);
                 this.settimem22(i);
             }
+            else if (i > this.state.number2.length && i > this.state.number1.length) {
+                if (i < this.state.number3.length) {
+                    this.state.shownumber3.push(this.state.number3[i]);
+                    this.setState(this.state.shownumber3);
+                }
+                this.settimem22(i);
+            }
             else {
                 clearInterval(this.delay12);
                 clearTimeout(this.delay22);
@@ -583,15 +594,15 @@ export default class Ebob_ekok_primePage extends Component {
                                 <Text style={{ color: "white", fontSize: 30 }}>{this.state.ebobkac}</Text>
                             </View>
                         </View>
-                        <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 350, minWidth: 340 }}>
-                            <CardItem>
-                                <Body>
-                                    <View style={{ flexDirection: "column", marginTop: 20 }}>
+                        <View style={{ marginLeft: 10, marginRight: 10, marginTop: 5 }}>
+                            <View style={{ minHeight: 350, width: '100%', backgroundColor: "white", flexDirection: "column" }}>
+                                <View style={{ marginTop: 10 }}>
+                                    <View style={{ flexDirection: "column" }}>
                                         <View style={{ flexDirection: "row" }}>
 
                                             <View style={{ flexDirection: "column" }}>
                                                 <Text onPress={this.firstNum}>{this.state.que1}</Text>
-                                                <Text onPress={this.firstNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
+                                                <Text onPress={this.firstNum} style={{ color: "black", fontSize: 25, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
                                             </View>
                                             <List dataArray={this.state.shownumber1}
                                                 renderRow={(item) =>
@@ -603,7 +614,7 @@ export default class Ebob_ekok_primePage extends Component {
 
                                             <View style={{ flexDirection: "column" }}>
                                                 <Text onPress={this.twoNum}>{this.state.sayi2}</Text>
-                                                <Text onPress={this.twoNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
+                                                <Text onPress={this.twoNum} style={{ color: "black", fontSize: 25, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
                                             </View>
                                             <List dataArray={this.state.shownumber2}
                                                 renderRow={(item) =>
@@ -615,7 +626,7 @@ export default class Ebob_ekok_primePage extends Component {
 
                                             <View style={{ flexDirection: "column" }}>
                                                 <Text onPress={this.threeNum}>{this.state.sayi3}</Text>
-                                                <Text onPress={this.threeNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
+                                                <Text onPress={this.threeNum} style={{ color: "black", fontSize: 25, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
                                             </View>
                                             <List dataArray={this.state.shownumber3}
                                                 renderRow={(item) =>
@@ -629,19 +640,21 @@ export default class Ebob_ekok_primePage extends Component {
                                             <Text style={{ marginTop: 20, backgroundColor: "rgb(25,25,112)", height: 450, width: 5, marginLeft: 5 }}></Text>
                                             <List dataArray={this.state.showrightarray}
                                                 renderRow={(item) =>
-                                                    <ListItem style={{ borderColor: "red" }}>
+                                                    <ListItem style={{ borderColor: "white" }}>
                                                         <Text style={{ color: "white", fontSize: 30, backgroundColor: (item.key == "1") ? "red" : "blue" }}>{item.rightNumber}</Text>
                                                     </ListItem>
                                                 }>
                                             </List>
                                         </View>
                                     </View>
-                                </Body>
-                                <Button onPress={this.clean} transparent >
+                                </View>
+
+                                <Button style={{ position: "absolute", alignSelf: "flex-end" }} onPress={this.clean} transparent >
                                     <Icon style={{ fontSize: 50 }} type="EvilIcons" name='refresh' />
                                 </Button>
-                            </CardItem>
-                        </Card>
+                            </View>
+
+                        </View>
                     </Content>
 
 
@@ -710,7 +723,7 @@ const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
         color: "rgb(142,163,226)",
-        fontSize: 30,
+        fontSize: 25,
         padding: 5
     },
     footerbtn: {

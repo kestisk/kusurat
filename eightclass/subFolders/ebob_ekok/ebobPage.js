@@ -31,7 +31,7 @@ export default class EbobPage extends Component {
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
-            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
@@ -57,7 +57,7 @@ export default class EbobPage extends Component {
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
-            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
@@ -114,7 +114,7 @@ export default class EbobPage extends Component {
             maxdoor: "2", door: "1",
             backUpflag: false,
             showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
-            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
             message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
         });
         this.checkState();
@@ -124,7 +124,7 @@ export default class EbobPage extends Component {
             maxdoor: "2", door: "2",
             backUpflag: false,
             showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
-            backColorT1: "white", backColorT2: "rgb(25,25,112)", backColorT3: "white",
+            backColorT1: "white", backColorT2: "rgb(193,205,205)", backColorT3: "white",
             message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
         });
         this.checkState();
@@ -135,7 +135,7 @@ export default class EbobPage extends Component {
             maxdoor: "3", door: "3",
             backUpflag: false,
             showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
-            backColorT1: "white", backColorT2: "white", backColorT3: "rgb(25,25,112)",
+            backColorT1: "white", backColorT2: "white", backColorT3: "rgb(193,205,205)",
             message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
         });
         this.checkState();
@@ -256,7 +256,7 @@ export default class EbobPage extends Component {
 
             clearInterval(this.delay2);
             clearTimeout(this.delay);
-            this.setState({ footerdisplay: "none", que1: "", sayi2: "", sayi3: "", backUpflag: true, cleardoor: true, door: "1", backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white", message: "" });
+            this.setState({ footerdisplay: "none", que1: "", sayi2: "", sayi3: "", backUpflag: true, cleardoor: true, door: "1", backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white", message: "" });
             this.state.number1.push({ no1: num1 });
             this.state.number2.push({ no1: num2 });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
@@ -312,8 +312,12 @@ export default class EbobPage extends Component {
         else if (maxdoorctrl == "3" && num1 != "" && num2 != "" && num3 != "") {
             clearInterval(this.delay12);
             clearTimeout(this.delay22);
-
-            this.setState({ footerdisplay: "none", backUpflag: true, message: "", cleardoor: true, door: "1", backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white" });
+            this.setState({
+                footerdisplay: "none",
+                backUpflag: true, message: "",
+                cleardoor: true, door: "1",
+                backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white"
+            });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
@@ -330,9 +334,9 @@ export default class EbobPage extends Component {
                 max = num1;
             else if (num2 > num1 && num2 > num3)
                 max = num2;
-            else if (num3 > num2 && num3 > num2)
+            else if (num3 > num2 && num3 > num1)
                 max = num3;
-            else if (num1 == num2 && num3 == num2)
+            else if (num1 == num2 && num1 == num3)
                 max = num3;
             for (i = 2; i <= max; i++) {
                 ctrl1 = num1 % i;
@@ -492,6 +496,13 @@ export default class EbobPage extends Component {
                 this.setState(this.state.shownumber2);
                 this.settimem22(i);
             }
+            else if (i > this.state.number2.length && i > this.state.number1.length) {
+                if (i < this.state.number3.length) {
+                    this.state.shownumber3.push(this.state.number3[i]);
+                    this.setState(this.state.shownumber3);
+                }
+                this.settimem22(i);
+            }
             else {
                 clearInterval(this.delay12);
                 clearTimeout(this.delay22);
@@ -537,9 +548,9 @@ export default class EbobPage extends Component {
                                 <Text style={{ fontSize: 30, color: "white" }}>{this.state.returnebob}</Text>
                             </View>
                         </View>
-                        <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 340, minWidth: 340 }}>
-                            <CardItem>
-                                <Body>
+                        <View style={{ marginLeft: 10, marginRight: 10, marginTop: 5 }}>
+                            <View style={{ minHeight: 350, width: '100%', backgroundColor: "white", flexDirection: "column" }}>
+                                <View style={{ marginTop: 10 }}>
                                     <Text>{this.state.message}</Text>
                                     <View style={{ flexDirection: "column" }}>
                                         <View style={{ flexDirection: "row" }}>
@@ -588,14 +599,13 @@ export default class EbobPage extends Component {
                                         </View>
 
                                     </View>
-                                </Body>
-                                <Button onPress={this.clean} transparent >
+                                </View>
+                                <Button style={{ position: "absolute", alignSelf: "flex-end" }} onPress={this.clean} transparent >
                                     <Icon style={{ fontSize: 50 }} type="EvilIcons" name='refresh' />
-
                                 </Button>
-                            </CardItem>
-                        </Card>
+                            </View>
 
+                        </View>
                     </Content>
                     <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
 
@@ -663,7 +673,7 @@ const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
         color: "rgb(142,163,226)",
-        fontSize: 30,
+        fontSize: 25,
         padding: 5
     },
     footerbtn: {

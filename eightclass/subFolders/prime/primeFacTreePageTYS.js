@@ -345,7 +345,7 @@ const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
         color: 'white',
-        fontSize: 30,
+        fontSize: 25,
         padding: 5
 
     },

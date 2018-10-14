@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
         color: "rgb(142,163,226)",
-        fontSize: 30,
+        fontSize: 25,
         padding: 5
     },
     buttontext2: {
