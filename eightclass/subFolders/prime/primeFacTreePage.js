@@ -40,12 +40,24 @@ export default class PrimeFacTreePage extends Component {
             message: ""
         }
     }
-
+    componentWillMount() {
+        BackHandler.addEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
+    handleBackButtonClick = () => {
+        this.props.navigation.navigate("MultipPages");
+        return true;
+    }
 
 
     componentWillUnmount() {
         clearInterval(this.delayed);
-
+        BackHandler.removeEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
     }
     keybort(variable) {
         if (this.state.flagg == true) {

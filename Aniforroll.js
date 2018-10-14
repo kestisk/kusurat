@@ -56,6 +56,7 @@ class Aniforrol extends Component {
     setTimeout(function () {
       this.play(number);
     }.bind(this), 4000);
+
   }
 
   play(number) {
@@ -90,7 +91,20 @@ class Aniforrol extends Component {
     len = this.state.at.length;
 
     let sezer = [... this.state.at]
-    if (this.state.at[len - 1] >= 5) {
+    if (len == 1) {
+      if (this.state.at[len - 1] >= 5) {
+
+
+        this.setState({ at: "10" });
+      }
+      else {
+        sezer[len - 1] = "0";
+        this.setState(sezer);
+
+        this.setState({ at: sezer });
+      }
+    }
+    else if (this.state.at[len - 1] >= 5) {
 
       sezer[len - 2] = parseInt(sezer[len - 2]) + parseInt(1);
       sezer[len - 1] = "0";
@@ -98,13 +112,20 @@ class Aniforrol extends Component {
 
       this.setState({ at: sezer });
 
-    } else {
+    }
+
+    else {
       sezer[len - 1] = "0";
       this.setState(sezer);
 
       this.setState({ at: sezer });
+
     }
+
   };
+  getret() {
+    return "sezer";
+  }
   sil = () => {
 
     this.setState({ one: "", bors: "" });

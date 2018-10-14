@@ -44,7 +44,7 @@ export default class MultipPage extends Component {
 
 
                 <View style={{ flex: 1, justifyContent: "center", flexDirection: "column", padding: 10 }}>
-                    <Button style={{ marginTop: 15, height: 80, }} block rounded onPress={this.primeFac}><Text style={styles.buttontext}>ASAL ÇARPANALRA AYIRMA</Text></Button>
+                    <Button style={{ marginTop: 15, height: 80, }} block rounded onPress={this.primeFac}><Text style={styles.buttontext}>ASAL ÇARPANLARA AYIRMA</Text></Button>
                     <Button style={{ marginTop: 15, height: 80 }} block rounded onPress={this.primeFacTree}><Text style={styles.buttontext}>ÇARPAN AĞACI</Text></Button>
                 </View>
 

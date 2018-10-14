@@ -695,10 +695,12 @@ export default class Ebob_ekok_primePage extends Component {
             this.handleBackButtonClick
         );
     }
-    handleBackButtonClick() {
+    handleBackButtonClick = () => {
         this.props.navigation.navigate("ebob_ekokPages");
         return true;
     }
+
+
     back = () => {
         this.props.navigation.navigate("ebob_ekokPages");
     }

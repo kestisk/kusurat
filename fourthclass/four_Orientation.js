@@ -52,6 +52,7 @@ import Measure_time_TabPage from './tabs/measure/measure_time_tab';
 import Measure_day_TabPage from './tabs/measure/measure_day_tab';
 import Measure_gram_TabPage from './tabs/measure/measure_gram_tab';
 import Measure_long_TabPage from './tabs/measure/measure_long_tab';
+import RollingNumberPage from './subFolders/rollingNumber';
 
 const four_Orientation = createSwitchNavigator({
     MainFour_Orientation: {
@@ -155,7 +156,7 @@ const four_Orientation = createSwitchNavigator({
         screen: Step_astepValue_TabPage,
     },
     rollingNumberPages: {
-        screen: Roll_TabPage,
+        screen: RollingNumberPage,
     },
     four_roll_closeTenPages: {
         screen: rollingNumberTYS,

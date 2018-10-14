@@ -60,7 +60,9 @@ export default class primeFacTreePagesTYS extends Component {
 
 
 
-
+    back = () => {
+        this.props.navigation.navigate("primeFacTreePages");
+    };
 
 
     check = () => {
@@ -233,6 +235,19 @@ export default class primeFacTreePagesTYS extends Component {
         });
         return (
             <Container>
+                <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+                    <Left>
+                        <Button transparent onPress={this.back}>
+                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+                        </Button>
+
+                    </Left>
+
+                    <Body>
+                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    </Body>
+
+                </Header>
                 <Content>
                     <View style={{ flexDirection: "column" }}>
                         <View style={{ flexDirection: "row" }}>
@@ -344,10 +359,9 @@ export default class primeFacTreePagesTYS extends Component {
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: 'white',
+        color: "rgb(142,163,226)",
         fontSize: 30,
         padding: 5
-
     },
     buttontext: {
         marginTop: 20,
