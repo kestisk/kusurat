@@ -238,41 +238,41 @@ export default class PrimeFacTreePage extends Component {
 
 
                                     <CardItem style={{ marginTop: 0 }}>
+                                        <Body>
+                                            <List dataArray={this.state.numberarrayshow}
 
-                                        <List dataArray={this.state.numberarrayshow}
-
-                                            renderRow={(item) =>
-                                                <ListItem >
-
-
-                                                    <Text style={{
-                                                        textAlign: "center",
-                                                        fontSize: 20,
-                                                        backgroundColor: item.colorr,
-                                                        height: 35,
-                                                        width: 45,
-                                                        borderRadius: 50,
-                                                        color: "white",
-                                                        marginLeft: item.id2
-                                                    }}>{item.key}</Text>
-                                                    <Text style={{
-                                                        textAlign: "center",
-                                                        fontSize: 20,
-                                                        backgroundColor: item.colorr,
-                                                        height: 35,
-                                                        width: 45,
-                                                        borderRadius: 50,
-                                                        color: "white",
-                                                        marginLeft: item.id
-                                                    }}>{item.key2}</Text>
-
-                                                </ListItem>
-
-                                            }>
+                                                renderRow={(item) =>
+                                                    <ListItem >
 
 
-                                        </List>
+                                                        <Text style={{
+                                                            textAlign: "center",
+                                                            fontSize: 20,
+                                                            backgroundColor: item.colorr,
+                                                            height: 35,
+                                                            width: 45,
+                                                            borderRadius: 50,
+                                                            color: "white",
+                                                            marginLeft: item.id2
+                                                        }}>{item.key}</Text>
+                                                        <Text style={{
+                                                            textAlign: "center",
+                                                            fontSize: 20,
+                                                            backgroundColor: item.colorr,
+                                                            height: 35,
+                                                            width: 45,
+                                                            borderRadius: 50,
+                                                            color: "white",
+                                                            marginLeft: item.id
+                                                        }}>{item.key2}</Text>
 
+                                                    </ListItem>
+
+                                                }>
+
+
+                                            </List>
+                                        </Body>
                                     </CardItem>
 
                                 </Card>
