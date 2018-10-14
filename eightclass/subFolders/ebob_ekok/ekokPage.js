@@ -14,16 +14,16 @@ import {
     ListItem,
     List,
     Card,
-    CardItem
+    CardItem,
+    Right
 } from "native-base";
-import { Platform, ImageBackground } from "react-native";
-import { StyleSheet } from "react-native";
+import { Platform, ImageBackground, BackHandler, StyleSheet } from "react-native";
 export default class EkokPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0",
-            message: "", returnekok: 1,
+            message: "", returnekok: "",
             tempnumber1: "", tempnumber2: "", tempnumber3: "",
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
@@ -31,16 +31,13 @@ export default class EkokPage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "green", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
-            que1: "1.Sayı", que2: "", que3: "", ctrl: [{ c: "" }], cleardoor: false,
+            que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             backUpflag: false,
             btnflag: true,
-            twonumBColor: null, threenumBColor: null, firstnumBColor: "green",
-            iconname: null, iconname2: null, iconname1: null,
-            btn2disable: true, btn3disable: true,
             sayi2: "", sayi3: "", footerdisplay: "flex"
         }
     }
@@ -59,16 +56,13 @@ export default class EkokPage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "green", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
-            que1: "1.Sayı", que2: "", que3: "", ctrl: [{ c: "" }], cleardoor: false,
+            que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             backUpflag: false,
             btnflag: true,
-            twonumBColor: null, threenumBColor: null, firstnumBColor: "green",
-            iconname: null, iconname2: null, iconname1: null,
-            btn2disable: true, btn3disable: true,
             sayi2: "", sayi3: "", footerdisplay: "flex"
         });
     }
@@ -77,129 +71,122 @@ export default class EkokPage extends Component {
             this.clean();
         else if (this.state.tempnumber2 != "" && this.state.tempnumber3 == "" && this.state.tempnumber1 == "")
             this.setState({
-                iconname2: null, iconname1: "check", iconname: null,
-                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
-                twonumBColor: "red", firstnumBColor: "rgb(56,65,104)", threenumBColor: "rgb(56,65,104)"
+
+                sayi2: "2.Sayı", sayi3: "3.Sayı"
             });
         else if (this.state.tempnumber2 == "" && this.state.tempnumber3 != "" && this.state.tempnumber1 == "")
             this.setState({
-                iconname2: "check", iconname1: null, iconname: null,
-                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
-                twonumBColor: "rgb(56,65,104)", firstnumBColor: "rgb(56,65,104)", threenumBColor: "red"
+
+                sayi2: "2.Sayı", sayi3: "3.Sayı"
             });
         else if (this.state.tempnumber2 != "" && this.state.tempnumber3 != "" && this.state.tempnumber1 == "")
             this.setState({
-                iconname2: "check", iconname1: "check", iconname: null,
-                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
-                twonumBColor: "red", firstnumBColor: "rgb(56,65,104)", threenumBColor: "red"
+
+                sayi2: "2.Sayı", sayi3: "3.Sayı"
             });
         else if (this.state.tempnumber2 == "" && this.state.tempnumber3 == "" && this.state.tempnumber1 != "")
             this.setState({
-                iconname2: null, iconname1: null, iconname: "check", btn3disable: true,
-                sayi2: "2.Sayı", sayi3: "",
-                twonumBColor: "rgb(56,65,104)", firstnumBColor: "red", threenumBColor: null
+
+                sayi2: "2.Sayı", sayi3: ""
             });
 
         else if (this.state.tempnumber2 == "" && this.state.tempnumber3 != "" && this.state.tempnumber1 != "")
             this.setState({
-                iconname2: "check", iconname1: null, iconname: "check",
-                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
-                twonumBColor: "rgb(56,65,104)", firstnumBColor: "red", threenumBColor: "red"
+                sayi2: "2.Sayı", sayi3: "3.Sayı",
             });
         else if (this.state.tempnumber2 != "" && this.state.tempnumber3 == "" && this.state.tempnumber1 != "")
             this.setState({
-                iconname2: null, iconname1: "check", iconname: "check", btn3disable: false, btn2disable: false,
-                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
-                twonumBColor: "red", firstnumBColor: "red", threenumBColor: "rgb(56,65,104)"
+
+                sayi2: "2.Sayı", sayi3: "3.Sayı"
             });
         else if (this.state.tempnumber2 != "" && this.state.tempnumber3 != "" && this.state.tempnumber1 != "")
             this.setState({
-                iconname2: "check", iconname1: "check", iconname: "check",
-                sayi2: "2.Sayı", sayi3: "3.Sayı", btn3disable: false, btn2disable: false,
-                twonumBColor: "red", firstnumBColor: "red", threenumBColor: "red"
+
+                sayi2: "2.Sayı", sayi3: "3.Sayı"
             });
-        if ((this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "") || (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 != ""))
-            this.setState({ btnflag: false });
+
     }
     firstNum = () => {
 
         this.setState({
-            message: "", returnekok: 1,
+            message: "",
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "green", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
-            que1: "1.Sayı", que2: "", que3: "", ctrl: [{ c: "" }], cleardoor: false,
+            ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             backUpflag: false,
-            firstnumBColor: "green"
         });
         this.checkState();
     }
     twoNum = () => {
         this.setState({
-            message: "", returnekok: 1,
+            message: "",
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "white", backColorT2: "green", backColorT3: "white",
+            backColorT1: "white", backColorT2: "rgb(25,25,112)", backColorT3: "white",
             door: "2", maxdoor: "2",
-            que1: "", que2: "2.Sayı", que3: "", ctrl: [{ c: "" }], cleardoor: false,
+            ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             backUpflag: false,
-            twonumBColor: "green"
+
         });
         this.checkState();
     }
     threeNum = () => {
         this.setState({
-            message: "", returnekok: 1,
+            message: "",
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            backColorT1: "white", backColorT2: "white", backColorT3: "green",
+            backColorT1: "white", backColorT2: "white", backColorT3: "rgb(25,25,112)",
             door: "3", maxdoor: "3",
-            que1: "", que2: "", que3: "3.Sayı", ctrl: [{ c: "" }], cleardoor: false,
+            ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
             showrightarray: [{ rightNumber: "", colorKey: "" }],
             backUpflag: false,
-            threenumBColor: "green"
+
         });
         this.checkState();
 
     }
-    cleanOnePart = () => {
+    async cleanOnePart(a) {
+        if (a == 0)
+            await this.cleanOnePart2();
+    }
+    cleanOnePart2 = () => {
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
         if (maxdoorctrl == "2") {
             if (doorctrl == "1")
-                this.setState({ iconname: null, firstnumBColor: "green", tempnumber1: "", message: "", btnflag: true });
+                this.setState({ tempnumber1: "", message: "", btnflag: true });
 
             else if (doorctrl == "2")
-                this.setState({ iconname1: null, twonumBColor: "green", tempnumber2: "", message: "", btnflag: true });
+                this.setState({ tempnumber2: "", message: "", btnflag: true });
         }
         if (maxdoorctrl == "3") {
-            this.setState({ iconname2: null, threenumBColor: "green", tempnumber3: "", message: "", btnflag: true });
+            this.setState({ tempnumber3: "", message: "", btnflag: true });
         }
         this.checkState();
     }
-    keybort = (param) => {
+    async  keybort(param) {
         var clearctrl = this.state.cleardoor;
         if (clearctrl) {
-            this.setState({ cleardoor: false, btnflag: true });
-            this.setState({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], que1: "1.Sayı", que2: "", que3: "", backColorT1: "green", backColorT2: "white", backColorT3: "white", returnekok: 1, message: "", number1: [""], number2: [""], number3: [""], doorstate: "İkinci Sayıya Geç", door: "1", rightarray: [""], tempnumber1: "", tempnumber2: "", tempnumber3: "" });
+            await this.clean();
         }
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
@@ -208,41 +195,46 @@ export default class EkokPage extends Component {
         var num3 = this.state.tempnumber3;
         if (maxdoorctrl == "2") {
             if (doorctrl == "1") {
-                if (num1.length < 4) {
+                if (num1.length < 3) {
                     num1 = num1 + param;
-                    this.setState({ tempnumber1: num1, btn2disable: false });
+                    this.setState({ tempnumber1: num1 });
                     this.state.number1[0] = num1;
                     this.setState(this.state.number1);
                     if (this.state.tempnumber2 == "")
-                        this.setState({ firstnumBColor: "red", iconname: "check", twonumBColor: "rgb(56,65,104)", sayi2: "2.Sayı" });
+                        this.setState({ sayi2: "2.Sayı" });
                 }
                 else
                     this.warn();
             }
             else if (doorctrl == "2") {
-                if (num2.length < 4) {
+                if (num2.length < 3) {
                     num2 = num2 + param;
                     this.setState({ tempnumber2: num2 });
                     this.state.number2[0] = num2;
                     this.setState(this.state.number2);
                 }
                 if (num2.length > 0)
-                    this.setState({ twonumBColor: "red", iconname1: "check", btn3disable: false, threenumBColor: "rgb(56,65,104)", sayi3: "3.Sayı" });
+                    this.setState({ sayi3: "3.Sayı" });
 
             }
             else
                 this.warn();
         }
         if (maxdoorctrl == "3") {
-            if (num3.length < 4) {
+            if (num3.length < 3) {
                 num3 = num3 + param;
-                this.setState({ threenumBColor: "red", iconname2: "check", tempnumber3: num3, maxdoor: "3", door: "3" });
+                this.setState({ tempnumber3: num3, maxdoor: "3", door: "3" });
                 this.state.number3[0] = num3;
                 this.setState(this.state.number3);
             }
             else
                 this.warn();
         }
+        if (this.state.tempnumber3 != "")
+            this.setState({ maxdoor: "3" });
+
+        if ((this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "") || (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 != ""))
+            this.setState({ btnflag: false });
 
     }
     backup = () => {
@@ -267,7 +259,7 @@ export default class EkokPage extends Component {
                     if (maxdoorctrl == "3")
                         this.setState(() => ({ tempnumber3: this.state.shownumber3[1].no1 }));
 
-                    this.setState(() => ({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], returnekok: "yok", message: "", number1: [""], number2: [""], number3: [""], rightarray: [""] }));
+                    this.setState(() => ({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], message: "", number1: [""], number2: [""], number3: [""], rightarray: [""] }));
 
                     this.ekok();
                 }.bind(this), 10);
@@ -286,19 +278,15 @@ export default class EkokPage extends Component {
         var num1 = this.state.tempnumber1;
         var num2 = this.state.tempnumber2;
         var num3 = this.state.tempnumber3;
-        if (this.state.tempnumber3 != "")
-            this.setState({ threenumBColor: "red", iconname2: "check" });
-        else
-            this.setState({ threenumBColor: "green", iconname2: null });
         if (maxdoorctrl == "2" && num1 != "" && num2 != "") {
             clearInterval(this.delay2);
             clearTimeout(this.delay);
-            this.setState({ footerdisplay: "none", backUpflag: true, cleardoor: true, que1: "", que2: "", que3: "", door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "green", backColorT2: "white", backColorT3: "white", message: "" });
+            this.setState({ sayi2: "", sayi3: "", que1: "", footerdisplay: "none", backUpflag: true, cleardoor: true, door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white", message: "" });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
-            var tempekok = this.state.returnekok;
+            var tempekok = 1;
             num1 = parseInt(num1, 10);
             num2 = parseInt(num2, 10);
             var max = (num1 > num2) ? (max = num1) : (max = num2);
@@ -312,7 +300,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num1 /= i;
                     this.state.number1.push({ no1: num1 });
                     this.state.number2.push({ no1: num2 });
@@ -324,7 +312,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num2 /= i;
                     this.state.number1.push({ no1: num1 });
                     this.state.number2.push({ no1: num2 });
@@ -336,7 +324,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "1" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num2 /= i;
                     num1 /= i;
                     this.state.number1.push({ no1: num1 });
@@ -346,17 +334,18 @@ export default class EkokPage extends Component {
                     i--;
                 }
             }
+            this.setState({ returnekok: tempekok });
             this.settimem();
         }
         else if (maxdoorctrl == "3" && num1 != "" && num2 != "" && num3 != "") {
             clearInterval(this.delay12);
             clearTimeout(this.delay22);
-            this.setState(footerdisplay: "none", { backUpflag: true, message: "", cleardoor: true, que1: "", que2: "", que3: "", door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "green", backColorT2: "white", backColorT3: "white" });
+            this.setState({ sayi2: "", sayi3: "", que1: "", footerdisplay: "none", backUpflag: true, message: "", cleardoor: true, door: "1", backColorT1: "rgb(25,25,112)", backColorT2: "white", backColorT3: "white" });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
-            var tempekok = this.state.returnekok;
+            var tempekok = 1;
             num1 = parseInt(num1, 10);
             num2 = parseInt(num2, 10);
             num3 = parseInt(num3, 10);
@@ -370,6 +359,8 @@ export default class EkokPage extends Component {
                 max = num2;
             else if (num3 > num2 && num3 > num2)
                 max = num3;
+            else if (num1 == num2 && num3 == num2)
+                max = num3;
             for (i = 2; i <= max; i++) {
                 ctrl1 = num1 % i;
                 ctrl2 = num2 % i;
@@ -379,7 +370,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num1 /= i;
                     if (ctrl3 == 0) {
                         num3 /= i;
@@ -396,7 +387,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num2 /= i;
                     if (ctrl3 == 0) {
                         num3 /= i;
@@ -413,7 +404,7 @@ export default class EkokPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num3 /= i;
                     this.state.number1.push({ no1: num1 });
                     this.state.number2.push({ no1: num2 });
@@ -427,7 +418,7 @@ export default class EkokPage extends Component {
 
 
                     tempekok *= i;
-                    this.setState({ returnekok: tempekok });
+
                     num2 /= i;
                     num1 /= i;
                     if (ctrl3 == 0) {
@@ -448,6 +439,7 @@ export default class EkokPage extends Component {
                     i--;
                 }
             }
+            this.setState({ returnekok: tempekok });
             this.settimem12();
         }
         else {
@@ -459,6 +451,10 @@ export default class EkokPage extends Component {
         clearTimeout(this.delay2);
         clearInterval(this.delay12);
         clearTimeout(this.delay22);
+        BackHandler.removeEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
     }
     settimem() {
         i = 1;
@@ -547,88 +543,103 @@ export default class EkokPage extends Component {
     }
     render() {
         return (
-            <Container>
-                <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+            <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+                <Container>
+                    <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+                        <Left style={{ flex: 1 }}>
+                            <Button transparent onPress={this.back}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+                            </Button>
+                        </Left>
+                        <Body style={{ flex: 4 }}>
+                            <Title style={styles.heade}>KÜSUR-AT</Title>
+                        </Body>
+                        <Right style={{ flex: 1 }}>
+                            <Button transparent onPress={this.tys}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="EvilIcons" name="pencil" />
+                            </Button>
+                        </Right>
+                    </Header>
                     <Content>
-
-                        <Text>{this.state.message}</Text>
-                        <View style={{ flexDirection: "column" }}>
+                        <View style={{ flexDirection: "column", marginTop: 10 }}>
                             <View style={{ flexDirection: "row" }}>
                                 <Text style={{ fontSize: 30, color: "white", marginLeft: 50 }}>EKOK</Text>
                                 <Button rounded disabled={this.state.btnflag} onPress={this.backup}><Text style={{ fontSize: 50 }}>=</Text></Button>
                                 <Text style={{ fontSize: 30, color: "white", marginLeft: 10 }}> {this.state.returnekok}</Text>
 
                             </View>
-                            <View style={{ flexDirection: "row" }}>
-                                <Button onPress={this.firstNum} style={{ marginTop: 5, backgroundColor: this.state.firstnumBColor }}>
-                                    <Icon type="FontAwesome" name={this.state.iconname} />
-                                    <Text style={{ fontSize: 10 }}>1.Sayı</Text>
-                                </Button>
-                                <Button disabled={this.state.btn2disable} onPress={this.twoNum} style={{ marginTop: 5, backgroundColor: this.state.twonumBColor }}>
-                                    <Icon type="FontAwesome" name={this.state.iconname1} />
-                                    <Text style={{ fontSize: 10 }}>{this.state.sayi2}</Text>
-                                </Button>
-                                <Button disabled={this.state.btn3disable} onPress={this.threeNum} style={{ marginTop: 5, backgroundColor: this.state.threenumBColor }}>
-                                    <Icon type="FontAwesome" name={this.state.iconname2} />
-                                    <Text style={{ fontSize: 10 }}>{this.state.sayi3}</Text>
-                                </Button>
-                            </View>
                         </View>
-                        <Card style={{ marginLeft: 10, marginRight: 10 }}>
+                        <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 350, minWidth: 340 }}>
                             <CardItem>
-                                <View style={{ flexDirection: "column" }}>
-                                    <View style={{ flexDirection: "row" }}>
-                                        <View style={{ flexDirection: "column" }}>
-                                            <Text>{this.state.que1}</Text>
-                                            <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
+                                <Body>
+                                    <Text>{this.state.message}</Text>
+                                    <View style={{ flexDirection: "column" }}>
+                                        <View style={{ flexDirection: "row" }}>
+                                            <View style={{ flexDirection: "column" }}>
+                                                <Text onPress={this.firstNum}>{this.state.que1}</Text>
+                                                <Text
+                                                    onPress={this.firstNum}
+                                                    style={{
+                                                        color: "black",
+                                                        fontSize: 30,
+                                                        backgroundColor: this.state.backColorT1
+                                                    }}
+                                                >
+                                                    {this.state.tempnumber1}
+                                                </Text>
+                                            </View>
+                                            <List dataArray={this.state.shownumber1}
+                                                renderRow={(item) =>
+                                                    <ListItem style={{ borderColor: "white" }}>
+                                                        <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                    </ListItem>
+                                                }>
+                                            </List>
+                                            <View style={{ flexDirection: "column" }}>
+                                                <Text onPress={this.twoNum}>{this.state.sayi2}</Text>
+                                                <Text
+                                                    onPress={this.twoNum}
+                                                    style={{
+                                                        color: "black",
+                                                        fontSize: 30,
+                                                        backgroundColor: this.state.backColorT2
+                                                    }}
+                                                >
+                                                    {this.state.tempnumber2}
+                                                </Text>
+                                            </View>
+                                            <List dataArray={this.state.shownumber2}
+                                                renderRow={(item) =>
+                                                    <ListItem style={{ borderColor: "white" }}>
+                                                        <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                    </ListItem>
+                                                }>
+                                            </List>
+
+                                            <View style={{ flexDirection: "column" }}>
+                                                <Text onPress={this.threeNum}>{this.state.sayi3}</Text>
+                                                <Text onPress={this.threeNum} style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
+                                            </View>
+                                            <List dataArray={this.state.shownumber3}
+                                                renderRow={(item) =>
+                                                    <ListItem style={{ borderColor: "white" }}>
+                                                        <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                    </ListItem>
+                                                }>
+                                            </List>
+                                            <Text style={{ marginTop: 20, backgroundColor: "rgb(25,25,112)", height: 450, width: 5, marginLeft: 5 }}></Text>
+                                            <List dataArray={this.state.showrightarray}
+                                                renderRow={(item) =>
+                                                    <ListItem style={{ borderColor: "red" }}>
+                                                        <Text style={{ color: "white", fontSize: 30, backgroundColor: (item.key == "1") ? "red" : "blue" }}>{item.rightNumber}</Text>
+                                                    </ListItem>
+                                                }>
+                                            </List>
                                         </View>
-                                        <List dataArray={this.state.shownumber1}
-                                            renderRow={(item) =>
-                                                <ListItem style={{ borderColor: "white" }}>
-                                                    <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
-                                                </ListItem>
-                                            }>
-                                        </List>
-
-                                        <View style={{ flexDirection: "column" }}>
-                                            <Text>{this.state.que2}</Text>
-                                            <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
-                                        </View>
-                                        <List dataArray={this.state.shownumber2}
-                                            renderRow={(item) =>
-                                                <ListItem style={{ borderColor: "white" }}>
-                                                    <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
-                                                </ListItem>
-                                            }>
-                                        </List>
-
-                                        <View style={{ flexDirection: "column" }}>
-                                            <Text>{this.state.que3}</Text>
-                                            <Text style={{ color: "black", fontSize: 30, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
-                                        </View>
-                                        <List dataArray={this.state.shownumber3}
-                                            renderRow={(item) =>
-                                                <ListItem style={{ borderColor: "white" }}>
-                                                    <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
-                                                </ListItem>
-                                            }>
-                                        </List>
-
-
-                                        <Text style={{ marginTop: 20, backgroundColor: "red", height: 450, width: 5, marginLeft: 5 }}></Text>
-                                        <List dataArray={this.state.showrightarray}
-                                            renderRow={(item) =>
-                                                <ListItem style={{ borderColor: "red" }}>
-                                                    <Text style={{ color: "white", fontSize: 30, backgroundColor: (item.key == "1") ? "red" : "blue" }}>{item.rightNumber}</Text>
-                                                </ListItem>
-                                            }>
-                                        </List>
                                     </View>
-
-
-                                </View>
-                                <Button onPress={this.clean} transparent bordered>
-                                    <Icon style={{ fontSize: 30 }} name='trash' />
+                                </Body>
+                                <Button onPress={this.clean} transparent >
+                                    <Icon style={{ fontSize: 50 }} type="EvilIcons" name='refresh' />
 
                                 </Button>
                             </CardItem>
@@ -669,24 +680,39 @@ export default class EkokPage extends Component {
                         <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
-                        <Button style={styles.footerbtn} rounded onPress={this.cleanOnePart} >
-
-                            <Text style={styles.footertxt}>SİL</Text>
+                        <Button style={styles.footerbtn} rounded onPress={() => { this.cleanOnePart(0) }} >
+                            <Icon style={{ fontSize: 30 }} name='trash' />
                         </Button>
 
                     </Footer>
-                </ImageBackground>
+                </Container >
+            </ImageBackground>
 
-            </Container >
         );
     }
 
-}
+    componentWillMount() {
+        BackHandler.addEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
 
+    handleBackButtonClick() {
+        this.props.navigation.navigate("ebob_ekokPages");
+        return true;
+    }
+    back = () => {
+        this.props.navigation.navigate("ebob_ekokPages");
+    }
+    tys = () => {
+        this.props.navigation.navigate("EkokPageTYSPages");
+    }
+}
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: 'white',
+        color: "rgb(142,163,226)",
         fontSize: 30,
         padding: 5
     },

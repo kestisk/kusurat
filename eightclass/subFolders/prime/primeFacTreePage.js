@@ -224,20 +224,20 @@ export default class PrimeFacTreePage extends Component {
                             </Button>
                         </Right>
                     </Header>
+
                     <Content>
                         <Text style={{ color: "white" }}>{this.state.message}</Text>
                         <View style={{ flexDirection: "column" }}>
-
                             <View style={{ flexDirection: "row" }}>
-
                                 <Text style={{ fontSize: 30, marginLeft: 100, color: "white" }}>{this.state.number}</Text>
-                                <Button rounded disabled={this.state.disable} onPress={() => this.tree()}><Text style={{ fontSize: 50, color: "white" }}>=</Text></Button>
+                                <Button rounded disabled={this.state.disable} onPress={() => this.tree()}>
+                                    <Text style={{ fontSize: 50, color: "white" }}>=</Text>
+                                </Button>
                             </View>
                             <View>
                                 <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 450 }}>
-
-
                                     <CardItem style={{ marginTop: 0 }}>
+<<<<<<< HEAD
                                         <Body>
                                             <List dataArray={this.state.numberarrayshow}
 
@@ -273,6 +273,41 @@ export default class PrimeFacTreePage extends Component {
 
                                             </List>
                                         </Body>
+=======
+                                        <List dataArray={this.state.numberarrayshow}
+                                            renderRow={(item) =>
+                                                <ListItem >
+                                                    <Text style={{
+                                                        textAlign: "center",
+                                                        fontSize: 20,
+                                                        backgroundColor: item.colorr,
+                                                        height: 35,
+                                                        width: 45,
+                                                        borderRadius: 50,
+                                                        color: "white",
+                                                        marginLeft: item.id2
+                                                    }}>
+                                                        {item.key}
+                                                    </Text>
+                                                    <Text style={{
+                                                        textAlign: "center",
+                                                        fontSize: 20,
+                                                        backgroundColor: item.colorr,
+                                                        height: 35,
+                                                        width: 45,
+                                                        borderRadius: 50,
+                                                        color: "white",
+                                                        marginLeft: item.id
+                                                    }}>{item.key2}</Text>
+
+                                                </ListItem>
+
+                                            }>
+
+
+                                        </List>
+
+>>>>>>> refs/remotes/origin/kusurat
                                     </CardItem>
 
                                 </Card>

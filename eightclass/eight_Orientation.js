@@ -5,10 +5,18 @@ import Power from "./power";
 import Ebob_ekokPage from "./ebob_ekokPage";
 import MultipPage from './multipsPage';
 import PrimeFactabPage from "./tabs/multips_primeFactortabPage";
-import PrimeFacTreetabPage from './tabs/primeFacTreetabPage'
-import Ebob_Ekok_PrimeTabPage from './tabs/ebob_ekok/ebob_ekok_primetabPage';
-import EbobTabPage from './tabs/ebob_ekok/ebobtabPage';
-import EkokTabPage from './tabs/ebob_ekok/ekoktabPage';
+import PrimeFacTreetabPage from './tabs/primeFacTreetabPage';
+
+//import Ebob_Ekok_PrimeTabPage from './tabs/ebob_ekok/ebob_ekok_primetabPage';
+import Ebob_Ekok_PrimeTabPage from './subFolders/ebob_ekok/ebob_ekok_primePage';
+import Ebob_ekok_primePageTYS from "./subFolders/ebob_ekok/ebob_ekok_primePageTYS";
+//import EbobTabPage from './tabs/ebob_ekok/ebobtabPage';
+import EbobTabPage from './subFolders/ebob_ekok/ebobPage';
+import EbobPageTYS from "./subFolders/ebob_ekok/ebobPageTYS";
+//import EkokTabPage from './tabs/ebob_ekok/ekoktabPage';
+import EkokTabPage from './subFolders/ebob_ekok/ekokPage';
+import EkokPageTYS from "./subFolders/ebob_ekok/ekokPageTYS";
+
 import Pow_BasictabPage from './tabs/pow/pow_basictabPage';
 import Pow_findpowtabPage from './tabs/pow/pow_findpowtabPage';
 import Pow_getpowtabPage from './tabs/pow/pow_getpowtabPage';
@@ -29,6 +37,15 @@ const eight_Ori = createSwitchNavigator({
   ebob_ekokPages: {
     screen: Ebob_ekokPage,
   },
+  EbobPageTYSPages: {
+    screen: EbobPageTYS,
+  },
+  EkokPageTYSPages: {
+    screen: EkokPageTYS,
+  },
+  Ebob_ekok_primePageTYSPages: {
+    screen: Ebob_ekok_primePageTYS,
+  },
   MultipPages: {
     screen: MultipPage,
   },
@@ -36,7 +53,7 @@ const eight_Ori = createSwitchNavigator({
     screen: Multips_primeFactorPage,
   },
   primeFacPagesTYS: {
-    screen: Multips_primeFactorPageTYS
+    screen: Multips_primeFactorPageTYS,
   },
   primeFacTreePages: {
     screen: PrimeFacTreePage,

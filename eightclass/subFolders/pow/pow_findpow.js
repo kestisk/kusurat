@@ -238,7 +238,7 @@ export default class Pow_findpow extends Component {
                         </Button>
 
                     </Footer>
-                    <Footer style={{ backgroundColor: null, ddisplay: this.state.footerdisplay }}>
+                    <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
                         <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
                             <Text style={styles.footertxt}>6</Text>
                         </Button>

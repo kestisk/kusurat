@@ -7,14 +7,16 @@ import {
   Left,
   Body,
   Title,
-  Icon
+  Icon,
+  View
 } from "native-base";
-import { BackHandler, ImageBackground, View } from "react-native";
+import { BackHandler, ImageBackground } from "react-native";
 import { StyleSheet } from "react-native";
 
 export default class Eight extends Component {
   constructor(props) {
     super(props);
+    this.state = { truee: true }
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
   }
   componentWillMount() {
@@ -78,15 +80,17 @@ export default class Eight extends Component {
             <Text style={styles.buttontext}>EBOB & EKOK</Text>
           </Button>
           <Button
-            style={{ marginTop: 15, height: 60 }}
-
+            style={{ marginTop: 15 }}
+            info
             block
             rounded
-            onPress={this.pow}>
+            onPress={this.pow}
+            disabled={this.state.truee}
+          >
             <Text style={styles.buttontext}>ÜSLÜ SAYILAR</Text>
           </Button>
         </View>
-      </ImageBackground >
+      </ImageBackground>
     );
   }
   back = () => {

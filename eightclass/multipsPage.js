@@ -36,7 +36,6 @@ export default class MultipPage extends Component {
                         </Button>
 
                     </Left>
-
                     <Body style={{ flex: 5 }}>
                         <Title style={styles.heade}>KÜSUR-AT</Title>
                     </Body>
@@ -76,6 +75,18 @@ const styles = StyleSheet.create({
         color: "rgb(142,163,226)",
         fontSize: 30,
         padding: 5
+    },
+    footerbtn: {
+        marginLeft: 5,
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footerbtnmain: {
+
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footertxt: {
+        color: "rgb(142,163,226)",
+        fontSize: 30
     },
     buttontext: {
         textAlign: "center",

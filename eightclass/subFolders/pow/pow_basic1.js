@@ -10,7 +10,7 @@ export default class Pow_basic1 extends Component {
             display1: "flex",
             display2: "none",
             iconname1: "check", iconname2: null,
-            leftbtnBackColor: "red", rightbtnBackColor: "gray",
+            leftbtnBackColor: "red", rightbtnBackColor: "gray"
         };
     }
     tik1 = () => {
