@@ -29,7 +29,7 @@ export default class PrimeFacTreePage extends Component {
 
 
 
- 
+
 
             ],
             number: "100",
@@ -234,46 +234,46 @@ export default class PrimeFacTreePage extends Component {
                                     <Text style={{ fontSize: 50, color: "white" }}>=</Text>
                                 </Button>
                             </View>
-                            <View>
-                                <Card style={{ marginLeft: 10, marginRight: 10, minHeight: 450 }}>
-                                    <CardItem style={{ marginTop: 0 }}>
-                                        <Body>
-                                            <List dataArray={this.state.numberarrayshow}
-                                                renderRow={(item) =>
-                                                    <ListItem >
-                                                        <Text style={{
-                                                            textAlign: "center",
-                                                            fontSize: 20,
-                                                            backgroundColor: item.colorr,
-                                                            height: 35,
-                                                            width: 45,
-                                                            borderRadius: 50,
-                                                            color: "white",
-                                                            marginLeft: item.id2
-                                                        }}>
-                                                            {item.key}
-                                                        </Text>
-                                                        <Text style={{
-                                                            textAlign: "center",
-                                                            fontSize: 20,
-                                                            backgroundColor: item.colorr,
-                                                            height: 35,
-                                                            width: 45,
-                                                            borderRadius: 50,
-                                                            color: "white",
-                                                            marginLeft: item.id
-                                                        }}>{item.key2}</Text>
-
-                                                    </ListItem>
-
-                                                }>
+                            <View style={{ marginLeft: 10, marginRight: 10, marginTop: 5 }}>
+                                <View style={{ backgroundColor: "white", width: '100%', minHeight: 450 }}>
 
 
-                                            </List>
-                                        </Body>
-                                    </CardItem>
+                                    <List dataArray={this.state.numberarrayshow}
 
-                                </Card>
+                                        renderRow={(item) =>
+                                            <ListItem >
+
+
+                                                <Text style={{
+                                                    textAlign: "center",
+                                                    fontSize: 20,
+                                                    backgroundColor: item.colorr,
+                                                    height: 35,
+                                                    width: 45,
+                                                    borderRadius: 50,
+                                                    color: "white",
+                                                    marginLeft: item.id2
+                                                }}>{item.key}</Text>
+                                                <Text style={{
+                                                    textAlign: "center",
+                                                    fontSize: 20,
+                                                    backgroundColor: item.colorr,
+                                                    height: 35,
+                                                    width: 45,
+                                                    borderRadius: 50,
+                                                    color: "white",
+                                                    marginLeft: item.id
+                                                }}>{item.key2}</Text>
+
+                                            </ListItem>
+
+                                        }>
+
+
+                                    </List>
+
+
+                                </View>
                             </View>
                         </View>
                     </Content>

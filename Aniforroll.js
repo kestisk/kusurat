@@ -11,7 +11,7 @@ import { Button, Text, TabHeading } from "native-base";
 class Aniforrol extends Component {
   constructor(props) {
     super(props);
-    this.state = { num: "", at: "", one: "1", five: "5", ss: "0", len: "", bors: "", inf: "" };
+    this.state = { num: "", at: "", one: "", five: "5", ss: "0", len: "", bors: "", inf: "" };
     this.animationbigger = new Animated.Value(0);
     this.animasyonDegeri1 = new Animated.Value(0);
     this.animasyonDegeri2 = new Animated.Value(0);
@@ -19,7 +19,7 @@ class Aniforrol extends Component {
     this.fade = new Animated.Value(0);
   }
   bigornot(number) {
-    this.setState({ num: "", at: "", one: "1", five: "5", ss: "0", len: "", bors: "", inf: "" });
+    this.setState({ num: "", at: "", one: "", five: "5", ss: "0", len: "", bors: "", inf: "" });
     this.animationbigger.setValue(0);
     this.fade.setValue(0);
     this.animasyonDegeri1.setValue(0);
@@ -141,7 +141,7 @@ class Aniforrol extends Component {
           >
             <Text
 
-              style={{ position: "relative", fontSize: 30 }}
+              style={{ position: "relative", color: "white", fontSize: 30 }}
             >
               {this.state.at}
             </Text>
@@ -159,7 +159,7 @@ class Aniforrol extends Component {
               transform: [{ scale: scaleText }]
             }}
           >
-            <Text>{this.state.one}{this.state.bors}</Text>
+            <Text style={{ color: "white" }}>{this.state.one}{this.state.bors}</Text>
           </Animated.View>
 
         </View>
