@@ -26,18 +26,16 @@ type Props = {};
 export default class App extends Component<Props> {
   constructor(props) {
     super(props);
-    this.state = { text1: "" };
+    this.state = { text1: "KULLANICI ADI" };
   }
   render() {
     return (
       <Container style={{ backgroundColor: "white" }}>
-        <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
-
-
-          <Body style={{ alignItems: "center", alignSelf: "center" }}>
+        <Header style={{ backgroundColor: "#62B1F6" }}>
+          <Left />
+          <Body>
             <Title style={styles.heade}>KÜSUR-AT</Title>
           </Body>
-
         </Header>
         <Content>
           <Text
@@ -52,9 +50,9 @@ export default class App extends Component<Props> {
           </Text>
           <Card
             style={{
-              height: 300,
+              height: 240,
               width: 240,
-
+              backgroundColor: "grey",
               alignSelf: "center",
 
               alignItems: "center"
@@ -62,26 +60,32 @@ export default class App extends Component<Props> {
           >
             <Image
               style={{
-                height: 300,
-                width: 240,
-
-
+                height: 200,
+                width: 200,
+                alignSelf: "center",
+                marginTop: 10
               }}
-              source={require("./image/astro.jpg")}
+              source={require("./image/kedicik.jpeg")}
             />
           </Card>
 
           <Item rounded style={styles.welcome}>
-
+            <Icon active name="person" />
             <Input
-              maxLength={15}
+              maxLength={12}
               onChangeText={text1 => this.setState({ text1 })}
               placeholder="Kullanıcı Adı"
             />
-            <Icon onPress={this.sk} style={{ fontSize: 60, alignSelf: "center", color: "rgb(56,65,104)" }} name="key" />
           </Item>
 
-
+          <Button
+            style={{ marginTop: 10, alignSelf: "center" }}
+            info
+            rounded
+            onPress={this.sk}
+          >
+            <Icon name="arrow-forward" style={{ color: "white" }} />
+          </Button>
         </Content>
       </Container>
     );
@@ -107,13 +111,11 @@ const styles = StyleSheet.create({
   },
   welcome: {
     backgroundColor: "rgb(244, 244, 244)",
-    marginTop: 25,
-    paddingLeft: 20,
-    height: 60
+    marginTop: 25
   },
   heade: {
     textAlign: "center",
-    color: "rgb(142,163,226)",
+    color: "white",
     fontSize: 30,
     padding: 5
   }
