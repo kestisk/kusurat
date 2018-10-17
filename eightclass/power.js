@@ -65,7 +65,7 @@ export default class Power extends Component {
   };
 
   findpow = () => {
-    this.props.navigation.navigate("Pow_findpowtabPages");
+    this.props.navigation.navigate("Pow_findpowPages");
   };
   getpow = () => {
     this.props.navigation.navigate("Pow_getpowPages");

@@ -560,7 +560,7 @@ export default class EkokPage extends Component {
                         </Body>
                         <Right style={{ flex: 1 }}>
                             <Button transparent onPress={this.tys}>
-                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="EvilIcons" name="pencil" />
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} type="FontAwesome" name="edit" />
                             </Button>
                         </Right>
                     </Header>
@@ -634,8 +634,8 @@ export default class EkokPage extends Component {
                                             <Text style={{ marginTop: 20, backgroundColor: "rgb(25,25,112)", height: 450, width: 5, marginLeft: 5 }}></Text>
                                             <List dataArray={this.state.showrightarray}
                                                 renderRow={(item) =>
-                                                    <ListItem style={{ borderColor: "red" }}>
-                                                        <Text style={{ color: "white", fontSize: 30, backgroundColor: (item.key == "1") ? "red" : "blue" }}>{item.rightNumber}</Text>
+                                                    <ListItem style={{ borderColor: "white" }}>
+                                                        <Text style={{ color: "white", fontSize: 30, backgroundColor: (item.key == "1") ? "rgb(138,43,226)" : "#191970" }}>{item.rightNumber}</Text>
                                                     </ListItem>
                                                 }>
                                             </List>
@@ -643,7 +643,7 @@ export default class EkokPage extends Component {
                                     </View>
                                 </View>
                                 <Button style={{ position: "absolute", alignSelf: "flex-end" }} onPress={this.clean} transparent >
-                                    <Icon style={{ fontSize: 50 }} type="EvilIcons" name='refresh' />
+                                    <Icon style={{ fontSize: 50 }} type="FontAwesome" name='refresh' />
                                 </Button>
                             </View>
 

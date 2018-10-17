@@ -32,6 +32,8 @@ import PrimeFacTreePage from "./subFolders/prime/primeFacTreePage";
 import primeFacTreePagesTYS from "./subFolders/prime/primeFacTreePageTYS";
 import EbobPage from "./subFolders/ebob_ekok/ebobPage";
 import EkokPage from "./subFolders/ebob_ekok/ekokPage";
+import Pow_findpow from "./subFolders/pow/pow_findpow";
+import Pow_findpowTYS from "./subFolders/pow/pow_findpowTYS";
 
 const eight_Ori = createSwitchNavigator({
   Main_eight: {
@@ -85,10 +87,13 @@ const eight_Ori = createSwitchNavigator({
   Pow_BasictabPages: {
     screen: Pow_BasictabPage,
   },
-  Pow_findpowtabPages: {
-    screen: Pow_findpowtabPage,
+  Pow_findpowPages: {
+    screen: Pow_findpow,
   },
-  Pow_getpowtabPages: {
+  Pow_findpowPagesTYS: {
+    screen: Pow_findpowTYS,
+  },
+  Pow_getpowPagesTYS: {
     screen: Pow_getpowtabPage,
   },
   Pow_showdecimaltabPages: {

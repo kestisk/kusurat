@@ -161,7 +161,7 @@ export default class RollingNumberPage extends Component {
             </Button>
             <Button style={styles.footerbtn} rounded onPress={this.clean} >
 
-              <Icon style={styles.footertxt} name='trash' />
+              <Icon style={styles.footertxt} name='backspace' />
             </Button>
 
           </Footer>
