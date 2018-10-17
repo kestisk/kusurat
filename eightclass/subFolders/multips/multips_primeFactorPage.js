@@ -57,7 +57,7 @@ export class Multips_primeFactorPage extends Component {
     componentWillUnmount() {
         clearInterval(this.delayed1);
         clearTimeout(this.delayed2);
-        BackHandler.addEventListener(
+        BackHandler.removeEventListener(
             "hardwareBackPress",
             this.handleBackButtonClick
         );

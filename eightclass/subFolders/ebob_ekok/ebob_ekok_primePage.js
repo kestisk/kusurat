@@ -433,7 +433,7 @@ export default class Ebob_ekok_primePage extends Component {
                         this.state.rightarray.push({ rightNumber: i, key: "1" });
                         tempebob *= i;
                         this.setState({ ebobkac: tempebob });
-                        i = max + 1;
+
                         num3 /= i;
                     }
                     else
@@ -708,10 +708,12 @@ export default class Ebob_ekok_primePage extends Component {
             this.handleBackButtonClick
         );
     }
-    handleBackButtonClick() {
+    handleBackButtonClick = () => {
         this.props.navigation.navigate("ebob_ekokPages");
         return true;
     }
+
+
     back = () => {
         this.props.navigation.navigate("ebob_ekokPages");
     }

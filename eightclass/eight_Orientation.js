@@ -30,6 +30,8 @@ import { Multips_primeFactorPage } from "./subFolders/multips/multips_primeFacto
 import Multips_primeFactorPageTYS from "./subFolders/multips/multips_primeFactorPageTYS";
 import PrimeFacTreePage from "./subFolders/prime/primeFacTreePage";
 import primeFacTreePagesTYS from "./subFolders/prime/primeFacTreePageTYS";
+import EbobPage from "./subFolders/ebob_ekok/ebobPage";
+import EkokPage from "./subFolders/ebob_ekok/ekokPage";
 
 const eight_Ori = createSwitchNavigator({
   Main_eight: {
@@ -68,11 +70,11 @@ const eight_Ori = createSwitchNavigator({
   Ebob_Ekok_PrimeTabPages: {
     screen: Ebob_Ekok_PrimeTabPage,
   },
-  EbobTabPages: {
-    screen: EbobTabPage,
+  EbobPages: {
+    screen: EbobPage,
   },
-  EkokTabPages: {
-    screen: EkokTabPage,
+  EkokPages: {
+    screen: EkokPage,
   },
   Pow_getpowTYSPages: {
     screen: Pow_getpowTYS,

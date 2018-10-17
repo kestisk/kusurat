@@ -702,7 +702,7 @@ export default class EkokPage extends Component {
         );
     }
 
-    handleBackButtonClick() {
+    handleBackButtonClick = () => {
         this.props.navigation.navigate("ebob_ekokPages");
         return true;
     }

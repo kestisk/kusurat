@@ -215,16 +215,23 @@ export default class Ebob_ekok_primePageTYS extends Component {
             </Container >
         );
     }
+    componentWillUnmount() {
+        BackHandler.removeEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
     componentWillMount() {
         BackHandler.addEventListener(
             "hardwareBackPress",
             this.handleBackButtonClick
         );
     }
-    handleBackButtonClick() {
-        this.props.navigation.navigate("Ebob_Ekok_PrimeTabPages");
-
+    handleBackButtonClick = () => {
+        this.props.navigation.navigate("ebob_ekokPages");
+        return true;
     }
+
     back = () => {
         this.props.navigation.navigate("Ebob_Ekok_PrimeTabPages");
     };

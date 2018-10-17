@@ -59,11 +59,11 @@ export default class Ebob_ekokPage extends Component {
     this.props.navigation.navigate("Main_eight");
   };
   EBOB = () => {
-    this.props.navigation.navigate("EbobTabPages");
+    this.props.navigation.navigate("EbobPages");
   };
 
   EKOK = () => {
-    this.props.navigation.navigate("EkokTabPages");
+    this.props.navigation.navigate("EkokPages");
   };
   prime = () => {
     this.props.navigation.navigate("Ebob_Ekok_PrimeTabPages");

@@ -282,7 +282,6 @@ export default class EkokPageTYS extends Component {
             this.handleBackButtonClick
         );
     }
-
     componentWillUnmount() {
         BackHandler.removeEventListener(
             "hardwareBackPress",
@@ -290,12 +289,12 @@ export default class EkokPageTYS extends Component {
         );
     }
 
-    handleBackButtonClick() {
-        this.props.navigation.navigate("EkokTabPages");
+    handleBackButtonClick = () => {
+        this.props.navigation.navigate("ebob_ekokPages");
         return true;
     }
     back = () => {
-        this.props.navigation.navigate("EkokTabPages");
+        this.props.navigation.navigate("EkokPages");
     };
 }
 

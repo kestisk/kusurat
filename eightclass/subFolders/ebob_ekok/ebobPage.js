@@ -418,16 +418,7 @@ export default class EbobPage extends Component {
 
 
     }
-    componentWillUnmount() {
-        clearInterval(this.delay);
-        clearTimeout(this.delay2);
-        clearInterval(this.delay12);
-        clearTimeout(this.delay22);
-        BackHandler.removeEventListener(
-            "hardwareBackPress",
-            this.handleBackButtonClick
-        );
-    }
+
     settimem() {
         i = 1;
         this.delay = setInterval(function () {
@@ -651,16 +642,27 @@ export default class EbobPage extends Component {
             </ImageBackground >
         );
     }
+    componentWillUnmount() {
+        clearInterval(this.delay);
+        clearTimeout(this.delay2);
+        clearInterval(this.delay12);
+        clearTimeout(this.delay22);
+        BackHandler.removeEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
     componentWillMount() {
         BackHandler.addEventListener(
             "hardwareBackPress",
             this.handleBackButtonClick
         );
     }
-    handleBackButtonClick() {
+    handleBackButtonClick = () => {
         this.props.navigation.navigate("ebob_ekokPages");
         return true;
     }
+
     back = () => {
         this.props.navigation.navigate("ebob_ekokPages");
     };

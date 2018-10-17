@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { Container, Content, Button, Header, Left, Icon, Body, Title } from 'native-base';
-import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
+import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView, BackHandler } from 'react-native';
 
 export default class RollingNumberPageTYS extends Component {
     constructor(props) {
@@ -97,13 +97,27 @@ export default class RollingNumberPageTYS extends Component {
             this.setState(this.state.colorboxs);
         }
     }
-
+    back = () => {
+        this.props.navigation.navigate("rollingNumberPages");
+    };
     render() {
 
         return (
 
             <Container>
+                <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+                    <Left>
+                        <Button transparent onPress={this.back}>
+                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+                        </Button>
 
+                    </Left>
+
+                    <Body>
+                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    </Body>
+
+                </Header>
                 <Content >
                     <View style={{ flexDirection: "row" }}>
                         <View style={{ flexDirection: "column", marginLeft: 40 }}>
@@ -132,9 +146,32 @@ export default class RollingNumberPageTYS extends Component {
 
         );
     }
+    componentWillUnmount() {
+
+        BackHandler.removeEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
+    componentWillMount() {
+        BackHandler.addEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
+    handleBackButtonClick = () => {
+        this.props.navigation.navigate("Main_eight");
+        return true;
+    }
 }
 
 const styles = StyleSheet.create({
+    heade: {
+        textAlign: "center",
+        color: "rgb(142,163,226)",
+        fontSize: 30,
+        padding: 5
+    },
     buttonsty: {
         height: 100,
         width: 100,

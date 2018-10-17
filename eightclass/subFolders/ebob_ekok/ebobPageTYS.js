@@ -260,12 +260,13 @@ export default class EbobPageTYS extends Component {
             this.handleBackButtonClick
         );
     }
-    handleBackButtonClick() {
-        this.props.navigation.navigate("EbobTabPages");
 
+    handleBackButtonClick = () => {
+        this.props.navigation.navigate("ebob_ekokPages");
+        return true;
     }
     back = () => {
-        this.props.navigation.navigate("EbobTabPages");
+        this.props.navigation.navigate("EbobPages");
     };
 }
 
