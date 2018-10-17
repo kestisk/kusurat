@@ -29,13 +29,13 @@ export default class Power extends Component {
   render() {
     return (
       <ImageBackground source={require("../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
-        <Header style={{ backgroundColor: "rgb(56,65,104)" }}>
+        <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
           <Left style={{ flex: 1 }}>
             <Button transparent onPress={this.back}>
               <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
             </Button>
           </Left>
-          <Body style={{ flex: 5 }}>
+          <Body style={{ flex: 4 }}>
             <Title style={styles.heade}>KÜSUR-AT</Title>
           </Body>
         </Header>

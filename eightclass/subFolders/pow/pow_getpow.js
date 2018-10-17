@@ -10,11 +10,12 @@ export default class Pow_getpow extends Component {
             signNumberFlag: false, signPowFlag: false, paranthesisFlag: false, csFlag: false, nextProcFlag: false, btnflag: true,
             numberSignFlag: false, powSignFlag: false,
             currentstate: "arrow-up",
-            signnumber: "", signanswer: "", addparantehesis: "(X)", addNegative: "-X", signpow: "",
+            signnumber: "", signanswer: "", addparantehesis: "(X)", addNegative: "-", signpow: "",
             message: "",
             numberBackColor: "green", powBackColor: "white",
             ParanthesisBackColor: "rgb(56,65,104)",
-            NegatifBackColor: "rgb(56,65,104)", footerdisplay: "flex"
+            NegatifBackColor: "rgb(56,65,104)", footerdisplay: "flex",
+            displaynegative: false
         }
     }
     warn = () => {
@@ -31,11 +32,12 @@ export default class Pow_getpow extends Component {
             numberSignFlag: false, powSignFlag: false,
             signpow: "",
             currentstate: "arrow-up",
-            signnumber: "", signanswer: "", addparantehesis: "(X)", addNegative: "-X",
+            signnumber: "", signanswer: "", addparantehesis: "(X)", addNegative: "-",
             message: "",
             numberBackColor: "green", powBackColor: "white",
             ParanthesisBackColor: "rgb(56,65,104)",
-            NegatifBackColor: "rgb(56,65,104)", footerdisplay: "flex"
+            NegatifBackColor: "rgb(56,65,104)", footerdisplay: "flex",
+            displaynegative: false
         });
     }
     cleanOnePart = () => {
@@ -53,6 +55,7 @@ export default class Pow_getpow extends Component {
 
         }
         else {
+
             if (this.state.csFlag) {
 
                 if (this.state.pow.length > 6)
@@ -62,12 +65,12 @@ export default class Pow_getpow extends Component {
 
                 if (num1.length < 2) {
                     num1 = num1 + param;
-                    this.setState({ pow: num1, message: "" });
+                    this.setState({ pow: num1, message: "", displaynegative: true, NegatifBackColor: "gray" });
                     if (this.state.shownumber.length < 6 && this.state.shownumber.length > 0)
                         this.setState({ btnflag: false });
                 }
                 else {
-                    this.setState({ btnflag: false })
+                    this.setState({ btnflag: false, displaynegative: true, NegatifBackColor: "gray" })
                     this.warn2();
                 }
 
@@ -82,12 +85,12 @@ export default class Pow_getpow extends Component {
 
                 if (num1.length < 4) {
                     num1 = num1 + param;
-                    this.setState({ shownumber: num1, message: "" });
+                    this.setState({ shownumber: num1, message: "", displaynegative: true, NegatifBackColor: "gray" });
                     if (this.state.pow.length < 6 && this.state.pow.length > 0)
                         this.setState({ btnflag: false });
                 }
                 else {
-                    this.setState({ btnflag: false });
+                    this.setState({ btnflag: false, displaynegative: true, NegatifBackColor: "gray" });
                     this.warn();
                 }
             }
@@ -95,37 +98,28 @@ export default class Pow_getpow extends Component {
     }
     changeSign = () => {
         if (this.state.csFlag) {
-            if (!this.state.signPowFlag) {
-                if (this.state.nextProcFlag)
-                    this.setState({ powSignFlag: true, addNegative: "+X", NegatifBackColor: "red", signPowFlag: true, signpow: "-", signanswer: "", fracanswwer: "", answer: " = ? " });
-                else
-                    this.setState({ powSignFlag: true, addNegative: "+X", NegatifBackColor: "red", signPowFlag: true, signpow: "-" });
-            }
-            else {
-                if (this.state.nextProcFlag)
-                    this.setState({ powSignFlag: false, addNegative: "-X", NegatifBackColor: "rgb(56,65,104)", signPowFlag: false, signpow: "", signanswer: "", fracanswwer: "", answer: " = ? " });
-                else
-                    this.setState({ powSignFlag: false, addNegative: "-X", NegatifBackColor: "rgb(56,65,104)", signPowFlag: false, signpow: "" });
-            }
+
+            if (!this.state.signPowFlag)
+                this.setState({
+                    powSignFlag: true, displaynegative: false, NegatifBackColor: "rgb(56,65,104)",
+                    addNegative: "-", pow: "", signPowFlag: true, signpow: "-", signanswer: "", fracanswwer: "", answer: " = ? "
+
+                });
+            else
+                this.setState({ displaynegative: true, NegatifBackColor: "gray" });
         }
         else {
-            if (!this.state.signNumberFlag) {
-                if (this.state.nextProcFlag)
-                    this.setState({ numberSignFlag: true, addNegative: "+X", NegatifBackColor: "red", signNumberFlag: true, signnumber: "-", signanswer: "", fracanswwer: "", answer: " = ? " });
-                else
-                    this.setState({ numberSignFlag: true, addNegative: "+X", NegatifBackColor: "red", signNumberFlag: true, signnumber: "-" });
-            }
+            if (!this.state.signNumberFlag)
+                this.setState({
+                    numberSignFlag: true, displaynegative: false, NegatifBackColor: "rgb(56,65,104)",
+                    addNegative: "-", shownumber: "", signNumberFlag: true, signnumber: "-", signanswer: "", fracanswwer: "", answer: " = ? "
+                });
 
-            else {
-                if (this.state.nextProcFlag)
-                    this.setState({ numberSignFlag: false, addNegative: "-X", NegatifBackColor: "rgb(56,65,104)", signNumberFlag: false, signnumber: "", signanswer: "", fracanswwer: "", answer: " = ? " });
-                else
-                    this.setState({ numberSignFlag: false, addNegative: "-X", NegatifBackColor: "rgb(56,65,104)", signNumberFlag: false, signnumber: "" });
-            }
-
+            else
+                this.setState({ displaynegative: true, NegatifBackColor: "gray" });
         }
-
     }
+
     addPrnthesis = () => {
         if (!this.state.paranthesisFlag) {
             if (this.state.nextProcFlag)
@@ -143,15 +137,15 @@ export default class Pow_getpow extends Component {
     changeCState = () => {
         if (!this.state.csFlag) {
             if (this.state.powSignFlag)
-                this.setState({ NegatifBackColor: "red", csFlag: true, currentstate: "arrow-down", powBackColor: "green", numberBackColor: "white" });
+                this.setState({ displaynegative: true, NegatifBackColor: "gray", csFlag: true, currentstate: "arrow-down", powBackColor: "green", numberBackColor: "white" });
             else
-                this.setState({ NegatifBackColor: "rgb(56,65,104)", csFlag: true, currentstate: "arrow-down", powBackColor: "green", numberBackColor: "white" });
+                this.setState({ displaynegative: false, NegatifBackColor: "rgb(56,65,104)", csFlag: true, currentstate: "arrow-down", powBackColor: "green", numberBackColor: "white" });
         }
         else {
             if (this.state.numberSignFlag)
-                this.setState({ NegatifBackColor: "red", csFlag: false, currentstate: "arrow-up", powBackColor: "white", numberBackColor: "green" });
+                this.setState({ displaynegative: true, NegatifBackColor: "gray", csFlag: false, currentstate: "arrow-up", powBackColor: "white", numberBackColor: "green" });
             else
-                this.setState({ NegatifBackColor: "rgb(56,65,104)", csFlag: false, currentstate: "arrow-up", powBackColor: "white", numberBackColor: "green" });
+                this.setState({ displaynegative: false, NegatifBackColor: "rgb(56,65,104)", csFlag: false, currentstate: "arrow-up", powBackColor: "white", numberBackColor: "green" });
         }
     }
     solution = () => {
@@ -229,7 +223,7 @@ export default class Pow_getpow extends Component {
     render() {
 
         return (
-            <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+            <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }} >
                 <Container>
                     <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
                         <Left style={{ flex: 1 }}>
@@ -261,12 +255,16 @@ export default class Pow_getpow extends Component {
                                     <Text>{this.state.message}</Text>
 
                                     <View style={{ flexDirection: "row", marginTop: 10 }}>
-                                        <Text style={{ fontSize: 30, backgroundColor: this.state.numberBackColor }}>
-                                            {this.state.paranthesisLeft}{this.state.signnumber}{this.state.shownumber}{this.state.paranthesisRight}
-                                        </Text>
-                                        <Text style={{ fontSize: 20, marginBottom: 20, backgroundColor: this.state.powBackColor }}>
-                                            {this.state.signpow}{this.state.pow}
-                                        </Text>
+                                        <View >
+                                            <Text onPress={this.changeCState} style={{ fontSize: 30, backgroundColor: this.state.numberBackColor }}>
+                                                {this.state.paranthesisLeft}{this.state.signnumber}{this.state.shownumber}{this.state.paranthesisRight}
+                                            </Text>
+                                        </View>
+                                        <View>
+                                            <Text onPress={this.changeCState} style={{ fontSize: 20, marginBottom: 20, backgroundColor: this.state.powBackColor }}>
+                                                {this.state.signpow}{this.state.pow}
+                                            </Text>
+                                        </View>
                                         <Text style={{ fontSize: 30 }}>
                                             {this.state.signanswer}{this.state.fracanswwer}{this.state.answer}
                                         </Text>
@@ -298,7 +296,7 @@ export default class Pow_getpow extends Component {
                         <Button onPress={this.addPrnthesis} rounded style={{ marginLeft: 5, backgroundColor: this.state.ParanthesisBackColor }}>
                             <Text style={{ fontSize: 20, color: "rgb(142,163,226)" }}>{this.state.addparantehesis}</Text>
                         </Button>
-                        <Button onPress={this.changeSign} rounded style={{ marginLeft: 5, backgroundColor: this.state.NegatifBackColor }}>
+                        <Button onPress={this.changeSign} disabled={this.state.displaynegative} rounded style={{ marginLeft: 5, backgroundColor: this.state.NegatifBackColor }}>
 
                             <Text style={{ fontSize: 20, color: "rgb(142,163,226)" }}>{this.state.addNegative}</Text>
                         </Button>
@@ -320,10 +318,7 @@ export default class Pow_getpow extends Component {
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
                         <Button style={styles.footerbtn} rounded onPress={this.cleanOnePart} >
-                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} name='trash' />
-                        </Button>
-                        <Button rounded onPress={this.changeCState} style={{ marginLeft: 5, backgroundColor: "rgb(56,65,104)" }}>
-                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} name={this.state.currentstate} />
+                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} name='backspace' />
                         </Button>
 
                     </Footer>

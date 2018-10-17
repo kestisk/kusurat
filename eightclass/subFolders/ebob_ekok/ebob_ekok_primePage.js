@@ -641,7 +641,7 @@ export default class Ebob_ekok_primePage extends Component {
                                             <List dataArray={this.state.showrightarray}
                                                 renderRow={(item) =>
                                                     <ListItem style={{ borderColor: "white" }}>
-                                                        <Text style={{ color: "white", fontSize: 30, backgroundColor: (item.key == "1") ? "red" : "blue" }}>{item.rightNumber}</Text>
+                                                        <Text style={{ fontSize: 30, color: (item.key == "1") ? "rgb(139,0,139)" : "rgb(12,8,64)", fontStyle: (item.key == "1") ? "red" : "rgb(12,8,64)" }}>{item.rightNumber}</Text>
                                                     </ListItem>
                                                 }>
                                             </List>
@@ -694,7 +694,7 @@ export default class Ebob_ekok_primePage extends Component {
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
                         <Button style={styles.footerbtn} rounded onPress={() => { this.cleanOnePart(0) }} >
-                            <Icon style={{ fontSize: 30 }} name='trash' />
+                            <Icon style={{ fontSize: 30 }} name='backspace' />
                         </Button>
 
                     </Footer>
@@ -712,8 +712,6 @@ export default class Ebob_ekok_primePage extends Component {
         this.props.navigation.navigate("ebob_ekokPages");
         return true;
     }
-
-
     back = () => {
         this.props.navigation.navigate("ebob_ekokPages");
     }

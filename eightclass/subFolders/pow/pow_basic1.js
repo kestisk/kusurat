@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { Container, Content, Button, Header, Left, Icon, Body, Title } from 'native-base';
-import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
+import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView, ImageBackground } from 'react-native';
 export default class Pow_basic1 extends Component {
     constructor(props) {
         super(props);
@@ -10,50 +10,55 @@ export default class Pow_basic1 extends Component {
             display1: "flex",
             display2: "none",
             iconname1: "check", iconname2: null,
-            leftbtnBackColor: "red", rightbtnBackColor: "gray"
+            leftbtnBackColor: "red", rightbtnBackColor: "rgb(56,65,104)",
+            btnTxt1Color: "white", btnTxt2Color: "rgb(142,163,226)"
         };
     }
     tik1 = () => {
         this.setState({
             display1: "flex", display2: "none",
             iconname1: "check", iconname2: null,
-            leftbtnBackColor: "red", rightbtnBackColor: "gray",
+            leftbtnBackColor: "red", rightbtnBackColor: "rgb(56,65,104)",
+            btnTxt1Color: "white", btnTxt2Color: "rgb(142,163,226)"
         });
     }
     tik2 = () => {
         this.setState({
             display2: "flex", display1: "none",
             iconname2: "check", iconname1: null,
-            leftbtnBackColor: "gray", rightbtnBackColor: "red",
+            leftbtnBackColor: "rgb(56,65,104)", rightbtnBackColor: "red",
+            btnTxt1Color: "rgb(142,163,226)", btnTxt2Color: "white"
         });
     }
     render() {
         return (
-            <Container>
-                <Content style={{ padding: 10 }}>
-                    <View style={{ flexDirection: "column" }}>
-                        <View style={{ flexDirection: "row", flex: 3 }}>
-                            <Button onPress={this.tik1} style={{ marginTop: 1, flex: 1, backgroundColor: this.state.leftbtnBackColor }}>
-                                <Icon type="FontAwesome" name={this.state.iconname1} />
-                                <Text style={{ marginLeft: 10, fontSize: 10, color: "white", fontSize: 15 }}>Temel Üs Alma</Text>
-                            </Button>
-                            <Button onPress={this.tik2} style={{ marginLeft: 10, marginTop: 1, flex: 1, backgroundColor: this.state.rightbtnBackColor }}>
-                                <Icon type="FontAwesome" name={this.state.iconname2} />
-                                <Text style={{ marginLeft: 10, fontSize: 10, color: "white", fontSize: 15 }}>Sayının Sıfırıncı Kuvveti</Text>
-                            </Button>
-                        </View>
-                        <View style={{ display: this.state.display1 }}>
-                            <Basic_Pow></Basic_Pow>
-                        </View>
-                        <View style={{ display: this.state.display2 }}>
-                            <Zero_Power></Zero_Power>
-                        </View>
+            <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+                <Container>
+                    <Content style={{ padding: 10 }}>
+                        <View style={{ flexDirection: "column" }}>
+                            <View style={{ flexDirection: "row", flex: 3 }}>
+                                <Button onPress={this.tik1} style={{ marginTop: 1, flex: 1, backgroundColor: this.state.leftbtnBackColor }}>
+                                    <Icon type="FontAwesome" name={this.state.iconname1} />
+                                    <Text style={{ textAlign: "center", fontSize: 10, color: this.state.btnTxt1Color, fontSize: 15 }}>Temel Üs Alma</Text>
+                                </Button>
+                                <Button onPress={this.tik2} style={{ marginLeft: 10, marginTop: 1, flex: 1, backgroundColor: this.state.rightbtnBackColor }}>
+                                    <Icon type="FontAwesome" name={this.state.iconname2} />
+                                    <Text style={{ textAlign: "center", fontSize: 10, color: this.state.btnTxt2Color, fontSize: 15 }}>Sayının Sıfırıncı Kuvveti</Text>
+                                </Button>
+                            </View>
+                            <View style={{ display: this.state.display1, backgroundColor: "white", minHeight: 400 }}>
+                                <Basic_Pow></Basic_Pow>
+                            </View>
+                            <View style={{ display: this.state.display2, backgroundColor: "white", minHeight: 400 }}>
+                                <Zero_Power></Zero_Power>
+                            </View>
 
 
-                    </View>
-                </Content>
+                        </View>
+                    </Content>
 
-            </Container>
+                </Container>
+            </ImageBackground >
         );
     }
 
@@ -125,23 +130,35 @@ class Zero_Power extends Component {
                         </View>
                     </View>
                 </Content>
-            </Container>
+            </Container >
         );
     }
 }
 class Basic_Pow extends Component {
     render() {
         return (
-            <View><Text>onur</Text></View>
+            <View style={{ height: "100%" }}><Text>TUĞÇE</Text></View>
         );
     }
 }
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: 'white',
-        fontSize: 30,
+        color: "rgb(142,163,226)",
+        fontSize: 25,
         padding: 5
+    },
+    footerbtn: {
+        marginLeft: 5,
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footerbtnmain: {
+
+        backgroundColor: "rgb(56,65,104)"
+    },
+    footertxt: {
+        color: "rgb(142,163,226)",
+        fontSize: 30
     },
     buttontext: {
         textAlign: "center",

@@ -580,8 +580,8 @@ export default class EbobPage extends Component {
                                             <Text style={{ marginTop: 20, backgroundColor: "rgb(25,25,112)", height: 400, width: 5, marginLeft: 5 }}></Text>
                                             <List dataArray={this.state.showrightarray}
                                                 renderRow={(item) =>
-                                                    <ListItem style={{ borderColor: "red" }}>
-                                                        <Text style={{ color: "white", fontSize: 25, backgroundColor: (item.key == "1") ? "red" : "blue" }}>{item.rightNumber}</Text>
+                                                    <ListItem style={{ borderColor: "white" }}>
+                                                        <Text style={{ color: "white", fontSize: 25, color: (item.key == "1") ? "rgb(139,0,139)" : "rgb(12,8,64)", }}>{item.rightNumber}</Text>
                                                     </ListItem>
                                                 }>
                                             </List>
@@ -633,7 +633,7 @@ export default class EbobPage extends Component {
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
                         <Button style={styles.footerbtn} rounded onPress={() => { this.cleanOnePart(0) }}>
-                            <Icon style={{ fontSize: 30 }} name='trash' />
+                            <Icon style={{ fontSize: 30 }} name='backspace' />
                         </Button>
 
                     </Footer>
