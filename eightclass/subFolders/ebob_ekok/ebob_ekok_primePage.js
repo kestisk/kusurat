@@ -356,7 +356,7 @@ export default class Ebob_ekok_primePage extends Component {
         else if (maxdoorctrl == "3" && (num1 != "" && num2 != "" && num3 != "")) {
             clearInterval(this.delay12);
             clearTimeout(this.delay22);
-            this.setState({ footerdisplay: "none", backUpflag: true, message: "", cleardoor: true, door: "1", doorstate: "Ikinci Sayiya Geç", backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white" });
+            this.setState({ footerdisplay: "none", backUpflag: true, message: "", cleardoor: true, door: "1", maxdoor: "2", backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white" });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
             this.state.number3.push({ no1: this.state.tempnumber3 });

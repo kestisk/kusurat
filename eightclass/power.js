@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { Container, Content, Button, Header, Left, Icon, Body, Title } from 'native-base';
-import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView } from 'react-native';
+import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView, ImageBackground } from 'react-native';
 import { BackHandler } from 'react-native';
 
 
@@ -28,26 +28,32 @@ export default class Power extends Component {
 
   render() {
     return (
-      <Container>
-        <Header style={{ backgroundColor: "#62B1F6" }}>
+      <ImageBackground source={require("../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+        <Header style={{ backgroundColor: "rgb(56,65,104)" }}>
           <Left style={{ flex: 1 }}>
             <Button transparent onPress={this.back}>
-              <Icon name="arrow-back" />
+              <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
             </Button>
           </Left>
           <Body style={{ flex: 5 }}>
             <Title style={styles.heade}>KÜSUR-AT</Title>
           </Body>
         </Header>
-        <Content style={{ padding: 10, }}>
-          <Button style={{ marginTop: 15 }} info block rounded onPress={this.basic}><Text style={styles.buttontext}>TEMEL KURALLAR</Text></Button>
-          <Button style={{ marginTop: 15 }} info block rounded onPress={this.getpow}><Text style={styles.buttontext}>KUVVET ALMA</Text></Button>
-          <Button style={{ marginTop: 15 }} info block rounded onPress={this.findpow}><Text style={styles.buttontext}>KUVVET BULMA</Text></Button>
-          <Button style={{ marginTop: 15 }} info block rounded onPress={this.showdecimal}><Text style={styles.buttontext}>ONDALIK GÖSTERİM ÇÖZÜMLEME</Text></Button>
-          <Button style={{ marginTop: 15 }} info block rounded onPress={this.showscience}><Text style={styles.buttontext}>BİLİMSEL GÖSETERİM</Text></Button>
-        </Content>
 
-      </Container>
+
+        <View style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <Button style={{ marginTop: 15 }} block rounded onPress={this.basic}><Text style={styles.buttontext}>TEMEL KURALLAR</Text></Button>
+          <Button style={{ marginTop: 15 }} block rounded onPress={this.getpow}><Text style={styles.buttontext}>KUVVET ALMA</Text></Button>
+          <Button style={{ marginTop: 15 }} block rounded onPress={this.findpow}><Text style={styles.buttontext}>KUVVET BULMA</Text></Button>
+          <Button style={{ marginTop: 15 }} block rounded onPress={this.showdecimal}><Text style={styles.buttontext}>ONDALIK GÖSTERİM ÇÖZÜMLEME</Text></Button>
+          <Button style={{ marginTop: 15 }} block rounded onPress={this.showscience}><Text style={styles.buttontext}>BİLİMSEL GÖSETERİM</Text></Button>
+
+        </View>
+      </ImageBackground >
     );
   }
   back = () => {
@@ -62,7 +68,7 @@ export default class Power extends Component {
     this.props.navigation.navigate("Pow_findpowtabPages");
   };
   getpow = () => {
-    this.props.navigation.navigate("Pow_getpowtabPages");
+    this.props.navigation.navigate("Pow_getpowPages");
   };
 
   showdecimal = () => {
@@ -79,7 +85,7 @@ export default class Power extends Component {
 const styles = StyleSheet.create({
   heade: {
     textAlign: "center",
-    color: "white",
+    color: "rgb(142,163,226)",
     fontSize: 25,
     padding: 5
   },

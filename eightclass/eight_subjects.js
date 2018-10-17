@@ -80,12 +80,12 @@ export default class Eight extends Component {
             <Text style={styles.buttontext}>EBOB & EKOK</Text>
           </Button>
           <Button
-            style={{ marginTop: 15 }}
-            info
+            style={{ marginTop: 15, height: 60 }}
+
             block
             rounded
             onPress={this.pow}
-            disabled={this.state.truee}
+
           >
             <Text style={styles.buttontext}>ÜSLÜ SAYILAR</Text>
           </Button>

@@ -539,7 +539,6 @@ export default class EbobPage extends Component {
                             </Button>
                         </Right>
                     </Header>
-
                     <Content>
                         <View style={{ flexDirection: "column", marginTop: 10 }}>
                             <View style={{ flexDirection: "row" }}>

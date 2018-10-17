@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Container, Content, Button, Header, Text, Left, Icon, Body, Title, Footer, Card, CardItem } from 'native-base';
-import { Platform, StyleSheet, View, Alert, Image, ScrollView, ImageBackground } from 'react-native';
+import { Container, Content, Button, Header, Text, Left, Icon, Body, Title, Footer, Card, CardItem, Right } from 'native-base';
+import { Platform, StyleSheet, View, Alert, Image, ScrollView, ImageBackground, BackHandler } from 'react-native';
 export default class Pow_getpow extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            shownumber: "Sayıyı Girin", pow: "Kuvveti Girin", answer: "=?",
+            shownumber: "Sayıyı Girin", pow: "Kuvveti Girin", answer: " = ? ",
             paranthesisLeft: "", paranthesisRight: "", fracanswwer: "",
             signNumberFlag: false, signPowFlag: false, paranthesisFlag: false, csFlag: false, nextProcFlag: false, btnflag: true,
             numberSignFlag: false, powSignFlag: false,
-            currentstate: "Kuvveti Girin",
-            signnumber: "", signanswer: "", addparantehesis: "Parantez Ekle", signpow: "",
+            currentstate: "arrow-up",
+            signnumber: "", signanswer: "", addparantehesis: "(X)", addNegative: "-X", signpow: "",
             message: "",
             numberBackColor: "green", powBackColor: "white",
-            iconNameParanthesis: null, ParanthesisBackColor: "gray",
-            iconNameNegatif: null, NegatifBackColor: "gray", footerdisplay: "flex"
+            ParanthesisBackColor: "rgb(56,65,104)",
+            NegatifBackColor: "rgb(56,65,104)", footerdisplay: "flex"
         }
     }
     warn = () => {
@@ -25,17 +25,17 @@ export default class Pow_getpow extends Component {
     }
     clean = () => {
         this.setState({
-            shownumber: "Sayıyı Girin", pow: "Kuvveti Girin", answer: "=?",
+            shownumber: "Sayıyı Girin", pow: "Kuvveti Girin", answer: " = ? ",
             paranthesisLeft: "", paranthesisRight: "", fracanswwer: "",
             signNumberFlag: false, signPowFlag: false, paranthesisFlag: false, csFlag: false, nextProcFlag: false, btnflag: true,
             numberSignFlag: false, powSignFlag: false,
             signpow: "",
-            currentstate: "Kuvveti Girin",
-            signnumber: "", signanswer: "", addparantehesis: "Parantez Ekle",
+            currentstate: "arrow-up",
+            signnumber: "", signanswer: "", addparantehesis: "(X)", addNegative: "-X",
             message: "",
             numberBackColor: "green", powBackColor: "white",
-            iconNameParanthesis: null, ParanthesisBackColor: "gray",
-            iconNameNegatif: null, NegatifBackColor: "gray", footerdisplay: "flex"
+            ParanthesisBackColor: "rgb(56,65,104)",
+            NegatifBackColor: "rgb(56,65,104)", footerdisplay: "flex"
         });
     }
     cleanOnePart = () => {
@@ -97,30 +97,30 @@ export default class Pow_getpow extends Component {
         if (this.state.csFlag) {
             if (!this.state.signPowFlag) {
                 if (this.state.nextProcFlag)
-                    this.setState({ powSignFlag: true, iconNameNegatif: "check", NegatifBackColor: "red", signPowFlag: true, signpow: "-", signanswer: "", fracanswwer: "", answer: "=?" });
+                    this.setState({ powSignFlag: true, addNegative: "+X", NegatifBackColor: "red", signPowFlag: true, signpow: "-", signanswer: "", fracanswwer: "", answer: " = ? " });
                 else
-                    this.setState({ powSignFlag: true, iconNameNegatif: "check", NegatifBackColor: "red", signPowFlag: true, signpow: "-" });
+                    this.setState({ powSignFlag: true, addNegative: "+X", NegatifBackColor: "red", signPowFlag: true, signpow: "-" });
             }
             else {
                 if (this.state.nextProcFlag)
-                    this.setState({ powSignFlag: false, iconNameNegatif: null, NegatifBackColor: "gray", signPowFlag: false, signpow: "", signanswer: "", fracanswwer: "", answer: "=?" });
+                    this.setState({ powSignFlag: false, addNegative: "-X", NegatifBackColor: "rgb(56,65,104)", signPowFlag: false, signpow: "", signanswer: "", fracanswwer: "", answer: " = ? " });
                 else
-                    this.setState({ powSignFlag: false, iconNameNegatif: null, NegatifBackColor: "gray", signPowFlag: false, signpow: "" });
+                    this.setState({ powSignFlag: false, addNegative: "-X", NegatifBackColor: "rgb(56,65,104)", signPowFlag: false, signpow: "" });
             }
         }
         else {
             if (!this.state.signNumberFlag) {
                 if (this.state.nextProcFlag)
-                    this.setState({ numberSignFlag: true, iconNameNegatif: "check", NegatifBackColor: "red", signNumberFlag: true, signnumber: "-", signanswer: "", fracanswwer: "", answer: "=?" });
+                    this.setState({ numberSignFlag: true, addNegative: "+X", NegatifBackColor: "red", signNumberFlag: true, signnumber: "-", signanswer: "", fracanswwer: "", answer: " = ? " });
                 else
-                    this.setState({ numberSignFlag: true, iconNameNegatif: "check", NegatifBackColor: "red", signNumberFlag: true, signnumber: "-" });
+                    this.setState({ numberSignFlag: true, addNegative: "+X", NegatifBackColor: "red", signNumberFlag: true, signnumber: "-" });
             }
 
             else {
                 if (this.state.nextProcFlag)
-                    this.setState({ numberSignFlag: false, iconNameNegatif: null, NegatifBackColor: "gray", signNumberFlag: false, signnumber: "", signanswer: "", fracanswwer: "", answer: "=?" });
+                    this.setState({ numberSignFlag: false, addNegative: "-X", NegatifBackColor: "rgb(56,65,104)", signNumberFlag: false, signnumber: "", signanswer: "", fracanswwer: "", answer: " = ? " });
                 else
-                    this.setState({ numberSignFlag: false, iconNameNegatif: null, NegatifBackColor: "gray", signNumberFlag: false, signnumber: "" });
+                    this.setState({ numberSignFlag: false, addNegative: "-X", NegatifBackColor: "rgb(56,65,104)", signNumberFlag: false, signnumber: "" });
             }
 
         }
@@ -129,29 +129,29 @@ export default class Pow_getpow extends Component {
     addPrnthesis = () => {
         if (!this.state.paranthesisFlag) {
             if (this.state.nextProcFlag)
-                this.setState({ iconNameParanthesis: "check", ParanthesisBackColor: "red", paranthesisFlag: true, addparantehesis: "Parantez Sil", paranthesisLeft: "(", paranthesisRight: ")", signanswer: "", fracanswwer: "", answer: "=?" });
+                this.setState({ ParanthesisBackColor: "red", paranthesisFlag: true, addparantehesis: "X", paranthesisLeft: "(", paranthesisRight: ")", signanswer: "", fracanswwer: "", answer: " = ? " });
             else
-                this.setState({ iconNameParanthesis: "check", ParanthesisBackColor: "red", paranthesisFlag: true, addparantehesis: "Parantez Sil", paranthesisLeft: "(", paranthesisRight: ")" });
+                this.setState({ ParanthesisBackColor: "red", paranthesisFlag: true, addparantehesis: "X", paranthesisLeft: "(", paranthesisRight: ")" });
         }
         else {
             if (this.state.nextProcFlag)
-                this.setState({ iconNameParanthesis: null, ParanthesisBackColor: "gray", paranthesisFlag: false, addparantehesis: "Parantez Ekle", paranthesisLeft: "", paranthesisRight: "", signanswer: "", fracanswwer: "", answer: "=?" });
+                this.setState({ ParanthesisBackColor: "rgb(56,65,104)", paranthesisFlag: false, addparantehesis: "(X)", paranthesisLeft: "", paranthesisRight: "", signanswer: "", fracanswwer: "", answer: " = ? " });
             else
-                this.setState({ iconNameParanthesis: null, ParanthesisBackColor: "gray", paranthesisFlag: false, addparantehesis: "Parantez Ekle", paranthesisLeft: "", paranthesisRight: "" });
+                this.setState({ ParanthesisBackColor: "rgb(56,65,104)", paranthesisFlag: false, addparantehesis: "(X)", paranthesisLeft: "", paranthesisRight: "" });
         }
     }
     changeCState = () => {
         if (!this.state.csFlag) {
             if (this.state.powSignFlag)
-                this.setState({ iconNameNegatif: "check", NegatifBackColor: "red", csFlag: true, currentstate: "Sayıyı Girin", powBackColor: "green", numberBackColor: "white" });
+                this.setState({ NegatifBackColor: "red", csFlag: true, currentstate: "arrow-down", powBackColor: "green", numberBackColor: "white" });
             else
-                this.setState({ iconNameNegatif: null, NegatifBackColor: "gray", csFlag: true, currentstate: "Sayıyı Girin", powBackColor: "green", numberBackColor: "white" });
+                this.setState({ NegatifBackColor: "rgb(56,65,104)", csFlag: true, currentstate: "arrow-down", powBackColor: "green", numberBackColor: "white" });
         }
         else {
             if (this.state.numberSignFlag)
-                this.setState({ iconNameNegatif: "check", NegatifBackColor: "red", csFlag: false, currentstate: "Kuvveti Girin", powBackColor: "white", numberBackColor: "green" });
+                this.setState({ NegatifBackColor: "red", csFlag: false, currentstate: "arrow-up", powBackColor: "white", numberBackColor: "green" });
             else
-                this.setState({ iconNameNegatif: null, NegatifBackColor: "gray", csFlag: false, currentstate: "Kuvveti Girin", powBackColor: "white", numberBackColor: "green" });
+                this.setState({ NegatifBackColor: "rgb(56,65,104)", csFlag: false, currentstate: "arrow-up", powBackColor: "white", numberBackColor: "green" });
         }
     }
     solution = () => {
@@ -174,9 +174,9 @@ export default class Pow_getpow extends Component {
                             this.setState({ message: "negatif sıfır olamaz" });
                         else {
                             if (power % 2 == 0)
-                                this.setState({ fracanswwer: "1/", answer: total, signanswer: "=" });
+                                this.setState({ fracanswwer: "1/", answer: total, signanswer: " = " });
                             else
-                                this.setState({ fracanswwer: "1/", answer: total, signanswer: "=-" });
+                                this.setState({ fracanswwer: "1/", answer: total, signanswer: " = - " });
                         }
 
                     }
@@ -185,18 +185,18 @@ export default class Pow_getpow extends Component {
                             this.setState({ message: "negatif sıfır olamaz" });
                         else {
                             if (power % 2 == 0)
-                                this.setState({ answer: total, signanswer: "=" });
+                                this.setState({ answer: total, signanswer: " = " });
                             else
-                                this.setState({ answer: total, signanswer: "=-" });
+                                this.setState({ answer: total, signanswer: " = - " });
                         }
                     }
                 }
                 else {
                     if (this.state.signPowFlag)
-                        this.setState({ fracanswwer: "1/", answer: total, signanswer: "=" });
+                        this.setState({ fracanswwer: "1/", answer: total, signanswer: " = " });
 
                     else
-                        this.setState({ answer: total, signanswer: "=" });
+                        this.setState({ answer: total, signanswer: " = " });
                 }
             }
             else {
@@ -205,9 +205,9 @@ export default class Pow_getpow extends Component {
                         this.setState({ message: "negatif sıfır olamaz" });
                     else {
                         if (this.state.signPowFlag)
-                            this.setState({ fracanswwer: "1/", answer: total, signanswer: "=-" });
+                            this.setState({ fracanswwer: "1/", answer: total, signanswer: " = - " });
                         else
-                            this.setState({ answer: total, signanswer: "=-" });
+                            this.setState({ answer: total, signanswer: " = - " });
                     }
                 }
                 else {
@@ -215,9 +215,9 @@ export default class Pow_getpow extends Component {
                         this.setState({ message: "negatif sıfır olamaz" });
                     else {
                         if (this.state.signPowFlag)
-                            this.setState({ fracanswwer: "1/", answer: total, signanswer: "=" });
+                            this.setState({ fracanswwer: "1/", answer: total, signanswer: " = " });
                         else
-                            this.setState({ answer: total, signanswer: "=" });
+                            this.setState({ answer: total, signanswer: " = " });
                     }
                 }
             }
@@ -227,41 +227,40 @@ export default class Pow_getpow extends Component {
 
     }
     render() {
+
         return (
-            <Container>
-                <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
-                    <Content style={{ padding: 10, }}>
-                        <View style={{ flexDirection: "column" }}>
-                            <View style={{ flexDirection: "column" }}>
-                                <View style={{ flexDirection: "row" }}>
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Button onPress={this.solution} disabled={this.state.btnflag} style={{ marginLeft: 10 }}><Text style={{ color: "white" }}>Cevapla</Text></Button>
-                                        <Button onPress={this.changeCState} style={{ marginLeft: 10 }}><Text style={{ color: "white" }}>{this.state.currentstate}</Text></Button>
-                                        <Button onPress={this.clean} transparent bordered>
-                                            <Icon style={{ fontSize: 30 }} name='trash' />
-
-                                        </Button>
-                                    </View>
-                                </View>
-                                <View style={{ flexDirection: "row" }}>
-                                    <Button onPress={this.changeSign} style={{ marginTop: 10, backgroundColor: this.state.NegatifBackColor }}>
-                                        <Icon type="FontAwesome" name={this.state.iconNameNegatif} />
-                                        <Text style={{ color: "white" }}>Negatif Sayı</Text>
-                                    </Button>
-                                    <Button onPress={this.addPrnthesis} style={{ marginLeft: 10, marginTop: 10, backgroundColor: this.state.ParanthesisBackColor }}>
-                                        <Icon type="FontAwesome" name={this.state.iconNameParanthesis} />
-                                        <Text style={{ color: "white" }}>{this.state.addparantehesis}</Text>
-                                    </Button>
-
-                                </View>
-                            </View>
+            <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
+                <Container>
+                    <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+                        <Left style={{ flex: 1 }}>
+                            <Button transparent onPress={this.back}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+                            </Button>
+                        </Left>
+                        <Body style={{ flex: 4 }}>
+                            <Title style={styles.heade}>KÜSUR-AT</Title>
+                        </Body>
+                        <Right style={{ flex: 1 }}>
+                            <Button transparent onPress={this.tys}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="EvilIcons" name="pencil" />
+                            </Button>
+                        </Right>
+                    </Header>
+                    <Content >
+                        <View style={{ flexDirection: "column", marginTop: 10 }}>
                             <View style={{ flexDirection: "row" }}>
-                                <Text>AÇIKLAMA BURAYA2</Text>
-                                <Text>{this.state.message}</Text>
+                                <View style={{ flexDirection: "row" }}>
+                                    <Button onPress={this.solution} rounded disabled={this.state.btnflag} style={{ marginLeft: 10 }}><Text style={{ fontSize: 50 }}>=</Text></Button>
+                                </View>
                             </View>
-                            <Card style={{ marginLeft: 10, marginRight: 10, height: 200 }}>
-                                <CardItem>
-                                    <View style={{ flexDirection: "row" }}>
+                        </View>
+                        <View style={{ marginLeft: 10, marginRight: 10, marginTop: 5 }}>
+                            <View style={{ minHeight: 350, width: '100%', backgroundColor: "white", flexDirection: "column" }}>
+                                <View style={{ flexDirection: "column" }}>
+                                    <Text>AÇIKLAMA BURAYA2</Text>
+                                    <Text>{this.state.message}</Text>
+
+                                    <View style={{ flexDirection: "row", marginTop: 10 }}>
                                         <Text style={{ fontSize: 30, backgroundColor: this.state.numberBackColor }}>
                                             {this.state.paranthesisLeft}{this.state.signnumber}{this.state.shownumber}{this.state.paranthesisRight}
                                         </Text>
@@ -272,11 +271,12 @@ export default class Pow_getpow extends Component {
                                             {this.state.signanswer}{this.state.fracanswwer}{this.state.answer}
                                         </Text>
                                     </View>
-
-                                </CardItem>
-                            </Card>
+                                </View>
+                                <Button style={{ position: "absolute", alignSelf: "flex-end" }} onPress={this.clean} transparent >
+                                    <Icon style={{ fontSize: 50 }} type="EvilIcons" name='refresh' />
+                                </Button>
+                            </View>
                         </View>
-
                     </Content>
                     <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
 
@@ -295,7 +295,13 @@ export default class Pow_getpow extends Component {
                         <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
                             <Text style={styles.footertxt}>5</Text>
                         </Button>
+                        <Button onPress={this.addPrnthesis} rounded style={{ marginLeft: 5, backgroundColor: this.state.ParanthesisBackColor }}>
+                            <Text style={{ fontSize: 20, color: "rgb(142,163,226)" }}>{this.state.addparantehesis}</Text>
+                        </Button>
+                        <Button onPress={this.changeSign} rounded style={{ marginLeft: 5, backgroundColor: this.state.NegatifBackColor }}>
 
+                            <Text style={{ fontSize: 20, color: "rgb(142,163,226)" }}>{this.state.addNegative}</Text>
+                        </Button>
                     </Footer>
                     <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
                         <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
@@ -314,23 +320,47 @@ export default class Pow_getpow extends Component {
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
                         <Button style={styles.footerbtn} rounded onPress={this.cleanOnePart} >
-
-                            <Text style={styles.footertxt}>SİL</Text>
+                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} name='trash' />
+                        </Button>
+                        <Button rounded onPress={this.changeCState} style={{ marginLeft: 5, backgroundColor: "rgb(56,65,104)" }}>
+                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} name={this.state.currentstate} />
                         </Button>
 
                     </Footer>
-                </ImageBackground>
-            </Container >
+
+                </Container >
+            </ImageBackground >
         );
     }
-
+    componentWillUnmount() {
+        BackHandler.removeEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
+    componentWillMount() {
+        BackHandler.addEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
+    }
+    handleBackButtonClick = () => {
+        this.props.navigation.navigate("powers");
+        return true;
+    }
+    back = () => {
+        this.props.navigation.navigate("powers");
+    }
+    tys = () => {
+        this.props.navigation.navigate("Pow_getpowTYSPages");
+    }
 }
 
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: 'white',
-        fontSize: 30,
+        color: "rgb(142,163,226)",
+        fontSize: 25,
         padding: 5
     },
     footerbtn: {
