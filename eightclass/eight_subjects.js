@@ -39,7 +39,7 @@ export default class Eight extends Component {
   }
   render() {
     return (
-     <Container>
+      <Container>
         <Header style={{ backgroundColor: "rgb(38,134,153)", height: 50 }}>
           <Left style={{ flex: 1 }}>
             <Button transparent onPress={this.back}>
@@ -55,7 +55,7 @@ export default class Eight extends Component {
         </Header>
         <View style={{ flex: 1, justifyContent: "center", flexDirection: "column", padding: 10 }}>
           <Button
-            style={{ marginTop: 18, height: 60, backgroundColor:"rgb(60,207,207)" }}
+            style={{ marginTop: 18, height: 60, backgroundColor: "rgb(60,207,207)" }}
 
             block
             rounded
@@ -64,7 +64,7 @@ export default class Eight extends Component {
             <Text style={styles.buttontext}>Sayı Yuvarlama</Text>
           </Button>
           <Button
-            style={{ marginTop: 18, height: 60, backgroundColor:"rgb(60,207,207)" }}
+            style={{ marginTop: 18, height: 60, backgroundColor: "rgb(60,207,207)" }}
 
             rounded
             block
@@ -72,7 +72,7 @@ export default class Eight extends Component {
             <Text style={styles.buttontext}>ÇARPANLAR & KATLAR</Text>
           </Button>
           <Button
-            style={{ marginTop: 18, height: 60, backgroundColor:"rgb(60,207,207)"}}
+            style={{ marginTop: 18, height: 60, backgroundColor: "rgb(60,207,207)" }}
 
             rounded
             block
@@ -80,7 +80,7 @@ export default class Eight extends Component {
             <Text style={styles.buttontext}>EBOB & EKOK</Text>
           </Button>
           <Button
-            style={{ marginTop: 18, height: 60, backgroundColor:"rgb(60,207,207)"}}
+            style={{ marginTop: 18, height: 60, backgroundColor: "rgb(60,207,207)" }}
 
             block
             rounded
@@ -90,7 +90,7 @@ export default class Eight extends Component {
             <Text style={styles.buttontext}>ÜSLÜ SAYILAR</Text>
           </Button>
         </View>
-        </Container>
+      </Container>
     );
   }
   back = () => {
