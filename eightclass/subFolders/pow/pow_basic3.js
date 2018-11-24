@@ -167,7 +167,7 @@ class Even_Odd_Poww extends Component {
         );
     }
 }
-class TYS extends Component {
+export class TYS extends Component {
     constructor(props) {
         super(props);
         this.state = {

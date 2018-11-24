@@ -2,8 +2,8 @@
 
 import React, { Component } from 'react';
 import { Container, Content, Button, Header, Left, Icon, Body, Title } from 'native-base';
-import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView, BackHandler } from 'react-native';
-import At from './pow_basic3';
+import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView, BackHandler, ImageBackground } from 'react-native';
+import { TYS } from './pow_basic3';
 
 
 export default class Pow_getpowTYS extends Component {
@@ -11,27 +11,29 @@ export default class Pow_getpowTYS extends Component {
         super(props)
 
     }
-
-
     render() {
         return (
-            <Container>
-                <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
-                    <Left style={{ flex: 1 }}>
-                        <Button transparent onPress={this.back}>
-                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
-                        </Button>
-                    </Left>
-                    <Body style={{ flex: 4 }}>
-                        <Title style={styles.heade}>KÜSUR-AT</Title>
-                    </Body>
+            <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }} >
+                <Container>
+                    <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+                        <Left style={{ flex: 1 }}>
+                            <Button transparent onPress={this.back}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+                            </Button>
+                        </Left>
+                        <Body style={{ flex: 4 }}>
+                            <Title style={styles.heade}>KENDİNİ DENE</Title>
+                        </Body>
 
-                </Header>
-                <Content style={{ padding: 10, }}>
-                    <At></At>
-                </Content>
+                    </Header>
+                    <Content >
+                        <View style={{ minHeight: 350, width: '100%', backgroundColor: "white", flexDirection: "column" }}>
+                            <TYS></TYS>
+                        </View>
+                    </Content>
 
-            </Container>
+                </Container>
+            </ImageBackground>
         );
     }
     componentWillMount() {
@@ -41,7 +43,7 @@ export default class Pow_getpowTYS extends Component {
         );
     }
     handleBackButtonClick = () => {
-        this.props.navigation.navigate("Pow_getpowPages");
+        this.props.navigation.navigate("powers");
         return true;
     }
     back = () => {

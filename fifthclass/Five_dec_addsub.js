@@ -29,7 +29,7 @@ export default class Five_dec_addsub extends Component {
     render() {
         return (
             <Container syle={{ backgroundColor: 'white', flex: 5 }}>
-                <Header style={{ backgroundColor: "#62B1F6" }}>
+                <Header style={{ backgroundColor: "rgb(98,177,246)" }}>
                     <Left>
                         <Button transparent onPress={this.back}>
                             <Icon name="arrow-back" />

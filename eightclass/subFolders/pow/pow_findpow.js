@@ -219,16 +219,11 @@ export default class Pow_findpow extends Component {
     warn2 = () => {
         this.setState({ message: "Lütfen Sayı Girin" });
     }
-
-
-
-
-
     componentWillUnmount() {
         clearInterval(this.delay);
         clearTimeout(this.delay2);
     }
-    forward = () => {
+    tys = () => {
         this.props.navigation.navigate("Pow_findpowPagesTYS");
 
     }
@@ -240,28 +235,22 @@ export default class Pow_findpow extends Component {
         return (
             <Container>
                 <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
-
                     <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
-                        <Left>
+                        <Left style={{ flex: 1 }}>
                             <Button transparent onPress={this.back}>
                                 <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
                             </Button>
-
                         </Left>
-
-                        <Body>
-                            <Title style={styles.heade}>KÜSUR-AT</Title>
+                        <Body style={{ flex: 4 }}>
+                            <Title style={styles.heade}>KUVVET BULMA</Title>
                         </Body>
-                        <Right>
-                            <Button transparent onPress={this.forward}>
-
-                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name='edit' />
-
+                        <Right style={{ flex: 1 }}>
+                            <Button transparent onPress={this.tys}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} type="FontAwesome" name="edit" />
                             </Button>
                         </Right>
+
                     </Header>
-
-
                     <Content >
 
                         <Text>{this.state.message}</Text>
@@ -299,7 +288,7 @@ export default class Pow_findpow extends Component {
                                         <Text>{this.state.message}</Text>
                                         <View style={{ flexDirection: "row" }}>
                                             <Text style={{ marginTop: 20, fontSize: 30, marginLeft: 20 }}>{this.state.number}{this.state.numberarr}</Text>
-                                            <Text style={{ marginTop: 20, marginLeft: 10, backgroundColor: "#191970", height: this.state.stick, width: 4 }}></Text>
+                                            <Text style={{ marginTop: 20, marginLeft: 10, backgroundColor: "rgb(25,25,112)", height: this.state.stick, width: 4 }}></Text>
                                             <Text style={{ marginTop: 20, fontSize: 30 }}>{this.state.array}</Text>
                                         </View>
                                     </Body>
@@ -479,8 +468,8 @@ export class At extends Pow_findpow {
 const styles = StyleSheet.create({
     heade: {
         textAlign: "center",
-        color: 'white',
-        fontSize: 30,
+        color: "rgb(142,163,226)",
+        fontSize: 25,
         padding: 5
     },
     footerbtn: {

@@ -236,17 +236,14 @@ export default class primeFacTreePagesTYS extends Component {
         return (
             <Container>
                 <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
-                    <Left>
+                    <Left style={{ flex: 1 }}>
                         <Button transparent onPress={this.back}>
                             <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
                         </Button>
-
                     </Left>
-
-                    <Body>
-                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    <Body style={{ flex: 5 }}>
+                        <Title style={styles.heade}>KENDİNİ DENE</Title>
                     </Body>
-
                 </Header>
                 <Content>
                     <View style={{ flexDirection: "column" }}>
@@ -366,7 +363,7 @@ const styles = StyleSheet.create({
     buttontext: {
         marginTop: 20,
 
-        backgroundColor: '#00BCD4',
+        backgroundColor: 'rgb(0,188,212)',
         height: 50,
 
         borderRadius: 150 / 2,

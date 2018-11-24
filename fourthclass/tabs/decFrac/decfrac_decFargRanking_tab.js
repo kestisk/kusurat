@@ -65,7 +65,7 @@ export default class Decfrac_decFargRanking_TabPage extends Component {
     render() {
         return (
             <Container>
-                <Header style={{ backgroundColor: "#62B1F6" }}>
+                <Header style={{ backgroundColor: "rgb(98,177,246)" }}>
                     <Left>
                         <Button transparent onPress={this.back}>
                             <Icon name="arrow-back" />

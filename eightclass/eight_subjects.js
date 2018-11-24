@@ -49,7 +49,7 @@ export default class Eight extends Component {
           </Left>
 
           <Body style={{ flex: 5 }}>
-            <Title style={styles.heade}>KÜSUR-AT</Title>
+            <Title style={styles.heade}>8.SINIF KONULARI</Title>
           </Body>
 
         </Header>

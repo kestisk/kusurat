@@ -17,7 +17,7 @@ import {
     CardItem,
     Right
 } from "native-base";
-import { Platform, ImageBackground, BackHandler, StyleSheet, ScrollView } from "react-native";
+import { Platform, ImageBackground, BackHandler, StyleSheet, ScrollView, FlatList } from "react-native";
 export default class EbobPage extends Component {
     constructor(props) {
         super(props);
@@ -25,22 +25,25 @@ export default class EbobPage extends Component {
             one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", zero: "0",
             message: "",
             tempnumber1: "", tempnumber2: "", tempnumber3: "",
-            number1: [{ no1: "" }],
-            number2: [{ no1: "" }],
-            number3: [{ no1: "" }],
-            shownumber1: [{ no1: "12" }],
-            shownumber2: [{ no1: "" }],
-            shownumber3: [{ no1: "" }],
-            backColorT1: "rgb(142,163,226)", backColorT2: "white", backColorT3: "white",
+            shownumber1: [{ no1: "", key: "1" }],
+            shownumber2: [{ no1: "", key: "1" }],
+            shownumber3: [{ no1: "", key: "1" }],
+            number1: [{ no1: "", key: "1" }],
+            number2: [{ no1: "", key: "1" }],
+            number3: [{ no1: "", key: "1" }],
+            storekey1: [],
+            storekey2: [],
+            storekey3: [],
+            storekeyright: [],
+            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
-            rightarray: [{ rightNumber: "", colorKey: "" }],
-            showrightarray: [{ rightNumber: "", colorKey: "" }],
+            rightarray: [{ rightNumber: "", colorKey: "", key: "2" }],
+            showrightarray: [{ rightNumber: "", colorKey: "", key: "2" }],
             returnebob: "",
             backUpflag: false,
             btnflag: true,
             mycolor: "rgb(211,211,211)",
-
             mycolordis: "white",
             sayi2: "", sayi3: "", footerdisplay: "flex"
         }
@@ -54,17 +57,21 @@ export default class EbobPage extends Component {
         this.setState({
             message: "",
             tempnumber1: "", tempnumber2: "", tempnumber3: "",
-            number1: [{ no1: "" }],
-            number2: [{ no1: "" }],
-            number3: [{ no1: "" }],
-            shownumber1: [{ no1: "" }],
-            shownumber2: [{ no1: "" }],
-            shownumber3: [{ no1: "" }],
-            backColorT1: "rgb(142,163,226)", backColorT2: "white", backColorT3: "white",
+            shownumber1: [{ no1: "", key: "1" }],
+            shownumber2: [{ no1: "", key: "1" }],
+            shownumber3: [{ no1: "", key: "1" }],
+            number1: [{ no1: "", key: "1" }],
+            number2: [{ no1: "", key: "1" }],
+            number3: [{ no1: "", key: "1" }],
+            storekey1: [],
+            storekey2: [],
+            storekey3: [],
+            storekeyright: [],
+            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
-            rightarray: [{ rightNumber: "", colorKey: "" }],
-            showrightarray: [{ rightNumber: "", colorKey: "" }],
+            rightarray: [{ rightNumber: "", colorKey: "", key: "2" }],
+            showrightarray: [{ rightNumber: "", colorKey: "", key: "2" }],
             returnebob: "",
             backUpflag: false,
             btnflag: true,
@@ -77,48 +84,61 @@ export default class EbobPage extends Component {
         else if (this.state.tempnumber2 != "" && this.state.tempnumber3 == "" && this.state.tempnumber1 == "")
             this.setState({
 
-                sayi2: "2.Sayı", sayi3: "3.Sayı"
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btnflag: true, mycolor: "rgb(211,211,211)", mycolordis: "white"
             });
         else if (this.state.tempnumber2 == "" && this.state.tempnumber3 != "" && this.state.tempnumber1 == "")
             this.setState({
 
-                sayi2: "2.Sayı", sayi3: "3.Sayı"
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btnflag: true, mycolor: "rgb(211,211,211)", mycolordis: "white"
             });
         else if (this.state.tempnumber2 != "" && this.state.tempnumber3 != "" && this.state.tempnumber1 == "")
             this.setState({
 
-                sayi2: "2.Sayı", sayi3: "3.Sayı"
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btnflag: true, mycolor: "rgb(211,211,211)", mycolordis: "white"
             });
         else if (this.state.tempnumber2 == "" && this.state.tempnumber3 == "" && this.state.tempnumber1 != "")
             this.setState({
 
-                sayi2: "2.Sayı", sayi3: ""
+                sayi2: "2.Sayı", sayi3: "", btnflag: true, mycolor: "rgb(211,211,211)", mycolordis: "white"
             });
 
         else if (this.state.tempnumber2 == "" && this.state.tempnumber3 != "" && this.state.tempnumber1 != "")
             this.setState({
 
-                sayi2: "2.Sayı", sayi3: "3.Sayı"
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btnflag: true, mycolor: "rgb(211,211,211)", mycolordis: "white"
             });
         else if (this.state.tempnumber2 != "" && this.state.tempnumber3 == "" && this.state.tempnumber1 != "")
             this.setState({
 
-                sayi2: "2.Sayı", sayi3: "3.Sayı"
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btnflag: false, mycolor: "rgb(75,0,130)", mycolordis: "rgb(188,143,143)"
             });
         else if (this.state.tempnumber2 != "" && this.state.tempnumber3 != "" && this.state.tempnumber1 != "")
             this.setState({
 
-                sayi2: "2.Sayı", sayi3: "3.Sayı"
+                sayi2: "2.Sayı", sayi3: "3.Sayı", btnflag: false, mycolor: "rgb(75,0,130)", mycolordis: "rgb(188,143,143)"
             });
 
     }
     firstNum = () => {
         this.setState({
             maxdoor: "2", door: "1",
+            message: "",
+            shownumber1: [{ no1: "", key: "1" }],
+            shownumber2: [{ no1: "", key: "1" }],
+            shownumber3: [{ no1: "", key: "1" }],
+            number1: [{ no1: "", key: "1" }],
+            number2: [{ no1: "", key: "1" }],
+            number3: [{ no1: "", key: "1" }],
+            rightarray: [{ rightNumber: "", colorKey: "", key: "2" }],
+            showrightarray: [{ rightNumber: "", colorKey: "", key: "2" }],
+            ctrl: [{ c: "" }], cleardoor: false,
+            storekey1: [],
+            storekey2: [],
+            storekey3: [],
+            storekeyright: [],
             backUpflag: false,
-            showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
-            backColorT1: "rgb(142,163,226)", backColorT2: "white", backColorT3: "white",
-            message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
+            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
+
         });
         this.checkState();
     }
@@ -126,9 +146,21 @@ export default class EbobPage extends Component {
         this.setState({
             maxdoor: "2", door: "2",
             backUpflag: false,
-            showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
             backColorT1: "white", backColorT2: "rgb(193,205,205)", backColorT3: "white",
-            message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
+            message: "",
+            shownumber1: [{ no1: "", key: "1" }],
+            shownumber2: [{ no1: "", key: "1" }],
+            shownumber3: [{ no1: "", key: "1" }],
+            number1: [{ no1: "", key: "1" }],
+            number2: [{ no1: "", key: "1" }],
+            number3: [{ no1: "", key: "1" }],
+            rightarray: [{ rightNumber: "", colorKey: "", key: "2" }],
+            showrightarray: [{ rightNumber: "", colorKey: "", key: "2" }],
+            ctrl: [{ c: "" }], cleardoor: false,
+            storekey1: [],
+            storekey2: [],
+            storekey3: [],
+            storekeyright: []
         });
         this.checkState();
 
@@ -137,9 +169,21 @@ export default class EbobPage extends Component {
         this.setState({
             maxdoor: "3", door: "3",
             backUpflag: false,
-            showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
+            shownumber1: [{ no1: "", key: "1" }],
+            shownumber2: [{ no1: "", key: "1" }],
+            shownumber3: [{ no1: "", key: "1" }],
+            number1: [{ no1: "", key: "1" }],
+            number2: [{ no1: "", key: "1" }],
+            number3: [{ no1: "", key: "1" }],
+            rightarray: [{ rightNumber: "", colorKey: "", key: "2" }],
+            showrightarray: [{ rightNumber: "", colorKey: "", key: "2" }],
+            ctrl: [{ c: "" }], cleardoor: false,
+            storekey1: [],
+            storekey2: [],
+            storekey3: [],
+            storekeyright: [],
             backColorT1: "white", backColorT2: "white", backColorT3: "rgb(193,205,205)",
-            message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
+            message: ""
         });
         this.checkState();
     }
@@ -150,64 +194,98 @@ export default class EbobPage extends Component {
     cleanOnePart2 = () => {
         var doorctrl = this.state.door;
         var maxdoorctrl = this.state.maxdoor;
+        var num1 = this.state.tempnumber1;
+        var num2 = this.state.tempnumber2;
+        var num3 = this.state.tempnumber3;
+        var len1 = num1.length - 1;
+        var len2 = num2.length - 1;
+        var len3 = num3.length - 1;
         if (maxdoorctrl == "2") {
-            if (doorctrl == "1")
-                this.setState({ tempnumber1: "", message: "", btnflag: true, mycolor: "rgb(211,211,211)" });
+            if (doorctrl == "1") {
+                var x = this.state.tempnumber1;
 
-            else if (doorctrl == "2")
-                this.setState({ tempnumber2: "", message: "", btnflag: true, mycolor: "rgb(211,211,211)" });
+                x = [...x].slice(0, (x.length - 1));
+                this.setState({ tempnumber1: x, message: "", maxdoor: "2", door: "1" });
+                if (len1 == 0)
+                    this.setState({ mycolor: "rgb(211,211,211)" });
+            }
+
+
+            else if (doorctrl == "2") {
+                var x = this.state.tempnumber2;
+
+                x = [...x].slice(0, (x.length - 1));
+                this.setState({ tempnumber2: x, message: "", maxdoor: "2", door: "2" });
+                if (len2 == 0)
+                    this.setState({ mycolor: "rgb(211,211,211)" });
+            }
+
         }
         if (maxdoorctrl == "3") {
-            this.setState({ tempnumber3: "", message: "", btnflag: true, mycolor: "rgb(211,211,211)" });
+            var x = this.state.tempnumber3;
+            len3 = x.length - 1;
+            x = [...x].slice(0, (x.length - 1));
+            this.setState({ tempnumber3: x, message: "", maxdoor: "3", door: "3" });
+            if (len3 == 0)
+                this.setState({ mycolor: "rgb(211,211,211)" });
         }
-        this.checkState();
+        if ((len1 != 0 && len2 != 0 && len3 == 0) || (len1 != 0 && len2 != 0 && len3 != 0))
+            this.setState({ btnflag: false, mycolor: "rgb(75,0,130)", mycolordis: "rgb(188,143,143)" });
+        else
+            this.setState({ btnflag: true, mycolor: "rgb(211,211,211)", mycolordis: "white" });
     }
     async keybort(param) {
         var clearctrl = this.state.cleardoor;
         if (clearctrl) {
             await this.clean();
-
         }
         var doorctrl = this.state.door;
-        var maxdoorctrl = this.state.maxdoor;
         var num1 = this.state.tempnumber1;
         var num2 = this.state.tempnumber2;
         var num3 = this.state.tempnumber3;
-        if (maxdoorctrl == "2") {
-            if (doorctrl == "1") {
-                if (num1.length < 3) {
-                    num1 = num1 + param;
-                    this.setState({ tempnumber1: num1 });
-                    if (this.state.tempnumber2 == "")
-                        this.setState({ sayi2: "2.Sayı" });
-                }
-                else
-                    this.warn();
-            }
-            else if (doorctrl == "2") {
-                if (num2.length < 3) {
-                    num2 = num2 + param;
-                    this.setState({ tempnumber2: num2 });
-                    if (num2.length > 0)
-                        this.setState({ sayi3: "3.Sayı" });
-                }
-                else
-                    this.warn();
-            }
-        }
-        if (maxdoorctrl == "3") {
-            if (num3.length < 3) {
-                num3 = num3 + param;
-                this.setState({ tempnumber3: num3, maxdoor: "3", door: "3" });
+
+        if (doorctrl == "1") {
+            if (num1.length < 3) {
+                num1 = num1 + param;
+                this.setState({ tempnumber1: num1 });
+                this.state.number1[0] = num1;
+                this.setState(this.state.number1);
+                if (this.state.tempnumber2 == "")
+                    this.setState({ sayi2: "2.Sayı" });
             }
             else
                 this.warn();
+        }
+        else if (doorctrl == "2") {
+            if (num2.length < 3) {
+                num2 = num2 + param;
+                this.setState({ tempnumber2: num2, });
+                this.state.number2[0] = num2;
+                this.setState(this.state.number2);
 
+                if (num2.length > 0)
+                    this.setState({ sayi3: "3.Sayı" });
+            }
+            else
+                this.warn();
+        }
+        else if (doorctrl == "3") {
+            if (num3.length < 3) {
+                num3 = num3 + param;
+                this.setState({ tempnumber3: num3 });
+                this.state.number3[0] = num3;
+                this.setState(this.state.number3);
+            }
+            else
+                this.warn();
         }
         if (this.state.tempnumber3 != "")
             this.setState({ maxdoor: "3" });
-        if ((this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "") || (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 != ""))
+
+        if ((num1.length != 0 && num2.length != 0 && num3.length == 0) || (num1.length != 0 && num2.length != 0 && num3.length != 0))
             this.setState({ btnflag: false, mycolor: "rgb(75,0,130)", mycolordis: "rgb(188,143,143)" });
+        else
+            this.setState({ btnflag: true, mycolor: "rgb(211,211,211)", mycolordis: "white" });
 
 
     }
@@ -226,7 +304,6 @@ export default class EbobPage extends Component {
             this.setState({ message: "Sayı Sıfır Girilemez" });
         }
         else {
-
             if (this.state.backUpflag) {
                 this.delay2 = setTimeout(function () {
                     this.setState(() => ({ message: "", btnflag: true, mycolor: "rgb(211,211,211)", backUpflag: false, tempnumber1: this.state.shownumber1[1].no1, tempnumber2: this.state.shownumber2[1].no1 }));
@@ -234,7 +311,21 @@ export default class EbobPage extends Component {
                     if (maxdoorctrl == "3")
                         this.setState(() => ({ tempnumber3: this.state.shownumber3[1].no1 }));
 
-                    this.setState(() => ({ showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""], message: "", number1: [""], number2: [""], number3: [""], rightarray: [""] }));
+                    this.setState(() => ({
+                        rightarray: [{ rightNumber: "", colorKey: "" }],
+                        showrightarray: [{ rightNumber: "", colorKey: "" }],
+                        number1: [{ no1: "" }],
+                        number2: [{ no1: "" }],
+                        number3: [{ no1: "" }],
+                        shownumber1: [{ no1: "" }],
+                        shownumber2: [{ no1: "" }],
+                        shownumber3: [{ no1: "" }],
+                        storekey1: [],
+                        storekey2: [],
+                        storekey3: [],
+                        storekeyright: [],
+                        message: ""
+                    }));
 
                     this.ebob();
                 }.bind(this), 10);
@@ -242,7 +333,7 @@ export default class EbobPage extends Component {
             }
             else {
                 this.ebob();
-                this.setState({ btnflag: true, mycolor: "rgb(211,211,211)", message: "" })
+                this.setState({ btnflag: true, message: "" });
             }
         }
     }
@@ -259,14 +350,21 @@ export default class EbobPage extends Component {
 
             clearInterval(this.delay2);
             clearTimeout(this.delay);
-            this.setState({ footerdisplay: "none", que1: "", sayi2: "", sayi3: "", backUpflag: true, cleardoor: true, door: "1", backColorT1: "rgb(142,163,226)", backColorT2: "white", backColorT3: "white", message: "" });
-            this.state.number1.push({ no1: num1 });
-            this.state.number2.push({ no1: num2 });
+            this.setState({ footerdisplay: "none", que1: "", sayi2: "", sayi3: "", backUpflag: true, cleardoor: true, door: "1", backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white", message: "" });
+            this.state.number1.push({ no1: num1, key: "1" });
+            this.state.number2.push({ no1: num2, key: "1" });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
             var tempebob = 1;
             num1 = parseInt(num1, 10);
             num2 = parseInt(num2, 10);
-            var max = (num1 > num2) ? (max = num1) : (max = num2);
+            var array = [];
+            array.push(num1, num2);
+            index = 0;
+            for (i = 1; i < 2; i++) {
+                if (array[index] < array[i])
+                    index = i;
+            }
+            var max = array[index];
             var ctrl1 = null;
             var ctrl2 = null;
             for (i = 2; i <= max; i++) {
@@ -276,8 +374,8 @@ export default class EbobPage extends Component {
                     this.state.rightarray.push({ rightNumber: i, key: "2" });
                     this.setState(this.state.rightarray);
                     num1 /= i;
-                    this.state.number1.push({ no1: num1 });
-                    this.state.number2.push({ no1: num2 });
+                    this.state.number1.push({ no1: num1, key: "1" });
+                    this.state.number2.push({ no1: num2, key: "1" });
                     this.setState(this.state.number1);
                     this.setState(this.state.number2);
                     i--;
@@ -287,8 +385,8 @@ export default class EbobPage extends Component {
 
                     this.setState(this.state.rightarray);
                     num2 /= i;
-                    this.state.number1.push({ no1: num1 });
-                    this.state.number2.push({ no1: num2 });
+                    this.state.number1.push({ no1: num1, key: "1" });
+                    this.state.number2.push({ no1: num2, key: "1" });
                     this.setState(this.state.number1);
                     this.setState(this.state.number2);
                     i--;
@@ -301,8 +399,8 @@ export default class EbobPage extends Component {
 
                     num2 /= i;
                     num1 /= i;
-                    this.state.number1.push({ no1: num1 });
-                    this.state.number2.push({ no1: num2 });
+                    this.state.number1.push({ no1: num1, key: "1" });
+                    this.state.number2.push({ no1: num2, key: "1" });
                     this.setState(this.state.number1);
                     this.setState(this.state.number2);
                     i--;
@@ -319,11 +417,11 @@ export default class EbobPage extends Component {
                 footerdisplay: "none",
                 backUpflag: true, message: "",
                 cleardoor: true, door: "1",
-                backColorT1: "rgb(142,163,226)", backColorT2: "white", backColorT3: "white"
+                backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white"
             });
-            this.state.number1.push({ no1: this.state.tempnumber1 });
-            this.state.number2.push({ no1: this.state.tempnumber2 });
-            this.state.number3.push({ no1: this.state.tempnumber3 });
+            this.state.number1.push({ no1: this.state.tempnumber1, key: "1" });
+            this.state.number2.push({ no1: this.state.tempnumber2, key: "1" });
+            this.state.number3.push({ no1: this.state.tempnumber3, key: "1" });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
             var tempebob = 1;
             num1 = parseInt(num1, 10);
@@ -333,14 +431,14 @@ export default class EbobPage extends Component {
             var ctrl2 = null;
             var ctrl3 = null;
             var max = 0;
-            if (num1 > num2 && num1 > num3)
-                max = num1;
-            else if (num2 > num1 && num2 > num3)
-                max = num2;
-            else if (num3 > num2 && num3 > num1)
-                max = num3;
-            else if (num1 == num2 && num1 == num3)
-                max = num3;
+            var array = [];
+            array.push(num1, num2, num3);
+            index = 0;
+            for (i = 1; i < 3; i++) {
+                if (array[index] < array[i])
+                    index = i;
+            }
+            max = array[index];
             for (i = 2; i <= max; i++) {
                 ctrl1 = num1 % i;
                 ctrl2 = num2 % i;
@@ -354,9 +452,9 @@ export default class EbobPage extends Component {
                     if (ctrl3 == 0) {
                         num3 /= i;
                     }
-                    this.state.number1.push({ no1: num1 });
-                    this.state.number2.push({ no1: num2 });
-                    this.state.number3.push({ no1: num3 });
+                    this.state.number1.push({ no1: num1, key: "1" });
+                    this.state.number2.push({ no1: num2, key: "1" });
+                    this.state.number3.push({ no1: num3, key: "1" });
                     this.setState(this.state.number3);
                     this.setState(this.state.number1);
                     this.setState(this.state.number2);
@@ -369,9 +467,9 @@ export default class EbobPage extends Component {
                     if (ctrl3 == 0) {
                         num3 /= i;
                     }
-                    this.state.number1.push({ no1: num1 });
-                    this.state.number2.push({ no1: num2 });
-                    this.state.number3.push({ no1: num3 });
+                    this.state.number1.push({ no1: num1, key: "1" });
+                    this.state.number2.push({ no1: num2, key: "1" });
+                    this.state.number3.push({ no1: num3, key: "1" });
                     this.setState(this.state.number3);
                     this.setState(this.state.number1);
                     this.setState(this.state.number2);
@@ -382,9 +480,9 @@ export default class EbobPage extends Component {
 
                     this.setState(this.state.rightarray);
                     num3 /= i;
-                    this.state.number1.push({ no1: num1 });
-                    this.state.number2.push({ no1: num2 });
-                    this.state.number3.push({ no1: num3 });
+                    this.state.number1.push({ no1: num1, key: "1" });
+                    this.state.number2.push({ no1: num2, key: "1" });
+                    this.state.number3.push({ no1: num3, key: "1" });
                     this.setState(this.state.number1);
                     this.setState(this.state.number2);
                     this.setState(this.state.number3);
@@ -403,9 +501,9 @@ export default class EbobPage extends Component {
                         this.state.rightarray.push({ rightNumber: i, key: "2" });
 
                     this.setState(this.state.rightarray);
-                    this.state.number1.push({ no1: num1 });
-                    this.state.number2.push({ no1: num2 });
-                    this.state.number3.push({ no1: num3 });
+                    this.state.number1.push({ no1: num1, key: "1" });
+                    this.state.number2.push({ no1: num2, key: "1" });
+                    this.state.number3.push({ no1: num3, key: "1" });
                     this.setState(this.state.number1);
                     this.setState(this.state.number2);
                     this.setState(this.state.number3);
@@ -445,17 +543,32 @@ export default class EbobPage extends Component {
             else {
                 clearInterval(this.delay);
                 clearTimeout(this.delay2);
-                this.setState({ btnflag: false, mycolor: "rgb(75,0,130)", mycolordis: "rgb(188,143,143)", footerdisplay: "flex" });
+                this.setState({ btnflag: false, footerdisplay: "flex" });
             }
             i++;
         }.bind(this), 1000);
     }
     settimem2(i) {
+        var arr = [];
+        var arr2 = [];
+        this.state.shownumber1.map(obj => {
+            arr.push(this.state.shownumber1.indexOf(obj));
+        });
+        this.state.shownumber2.map(obj => {
+            arr2.push(this.state.shownumber2.indexOf(obj));
+        });
+        this.setState({ storekey1: arr, storekey2: arr2 });
+        var arr4 = [];
         this.delay2 = setTimeout(function () {
             if (i < this.state.rightarray.length) {
                 this.state.showrightarray.push(this.state.rightarray[i]);
                 this.setState(this.state.showrightarray);
+                this.state.showrightarray.map(obj => {
+                    arr4.push(this.state.showrightarray.indexOf(obj));
+                });
+                this.setState({ storekeyright: arr4 });
             }
+
         }.bind(this), 0);
     }
     settimem12() {
@@ -500,19 +613,37 @@ export default class EbobPage extends Component {
             else {
                 clearInterval(this.delay12);
                 clearTimeout(this.delay22);
-                this.setState({ btnflag: false, mycolor: "rgb(75,0,130)", mycolordis: "rgb(188,143,143)", footerdisplay: "flex" });
+                this.setState({ btnflag: false, footerdisplay: "flex" });
             }
             i++;
         }.bind(this), 1000);
     }
     settimem22(i) {
+        var arr = [];
+        var arr2 = [];
+        var arr3 = [];
+        var arr4 = [];
+        this.state.shownumber1.map(obj => {
+            arr.push(this.state.shownumber1.indexOf(obj));
+        });
+        this.state.shownumber2.map(obj => {
+            arr2.push(this.state.shownumber2.indexOf(obj));
+        });
+        this.state.shownumber3.map(obj => {
+            arr3.push(this.state.shownumber3.indexOf(obj));
+        });
+        this.setState({ storekey1: arr, storekey2: arr2, storekey3: arr3 });
         this.delay22 = setTimeout(function () {
             if (i < this.state.rightarray.length) {
                 this.state.showrightarray.push(this.state.rightarray[i]);
                 this.setState(this.state.showrightarray);
+                this.state.showrightarray.map(obj => {
+                    arr4.push(this.state.showrightarray.indexOf(obj));
+                });
+                this.setState({ storekeyright: arr4 });
             }
 
-        }.bind(this), 0);
+        }.bind(this), 10);
     }
     render() {
         return (
@@ -525,7 +656,7 @@ export default class EbobPage extends Component {
                             </Button>
                         </Left>
                         <Body style={{ flex: 4 }}>
-                            <Title style={styles.heade}>KÜSUR-AT</Title>
+                            <Title style={styles.heade}>EBOB</Title>
                         </Body>
                         <Right style={{ flex: 1 }}>
                             <Button transparent onPress={this.tys}>
@@ -537,8 +668,12 @@ export default class EbobPage extends Component {
                         <View style={{ flexDirection: "column", marginTop: 10 }}>
                             <View style={{ flexDirection: "row" }}>
                                 <Text style={{ fontSize: 30, color: "white", marginLeft: 50, marginRight: 10 }}>EBOB</Text>
-
-                                <Button style={{ backgroundColor: this.state.mycolor }} rounded disabled={this.state.btnflag} onPress={this.backup} ><Text style={{ fontSize: 20, alignSelf: "center", color: this.state.mycolordis }}><Icon style={{ fontSize: 50, color: this.state.mycolordis }} type="EvilIcons" name="play" />BASLA</Text></Button>
+                                <Button style={{ backgroundColor: this.state.mycolor, borderRadius: 30 }} disabled={this.state.btnflag} onPress={this.backup} >
+                                    <Text style={{ fontSize: 20, alignSelf: "center", color: this.state.mycolordis }}>
+                                        <Icon style={{ fontSize: 50, color: this.state.mycolordis }} type="EvilIcons" name="play" />
+                                        BASLA
+                                </Text>
+                                </Button>
                                 <Text style={{ fontSize: 30, color: "white" }}>{this.state.returnebob}</Text>
                             </View>
                         </View>
@@ -548,59 +683,87 @@ export default class EbobPage extends Component {
                                     <Text>{this.state.message}</Text>
                                     <View style={{ flexDirection: "column" }}>
                                         <View style={{ flexDirection: "row" }}>
-                                            <View style={{ flexDirection: "column" }}>
+                                            <View style={{ flexDirection: "column", marginLeft: 5 }}>
                                                 <Text onPress={this.firstNum}>{this.state.que1}</Text>
-                                                <Text onPress={this.firstNum} style={{ color: "black", fontSize: 25, backgroundColor: this.state.backColorT1 }}>{this.state.tempnumber1}</Text>
+                                                <Text
+                                                    onPress={this.firstNum}
+                                                    style={{
+                                                        color: "black",
+                                                        fontSize: 25,
+                                                        backgroundColor: this.state.backColorT1
+                                                    }}>{this.state.tempnumber1}
+                                                </Text>
                                             </View>
-                                            <List dataArray={this.state.shownumber1}
-                                                renderRow={(item) =>
-                                                    <ListItem style={{ borderColor: "white" }}>
-                                                        <Text style={{ color: "black", fontSize: 25 }}>{item.no1}</Text>
-                                                    </ListItem>
-                                                }>
-                                            </List>
-                                            <View style={{ flexDirection: "column" }}>
+                                            <View style={{ marginLeft: 5 }}>
+                                                <FlatList data={this.state.shownumber1}
+                                                    renderItem={({ item }) => {
+                                                        return (
+                                                            <View>
+                                                                <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                            </View>
+                                                        );
+                                                    }}
+                                                    //keyExtractor={item => item.key}
+                                                    at={this.state.storekey1}
+                                                />
+                                            </View>
+                                            <View style={{ flexDirection: "column", marginLeft: 15 }}>
                                                 <Text onPress={this.twoNum}>{this.state.sayi2}</Text>
                                                 <Text onPress={this.twoNum} style={{ color: "black", fontSize: 25, backgroundColor: this.state.backColorT2 }}>{this.state.tempnumber2}</Text>
                                             </View>
-                                            <List dataArray={this.state.shownumber2}
-                                                renderRow={(item) =>
-                                                    <ListItem style={{ borderColor: "white" }}>
-                                                        <Text style={{ color: "black", fontSize: 25 }}>{item.no1}</Text>
-                                                    </ListItem>
-                                                }>
-                                            </List>
-                                            <View style={{ flexDirection: "column", marginTop: 10 }}>
+                                            <View style={{ marginLeft: 15 }}>
+                                                <FlatList data={this.state.shownumber2}
+                                                    renderItem={({ item }) => {
+                                                        return (
+                                                            <View>
+                                                                <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                            </View>
+                                                        );
+                                                    }}
+                                                    //keyExtractor={item => item.key}
+                                                    at={this.state.storekey2}
+                                                />
+                                            </View>
+                                            <View style={{ flexDirection: "column", marginLeft: 10 }}>
                                                 <Text onPress={this.threeNum} >{this.state.sayi3}</Text>
                                                 <Text onPress={this.threeNum} style={{ color: "black", fontSize: 25, backgroundColor: this.state.backColorT3 }}>{this.state.tempnumber3}</Text>
                                             </View>
-                                            <List dataArray={this.state.shownumber3}
-                                                renderRow={(item) =>
-                                                    <ListItem style={{ borderColor: "white" }}>
-                                                        <Text style={{ color: "black", fontSize: 25 }}>{item.no1}</Text>
-                                                    </ListItem>
-                                                }>
-                                            </List>
-                                            <Text style={{ marginTop: 20, backgroundColor: "rgb(25,25,112)", height: 400, width: 5 }}></Text>
-                                            <List dataArray={this.state.showrightarray}
-                                                renderRow={(item) =>
-                                                    <ListItem style={{ borderColor: "white" }}>
-<<<<<<< HEAD
-                                                        <Text style={{ color: "white", fontSize: 25, color: (item.key == "1") ? "rgb(139,0,139)" : "rgb(12,8,64)", }}>{item.rightNumber}</Text>
-=======
-                                                        <Text style={{ color: "white", fontSize: 25, fontWeight: "bold", color: (item.key == "1") ? "rgb(138,43,226)" : "#191970" }}>{item.rightNumber}</Text>
-                                                        <Icon style={{ fontSize: 25, color: (item.key == "1") ? "rgb(138,43,226)" : "#191970", borderColor: "white", display: (item.key == "1") ? "flex" : "none" }} type="FontAwesome" name='check' />
->>>>>>> refs/remotes/origin/kusurat
-                                                    </ListItem>
-                                                }>
-                                            </List>
+                                            <View style={{ marginLeft: 15 }}>
+                                                <FlatList data={this.state.shownumber3}
+                                                    renderItem={({ item }) => {
+                                                        return (
+                                                            <View>
+                                                                <Text style={{ color: "black", fontSize: 30 }}>{item.no1}</Text>
+                                                            </View>
+                                                        );
+                                                    }}
+                                                    // keyExtractor={item => item.key}
+                                                    at={this.state.storekey3}
+                                                />
+                                            </View>
+                                            <Text style={{ marginTop: 20, backgroundColor: "rgb(25,25,112)", height: 400, width: 5, marginBottom: 10 }}></Text>
+                                            <View style={{ flexDirection: "column", marginLeft: 10 }}>
+                                                <FlatList
+                                                    data={this.state.showrightarray}
+                                                    renderItem={({ item }) => {
+                                                        return (
+                                                            <View style={{ flexDirection: "row" }}>
+                                                                <Text style={{ color: "white", fontSize: 30, fontWeight: "bold", color: (item.key == "1") ? "rgb(138,43,226)" : "rgb(25,25,112)" }}>{item.rightNumber}</Text>
+                                                                <Icon style={{ fontSize: 25, color: (item.key == "1") ? "rgb(138,43,226)" : "rgb(25,25,112)", borderColor: "white", display: (item.key == "1") ? "flex" : "none" }} type="FontAwesome" name='check' />
+                                                            </View>
+                                                        );
+                                                    }}
+                                                    //keyExtractor={item => item.key}
+                                                    at={this.state.storekeyright}
+                                                />
+                                            </View>
 
                                         </View>
 
                                     </View>
                                 </View>
                                 <Button style={{ position: "absolute", alignSelf: "flex-end" }} onPress={this.clean} transparent >
-                                    <Icon style={{ fontSize: 50, color: "rgb(142,163,226)" }} type="FontAwesome" name='refresh' />
+                                    <Icon style={{ fontSize: 50 }} type="FontAwesome" name='refresh' />
                                 </Button>
                             </View>
 
@@ -642,7 +805,7 @@ export default class EbobPage extends Component {
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
                         <Button style={styles.footerbtn} rounded onPress={() => { this.cleanOnePart(0) }}>
-                            <Icon style={{ fontSize: 30 }} name='backspace' />
+                            <Icon style={{ color: "rgb(193,205,205)", fontSize: 30 }} name='backspace' />
                         </Button>
 
                     </Footer>

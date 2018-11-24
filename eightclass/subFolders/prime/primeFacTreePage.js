@@ -200,7 +200,7 @@ export default class PrimeFacTreePage extends Component {
 
         }.bind(this), 600);
     }
-    forward = () => {
+    tys = () => {
         this.props.navigation.navigate("primeFacTreePagesTYS");
 
     }
@@ -218,25 +218,20 @@ export default class PrimeFacTreePage extends Component {
             <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
                 <Container>
                     <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
-                        <Left>
+                        <Left style={{ flex: 1 }}>
                             <Button transparent onPress={this.back}>
                                 <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
                             </Button>
-
                         </Left>
-
-                        <Body>
-                            <Title style={styles.heade}>KÜSUR-AT</Title>
+                        <Body style={{ flex: 4 }}>
+                            <Title style={styles.heade}>ÇARPAN AĞACI</Title>
                         </Body>
-                        <Right>
-                            <Button transparent onPress={this.forward}>
-
-                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="EvilIcons" name="pencil" />
-
+                        <Right style={{ flex: 1 }}>
+                            <Button transparent onPress={this.tys}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} type="FontAwesome" name="edit" />
                             </Button>
                         </Right>
                     </Header>
-
                     <Content>
                         <Text style={{ color: "white" }}>{this.state.message}</Text>
                         <View style={{ flexDirection: "column" }}>
@@ -344,7 +339,6 @@ const styles = StyleSheet.create({
         color: "rgb(142,163,226)",
         fontSize: 25,
         padding: 5
-
     },
     footerbtn: {
         marginLeft: 5,
@@ -361,7 +355,7 @@ const styles = StyleSheet.create({
     buttontext: {
         marginTop: 20,
 
-        backgroundColor: '#00BCD4',
+        backgroundColor: 'rgb(0,188,212)',
         height: 50,
 
         borderRadius: 150 / 2,

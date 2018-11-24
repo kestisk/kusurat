@@ -80,21 +80,18 @@ export default class RollingNumberPage extends Component {
       <ImageBackground source={require("../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
         <Container>
           <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
-            <Left>
+            <Left style={{ flex: 1 }}>
               <Button transparent onPress={this.back}>
                 <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
               </Button>
-
             </Left>
 
-            <Body>
-              <Title style={styles.heade}>KÜSUR-AT</Title>
+            <Body style={{ flex: 4 }}>
+              <Title style={styles.heade}>SAYI YUVARLAMA</Title>
             </Body>
-            <Right>
-              <Button transparent onPress={this.forward}>
-
-                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="EvilIcons" name="pencil" />
-
+            <Right style={{ flex: 1 }}>
+              <Button transparent onPress={this.tys}>
+                <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} type="FontAwesome" name="edit" />
               </Button>
             </Right>
           </Header>
@@ -179,7 +176,7 @@ export default class RollingNumberPage extends Component {
   open = () => {
     this.setState({ footdsp: "flex", footdsp2: "none" });
   }
-  forward = () => {
+  tys = () => {
     this.props.navigation.navigate("four_roll_closeTenPages");
 
   }

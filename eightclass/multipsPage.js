@@ -37,7 +37,7 @@ export default class MultipPage extends Component {
 
                     </Left>
                     <Body style={{ flex: 5 }}>
-                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                        <Title style={styles.heade}>ÇARPANLAR & KATLAR</Title>
                     </Body>
 
                 </Header>

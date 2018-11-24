@@ -23,8 +23,8 @@ import Pow_getpowTYS from './subFolders/pow/pow_getpowTYS';
 import Pow_BasictabPage from './tabs/pow/pow_basictabPage';
 import Pow_findpowtabPage from './tabs/pow/pow_findpowtabPage';
 import Pow_getpowtabPage from './tabs/pow/pow_getpowtabPage';
-import Pow_showdecimaltabPage from './tabs/pow/pow_showdecimaltabPage';
-import Pow_showsciencetabPage from './tabs/pow/pow_showsciencetabPage';
+import Pow_showdecimal from './subFolders/pow/pow_showdecimal';
+import Pow_showdecimalTYS from './subFolders/pow/pow_showdecimalTYS'
 
 import { Multips_primeFactorPage } from "./subFolders/multips/multips_primeFactorPage";
 import Multips_primeFactorPageTYS from "./subFolders/multips/multips_primeFactorPageTYS";
@@ -34,6 +34,8 @@ import EbobPage from "./subFolders/ebob_ekok/ebobPage";
 import EkokPage from "./subFolders/ebob_ekok/ekokPage";
 import Pow_findpow from "./subFolders/pow/pow_findpow";
 import Pow_findpowTYS from "./subFolders/pow/pow_findpowTYS";
+import Pow_showscience from "./subFolders/pow/pow_showscience";
+import Pow_showscienceTYS from "./subFolders/pow/pow_showscienceTYS"
 
 const eight_Ori = createSwitchNavigator({
   Main_eight: {
@@ -96,11 +98,17 @@ const eight_Ori = createSwitchNavigator({
   Pow_getpowPagesTYS: {
     screen: Pow_getpowtabPage,
   },
-  Pow_showdecimaltabPages: {
-    screen: Pow_showdecimaltabPage,
+  Pow_showdecimalPages: {
+    screen: Pow_showdecimal,
   },
-  Pow_showsciencetabPages: {
-    screen: Pow_showsciencetabPage,
+  Pow_showdecimalTYSPages: {
+    screen: Pow_showdecimalTYS,
   },
+  Pow_showsciencePages: {
+    screen: Pow_showscience,
+  },
+  Pow_showscienceTYSPages: {
+    screen: Pow_showscienceTYS,
+  }
 })
 export default eight_Ori;

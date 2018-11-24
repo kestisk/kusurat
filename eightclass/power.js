@@ -36,7 +36,7 @@ export default class Power extends Component {
             </Button>
           </Left>
           <Body style={{ flex: 4 }}>
-            <Title style={styles.heade}>KÜSUR-AT</Title>
+            <Title style={styles.heade}>ÜSLÜ SAYILAR</Title>
           </Body>
         </Header>
 
@@ -72,11 +72,11 @@ export default class Power extends Component {
   };
 
   showdecimal = () => {
-    this.props.navigation.navigate("Pow_showdecimaltabPages");
+    this.props.navigation.navigate("Pow_showdecimalPages");
   };
 
   showscience = () => {
-    this.props.navigation.navigate("Pow_showsciencetabPages");
+    this.props.navigation.navigate("Pow_showsciencePages");
   };
 
 

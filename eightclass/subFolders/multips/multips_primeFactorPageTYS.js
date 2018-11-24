@@ -80,7 +80,7 @@ export default class Multips_primeFactorPageTYS extends At {
 
 
         var retval = await this.justdivede(num);
-        debugger;
+
 
         // const retval = this.justdivede(num);
 
@@ -115,18 +115,15 @@ export default class Multips_primeFactorPageTYS extends At {
     render() {
         return (
             <Container>
-                <Header style={{ backgroundColor: "rgb(56,65,104)" }}>
-                    <Left>
+                <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+                    <Left style={{ flex: 1 }}>
                         <Button transparent onPress={this.back}>
-                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} name="arrow-back" />
+                            <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
                         </Button>
-
                     </Left>
-
-                    <Body>
-                        <Title style={styles.heade}>KÜSUR-AT</Title>
+                    <Body style={{ flex: 5 }}>
+                        <Title style={styles.heade}>KENDİNİ DENE</Title>
                     </Body>
-
                 </Header>
                 <Content>
                     <View style={{ flexDirection: "column" }}>
