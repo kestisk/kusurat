@@ -18,7 +18,7 @@ import {
     Right
 
 } from "native-base";
-import { Platform, FlatList, ImageBackground, BackHandler } from "react-native";
+import { Platform, FlatList, ImageBackground, BackHandler, Image } from "react-native";
 
 import { StyleSheet } from "react-native";
 
@@ -257,7 +257,7 @@ export class Multips_primeFactorPage extends Component {
                         <Right>
                             <Button transparent onPress={this.forward}>
 
-                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="EvilIcons" name="pencil" />
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} type="FontAwesome" name='edit' />
 
                             </Button>
                         </Right>
@@ -306,7 +306,7 @@ export class Multips_primeFactorPage extends Component {
                                         </View>
                                     </Body>
                                     <Button onPress={this.clean} transparent>
-                                        <Icon style={{ color: "rgb(75,0,130)", fontSize: 50 }} type="EvilIcons" name='refresh' />
+                                        <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name='refresh' />
 
                                     </Button>
                                 </CardItem>
@@ -353,7 +353,7 @@ export class Multips_primeFactorPage extends Component {
                             <Text style={styles.footertxt}>0</Text>
                         </Button>
                         <Button style={styles.footerbtn} rounded onPress={this.cleanOnePart} >
-                            <Icon style={styles.footertxt} name='trash' />
+                            <Icon style={styles.footertxt} name='backspace' />
 
                         </Button>
 

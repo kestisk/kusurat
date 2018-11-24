@@ -28,10 +28,10 @@ export default class EbobPage extends Component {
             number1: [{ no1: "" }],
             number2: [{ no1: "" }],
             number3: [{ no1: "" }],
-            shownumber1: [{ no1: "" }],
+            shownumber1: [{ no1: "12" }],
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
-            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(142,163,226)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
@@ -39,6 +39,9 @@ export default class EbobPage extends Component {
             returnebob: "",
             backUpflag: false,
             btnflag: true,
+            mycolor: "rgb(211,211,211)",
+
+            mycolordis: "white",
             sayi2: "", sayi3: "", footerdisplay: "flex"
         }
     }
@@ -57,7 +60,7 @@ export default class EbobPage extends Component {
             shownumber1: [{ no1: "" }],
             shownumber2: [{ no1: "" }],
             shownumber3: [{ no1: "" }],
-            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(142,163,226)", backColorT2: "white", backColorT3: "white",
             door: "1", maxdoor: "2",
             que1: "1.Sayı", ctrl: [{ c: "" }], cleardoor: false,
             rightarray: [{ rightNumber: "", colorKey: "" }],
@@ -114,7 +117,7 @@ export default class EbobPage extends Component {
             maxdoor: "2", door: "1",
             backUpflag: false,
             showrightarray: [""], shownumber1: [""], shownumber2: [""], shownumber3: [""],
-            backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white",
+            backColorT1: "rgb(142,163,226)", backColorT2: "white", backColorT3: "white",
             message: "", number1: [""], number2: [""], number3: [""], rightarray: [""]
         });
         this.checkState();
@@ -149,13 +152,13 @@ export default class EbobPage extends Component {
         var maxdoorctrl = this.state.maxdoor;
         if (maxdoorctrl == "2") {
             if (doorctrl == "1")
-                this.setState({ tempnumber1: "", message: "", btnflag: true });
+                this.setState({ tempnumber1: "", message: "", btnflag: true, mycolor: "rgb(211,211,211)" });
 
             else if (doorctrl == "2")
-                this.setState({ tempnumber2: "", message: "", btnflag: true });
+                this.setState({ tempnumber2: "", message: "", btnflag: true, mycolor: "rgb(211,211,211)" });
         }
         if (maxdoorctrl == "3") {
-            this.setState({ tempnumber3: "", message: "", btnflag: true });
+            this.setState({ tempnumber3: "", message: "", btnflag: true, mycolor: "rgb(211,211,211)" });
         }
         this.checkState();
     }
@@ -204,7 +207,7 @@ export default class EbobPage extends Component {
         if (this.state.tempnumber3 != "")
             this.setState({ maxdoor: "3" });
         if ((this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 == "") || (this.state.tempnumber1 != "" && this.state.tempnumber2 != "" && this.state.tempnumber3 != ""))
-            this.setState({ btnflag: false });
+            this.setState({ btnflag: false, mycolor: "rgb(75,0,130)", mycolordis: "rgb(188,143,143)" });
 
 
     }
@@ -226,7 +229,7 @@ export default class EbobPage extends Component {
 
             if (this.state.backUpflag) {
                 this.delay2 = setTimeout(function () {
-                    this.setState(() => ({ message: "", btnflag: true, backUpflag: false, tempnumber1: this.state.shownumber1[1].no1, tempnumber2: this.state.shownumber2[1].no1 }));
+                    this.setState(() => ({ message: "", btnflag: true, mycolor: "rgb(211,211,211)", backUpflag: false, tempnumber1: this.state.shownumber1[1].no1, tempnumber2: this.state.shownumber2[1].no1 }));
 
                     if (maxdoorctrl == "3")
                         this.setState(() => ({ tempnumber3: this.state.shownumber3[1].no1 }));
@@ -239,7 +242,7 @@ export default class EbobPage extends Component {
             }
             else {
                 this.ebob();
-                this.setState({ btnflag: true, message: "" })
+                this.setState({ btnflag: true, mycolor: "rgb(211,211,211)", message: "" })
             }
         }
     }
@@ -256,7 +259,7 @@ export default class EbobPage extends Component {
 
             clearInterval(this.delay2);
             clearTimeout(this.delay);
-            this.setState({ footerdisplay: "none", que1: "", sayi2: "", sayi3: "", backUpflag: true, cleardoor: true, door: "1", backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white", message: "" });
+            this.setState({ footerdisplay: "none", que1: "", sayi2: "", sayi3: "", backUpflag: true, cleardoor: true, door: "1", backColorT1: "rgb(142,163,226)", backColorT2: "white", backColorT3: "white", message: "" });
             this.state.number1.push({ no1: num1 });
             this.state.number2.push({ no1: num2 });
             this.setState({ tempnumber1: "", tempnumber2: "", tempnumber3: "" });
@@ -316,7 +319,7 @@ export default class EbobPage extends Component {
                 footerdisplay: "none",
                 backUpflag: true, message: "",
                 cleardoor: true, door: "1",
-                backColorT1: "rgb(193,205,205)", backColorT2: "white", backColorT3: "white"
+                backColorT1: "rgb(142,163,226)", backColorT2: "white", backColorT3: "white"
             });
             this.state.number1.push({ no1: this.state.tempnumber1 });
             this.state.number2.push({ no1: this.state.tempnumber2 });
@@ -442,7 +445,7 @@ export default class EbobPage extends Component {
             else {
                 clearInterval(this.delay);
                 clearTimeout(this.delay2);
-                this.setState({ btnflag: false, footerdisplay: "flex" });
+                this.setState({ btnflag: false, mycolor: "rgb(75,0,130)", mycolordis: "rgb(188,143,143)", footerdisplay: "flex" });
             }
             i++;
         }.bind(this), 1000);
@@ -497,7 +500,7 @@ export default class EbobPage extends Component {
             else {
                 clearInterval(this.delay12);
                 clearTimeout(this.delay22);
-                this.setState({ btnflag: false, footerdisplay: "flex" });
+                this.setState({ btnflag: false, mycolor: "rgb(75,0,130)", mycolordis: "rgb(188,143,143)", footerdisplay: "flex" });
             }
             i++;
         }.bind(this), 1000);
@@ -526,15 +529,16 @@ export default class EbobPage extends Component {
                         </Body>
                         <Right style={{ flex: 1 }}>
                             <Button transparent onPress={this.tys}>
-                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="EvilIcons" name="pencil" />
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} type="FontAwesome" name="edit" />
                             </Button>
                         </Right>
                     </Header>
                     <Content>
                         <View style={{ flexDirection: "column", marginTop: 10 }}>
                             <View style={{ flexDirection: "row" }}>
-                                <Text style={{ fontSize: 30, color: "white", marginLeft: 50 }}>EBOB</Text>
-                                <Button rounded disabled={this.state.btnflag} onPress={this.backup} ><Text style={{ fontSize: 50 }}>=</Text></Button>
+                                <Text style={{ fontSize: 30, color: "white", marginLeft: 50, marginRight: 10 }}>EBOB</Text>
+
+                                <Button style={{ backgroundColor: this.state.mycolor }} rounded disabled={this.state.btnflag} onPress={this.backup} ><Text style={{ fontSize: 20, alignSelf: "center", color: this.state.mycolordis }}><Icon style={{ fontSize: 50, color: this.state.mycolordis }} type="EvilIcons" name="play" />BASLA</Text></Button>
                                 <Text style={{ fontSize: 30, color: "white" }}>{this.state.returnebob}</Text>
                             </View>
                         </View>
@@ -577,11 +581,16 @@ export default class EbobPage extends Component {
                                                     </ListItem>
                                                 }>
                                             </List>
-                                            <Text style={{ marginTop: 20, backgroundColor: "rgb(25,25,112)", height: 400, width: 5, marginLeft: 5 }}></Text>
+                                            <Text style={{ marginTop: 20, backgroundColor: "rgb(25,25,112)", height: 400, width: 5 }}></Text>
                                             <List dataArray={this.state.showrightarray}
                                                 renderRow={(item) =>
                                                     <ListItem style={{ borderColor: "white" }}>
+<<<<<<< HEAD
                                                         <Text style={{ color: "white", fontSize: 25, color: (item.key == "1") ? "rgb(139,0,139)" : "rgb(12,8,64)", }}>{item.rightNumber}</Text>
+=======
+                                                        <Text style={{ color: "white", fontSize: 25, fontWeight: "bold", color: (item.key == "1") ? "rgb(138,43,226)" : "#191970" }}>{item.rightNumber}</Text>
+                                                        <Icon style={{ fontSize: 25, color: (item.key == "1") ? "rgb(138,43,226)" : "#191970", borderColor: "white", display: (item.key == "1") ? "flex" : "none" }} type="FontAwesome" name='check' />
+>>>>>>> refs/remotes/origin/kusurat
                                                     </ListItem>
                                                 }>
                                             </List>
@@ -591,7 +600,7 @@ export default class EbobPage extends Component {
                                     </View>
                                 </View>
                                 <Button style={{ position: "absolute", alignSelf: "flex-end" }} onPress={this.clean} transparent >
-                                    <Icon style={{ fontSize: 50 }} type="EvilIcons" name='refresh' />
+                                    <Icon style={{ fontSize: 50, color: "rgb(142,163,226)" }} type="FontAwesome" name='refresh' />
                                 </Button>
                             </View>
 

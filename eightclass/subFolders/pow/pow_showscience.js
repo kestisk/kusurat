@@ -30,7 +30,7 @@ export default class Pow_showscience extends Component {
     warn = () => {
         this.setState({ message: "En Fazla 4 Rakam Girilebilir" });
     }
-    cleanpart = () => {
+    cleanOnePart = () => {
         if ((this.state.pow == "" && this.state.powornumber == true) || (this.state.number == "" && this.state.powornumber == false)) {
 
 
@@ -300,6 +300,9 @@ export default class Pow_showscience extends Component {
                         </Button>
                         <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
                             <Text style={styles.footertxt}>5</Text>
+                        </Button>
+                        <Button disabled={this.state.dot} rounded onPress={() => { this.keybort(",") }} >
+                            <Icon type="Foundation" name="italic" />
                         </Button>
 
                     </Footer>
