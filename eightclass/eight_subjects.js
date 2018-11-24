@@ -10,7 +10,7 @@ import {
   Icon,
   View
 } from "native-base";
-import { BackHandler, ImageBackground } from "react-native";
+import { BackHandler } from "react-native";
 import { StyleSheet } from "react-native";
 
 export default class Eight extends Component {
@@ -39,11 +39,11 @@ export default class Eight extends Component {
   }
   render() {
     return (
-      <ImageBackground source={require("../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
-        <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+     <Container>
+        <Header style={{ backgroundColor: "rgb(38,134,153)", height: 50 }}>
           <Left style={{ flex: 1 }}>
             <Button transparent onPress={this.back}>
-              <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+              <Icon style={{ color: "white", fontSize: 40 }} type="FontAwesome" name="angle-left" />
             </Button>
 
           </Left>
@@ -55,7 +55,7 @@ export default class Eight extends Component {
         </Header>
         <View style={{ flex: 1, justifyContent: "center", flexDirection: "column", padding: 10 }}>
           <Button
-            style={{ marginTop: 15, height: 60 }}
+            style={{ marginTop: 18, height: 60, backgroundColor:"rgb(60,207,207)" }}
 
             block
             rounded
@@ -64,7 +64,7 @@ export default class Eight extends Component {
             <Text style={styles.buttontext}>Sayı Yuvarlama</Text>
           </Button>
           <Button
-            style={{ marginTop: 15, height: 60 }}
+            style={{ marginTop: 18, height: 60, backgroundColor:"rgb(60,207,207)" }}
 
             rounded
             block
@@ -72,7 +72,7 @@ export default class Eight extends Component {
             <Text style={styles.buttontext}>ÇARPANLAR & KATLAR</Text>
           </Button>
           <Button
-            style={{ marginTop: 15, height: 60 }}
+            style={{ marginTop: 18, height: 60, backgroundColor:"rgb(60,207,207)"}}
 
             rounded
             block
@@ -80,7 +80,7 @@ export default class Eight extends Component {
             <Text style={styles.buttontext}>EBOB & EKOK</Text>
           </Button>
           <Button
-            style={{ marginTop: 15, height: 60 }}
+            style={{ marginTop: 18, height: 60, backgroundColor:"rgb(60,207,207)"}}
 
             block
             rounded
@@ -90,7 +90,7 @@ export default class Eight extends Component {
             <Text style={styles.buttontext}>ÜSLÜ SAYILAR</Text>
           </Button>
         </View>
-      </ImageBackground>
+        </Container>
     );
   }
   back = () => {
@@ -112,7 +112,7 @@ export default class Eight extends Component {
 const styles = StyleSheet.create({
   heade: {
     textAlign: "center",
-    color: "rgb(142,163,226)",
+    color: "white",
     fontSize: 25,
     padding: 5
   },

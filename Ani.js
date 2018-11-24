@@ -48,7 +48,7 @@ class Anime extends Component {
             height: 30,
             fontSize: 25,
             marginLeft: 3,
-            color: "white",
+            color: "rgb(36,41,46)",
             marginTop: 3
           }}
         >
@@ -65,7 +65,7 @@ class Anime extends Component {
             height: 30,
             fontSize: 25,
             marginLeft: 3,
-            color: "white",
+            color: "rgb(36,41,46)",
             marginTop: 3
           }}
         >
@@ -82,7 +82,7 @@ class Anime extends Component {
             height: 30,
             fontSize: 25,
             marginLeft: 3,
-            color: "white",
+            color: "rgb(36,41,46)",
             marginTop: 3
           }}
         >

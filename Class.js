@@ -28,8 +28,8 @@ export default class Classes extends Component {
   }
   render() {
     return (
-      <ImageBackground source={require("./image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
-        <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+      <Container>
+        <Header style={{ backgroundColor: "rgb(38,134,153)", height: 50 }}>
 
 
           <Body style={{ alignItems: "center", alignSelf: "center" }}>
@@ -42,62 +42,66 @@ export default class Classes extends Component {
             <Anime></Anime>
           </View>
           <Button
-            style={{ marginTop: 10, height: 60 }}
+            style={{ marginTop: 10, height: 60, backgroundColor:"rgb(60,207,207)" }}
 
             block
             rounded
             onPress={this.git4}
             disabled={this.state.disablebtnflag}
           >
-            <Icon style={{ color: "white", fontSize: 40 }} type="EvilIcons" name="star" />
+            
+            <Image source={require("./image/book5.png")} ></Image>
             <Text style={styles.heade}>4.SINIF</Text>
           </Button>
           <Button
-            style={{ marginTop: 10, height: 60 }}
+            style={{ marginTop: 10, height: 60, backgroundColor:"rgb(60,207,207)" }}
 
             block
             rounded
             onPress={this.git5}
             disabled={this.state.disablebtnflag}
           >
-            <Icon style={{ color: "white", fontSize: 40 }} type="EvilIcons" name="paperclip" />
+           <Image source={require("./image/calcuator4.png")} ></Image>
             <Text style={styles.heade}>5.SINIF</Text>
           </Button>
           <Button
-            style={{ marginTop: 10, height: 60 }}
+            style={{ marginTop: 10, height: 60, backgroundColor:"rgb(60,207,207)" }}
 
             block
             rounded
             onPress={this.git6}
             disabled={this.state.disablebtnflag}
           >
-            <Icon style={{ color: "white", fontSize: 40 }} type="EvilIcons" name="bell" />
+            
+            <Image source={require("./image/pencil1.png")} ></Image>
             <Text style={styles.heade}>6.SINIF</Text>
           </Button>
           <Button
-            style={{ marginTop: 10, height: 60 }}
+            style={{ marginTop: 10, height: 60, backgroundColor:"rgb(60,207,207)" }}
 
             block
             rounded
             onPress={this.git7}
             disabled={this.state.disablebtnflag}
           >
-            <Icon style={{ color: "white", fontSize: 40 }} type="EvilIcons" name="minus" />
+            
+            <Image source={require("./image/lab3.png")} ></Image>
             <Text style={styles.heade}>7.SINIF</Text>
           </Button>
           <Button
-            style={{ marginTop: 10, height: 60 }}
+            style={{ marginTop: 10, height: 60, backgroundColor: "rgb(60,207,207)" }}
 
             block
             rounded
             onPress={this.git8}
           >
-            <Icon style={{ color: "white", fontSize: 40 }} type="EvilIcons" name="trophy" />
+            
+                <Image source={require("./image/school0.png")} ></Image>
             <Text style={styles.heade}>8.SINIF</Text>
           </Button>
 
         </View>
-      </ImageBackground >
+        </Container>
     );
   }
 
@@ -127,7 +131,7 @@ const styles = StyleSheet.create({
   },
   header: {
     textAlign: "center",
-    color: "rgb(142,163,226)",
+    color: "white",
     fontSize: 30,
     padding: 5
   }
