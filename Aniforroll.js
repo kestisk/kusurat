@@ -44,7 +44,7 @@ class Aniforrol extends Component {
       this.setState({ bors: "<5" });
       this.setState({ inf: "sayı bir önceki onluğa yuvarlansın" });
     }
-
+//tugce
     // this.setState({ ss: this.len })
     //   this.setState({ ss: this.state.five });
     Animated.sequence([
