@@ -6,6 +6,7 @@ import {
     Right
 } from 'native-base';
 import { Platform, StyleSheet, View, Alert, Image, ScrollView, FlatList, ImageBackground, BackHandler } from 'react-native';
+import { Headers } from '../../headers';
 export default class Pow_findpow extends Component {
     constructor(props) {
         super(props);
@@ -40,19 +41,16 @@ export default class Pow_findpow extends Component {
     componentWillUnmount() {
         clearInterval(this.delayed1);
         clearTimeout(this.delayed2);
+        clearInterval(this.delay);
+        clearTimeout(this.delay2);
         BackHandler.removeEventListener(
             "hardwareBackPress",
             this.handleBackButtonClick
         );
     }
-    componentWillMount() {
-        BackHandler.addEventListener(
-            "hardwareBackPress",
-            this.handleBackButtonClick
-        );
-    }
+
     handleBackButtonClick = () => {
-        this.props.navigation.navigate("MultipPages");
+        this.props.navigation.navigate("powers");
         return true;
     }
 
@@ -219,15 +217,12 @@ export default class Pow_findpow extends Component {
     warn2 = () => {
         this.setState({ message: "Lütfen Sayı Girin" });
     }
-    componentWillUnmount() {
-        clearInterval(this.delay);
-        clearTimeout(this.delay2);
+    componentWillMount() {
+        BackHandler.addEventListener(
+            "hardwareBackPress",
+            this.handleBackButtonClick
+        );
     }
-    tys = () => {
-        this.props.navigation.navigate("Pow_findpowPagesTYS");
-
-    }
-
     back = () => {
         this.props.navigation.navigate("powers");
     }
@@ -235,27 +230,10 @@ export default class Pow_findpow extends Component {
         return (
             <Container>
                 <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
-                    <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
-                        <Left style={{ flex: 1 }}>
-                            <Button transparent onPress={this.back}>
-                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
-                            </Button>
-                        </Left>
-                        <Body style={{ flex: 4 }}>
-                            <Title style={styles.heade}>KUVVET BULMA</Title>
-                        </Body>
-                        <Right style={{ flex: 1 }}>
-                            <Button transparent onPress={this.tys}>
-                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} type="FontAwesome" name="edit" />
-                            </Button>
-                        </Right>
-
-                    </Header>
+                    <Headers onur="Pow_findpowPagesTYS"></Headers>
                     <Content >
-
                         <Text>{this.state.message}</Text>
                         <View style={{ flexDirection: "column" }}>
-
                             <View style={{ flexDirection: "row" }}>
                                 <Text style={{ fontSize: 30, marginLeft: 50, color: "white", textShadowColor: "black", textShadowOffset: { width: -3, height: 5 }, }}>{this.state.number}</Text>
                                 <Button rounded disabled={this.state.disable} onPress={this.direct}><Text style={{ fontSize: 50 }}>=</Text></Button>
@@ -299,54 +277,8 @@ export default class Pow_findpow extends Component {
                                 </CardItem>
                             </Card>
                         </View>
-
-
-
-
                     </Content>
-                    <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
-
-                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(1) }} >
-                            <Text style={styles.footertxt}>1</Text>
-                        </Button>
-                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(2) }} >
-                            <Text style={styles.footertxt}>2</Text>
-                        </Button>
-                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(3) }} >
-                            <Text style={styles.footertxt}>3</Text>
-                        </Button>
-                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(4) }} >
-                            <Text style={styles.footertxt}>4</Text>
-                        </Button>
-                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(5) }} >
-                            <Text style={styles.footertxt}>5</Text>
-                        </Button>
-
-                    </Footer>
-                    <Footer style={{ backgroundColor: null, display: this.state.footerdisplay }}>
-                        <Button style={styles.footerbtnmain} rounded onPress={() => { this.keybort(6) }} >
-                            <Text style={styles.footertxt}>6</Text>
-                        </Button>
-                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(7) }} >
-                            <Text style={styles.footertxt}>7</Text>
-                        </Button>
-                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(8) }} >
-                            <Text style={styles.footertxt}>8</Text>
-                        </Button>
-                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(9) }} >
-                            <Text style={styles.footertxt}>9</Text>
-                        </Button>
-                        <Button style={styles.footerbtn} rounded onPress={() => { this.keybort(0) }} >
-                            <Text style={styles.footertxt}>0</Text>
-                        </Button>
-                        <Button style={styles.footerbtn} rounded onPress={this.cleanOnePart} >
-
-                            <Text style={styles.footertxt}>SİL</Text>
-                        </Button>
-
-                    </Footer>
                 </ImageBackground>
-
             </Container >
         );
     }

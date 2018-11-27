@@ -371,7 +371,7 @@ export class At extends Multips_primeFactorPage {
         }
 
     }
-    justdivede(num) {
+    justdivede(index, num) {
         var storePow = [{ storenumber: "", x: "", keyA: "", keyB: "", keyC: "", keyD: "" }];
 
 
@@ -384,13 +384,42 @@ export class At extends Multips_primeFactorPage {
                 count++;
                 if (num == i) {
                     if (first) {
-                        storePow.push(({
-                            storenumber: i, x: "",
-                            keyA: count.toString(),
-                            keyB: (count + 1).toString(),
-                            keyC: (count + 2).toString(),
-                            keyD: (count + 3).toString()
-                        }));
+                        if (index == 1) {
+                            storePow.push(({
+                                storenumber: i, x: "",
+                                keyA: count.toString(),
+                                keyB: (count + 2).toString(),
+                                keyC: (count + 1).toString(),
+                                keyD: (count + 3).toString()
+                            }));
+                        }
+                        else if (index == 2) {
+                            storePow.push(({
+                                storenumber: i, x: "",
+                                keyA: (count + 1).toString(),
+                                keyB: count.toString(),
+                                keyC: (count + 2).toString(),
+                                keyD: (count + 3).toString()
+                            }));
+                        }
+                        else if (index == 3) {
+                            storePow.push(({
+                                storenumber: i, x: "",
+                                keyA: (count + 3).toString(),
+                                keyB: (count + 1).toString(),
+                                keyC: count.toString(),
+                                keyD: (count + 2).toString()
+                            }));
+                        }
+                        else if (index == 4) {
+                            storePow.push(({
+                                storenumber: i, x: "",
+                                keyA: (count + 1).toString(),
+                                keyB: (count + 3).toString(),
+                                keyC: (count + 2).toString(),
+                                keyD: count.toString()
+                            }));
+                        }
                     }
                     else {
                         storePow.push(({
@@ -401,27 +430,48 @@ export class At extends Multips_primeFactorPage {
                             keyD: (count).toString()
                         }));
                     }
-
-
                 }
-
                 num = num / i;
-
-
-
-
             }
-
             else {
                 if (count != 0) {
                     if (first) {
-                        storePow.push(({
-                            storenumber: i, x: "x",
-                            keyA: count.toString(),
-                            keyB: (count + 1).toString(),
-                            keyC: (count + 2).toString(),
-                            keyD: (count + 3).toString()
-                        }));
+                        if (index == 1) {
+                            storePow.push(({
+                                storenumber: i, x: "",
+                                keyA: count.toString(),
+                                keyB: (count + 2).toString(),
+                                keyC: (count + 1).toString(),
+                                keyD: (count + 3).toString()
+                            }));
+                        }
+                        else if (index == 2) {
+                            storePow.push(({
+                                storenumber: i, x: "",
+                                keyA: (count + 1).toString(),
+                                keyB: count.toString(),
+                                keyC: (count + 2).toString(),
+                                keyD: (count + 3).toString()
+                            }));
+                        }
+                        else if (index == 3) {
+                            storePow.push(({
+                                storenumber: i, x: "",
+                                keyA: (count + 3).toString(),
+                                keyB: (count + 1).toString(),
+                                keyC: count.toString(),
+                                keyD: (count + 2).toString()
+                            }));
+                        }
+                        else if (index == 4) {
+                            storePow.push(({
+                                storenumber: i, x: "",
+                                keyA: (count + 1).toString(),
+                                keyB: (count + 3).toString(),
+                                keyC: (count + 2).toString(),
+                                keyD: count.toString()
+                            }));
+                        }
                         first = false
                     }
                     else {

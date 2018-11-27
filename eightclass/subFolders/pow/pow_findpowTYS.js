@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { Container, Header, View, Title, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon, Button, Footer, Content } from 'native-base';
+import { Container, Header, View, Title, DeckSwiper, Card, CardItem, Text, Left, Body, Icon, Button, Footer, Content } from 'native-base';
 import { FlatList, StyleSheet, BackHandler } from 'react-native';
 import { At, Multips_primeFactorPage } from '../multips/multips_primeFactorPage';
-
+import Pow_findpow from './pow_findpow';
 export default class DeckSwiperAdvancedExample extends At {
     constructor(props) {
         super(props);
@@ -20,8 +20,7 @@ export default class DeckSwiperAdvancedExample extends At {
                 { userAnswer: "0" }, { userAnswer: "0" }, { userAnswer: "0" }, { userAnswer: "0" }, { userAnswer: "0" },
                 { userAnswer: "0" }, { userAnswer: "0" }, { userAnswer: "0" }, { userAnswer: "0" }, { userAnswer: "0" }, { userAnswer: "0" }],
             showarray: [
-                { num: "", key: "0" }, { num: "", key: "0" }, { num: "", key: "0" }, { num: "", key: "0" }, { num: "", key: "0" },
-                { num: "", key: "0" }, { num: "", key: "0" }, { num: "", key: "0" }, { num: "", key: "0" }, { num: "", key: "0" }],
+                { num: "", key: "0" }],
 
             number: [{ randnum: "" }],
             message: "",
@@ -47,27 +46,31 @@ export default class DeckSwiperAdvancedExample extends At {
             firstOpen: true,
             endtest: "none",
             numarray: "none",
-            firstentest: true
+            firstentest: true,
+            opensolution: "none",
+            deckswiperOpacity: 0.1
         }
     }
 
     async  componentDidMount() {
         var j = 1;
+        const tAnswer = [...this.state.trueAnswers];
         while (j <= 10) {
             var num = (Math.floor(Math.random() * 100) + 20);
-
-            var retval = await this.justdivede(num);
-
+            index = ((Math.ceil(Math.random() * 100) % 4) + 1);
+            var retval = await this.justdivede(index, num);
+            tAnswer[j].userAnswer = index;
             this.state.answer.push(retval);
             this.state.number.push({ randnum: num });
             this.setState(this.state.answer);
             this.setState(this.state.number);
             j++;
         }
+
         const arr = [...this.state.showquestion];
         arr[0].question = this.state.number[1].randnum;
         arr[0].qNumber = "Soru " + 1 + ":";
-        this.setState({ showquestion: arr });
+        this.setState({ showquestion: arr, trueAnswers: tAnswer });
 
     }
     async  next() {
@@ -79,7 +82,7 @@ export default class DeckSwiperAdvancedExample extends At {
         else {
             k = 10;
             this.setState({ indexState: k });
-            if (this.state.firstentest) {
+            if (this.state.firstentest && this.state.firstentest) {
                 this.setState({ endtest: "flex" });
             }
         }
@@ -228,9 +231,12 @@ export default class DeckSwiperAdvancedExample extends At {
         else {
             k = parseInt(this.state.indexState);
             const array = [...this.state.userAnswers];
+
             array[k].userAnswer = val;
+
             //this.setState({ message: array[k].userAnswer });
             switch (val) {
+
                 case 1: {
                     this.setState({ bgc1: "rgb(10,186,181)", bgc2: "rgb(185,230,240)", bgc3: "rgb(185,230,240)", bgc4: "rgb(185,230,240)" });
                     break;
@@ -252,7 +258,9 @@ export default class DeckSwiperAdvancedExample extends At {
                 }
             }
 
+            this.setState({ userAnswer: array });
         }
+
         this.next();
 
     }
@@ -260,69 +268,90 @@ export default class DeckSwiperAdvancedExample extends At {
         this.setState({ endtest: "none", firstentest: false, numarray: "flex" });
         const uAnswer = [...this.state.userAnswers];
         const tAnswer = [...this.state.trueAnswers];
-        const sArray = [...this.state.showarray];
-        for (i = 0; i < 10; i++) {
+        sArray = [{ num: "", key: "" }];
+        for (i = 1; i <= 10; i++) {
+            debugger;
             if (uAnswer[i].userAnswer == tAnswer[i].userAnswer) {
-                sArray[i].num = i + 1;
-                sArray[i].key = "1";
+                sArray.push({ num: i, key: "1" });
+
             }
             else {
-                sArray[i].num = i + 1;
-                sArray[i].key = "0";
+                if (uAnswer[i].userAnswer != "0") {
+                    sArray.push({ num: i, key: "0" });
+                }
+                else {
+                    sArray.push({ num: i, key: "2" });
+                }
             }
         }
+        debugger;
         this.setState({ showarray: sArray });
+
     }
     async goQuestion(k) {
+        this.setState({ bgc1: "rgb(185,230,240)", bgc2: "rgb(185,230,240)", bgc3: "rgb(185,230,240)", bgc4: "rgb(185,230,240)" });
         // await this.setState({ answer2: [{ storenumber: "", x: "", keyA: "", keyB: "", keyC: "", keyD: "" }] })
         this.state.answer2 = this.state.answer[k];
         this.setState(this.state.answer2);
 
         const array = [...this.state.userAnswers];
         var val = array[k].userAnswer;
-
+        //users answer switch
         switch (val) {
             case 1: {
                 this.setState({ bgc1: "rgb(10,186,181)" });
-                this.setState({ bgc2: "rgb(185,230,240)" });
-                this.setState({ bgc3: "rgb(185,230,240)" });
-                this.setState({ bgc4: "rgb(185,230,240)" });
+
                 break;
             }
             case 2: {
-                this.setState({ bgc1: "rgb(185,230,240)" });
                 this.setState({ bgc2: "rgb(10,186,181)" });
-                this.setState({ bgc3: "rgb(185,230,240)" });
-                this.setState({ bgc4: "rgb(185,230,240)" });
                 break;
             }
             case 3: {
-                this.setState({ bgc1: "rgb(185,230,240)" });
-                this.setState({ bgc2: "rgb(185,230,240)" });
                 this.setState({ bgc3: "rgb(10,186,181)" });
-                this.setState({ bgc4: "rgb(185,230,240)" });
                 break;
             }
             case 4: {
-                this.setState({ bgc1: "rgb(185,230,240)" });
-                this.setState({ bgc2: "rgb(185,230,240)" });
-                this.setState({ bgc3: "rgb(185,230,240)" });
                 this.setState({ bgc4: "rgb(10,186,181)" });
                 break;
             }
-            default: {
-                this.setState({ bgc1: "rgb(185,230,240)" });
-                this.setState({ bgc2: "rgb(185,230,240)" });
-                this.setState({ bgc3: "rgb(185,230,240)" });
-                this.setState({ bgc4: "rgb(185,230,240)" });
+        }
+        //doğru cevap switch
+        const tAnswer = [...this.state.trueAnswers];
+        var val2 = tAnswer[k].userAnswer;
+        if (val != val2) {
+            switch (val2) {
+                case 1: {
+                    this.setState({ bgc1: "red", opensolution: "flex" });
+
+                    break;
+                }
+                case 2: {
+                    this.setState({ bgc2: "red", opensolution: "flex" });
+                    break;
+                }
+                case 3: {
+                    this.setState({ bgc3: "red", opensolution: "flex" });
+                    break;
+                }
+                case 4: {
+                    this.setState({ bgc4: "red", opensolution: "flex" });
+                    break;
+                }
             }
         }
+
+        else
+            this.setState({ opensolution: "none" });
         const array2 = [...this.state.number];
         var randnum = array2[k].randnum;
         const array3 = [...this.state.showquestion];
         array3[0].qNumber = "Soru " + k;
         array3[0].question = randnum;
         this.setState({ showquestion: array3 });
+    }
+    showsolutionFunc = () => {
+
     }
     render() {
         return (
@@ -339,8 +368,10 @@ export default class DeckSwiperAdvancedExample extends At {
                     </Body>
 
                 </Header>
-
-                <View style={{ flexDirection: "column" }} >
+                <View style={{ height: '100%', width: '100%', backgroundColor: "white", flexDirection: "column" }}>
+                    <Pow_findpow></Pow_findpow>
+                </View >
+                <View style={{ flexDirection: "column", }} >
 
                     <View style={{ display: this.state.firstView }}>
                         <View style={{ marginTop: 30, alignItems: "center", flexDirection: "column" }}>
@@ -363,7 +394,9 @@ export default class DeckSwiperAdvancedExample extends At {
                             </View>
                         </View>
                     </View>
+
                     <View >
+
                         <DeckSwiper
                             onSwipeRight={() => this.prev()}
                             onSwipeLeft={() => this.next()}
@@ -375,8 +408,9 @@ export default class DeckSwiperAdvancedExample extends At {
                             renderItem={item =>
                                 <Card style={{ elevation: 3, display: this.state.cardvisible }}>
                                     <CardItem >
-                                        <Body>
+                                        <Body style={{ flexDirection: "row" }}>
                                             <Text style={{ fontSize: 45, color: "rgb(4,73,71)", fontWeight: "bold" }}>{item.qNumber}</Text>
+                                            <Button onPress={() => this.showsolutionFunc()} style={{ justifyContent: "center", display: this.state.opensolution }}><Text>Çözümü Gör</Text></Button>
                                         </Body>
                                     </CardItem>
                                     <CardItem style={{ justifyContent: "center" }}>
@@ -490,12 +524,12 @@ export default class DeckSwiperAdvancedExample extends At {
                                                 renderItem={({ item }) => {
                                                     return (
                                                         <View >
-                                                            <Text onPress={() => this.goQuestion(item.num)} style={{ fontSize: 20, color: (item.key == 1) ? "green" : "red" }}>{item.num}  </Text>
+                                                            <Text onPress={() => this.goQuestion(item.num)} style={{ fontSize: 20, color: (item.key == "1") ? "green" : (item.key == "0") ? "red" : "gray" }}> {item.num}  </Text>
                                                         </View>
                                                     );
                                                 }}
-                                                //keyExtractor={item => item.keyA}
-                                                atA={this.state.PowLastarray}
+                                            //keyExtractor={item => item.keyA}
+
                                             />
                                         </View>
 

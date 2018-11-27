@@ -61,7 +61,7 @@ export default class Multips_primeFactorPageTYS extends At {
         this.setState({ randnumberTYS: randnum });
         index = (Math.ceil(Math.random() * 4));
         this.setState(() => ({ ind: index }));
-        this.fill(1, randnum);
+        this.fill(index, randnum);
 
     }
     back = () => {
@@ -79,7 +79,7 @@ export default class Multips_primeFactorPageTYS extends At {
         })
 
 
-        var retval = await this.justdivede(num);
+        var retval = await this.justdivede(index, num);
 
 
         // const retval = this.justdivede(num);

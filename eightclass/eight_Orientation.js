@@ -6,7 +6,7 @@ import Ebob_ekokPage from "./ebob_ekokPage";
 import MultipPage from './multipsPage';
 import PrimeFactabPage from "./tabs/multips_primeFactortabPage";
 import PrimeFacTreetabPage from './tabs/primeFacTreetabPage';
-
+import Headers from './headers';
 //import Ebob_Ekok_PrimeTabPage from './tabs/ebob_ekok/ebob_ekok_primetabPage';
 import Ebob_Ekok_PrimeTabPage from './subFolders/ebob_ekok/ebob_ekok_primePage';
 import Ebob_ekok_primePageTYS from "./subFolders/ebob_ekok/ebob_ekok_primePageTYS";
