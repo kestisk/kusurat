@@ -3,13 +3,14 @@
 import React, { Component } from 'react';
 import { Container, Content, Button, Header, Left, Icon, Body, Title, Fab } from 'native-base';
 import { Platform, StyleSheet, Text, View, Alert, Image, ScrollView, ImageBackground, BackHandler, TouchableWithoutFeedback } from 'react-native';
+import Choose from "./choose";
 
-
-export default class Ebob_ekokPage extends Component {
+export default class Ebob_ekokPage extends Choose {
   constructor(props) {
     super(props)
-    this.state = { active: "none", active2: "none", opa: 1 };
+    this.state = { active: "none", opa: 1 };
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+    this.destroy = this.destroy.bind(this);
   }
 
   componentWillMount() {
@@ -24,26 +25,22 @@ export default class Ebob_ekokPage extends Component {
     this.props.navigation.navigate('Main_eight');
     return true;
   }
-  at = () => {
-    if (this.state.active == "none") {
-      this.setState({ active: "flex", opa: 0.4 })
-    }
-    else {
-      this.setState({ active: "none", opa: 1 })
-    }
+
+  destroy = () => {
+    this.setState({ active: "none", opa: 1 })
+
+
   }
-  at2 = () => {
-    if (this.state.active2 == "none") {
-      this.setState({ active2: "flex", opa: 0.4 })
-    }
-    else {
-      this.setState({ active2: "none", opa: 1 })
-    }
+  choosing = (subject) => {
+    this.setState({ active: "flex", opa: 0.4 })
+    this.choosefonk(subject);
+
   }
+
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress={this.at2}>
+      <TouchableWithoutFeedback onPress={() => this.destroy()}>
         <Container>
           <Header style={{ backgroundColor: "rgb(56,65,104)" }}>
             <Left style={{ flex: 1 }}>
@@ -71,10 +68,19 @@ export default class Ebob_ekokPage extends Component {
 
 
 
-            <View style={{ marginLeft: 20, flexDirection: "row" }}  >
-              <Button bordered rounded style={{ borderColor: "black" }} onPress={this.at2}><Icon style={{ fontSize: 40, color: "green" }} name="star" /></Button>
-              <Text style={{ fontSize: 30, color: "black", marginLeft: 50 }}>EBOB</Text>
-            </View>
+
+            <Button block rounded style={{ marginTop: 18, height: 60, backgroundColor: "rgb(60,207,207)" }} onPress={() => this.choosing("EbobPages")}>
+              <Text style={styles.buttontext}>EBOB</Text></Button>
+
+            <Button block rounded style={{ marginTop: 18, height: 60, backgroundColor: "rgb(60,207,207)" }} onPress={() => this.choosing("EkokPages")}>
+              <Text style={styles.buttontext}>EKOK</Text></Button>
+
+
+
+            <Button block rounded style={{ marginTop: 18, height: 60, backgroundColor: "rgb(60,207,207)" }} onPress={() => this.choosing("Ebob_Ekok_PrimeTabPages")}>
+              <Text style={styles.buttontext}>ARALARINDA ASAL</Text></Button>
+
+
 
 
 
@@ -93,24 +99,8 @@ export default class Ebob_ekokPage extends Component {
             marginLeft: '20%'
           }}>
 
-            <View style={{
-              display: this.state.active2
-            }}>
-
-
-
-
-              <Button rounded style={{ backgroundColor: 'red', marginBottom: 10 }}>
-                <Icon type="EvilIcons" name="pencil" /><Text style={{ color: "white", width: 150 }}>Asistan</Text>
-              </Button>
-              <Button rounded style={{ backgroundColor: 'red', marginBottom: 10 }}>
-                <Icon type="EvilIcons" name="chart" /><Text style={{ color: "white", width: 150 }}>Kendini Dene</Text>
-              </Button>
-              <Button rounded disabled style={{ backgroundColor: 'red', marginBottom: 10 }}>
-                <Icon type="EvilIcons" name="sc-youtube" /><Text style={{ color: "white", width: 150 }}>Videoya Git</Text>
-              </Button>
-
-
+            <View style={{ display: this.state.active }}>
+              {this.hiddenbutton()}
             </View>
 
           </View>
@@ -126,7 +116,7 @@ export default class Ebob_ekokPage extends Component {
   };
 
   EKOK = () => {
-    this.props.navigation.navigate("EkokPages");
+    this.props.navigation.navigate("chosess");
   };
   prime = () => {
     this.props.navigation.navigate("Ebob_Ekok_PrimeTabPages");
@@ -154,10 +144,9 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   buttontext: {
-    marginLeft: 50,
     textAlign: "center",
-    color: 'white',
+    color: "white",
     padding: 5,
-    fontSize: 20,
+    fontSize: 20
   }
 });

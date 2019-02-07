@@ -19,7 +19,7 @@ import EkokPageTYS from "./subFolders/ebob_ekok/ekokPageTYS";
 
 import Pow_getpow from './subFolders/pow/pow_getpow';
 import Pow_getpowTYS from './subFolders/pow/pow_getpowTYS';
-
+import Choose from "./choose";
 import Pow_BasictabPage from './tabs/pow/pow_basictabPage';
 import Pow_findpowtabPage from './tabs/pow/pow_findpowtabPage';
 import Pow_getpowtabPage from './tabs/pow/pow_getpowtabPage';
@@ -46,6 +46,9 @@ const eight_Ori = createSwitchNavigator({
   },
   ebob_ekokPages: {
     screen: Ebob_ekokPage,
+  },
+  chosess: {
+    screen: Choose,
   },
   EbobPageTYSPages: {
     screen: EbobPageTYS,

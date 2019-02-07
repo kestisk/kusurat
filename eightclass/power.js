@@ -28,11 +28,11 @@ export default class Power extends Component {
 
   render() {
     return (
-      <ImageBackground source={require("../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
-        <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+      <Container>
+        <Header style={{ backgroundColor: "rgb(38,134,153)", height: 50 }}>
           <Left style={{ flex: 1 }}>
             <Button transparent onPress={this.back}>
-              <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+              <Icon style={{ color: "white", fontSize: 40 }} type="FontAwesome" name="angle-left" />
             </Button>
           </Left>
           <Body style={{ flex: 4 }}>
@@ -46,14 +46,14 @@ export default class Power extends Component {
           justifyContent: 'center',
           alignItems: 'center'
         }}>
-          <Button style={{ marginTop: 15 }} block rounded onPress={this.basic}><Text style={styles.buttontext}>TEMEL KURALLAR</Text></Button>
-          <Button style={{ marginTop: 15 }} block rounded onPress={this.getpow}><Text style={styles.buttontext}>KUVVET ALMA</Text></Button>
-          <Button style={{ marginTop: 15 }} block rounded onPress={this.findpow}><Text style={styles.buttontext}>KUVVET BULMA</Text></Button>
-          <Button style={{ marginTop: 15 }} block rounded onPress={this.showdecimal}><Text style={styles.buttontext}>ONDALIK GÖSTERİM ÇÖZÜMLEME</Text></Button>
-          <Button style={{ marginTop: 15 }} block rounded onPress={this.showscience}><Text style={styles.buttontext}>BİLİMSEL GÖSETERİM</Text></Button>
+          <Button style={{ marginTop: 15, backgroundColor:"rgb(60,207,207)" }} block rounded onPress={this.basic}><Text style={styles.buttontext}>TEMEL KURALLAR</Text></Button>
+          <Button style={{ marginTop: 15, backgroundColor:"rgb(60,207,207)" }} block rounded onPress={this.getpow}><Text style={styles.buttontext}>KUVVET ALMA</Text></Button>
+          <Button style={{ marginTop: 15, backgroundColor:"rgb(60,207,207)" }} block rounded onPress={this.findpow}><Text style={styles.buttontext}>KUVVET BULMA</Text></Button>
+          <Button style={{ marginTop: 15, backgroundColor:"rgb(60,207,207)" }} block rounded onPress={this.showdecimal}><Text style={styles.buttontext}>ONDALIK GÖSTERİM ÇÖZÜMLEME</Text></Button>
+          <Button style={{ marginTop: 15, backgroundColor:"rgb(60,207,207)" }} block rounded onPress={this.showscience}><Text style={styles.buttontext}>BİLİMSEL GÖSETERİM</Text></Button>
 
         </View>
-      </ImageBackground >
+      </Container>
     );
   }
   back = () => {
@@ -85,7 +85,7 @@ export default class Power extends Component {
 const styles = StyleSheet.create({
   heade: {
     textAlign: "center",
-    color: "rgb(142,163,226)",
+    color: "white",
     fontSize: 25,
     padding: 5
   },
