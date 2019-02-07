@@ -6,7 +6,7 @@ import {
     Right
 } from 'native-base';
 import { Platform, StyleSheet, View, Alert, Image, ScrollView, FlatList, ImageBackground, BackHandler } from 'react-native';
-import { Headers } from '../../headers';
+
 export default class Pow_findpow extends Component {
     constructor(props) {
         super(props);
@@ -230,7 +230,22 @@ export default class Pow_findpow extends Component {
         return (
             <Container>
                 <ImageBackground source={require("../../../image/galaxy.jpg")} style={{ width: '100%', height: '100%' }}>
-                    <Headers onur="Pow_findpowPagesTYS"></Headers>
+                    <Header style={{ backgroundColor: "rgb(56,65,104)", height: 50 }}>
+                        <Left style={{ flex: 1 }}>
+                            <Button transparent onPress={this.back}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 40 }} type="FontAwesome" name="angle-left" />
+                            </Button>
+                        </Left>
+                        <Body style={{ flex: 4 }}>
+                            <Title style={styles.heade}>KUVVET BULMA{this.state.at}</Title>
+
+                        </Body>
+                        <Right style={{ flex: 1 }}>
+                            <Button transparent onPress={this.tys}>
+                                <Icon style={{ color: "rgb(142,163,226)", fontSize: 30 }} type="FontAwesome" name="edit" />
+                            </Button>
+                        </Right>
+                    </Header >
                     <Content >
                         <Text>{this.state.message}</Text>
                         <View style={{ flexDirection: "column" }}>
@@ -281,6 +296,11 @@ export default class Pow_findpow extends Component {
                 </ImageBackground>
             </Container >
         );
+    }
+
+    tys = () => {
+        this.props.navigation.navigate("Pow_findpowPagesTYS");
+
     }
 
 }
